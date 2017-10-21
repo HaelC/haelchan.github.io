@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hael&#39;s Personal Website">
 <meta property="og:description" content="Foreword现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的教程 Linux文件系统简介Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T08:59:38.000Z">
+<meta property="og:updated_time" content="2017-10-21T12:09:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统下常用指令">
 <meta name="twitter:description" content="Foreword现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的教程 Linux文件系统简介Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令">
@@ -313,9 +313,10 @@
         <h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的<a href="https://www.youtube.com/watch?v=ZfjTV57N4yQ&amp;list=PLkGAai-LjzyMjXUmqq4xy3eILdNlA-BVN" target="_blank" rel="external">教程</a></p>
 <h3 id="Linux文件系统简介"><a href="#Linux文件系统简介" class="headerlink" title="Linux文件系统简介"></a>Linux文件系统简介</h3><p>Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令），比较直观清晰。</p>
 <h3 id="工作路径"><a href="#工作路径" class="headerlink" title="工作路径"></a>工作路径</h3><p>在Terminal下可以输入指令<code>pwd</code>(print working directory)显示当前的工作路径（绝对路径）。<br>工作路径有两种：绝对路径与相对路径。绝对路径就是从根目录(root directory)<code>/</code>开始的路径，相对路径是从主目录(home directory)<code>~</code>开始的路径。一般情况下我们都可以使用相对路径来表示我们的工作路径。<br>另外，<code>.</code>表示当前路径，<code>..</code>表示上一级路径。</p>
-<h2 id="cd-change-directory"><a href="#cd-change-directory" class="headerlink" title="cd(change directory)"></a>cd(change directory)</h2><p><code>cd 路径名</code>定位至目标目录。<br><code>cd</code> 或<code>cd ~</code>：定位至主目录。<br><code>cd -</code> 返回至之前目录<br><code>cd ..</code>返回父目录</p>
-<h2 id="cat-concatenate"><a href="#cat-concatenate" class="headerlink" title="cat(concatenate)"></a>cat(concatenate)</h2><p><code>cat 文件名</code> 输出文件内容。注意对文件夹无法进行cat命令。<br><code>cat 文件名1 文件名2 ... 文件名n</code>输出多个文件内容。</p>
-<h2 id="ls-list"><a href="#ls-list" class="headerlink" title="ls(list)"></a>ls(list)</h2><p><code>ls</code>列出所有非隐藏文件<br><code>ls -1</code>以单列的形式列出所有非隐藏文件。（即一行只显示一个文件/文件夹）<br><code>ls -l</code>列出所有非隐藏文件，包含更多信息：包括文件大小、是否为文件夹、<br><code>ls -a</code>列出所有文件，包括隐藏文件。（文件名以.开头的都是隐藏文件/隐藏文件夹）<br><code>ls -rt</code>按照时间修改顺序倒序显示文件。<br><code>ls -</code>后面的指令可以配合使用，例如<code>ls -alrt</code>便是以倒序显示所有文件，并且包含更多详细信息。</p>
+<hr>
+<h2 id="cd-change-directory"><a href="#cd-change-directory" class="headerlink" title="cd(change directory)"></a>cd(change directory)</h2><p><code>cd 路径名</code>： 定位至目标目录。<br><code>cd</code> 或<code>cd ~</code>： 定位至主目录。<br><code>cd -</code> ： 返回至之前目录<br><code>cd ..</code>： 返回父目录</p>
+<h2 id="cat-concatenate"><a href="#cat-concatenate" class="headerlink" title="cat(concatenate)"></a>cat(concatenate)</h2><p><code>cat 文件名</code>： 输出文件内容。注意对文件夹无法进行cat命令。<br><code>cat 文件名1 文件名2 ... 文件名n</code>： 输出多个文件内容。</p>
+<h2 id="ls-list"><a href="#ls-list" class="headerlink" title="ls(list)"></a>ls(list)</h2><p><code>ls</code>： 列出所有非隐藏文件<br><code>ls -1</code>： 以单列的形式列出所有非隐藏文件。（即一行只显示一个文件/文件夹）<br><code>ls -l</code>： 列出所有非隐藏文件，包含更多信息：包括文件大小、是否为文件夹、<br><code>ls -a</code>： 列出所有文件，包括隐藏文件。（文件名以.开头的都是隐藏文件/隐藏文件夹）<br><code>ls -rt</code>： 按照时间修改顺序倒序显示文件。<br><code>ls -</code>后面的指令可以配合使用，例如<code>ls -alrt</code>便是以倒序显示所有文件，并且包含更多详细信息。</p>
 <p><code>man ls</code>查看其它ls有关指令。（按Q退出该指南）</p>
 
       
