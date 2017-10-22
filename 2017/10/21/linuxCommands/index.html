@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="tips,linux," />
+  <meta name="keywords" content="linux,tips," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="Foreword现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的教程 Linux文件系统简介Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令">
-<meta name="keywords" content="tips,linux">
+<meta name="keywords" content="linux,tips">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系统下常用指令">
 <meta property="og:url" content="http://haelchan.me/2017/10/21/linuxCommands/index.html">
 <meta property="og:site_name" content="Hael&#39;s Personal Website">
 <meta property="og:description" content="Foreword现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的教程 Linux文件系统简介Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-22T16:52:12.000Z">
+<meta property="og:updated_time" content="2017-10-22T17:03:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统下常用指令">
 <meta name="twitter:description" content="Foreword现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的教程 Linux文件系统简介Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令">
@@ -312,8 +312,17 @@
       
         <h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的<a href="https://www.youtube.com/watch?v=ZfjTV57N4yQ&amp;list=PLkGAai-LjzyMjXUmqq4xy3eILdNlA-BVN" target="_blank" rel="external">教程</a></p>
 <h3 id="Linux文件系统简介"><a href="#Linux文件系统简介" class="headerlink" title="Linux文件系统简介"></a>Linux文件系统简介</h3><p>Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令），比较直观清晰。</p>
-<h3 id="工作路径"><a href="#工作路径" class="headerlink" title="工作路径"></a>工作路径</h3><p>在Terminal下可以输入指令 <figure class="highlight plain"><figcaption><span>(print working directory)显示当前的工作路径（绝对路径）。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">工作路径有两种：绝对路径与相对路径。绝对路径就是从根目录(root directory)```/```开始的路径，相对路径是从主目录(home directory)```~```开始的路径。一般情况下我们都可以使用相对路径来表示我们的工作路径。</div><div class="line">另外，```.```表示当前路径，```..```表示上一级路径。</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">## cd</div><div class="line">cd: *change directory*</div><div class="line">```cd 路径名```： 定位至目标目录</div><div class="line">```cd``` 或```cd ~```： 定位至主目录</div><div class="line">```cd -``` ： 返回至之前目录</div><div class="line">```cd ..```： 返回至父目录</div><div class="line"></div><div class="line">## cat</div><div class="line">cat: *concatenate*</div><div class="line">```cat 文件名```： 输出文件内容。注意对文件夹无法进行cat命令。</div><div class="line">```cat 文件名1 文件名2 ... 文件名n```： 输出多个文件内容</div><div class="line"></div><div class="line">## ls</div><div class="line">ls: *list*</div><div class="line">```ls```： 列出所有非隐藏文件</div><div class="line">```ls -1```： 以单列的形式列出所有非隐藏文件。（即一行只显示一个文件/文件夹）</div><div class="line">```ls -l```： 列出所有非隐藏文件，包含更多信息：包括文件大小、是否为文件夹、</div><div class="line">```ls -a```： 列出所有文件，包括隐藏文件。（文件名以.开头的都是隐藏文件/隐藏文件夹）</div><div class="line">```ls -rt```： 按照时间修改顺序倒序显示文件</div><div class="line">```ls -```后面的指令可以配合使用，例如```ls -alrt```便是以倒序显示所有文件，并且包含更多详细信息。</div><div class="line"></div><div class="line">## pushd / popd</div><div class="line">pushd: *push directory*</div><div class="line">popd: *pop directory*</div><div class="line">在Terminal中，经过几次cd改变路径后，有没有什么快速跳转至之前某一路径的快捷指令呢？答案就是使用```pushd```和```popd```指令，利用压栈和出栈的思想实现快速跳转。</div><div class="line">具体使用方法：</div><div class="line">```pushd 新路径```： 对当前路径进行压栈操作，然后跳转至新路径</div><div class="line">```popd```： 跳转至栈顶路径</div><div class="line">举例：</div><div class="line">假设当前我的路径为**~/Documents**，使用指令```pushd ../Downloads```后，栈中保存的路径为**~/Documents**，而我的路径跳转到了主目录下的Downloads文件夹。此时使用指令```popd```便可以跳转至栈顶路径，即**~/Documents**。</div><div class="line"></div><div class="line">## man</div><div class="line">man: *manual*</div><div class="line">```man 指令名```： 查看对应命令的指导手册</div><div class="line">例如：```man ls```，便可以查看完整的ls指令。</div><div class="line">进入指导手册后，还可以进行一些操作：</div><div class="line">可以通过上下方向键，或者J和K进行文本的浏览。</div><div class="line">使用```/查找内容```指令可以查找特定内容。</div><div class="line">    在查找时按下n（即键盘上的N键）可以查找下一处，按下N（即shift和N一起按）可以查找上一处。</div><div class="line">按下Q即退出指导手册。</div><div class="line"></div><div class="line">```man -k 关键词```： 显示所有指导手册中带有关键词的指令。</div><div class="line">例如： ```man -k printf```： 我们会发现，除了printf外，还有许多长得类似的指令。同时macOS与Ubuntu上显示的指令是不一样的。</div><div class="line">Linux only：在Ubuntu下有printf(1)和printf(3)两条名称相同的指令，其中printf(1)是UNIX的系统指令，而printf(3)即是我们熟悉的C语言中的输出指令。可以通过指令```man 3 printf```查看C语言的printf手册。所以我们在Linux下使用```man```也可以查看C语言的手册。</div><div class="line"></div><div class="line">## cp / mv</div><div class="line">cp: *copy*</div><div class="line">mv: *move*</div><div class="line">```cp 源文件 新路径```： 复制源文件至新路径下，如果新路径原先不存在，则会自动生成对应路径（即文件夹）。</div><div class="line">```cp -r 源文件夹 新路径```： 复制文件夹至新路径下。-r 表示recursive即递归，表示将源文件夹下的所有文件都复制，即实现了整个文件夹的复制。</div><div class="line">注意新路径下如果存在与源文件同名的文件，则直接会被覆盖。</div><div class="line"></div><div class="line">```mv```的用法与```cp```基本一样。不过对文件夹进行操作时无需使用```-r```命令。</div><div class="line"></div><div class="line">## rm</div><div class="line">rm: *remove*</div><div class="line">```rm 文件</div></pre></td></tr></table></figure></p>
-<p><code>rm -r 文件夹</code><br>注意<code>rm</code>操作会直接删除对应文件/文件夹，而不存在回收站之类的东西（虽然可以有backup，但是……我不会）。所以在执行rm操作时需谨慎。</p>
+<h3 id="工作路径"><a href="#工作路径" class="headerlink" title="工作路径"></a>工作路径</h3><p>在Terminal下可以输入指令 <code>pwd</code> (print working directory)显示当前的工作路径（绝对路径）。<br>工作路径有两种：绝对路径与相对路径。绝对路径就是从根目录(root directory)<code>/</code>开始的路径，相对路径是从主目录(home directory)<code>~</code>开始的路径。一般情况下我们都可以使用相对路径来表示我们的工作路径。<br>另外，<code>.</code>表示当前路径，<code>..</code>表示上一级路径。</p>
+<hr>
+<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><p>cd: <em>change directory</em><br><code>cd 路径名</code>： 定位至目标目录<br><code>cd</code> 或<code>cd ~</code>： 定位至主目录<br><code>cd -</code> ： 返回至之前目录<br><code>cd ..</code>： 返回至父目录</p>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>cat: <em>concatenate</em><br><code>cat 文件名</code>： 输出文件内容。注意对文件夹无法进行cat命令。<br><code>cat 文件名1 文件名2 ... 文件名n</code>： 输出多个文件内容</p>
+<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>ls: list<br><code>ls</code>： 列出所有非隐藏文件<br><code>ls -1</code>： 以单列的形式列出所有非隐藏文件。（即一行只显示一个文件/文件夹）<br><code>ls -l</code>： 列出所有非隐藏文件，包含更多信息：包括文件大小、是否为文件夹、<br><code>ls -a</code>： 列出所有文件，包括隐藏文件。（文件名以.开头的都是隐藏文件/隐藏文件夹）<br><code>ls -rt</code>： 按照时间修改顺序倒序显示文件<br><code>ls -</code>后面的指令可以配合使用，例如<code>ls -alrt</code>便是以倒序显示所有文件，并且包含更多详细信息。</p>
+<h2 id="pushd-popd"><a href="#pushd-popd" class="headerlink" title="pushd / popd"></a>pushd / popd</h2><p>pushd: <em>push directory</em><br>popd: <em>pop directory</em><br>在Terminal中，经过几次cd改变路径后，有没有什么快速跳转至之前某一路径的快捷指令呢？答案就是使用<code>pushd</code>和<code>popd</code>指令，利用压栈和出栈的思想实现快速跳转。<br>具体使用方法：<br><code>pushd 新路径</code>： 对当前路径进行压栈操作，然后跳转至新路径<br><code>popd</code>： 跳转至栈顶路径<br>举例：<br>假设当前我的路径为<strong>~/Documents</strong>，使用指令<code>pushd ../Downloads</code>后，栈中保存的路径为<strong>~/Documents</strong>，而我的路径跳转到了主目录下的Downloads文件夹。此时使用指令<code>popd</code>便可以跳转至栈顶路径，即<strong>~/Documents</strong>。</p>
+<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man: <em>manual</em><br><code>man 指令名</code>： 查看对应命令的指导手册<br>例如：<code>man ls</code>，便可以查看完整的ls指令。<br>进入指导手册后，还可以进行一些操作：<br>可以通过上下方向键，或者J和K进行文本的浏览。<br>使用<code>/查找内容</code>指令可以查找特定内容。<br>    在查找时按下n（即键盘上的N键）可以查找下一处，按下N（即shift和N一起按）可以查找上一处。<br>按下Q即退出指导手册。</p>
+<p><code>man -k 关键词</code>： 显示所有指导手册中带有关键词的指令。<br>例如： <code>man -k printf</code>： 我们会发现，除了printf外，还有许多长得类似的指令。同时macOS与Ubuntu上显示的指令是不一样的。<br>Linux only：在Ubuntu下有printf(1)和printf(3)两条名称相同的指令，其中printf(1)是UNIX的系统指令，而printf(3)即是我们熟悉的C语言中的输出指令。可以通过指令<code>man 3 printf</code>查看C语言的printf手册。所以我们在Linux下使用<code>man</code>也可以查看C语言的手册。</p>
+<h2 id="cp-mv"><a href="#cp-mv" class="headerlink" title="cp / mv"></a>cp / mv</h2><p>cp: <em>copy</em><br>mv: <em>move</em><br><code>cp 源文件 新路径</code>： 复制源文件至新路径下，如果新路径原先不存在，则会自动生成对应路径（即文件夹）。<br><code>cp -r 源文件夹 新路径</code>： 复制文件夹至新路径下。-r 表示recursive即递归，表示将源文件夹下的所有文件都复制，即实现了整个文件夹的复制。<br>注意新路径下如果存在与源文件同名的文件，则直接会被覆盖。</p>
+<p><code>mv</code>的用法与<code>cp</code>基本一样。不过对文件夹进行操作时无需使用<code>-r</code>命令。</p>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><p>rm: <em>remove</em><br><code>rm 文件</code><br><code>rm -r 文件夹</code><br>注意<code>rm</code>操作会直接删除对应文件/文件夹，而不存在回收站之类的东西（虽然可以有backup，但是……我不会）。所以在执行rm操作时需谨慎。</p>
 
       
     </div>
@@ -331,9 +340,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tips/" rel="tag"># tips</a>
-          
             <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/tips/" rel="tag"># tips</a>
           
         </div>
       
@@ -501,7 +510,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreword"><span class="nav-number">1.</span> <span class="nav-text">Foreword</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux文件系统简介"><span class="nav-number">1.1.</span> <span class="nav-text">Linux文件系统简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作路径"><span class="nav-number">1.2.</span> <span class="nav-text">工作路径</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreword"><span class="nav-number">1.</span> <span class="nav-text">Foreword</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux文件系统简介"><span class="nav-number">1.1.</span> <span class="nav-text">Linux文件系统简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作路径"><span class="nav-number">1.2.</span> <span class="nav-text">工作路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cd"><span class="nav-number">2.</span> <span class="nav-text">cd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cat"><span class="nav-number">3.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls"><span class="nav-number">4.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pushd-popd"><span class="nav-number">5.</span> <span class="nav-text">pushd / popd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man"><span class="nav-number">6.</span> <span class="nav-text">man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp-mv"><span class="nav-number">7.</span> <span class="nav-text">cp / mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm"><span class="nav-number">8.</span> <span class="nav-text">rm</span></a></li></ol></div>
             
 
           </div>
