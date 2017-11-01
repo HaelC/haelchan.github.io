@@ -88,7 +88,7 @@
 <meta property="og:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/2017/11/01/machine-learning-note/images/ML/figure1.png">
-<meta property="og:updated_time" content="2017-11-01T08:03:44.000Z">
+<meta property="og:updated_time" content="2017-11-01T14:11:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-01T16:03:44+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-01T22:11:22+08:00">
                 2017-11-01
               </time>
             
@@ -400,7 +400,7 @@
 <li>Clustering</li>
 <li>Non-clustering</li>
 </ul>
-<h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>‘s: “input” variable / features<br><strong>y</strong>‘s: “output” variable / “target” variable<br><strong><script type="math/tex">(x^{(i)},y^{(i)})</script></strong>: ith training example： Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation.</p>
+<h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>: “input” variable / features<br><strong>y</strong>: “output” variable / “target” variable<br><strong><script type="math/tex">(x^{(i)},y^{(i)})</script></strong>: ith training example： Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation.</p>
 <h4 id="Hypothesis-Function-and-Cost-Function"><a href="#Hypothesis-Function-and-Cost-Function" class="headerlink" title="Hypothesis Function and Cost Function"></a>Hypothesis Function and Cost Function</h4><p>A slightly more formal description of supervised learning problem is that given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis.<br><img src="images/ML/figure1.png" alt=""></p>
 <p>In this example of linear regression with one variable, the <strong>hypothesis function</strong> can be denoted as </p>
 <script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>(maybe we Chinese students are more familiar with the form like <script type="math/tex">h(x)=kx+b</script>. Here <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> are just parameters. And our goal is to choose <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> so that <script type="math/tex">h_\theta(x)</script> is close to y for our training examples(x,y).<br>The <strong>cost function</strong> takes  takes an average difference of all the results of the hypothesis with inputs from x’s and the actual output y’s.</p>
@@ -408,8 +408,26 @@
 <h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><p>the Gradient descent algorithm:</p>
 <p>repeat until convergence {</p>
 <script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)\ \ (simultaneously\ update\ \theta_0\ and\ \theta_1)</script><p>} </p>
-<p>The value of α should not be too small or too large.<br>If α is too small, gradient descent can be slow.<br>If α is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
-
+<p>The value of α should not be too small or too large.<br>If α is too small, gradient descent can be slow.<br>If α is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge.<br>In general, gradient descent can converge to a local minimum, even with the learning rate α fixed.</p>
+<p>After calculating partial differentiation, we can get the algorithm as :</p>
+<p>repeat until convergence {</p>
+<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)})</script><script type="math/tex; mode=display">\theta_1:=\theta_1-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)}-y^{(i)})\cdot x^{(i)}</script><p>  <em>(update θ0 and θ1 simultaneously)</em><br>}</p>
+<h3 id="Linear-Algebra-Review"><a href="#Linear-Algebra-Review" class="headerlink" title="Linear Algebra Review"></a>Linear Algebra Review</h3><p><strong>Matrix:</strong> 2-dimensional array.<br><strong>Vector:</strong> An n×1 matrix</p>
+<p><em>Notation</em>:Generally the uppercase letters are used for matrix and the lowercase letters are used for vector.</p>
+<h4 id="Matrix-Manipulation"><a href="#Matrix-Manipulation" class="headerlink" title="Matrix Manipulation"></a>Matrix Manipulation</h4><p><strong>Addition</strong></p>
+<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d \end{bmatrix}+\begin{bmatrix} w&x\\y&z \end{bmatrix}=\begin{bmatrix} a+w&b+x\\c+y&d +z\end{bmatrix}\\</script><p><strong>Scalar multiplication</strong></p>
+<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d \end{bmatrix}\times x=\begin{bmatrix} a\times x&b\times x\\c\times x&d\times x \end{bmatrix}</script><p><strong>Matrix-vector multiplication</strong></p>
+<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d\\e&f \end{bmatrix}\times\begin{bmatrix} x\\y \end{bmatrix}=\begin{bmatrix}ax+by\\cx+dy\\ex+fy \end{bmatrix}</script><p>Let <em>A</em> be an m×n matrix, <em>x</em> be an n-dimensional vector, then the result <em>A×x</em> will be an m-dimensional vector.<br>To get yi, multiply A’s ith row with elements of vector x, and add them up.</p>
+<p><strong>Matrix-matrix multiplication</strong></p>
+<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d\\e&f \end{bmatrix}\times\begin{bmatrix} w&x\\y&z \end{bmatrix}=\begin{bmatrix} aw+by&ax+bz\\cw+dy&cx+dz\\ew+fy&ex+dy \end{bmatrix}</script><p>Let <em>A</em> be an m×n matrix, <em>B</em> be an n×o matrix, then the result <em>A×B</em> will be an m×o matrix.<br>The ith column of the matrix C is obtained by multiplying A with the ith column of B.(for i=1,2,…,o). Then the calculation can be simplified to matrix-vector multiplication.</p>
+<h4 id="Matrix-multiplication-properties"><a href="#Matrix-multiplication-properties" class="headerlink" title="Matrix multiplication properties"></a>Matrix multiplication properties</h4><p><strong>Not commutative</strong><br>Let A and B be matrices. Then <em>in general</em>, A×B≠B×A.</p>
+<p><strong>Associative</strong><br>A×(B×C)=(A×B)×C</p>
+<h4 id="Special-matrix"><a href="#Special-matrix" class="headerlink" title="Special matrix"></a>Special matrix</h4><p><strong>Identity Matrix</strong><br>The identity matrix, which is denoted as <em>I</em>(sometimes with n×n subscript), simply has 1’s on the diagonal (upper left to lower right diagonal) and 0’s elsewhere. For example:</p>
+<script type="math/tex; mode=display">\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}</script><p>For any matrix A, A×I=I×A=A</p>
+<p><strong>Matrix Inverse</strong><br>If A is an m×m matrix, and if it has an inverse(not all matrix have an inverse), </p>
+<script type="math/tex; mode=display">A\times A^{-1}=A^{-1}\times A=I</script><p>Matrices that don’t have an inverse are <em>singular</em> or <em>degenerate</em>.</p>
+<p><strong>Matrix Transpose</strong><br>Let A be an m×n matrix, and let <script type="math/tex">B=A^T</script>. Then B is an n×m matrix, and</p>
+<script type="math/tex; mode=display">B_{ij}=A_{ji}</script>
       
     </div>
     
@@ -599,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Machine-learning-algorithms"><span class="nav-number">1.1.1.</span> <span class="nav-text">Machine learning algorithms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-with-One-Variable"><span class="nav-number">1.2.</span> <span class="nav-text">Linear Regression with One Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hypothesis-Function-and-Cost-Function"><span class="nav-number">1.2.1.</span> <span class="nav-text">Hypothesis Function and Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.2.2.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Machine-learning-algorithms"><span class="nav-number">1.1.1.</span> <span class="nav-text">Machine learning algorithms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-with-One-Variable"><span class="nav-number">1.2.</span> <span class="nav-text">Linear Regression with One Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hypothesis-Function-and-Cost-Function"><span class="nav-number">1.2.1.</span> <span class="nav-text">Hypothesis Function and Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.2.2.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Algebra-Review"><span class="nav-number">1.3.</span> <span class="nav-text">Linear Algebra Review</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-Manipulation"><span class="nav-number">1.3.1.</span> <span class="nav-text">Matrix Manipulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-multiplication-properties"><span class="nav-number">1.3.2.</span> <span class="nav-text">Matrix multiplication properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Special-matrix"><span class="nav-number">1.3.3.</span> <span class="nav-text">Special matrix</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
