@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. (Arthur Samuel) A computer program is said to learn from">
+<meta name="description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning Note">
 <meta property="og:url" content="http://haelchan.me/2017/11/01/machine-learning-note/index.html">
 <meta property="og:site_name" content="Hael&#39;s Personal Website">
-<meta property="og:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. (Arthur Samuel) A computer program is said to learn from">
+<meta property="og:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/2017/11/01/machine-learning-note/images/ML/figure1.png">
-<meta property="og:updated_time" content="2017-11-01T05:03:50.000Z">
+<meta property="og:updated_time" content="2017-11-01T08:03:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Note">
-<meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. (Arthur Samuel) A computer program is said to learn from">
+<meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
 <meta name="twitter:image" content="http://haelchan.me/2017/11/01/machine-learning-note/images/ML/figure1.png">
 
 
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-01T13:03:50+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-01T16:03:44+08:00">
                 2017-11-01
               </time>
             
@@ -384,8 +384,8 @@
 
 <h2 id="Week-One"><a href="#Week-One" class="headerlink" title="Week One"></a>Week One</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>What is machine learning?</strong></p>
 <blockquote>
-<p>Field of study that gives computers the ability to learn without being explicitly programmed. (Arthur Samuel)</p>
-<p>A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T as measured by P improves with experience E. (Tom Mitchell)</p>
+<p>Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel</p>
+<p>A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T as measured by P improves with experience E. — By Tom Mitchell</p>
 </blockquote>
 <h4 id="Machine-learning-algorithms"><a href="#Machine-learning-algorithms" class="headerlink" title="Machine learning algorithms"></a>Machine learning algorithms</h4><p><strong>Supervised learning</strong></p>
 <ul>
@@ -407,8 +407,7 @@
 <script type="math/tex; mode=display">J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^m(\hat{y}_i-y_i)^2=\frac{1}{2m}\sum_{i=1}^m(h_\theta(x_i)-y_i)^2</script><p>This function is otherwise called the “Squared error function”, or “Mean squared error”. The coefficient 1/2 is used for gradient descent.</p>
 <h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><p>the Gradient descent algorithm:</p>
 <p>repeat until convergence {</p>
-<pre><code>$$\theta_j:=\theta_j=\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)$$
-</code></pre><p>(simultaneously update j = 0 and j = 1)<br>} </p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)\ \ (simultaneously\ update\ \theta_0\ and\ \theta_1)</script><p>} </p>
 <p>The value of α should not be too small or too large.<br>If α is too small, gradient descent can be slow.<br>If α is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
 
       
