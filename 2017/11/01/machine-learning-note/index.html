@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning," />
+  <meta name="keywords" content="Machine Learning,learning note," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
-<meta name="keywords" content="Machine Learning">
+<meta name="keywords" content="Machine Learning,learning note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning Note">
 <meta property="og:url" content="http://haelchan.me/2017/11/01/machine-learning-note/index.html">
@@ -88,7 +88,7 @@
 <meta property="og:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/2017/11/01/machine-learning-note/images/ML/figure1.png">
-<meta property="og:updated_time" content="2017-11-01T14:11:22.000Z">
+<meta property="og:updated_time" content="2017-11-03T14:08:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-01T22:11:22+08:00">
-                2017-11-01
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T22:08:13+08:00">
+                2017-11-03
               </time>
             
           </span>
@@ -403,13 +403,13 @@
 <h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>: “input” variable / features<br><strong>y</strong>: “output” variable / “target” variable<br><strong><script type="math/tex">(x^{(i)},y^{(i)})</script></strong>: ith training example： Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation.</p>
 <h4 id="Hypothesis-Function-and-Cost-Function"><a href="#Hypothesis-Function-and-Cost-Function" class="headerlink" title="Hypothesis Function and Cost Function"></a>Hypothesis Function and Cost Function</h4><p>A slightly more formal description of supervised learning problem is that given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis.<br><img src="images/ML/figure1.png" alt=""></p>
 <p>In this example of linear regression with one variable, the <strong>hypothesis function</strong> can be denoted as </p>
-<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>(maybe we Chinese students are more familiar with the form like <script type="math/tex">h(x)=kx+b</script>. Here <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> are just parameters. And our goal is to choose <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> so that <script type="math/tex">h_\theta(x)</script> is close to y for our training examples(x,y).<br>The <strong>cost function</strong> takes  takes an average difference of all the results of the hypothesis with inputs from x’s and the actual output y’s.</p>
-<script type="math/tex; mode=display">J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^m(\hat{y}_i-y_i)^2=\frac{1}{2m}\sum_{i=1}^m(h_\theta(x_i)-y_i)^2</script><p>This function is otherwise called the “Squared error function”, or “Mean squared error”. The coefficient 1/2 is used for gradient descent.</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>(maybe we Chinese students are more familiar with the form like <script type="math/tex">h(x)=kx+b</script>. Here <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> are just parameters. And our goal is to choose <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> so that <script type="math/tex">h_\theta(x)</script> is close to y for our training examples(x,y).<br>The <strong>cost function</strong> takes an average difference of all the results of the hypothesis with inputs from x’s and the actual output y’s.</p>
+<script type="math/tex; mode=display">J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^m(\hat{y}_i-y_i)^2=\frac{1}{2m}\sum_{i=1}^m(h_\theta(x_i)-y_i)^2</script><p>This function is otherwise called the “Squared error function”, or “Mean squared error”. The coefficient 1/2 is used for gradient descent so that the partial derivative result will be cleaner.</p>
 <h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><p>the Gradient descent algorithm:</p>
 <p>repeat until convergence {</p>
 <script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)\ \ (simultaneously\ update\ \theta_0\ and\ \theta_1)</script><p>} </p>
 <p>The value of α should not be too small or too large.<br>If α is too small, gradient descent can be slow.<br>If α is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge.<br>In general, gradient descent can converge to a local minimum, even with the learning rate α fixed.</p>
-<p>After calculating partial differentiation, we can get the algorithm as :</p>
+<p>After calculating partial derivation, we can get the algorithm as :</p>
 <p>repeat until convergence {</p>
 <script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)})</script><script type="math/tex; mode=display">\theta_1:=\theta_1-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)}-y^{(i)})\cdot x^{(i)}</script><p>  <em>(update θ0 and θ1 simultaneously)</em><br>}</p>
 <h3 id="Linear-Algebra-Review"><a href="#Linear-Algebra-Review" class="headerlink" title="Linear Algebra Review"></a>Linear Algebra Review</h3><p><strong>Matrix:</strong> 2-dimensional array.<br><strong>Vector:</strong> An n×1 matrix</p>
@@ -445,6 +445,8 @@
         <div class="post-tags">
           
             <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
           
         </div>
       
@@ -562,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
