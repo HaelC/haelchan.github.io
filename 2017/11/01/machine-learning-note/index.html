@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,learning note," />
+  <meta name="keywords" content="machine learning,learning note," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
-<meta name="keywords" content="Machine Learning,learning note">
+<meta name="keywords" content="machine learning,learning note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning Note">
 <meta property="og:url" content="http://haelchan.me/2017/11/01/machine-learning-note/index.html">
@@ -88,7 +88,7 @@
 <meta property="og:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/2017/11/01/machine-learning-note/images/ML/figure1.png">
-<meta property="og:updated_time" content="2017-11-03T14:08:13.000Z">
+<meta property="og:updated_time" content="2017-11-05T07:46:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T22:08:13+08:00">
-                2017-11-03
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-05T15:46:29+08:00">
+                2017-11-05
               </time>
             
           </span>
@@ -427,7 +427,67 @@
 <p><strong>Matrix Inverse</strong><br>If A is an m×m matrix, and if it has an inverse(not all matrix have an inverse), </p>
 <script type="math/tex; mode=display">A\times A^{-1}=A^{-1}\times A=I</script><p>Matrices that don’t have an inverse are <em>singular</em> or <em>degenerate</em>.</p>
 <p><strong>Matrix Transpose</strong><br>Let A be an m×n matrix, and let <script type="math/tex">B=A^T</script>. Then B is an n×m matrix, and</p>
-<script type="math/tex; mode=display">B_{ij}=A_{ji}</script>
+<script type="math/tex; mode=display">B_{ij}=A_{ji}</script><h2 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h2><h3 id="Multivariate-Linear-Regression"><a href="#Multivariate-Linear-Regression" class="headerlink" title="Multivariate Linear Regression"></a>Multivariate Linear Regression</h3><h4 id="from-one-variable-to-multiple-variables"><a href="#from-one-variable-to-multiple-variables" class="headerlink" title="from one variable to multiple variables"></a>from one variable to multiple variables</h4><p>In the first week’s course, we learned linear with one variable <em>x</em>, and the hypothesis could be <script type="math/tex">h_{\theta}(x)=\theta_0+\theta_1x</script>. As a matter of fact, there can be more than one variables. So here’re the new notations:<br><strong>m</strong>: the number of training examples<br><strong>n</strong>: the number of features</p>
+<script type="math/tex; mode=display">x^{(i)}$$: input (features) of ith training example
+`$x_j^{(i)}: value of feature j in ith training example
+
+The hypothesis should be transformed to:
+$$h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n</script><p>(for convenience of notation, we define x0=1).<br>Using the definition of matrix multiplication, our multivariable hypothesis function can be concisely represented as:</p>
+<script type="math/tex; mode=display">h_{\theta}(x)=\begin{bmatrix}\theta_0&\theta_1&...&\theta_n\end{bmatrix}\begin{bmatrix}x_0\\x_1\\...\\x_n\end{bmatrix}=\theta^Tx</script><p>We can see that linear regression with one variable is just the special case when n=1.</p>
+<p>Similarly, the new gradient descent algorithm would be represented as:<br>repeat until convergence{</p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)})x_j^{(i)}\ \ (simultaneously\ update\ \theta_j\ for\ j=0,...,n)</script><p>}</p>
+<h4 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h4><p>The idea is to make sure features are on a similar scale so that the gradient descent can be sped up.<br>Generally, get every feature into approximately a <script type="math/tex">-1<=x_i<=1</script> range. (the range is not limited to [-1,1])<br>Often used formula:</p>
+<script type="math/tex; mode=display">x_i:=\frac{x_i}{max-min}</script><h4 id="Mean-normalization"><a href="#Mean-normalization" class="headerlink" title="Mean normalization"></a>Mean normalization</h4><p>Replace <script type="math/tex">x_i</script> with <script type="math/tex">x_i-\mu_i</script> to make features have approximately zero mean.<br>Formula:</p>
+<script type="math/tex; mode=display">x_i:=\frac{x_i-\mu_i}{s_i}</script><p>where <script type="math/tex">\mu_i</script> is the average of all the values for feature(i) and si is the range of values(max - min) or the standard deviation.</p>
+<h4 id="Something-more-about-learning-rate"><a href="#Something-more-about-learning-rate" class="headerlink" title="Something more about learning rate"></a>Something more about learning rate</h4><p>The idea of learning rate is same as in the first week. And <strong>how to make sure gradient descent is working correctly(or say, debugging)</strong>?<br>Make a plot with number of iterations on the x-axis. Now plot the cost function, J(θ) over the number of iterations of gradient descent. If J(θ) ever increases, then you probably need to decrease α.</p>
+<p><strong>How to declare convergence</strong>?<br>If J(θ) decreased by less than <script type="math/tex">\epsilon(small value like 10^{-3})</script> in one iteration.</p>
+<h4 id="Polynomial-regression"><a href="#Polynomial-regression" class="headerlink" title="Polynomial regression"></a>Polynomial regression</h4><p>linear:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>quadratic:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2</script><p>cubic:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+\theta_3x^3</script><p>square root:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2\sqrt{x}</script><p>One important thing to keep in mind is, if you choose your features this way then feature scaling becomes very important.</p>
+<h3 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h3><p>Gradient descent gives one way of minimizing J, and normal equation is another way. In the “Normal Equation” method, we will minimize J by explicitly taking its derivatives with respect to the θj ’s, and setting them to zero. This allows us to find the optimum theta without iteration.<br>Formula:</p>
+<script type="math/tex; mode=display">\theta=(X^TX)^{-1}X^Ty</script><p>Here, X is m×(n+1) matrix(remember that x0 = 1), y is m-dimensional vector, and θ is (n+1) dimensional vector.</p>
+<p>The advantage of normal equation:</p>
+<ul>
+<li>no need to choose α</li>
+<li>don’t need to iterate</li>
+</ul>
+<p>Comparison of gradient descent and normal equation </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Gradient Descent</th>
+<th>Normal Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>need to choose α</td>
+<td>no need to choose α</td>
+</tr>
+<tr>
+<td>need many iterations</td>
+<td>no need to iterate</td>
+</tr>
+<tr>
+<td>O(kn²)</td>
+<td>O(n³)(need to calculate inverse)</td>
+</tr>
+<tr>
+<td>works well when n is large</td>
+<td>slow if n is very large</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="normal-equation-noninvertibility"><a href="#normal-equation-noninvertibility" class="headerlink" title="normal equation noninvertibility"></a>normal equation noninvertibility</h4><p>Sometimes <script type="math/tex">X^TX</script> can be invertible, the common causes might be having:</p>
+<ul>
+<li>Redundant features(linear dependent)</li>
+<li>Too many features(e.g. m≤n)</li>
+</ul>
+
       
     </div>
     
@@ -444,7 +504,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
           
             <a href="/tags/learning-note/" rel="tag"># learning note</a>
           
@@ -468,6 +528,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/03/Item-Based-CFRA-reading-report/" rel="prev" title="Item-Based Collaborative Filtering Recommendation Algorithms reading report">
+                Item-Based Collaborative Filtering Recommendation Algorithms reading report <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -551,7 +615,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -619,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Machine-learning-algorithms"><span class="nav-number">1.1.1.</span> <span class="nav-text">Machine learning algorithms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-with-One-Variable"><span class="nav-number">1.2.</span> <span class="nav-text">Linear Regression with One Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hypothesis-Function-and-Cost-Function"><span class="nav-number">1.2.1.</span> <span class="nav-text">Hypothesis Function and Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.2.2.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Algebra-Review"><span class="nav-number">1.3.</span> <span class="nav-text">Linear Algebra Review</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-Manipulation"><span class="nav-number">1.3.1.</span> <span class="nav-text">Matrix Manipulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-multiplication-properties"><span class="nav-number">1.3.2.</span> <span class="nav-text">Matrix multiplication properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Special-matrix"><span class="nav-number">1.3.3.</span> <span class="nav-text">Special matrix</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Machine-learning-algorithms"><span class="nav-number">1.1.1.</span> <span class="nav-text">Machine learning algorithms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-with-One-Variable"><span class="nav-number">1.2.</span> <span class="nav-text">Linear Regression with One Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hypothesis-Function-and-Cost-Function"><span class="nav-number">1.2.1.</span> <span class="nav-text">Hypothesis Function and Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.2.2.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Algebra-Review"><span class="nav-number">1.3.</span> <span class="nav-text">Linear Algebra Review</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-Manipulation"><span class="nav-number">1.3.1.</span> <span class="nav-text">Matrix Manipulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-multiplication-properties"><span class="nav-number">1.3.2.</span> <span class="nav-text">Matrix multiplication properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Special-matrix"><span class="nav-number">1.3.3.</span> <span class="nav-text">Special matrix</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Two"><span class="nav-number">2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Multivariate-Linear-Regression"><span class="nav-number">2.1.</span> <span class="nav-text">Multivariate Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#from-one-variable-to-multiple-variables"><span class="nav-number">2.1.1.</span> <span class="nav-text">from one variable to multiple variables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feature-Scaling"><span class="nav-number">2.1.2.</span> <span class="nav-text">Feature Scaling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mean-normalization"><span class="nav-number">2.1.3.</span> <span class="nav-text">Mean normalization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Something-more-about-learning-rate"><span class="nav-number">2.1.4.</span> <span class="nav-text">Something more about learning rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Polynomial-regression"><span class="nav-number">2.1.5.</span> <span class="nav-text">Polynomial regression</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-equation"><span class="nav-number">2.2.</span> <span class="nav-text">Normal equation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal-equation-noninvertibility"><span class="nav-number">2.2.1.</span> <span class="nav-text">normal equation noninvertibility</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

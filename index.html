@@ -273,6 +273,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2017/11/03/Item-Based-CFRA-reading-report/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hael Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hael's Personal Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/03/Item-Based-CFRA-reading-report/" itemprop="url">Item-Based Collaborative Filtering Recommendation Algorithms reading report</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T22:24:02+08:00">
+                2017-11-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-05T15:41:32+08:00">
+                2017-11-05
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/03/Item-Based-CFRA-reading-report/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/03/Item-Based-CFRA-reading-report/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/03/Item-Based-CFRA-reading-report/" class="leancloud_visitors" data-flag-title="Item-Based Collaborative Filtering Recommendation Algorithms reading report">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<p>This semester I’m taking the E-commerce System Structure, and we have come to learn about personalization. In E-commerce, the form of personalization is to recommend items to the user.</p>
+<p><strong>Recommendation Metrics</strong></p>
+<ul>
+<li>Prediction accuracy</li>
+<li>Coverage</li>
+<li>Novelty</li>
+<li>Diversity</li>
+<li>Privacy</li>
+<li>Scalability</li>
+</ul>
+<p><strong>Recommendation Strategies</strong></p>
+<ul>
+<li>Popularity</li>
+<li>Association role</li>
+<li>Content based</li>
+<li>Collaborative filtering</li>
+<li>Hybrid</li>
+</ul>
+<h2 id="Summary-of-Item-Based-CFRA"><a href="#Summary-of-Item-Based-CFRA" class="headerlink" title="Summary of Item-Based CFRA"></a>Summary of Item-Based CFRA</h2><p>In the corresponding experiment, our assignment is to read the paper <em>Item-Based Collaborative Filtering Recommendation Algorithms</em>, a famous paper in recommender system. And I’d like to record some key point.</p>
+<h3 id="Related-recommender-systems"><a href="#Related-recommender-systems" class="headerlink" title="Related recommender systems"></a>Related recommender systems</h3><p><strong>Tapestry</strong><br>One of the earliest implementations of collaborative filtering-based recommender systems. It relied on the explicit opinions of people from a close-knit community, such as an office workgroup.<br>Later, several rating-based automated recommender systems were developed, such as pseudonymous CF solution provided by the GroupLens research  system, Ringo and Video Recommender.<br><strong>Bayesian networks</strong><br>Bayesian networks create a model based on a training set with a decision tree at each node and edges representing user information. Bayesian networks may prove practical for environments in which knowledge of user preferences changes slowly with respect to the time needed to build the model but are not suitable for environments in which user preference models must be updated rapidly or frequently since the process of building the model can be slow.<br><strong>Clustering</strong><br>Clustering techniques work by identifying groups of users who appear to have similar preferences.<br>Clustering techniques usually produce less-personal recommendations than other methods, and in some cases, the clusters have worse accuracy than nearest neighbor algorithms.<br>Clustering techniques can be applied as a “first step” for shrinking the candidate set in a nearest neighbor algorithm or for distributing nearest-neighbor computation across several recommender engines.<br>Horting is a graph-based technique in which nodes are users, and edges between nodes indicate degree of similarity between two users. Predictions are produced by walking the graph to nearby nodes and combining the opinions of the nearby users.</p>
+<h3 id="Collaborative-Filtering-Based-Recommender-Systems"><a href="#Collaborative-Filtering-Based-Recommender-Systems" class="headerlink" title="Collaborative Filtering Based Recommender Systems"></a>Collaborative Filtering Based Recommender Systems</h3><p><img src="images/CFRA/1.jpg" alt=""><br>Figure 1 shows the schematic diagram of the collaborative filtering process. CF algorithms represent the entire m×n user-item data as a ratings matrix, <em>A</em>. Each entry <script type="math/tex">a_{i,j}</script> in <em>A</em> represents the preference score (ratings) of the <em>i</em>th user on the <em>j</em>th item. Each individual ratings is within a numerical scale and it can as well be 0 indicating that the user has not yet rated that item.<br><strong>Prediction</strong> is a numerical value.<br><strong>Recommendation</strong> is a list of N items.</p>
+<h4 id="Memory-based-and-Model-based-algorithms"><a href="#Memory-based-and-Model-based-algorithms" class="headerlink" title="Memory-based and Model-based algorithms"></a>Memory-based and Model-based algorithms</h4><p><strong>Memory-based CF Algorithms</strong><br>Memory-based algorithms utilize the entire user-item database to generate a prediction. These systems employ statistical techniques to find a set of users, known as <em>neighbors</em>, that have a history of agreeing with the target user. The techniques, also known as nearest-neighbor or user-based collaborative filtering, are more popular and widely used in practice.</p>
+<p><strong>Model-based CF Algorithms</strong><br>Model-based collaborative filtering algorithms provide item recommendation by first developing a model of user ratings. Algorithms in this category take a probabilistic approach and envision the collaborative filtering process as computing the expected value of a user prediction, give his/her ratings on other items.</p>
+<h4 id="Challenges-of-User-based-CF-Algorithms"><a href="#Challenges-of-User-based-CF-Algorithms" class="headerlink" title="Challenges of User-based CF Algorithms"></a>Challenges of User-based CF Algorithms</h4><ul>
+<li><strong>Sparsity</strong>. Large E-commerce systems like Amazon and Taobao have large item sets, but users can only by a small fraction of the total item set.</li>
+<li><strong>Scalability</strong>. With millions of users and items, a typical web-based recommender system running existing algorithms will suffer serious scalability problems.</li>
+</ul>
+<h2 id="Item-based-Collaborative-Filtering-Algorithm"><a href="#Item-based-Collaborative-Filtering-Algorithm" class="headerlink" title="Item-based Collaborative Filtering Algorithm"></a>Item-based Collaborative Filtering Algorithm</h2><p>The item-based approach looks into the set of items the target user has rated and computes how similar they are to the target item <em>i</em> and then selects <em>k</em> most similar items. At the same time their corresponding similarities are also computed. Once the most similar items are found, the prediction is then computed by taking a weighted average of the target user’s ratings on these similar items.</p>
+<h3 id="Item-Similarity-Computation"><a href="#Item-Similarity-Computation" class="headerlink" title="Item Similarity Computation"></a>Item Similarity Computation</h3><p><img src="images/CFRA/2.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://haelchan.me/2017/11/01/machine-learning-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -320,8 +504,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-03T22:08:13+08:00">
-                2017-11-03
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-05T15:46:29+08:00">
+                2017-11-05
               </time>
             
           </span>
@@ -425,7 +609,67 @@
 <p><strong>Matrix Inverse</strong><br>If A is an m×m matrix, and if it has an inverse(not all matrix have an inverse), </p>
 <script type="math/tex; mode=display">A\times A^{-1}=A^{-1}\times A=I</script><p>Matrices that don’t have an inverse are <em>singular</em> or <em>degenerate</em>.</p>
 <p><strong>Matrix Transpose</strong><br>Let A be an m×n matrix, and let <script type="math/tex">B=A^T</script>. Then B is an n×m matrix, and</p>
-<script type="math/tex; mode=display">B_{ij}=A_{ji}</script>
+<script type="math/tex; mode=display">B_{ij}=A_{ji}</script><h2 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h2><h3 id="Multivariate-Linear-Regression"><a href="#Multivariate-Linear-Regression" class="headerlink" title="Multivariate Linear Regression"></a>Multivariate Linear Regression</h3><h4 id="from-one-variable-to-multiple-variables"><a href="#from-one-variable-to-multiple-variables" class="headerlink" title="from one variable to multiple variables"></a>from one variable to multiple variables</h4><p>In the first week’s course, we learned linear with one variable <em>x</em>, and the hypothesis could be <script type="math/tex">h_{\theta}(x)=\theta_0+\theta_1x</script>. As a matter of fact, there can be more than one variables. So here’re the new notations:<br><strong>m</strong>: the number of training examples<br><strong>n</strong>: the number of features</p>
+<script type="math/tex; mode=display">x^{(i)}$$: input (features) of ith training example
+`$x_j^{(i)}: value of feature j in ith training example
+
+The hypothesis should be transformed to:
+$$h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n</script><p>(for convenience of notation, we define x0=1).<br>Using the definition of matrix multiplication, our multivariable hypothesis function can be concisely represented as:</p>
+<script type="math/tex; mode=display">h_{\theta}(x)=\begin{bmatrix}\theta_0&\theta_1&...&\theta_n\end{bmatrix}\begin{bmatrix}x_0\\x_1\\...\\x_n\end{bmatrix}=\theta^Tx</script><p>We can see that linear regression with one variable is just the special case when n=1.</p>
+<p>Similarly, the new gradient descent algorithm would be represented as:<br>repeat until convergence{</p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)})x_j^{(i)}\ \ (simultaneously\ update\ \theta_j\ for\ j=0,...,n)</script><p>}</p>
+<h4 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h4><p>The idea is to make sure features are on a similar scale so that the gradient descent can be sped up.<br>Generally, get every feature into approximately a <script type="math/tex">-1<=x_i<=1</script> range. (the range is not limited to [-1,1])<br>Often used formula:</p>
+<script type="math/tex; mode=display">x_i:=\frac{x_i}{max-min}</script><h4 id="Mean-normalization"><a href="#Mean-normalization" class="headerlink" title="Mean normalization"></a>Mean normalization</h4><p>Replace <script type="math/tex">x_i</script> with <script type="math/tex">x_i-\mu_i</script> to make features have approximately zero mean.<br>Formula:</p>
+<script type="math/tex; mode=display">x_i:=\frac{x_i-\mu_i}{s_i}</script><p>where <script type="math/tex">\mu_i</script> is the average of all the values for feature(i) and si is the range of values(max - min) or the standard deviation.</p>
+<h4 id="Something-more-about-learning-rate"><a href="#Something-more-about-learning-rate" class="headerlink" title="Something more about learning rate"></a>Something more about learning rate</h4><p>The idea of learning rate is same as in the first week. And <strong>how to make sure gradient descent is working correctly(or say, debugging)</strong>?<br>Make a plot with number of iterations on the x-axis. Now plot the cost function, J(θ) over the number of iterations of gradient descent. If J(θ) ever increases, then you probably need to decrease α.</p>
+<p><strong>How to declare convergence</strong>?<br>If J(θ) decreased by less than <script type="math/tex">\epsilon(small value like 10^{-3})</script> in one iteration.</p>
+<h4 id="Polynomial-regression"><a href="#Polynomial-regression" class="headerlink" title="Polynomial regression"></a>Polynomial regression</h4><p>linear:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>quadratic:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2</script><p>cubic:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+\theta_3x^3</script><p>square root:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2\sqrt{x}</script><p>One important thing to keep in mind is, if you choose your features this way then feature scaling becomes very important.</p>
+<h3 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h3><p>Gradient descent gives one way of minimizing J, and normal equation is another way. In the “Normal Equation” method, we will minimize J by explicitly taking its derivatives with respect to the θj ’s, and setting them to zero. This allows us to find the optimum theta without iteration.<br>Formula:</p>
+<script type="math/tex; mode=display">\theta=(X^TX)^{-1}X^Ty</script><p>Here, X is m×(n+1) matrix(remember that x0 = 1), y is m-dimensional vector, and θ is (n+1) dimensional vector.</p>
+<p>The advantage of normal equation:</p>
+<ul>
+<li>no need to choose α</li>
+<li>don’t need to iterate</li>
+</ul>
+<p>Comparison of gradient descent and normal equation </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Gradient Descent</th>
+<th>Normal Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>need to choose α</td>
+<td>no need to choose α</td>
+</tr>
+<tr>
+<td>need many iterations</td>
+<td>no need to iterate</td>
+</tr>
+<tr>
+<td>O(kn²)</td>
+<td>O(n³)(need to calculate inverse)</td>
+</tr>
+<tr>
+<td>works well when n is large</td>
+<td>slow if n is very large</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="normal-equation-noninvertibility"><a href="#normal-equation-noninvertibility" class="headerlink" title="normal equation noninvertibility"></a>normal equation noninvertibility</h4><p>Sometimes <script type="math/tex">X^TX</script> can be invertible, the common causes might be having:</p>
+<ul>
+<li>Redundant features(linear dependent)</li>
+<li>Too many features(e.g. m≤n)</li>
+</ul>
+
           
         
       
@@ -1525,7 +1769,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
