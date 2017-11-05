@@ -320,7 +320,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-05T15:41:32+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-05T19:50:31+08:00">
                 2017-11-05
               </time>
             
@@ -409,6 +409,9 @@
 </ul>
 <h2 id="Item-based-Collaborative-Filtering-Algorithm"><a href="#Item-based-Collaborative-Filtering-Algorithm" class="headerlink" title="Item-based Collaborative Filtering Algorithm"></a>Item-based Collaborative Filtering Algorithm</h2><p>The item-based approach looks into the set of items the target user has rated and computes how similar they are to the target item <em>i</em> and then selects <em>k</em> most similar items. At the same time their corresponding similarities are also computed. Once the most similar items are found, the prediction is then computed by taking a weighted average of the target user’s ratings on these similar items.</p>
 <h3 id="Item-Similarity-Computation"><a href="#Item-Similarity-Computation" class="headerlink" title="Item Similarity Computation"></a>Item Similarity Computation</h3><p><img src="images/CFRA/2.jpg" alt=""></p>
+<h4 id="Cosine-based-Similarity"><a href="#Cosine-based-Similarity" class="headerlink" title="Cosine-based Similarity"></a>Cosine-based Similarity</h4><script type="math/tex; mode=display">sim(i,j)=cos(\vec i,\vec j)=\frac{\vec i\cdot\vec j}{||\vec i||*||\vec j||}</script><p>Two items are thought of as two vectors in the m dimensional user-space. The similarity betweeen them is measured by computing the cosine of the angle between these two vectors.</p>
+<h4 id="Correlation-based-Similarity"><a href="#Correlation-based-Similarity" class="headerlink" title="Correlation-based Similarity"></a>Correlation-based Similarity</h4><script type="math/tex; mode=display">sim(i,j)=\frac{\sum_{u\in U}(R_{u,i}-\overline R_i)(R_{u,j}-\overline R_j)}{\sqrt{\sum_{u\in U}(R_{u,i}-\overline R_i)^2}\sqrt{\sum_{u\in U}(R_{u,j}-\overline R_j)^2}}</script><p>Similarity between two items <em>i</em> and <em>j</em> is measured by computing the <em>Pearson-r</em> correlation. To make the correlation computation accurate, first isolate the co-rated cases(i.e., cases where the users rated both i and j). Let the set of users who both rated i and j are denoted by U.</p>
+<h4 id="Adjusted-Cosine-Similarity"><a href="#Adjusted-Cosine-Similarity" class="headerlink" title="Adjusted Cosine Similarity"></a>Adjusted Cosine Similarity</h4><script type="math/tex; mode=display">sim(i,j)=\frac{\sum_{u\in U}(R_{u,i}-\overline R_u)(R_{u,j}-\overline R_u)}{\sqrt{\sum_{u\in U}(R_{u,i}-\overline R_u)^2}\sqrt{\sum_{u\in U}(R_{u,j}-\overline R_u)^2}}</script><p>The adjusted cosine similarity offsets cosine measure case’s important drawback - the differences in rating scale between different users are not taken into account, by subtracting the corresponding user average from each co-rated pair.</p>
 
           
         
