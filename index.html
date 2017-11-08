@@ -512,7 +512,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-09T00:10:01+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-09T00:28:30+08:00">
                 2017-11-09
               </time>
             
@@ -636,7 +636,7 @@ $$h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n<
 <script type="math/tex; mode=display">x_i:=\frac{x_i}{max-min}</script><h4 id="Mean-normalization"><a href="#Mean-normalization" class="headerlink" title="Mean normalization"></a>Mean normalization</h4><p>Replace <script type="math/tex">x_i</script> with <script type="math/tex">x_i-\mu_i</script> to make features have approximately zero mean.<br>Formula:</p>
 <script type="math/tex; mode=display">x_i:=\frac{x_i-\mu_i}{s_i}</script><p>where <script type="math/tex">\mu_i</script> is the average of all the values for feature(i) and si is the range of values(max - min) or the standard deviation.</p>
 <h4 id="Something-more-about-learning-rate"><a href="#Something-more-about-learning-rate" class="headerlink" title="Something more about learning rate"></a>Something more about learning rate</h4><p>The idea of learning rate is same as in the first week. And <strong>how to make sure gradient descent is working correctly(or say, debugging)</strong>?<br>Make a plot with number of iterations on the x-axis. Now plot the cost function, J(θ) over the number of iterations of gradient descent. If J(θ) ever increases, then you probably need to decrease α.</p>
-<p><strong>How to declare convergence</strong>?<br>If J(θ) decreased by less than <script type="math/tex">\epsilon(small value like 10^{-3})</script> in one iteration.</p>
+<p><strong>How to declare convergence</strong>?<br>If J(θ) decreased by less than <script type="math/tex">\epsilon(small\ value\ like 10^{-3})</script> in one iteration.</p>
 <h4 id="Polynomial-regression"><a href="#Polynomial-regression" class="headerlink" title="Polynomial regression"></a>Polynomial regression</h4><p>linear:</p>
 <script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>quadratic:</p>
 <script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2</script><p>cubic:</p>
