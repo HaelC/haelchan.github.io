@@ -512,8 +512,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-09T08:10:26+08:00">
-                2017-11-09
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-10T23:36:06+08:00">
+                2017-11-10
               </time>
             
           </span>
@@ -590,17 +590,11 @@
 <li>Clustering</li>
 <li>Non-clustering</li>
 </ul>
-<h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>: “input” variable / features<br><strong>y</strong>: “output” variable / “target” variable</p>
-<script type="math/tex; mode=display">(x^{(i)},y^{(i)})$$ : ith training example： Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation.
-
-#### Hypothesis Function and Cost Function
-A slightly more formal description of supervised learning problem is that given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis.
-
-![](images/ML/figure1.png)
-
-In this example of linear regression with one variable, the **hypothesis function** can be denoted as 
-
-$$ h_\theta(x)=\theta_0+\theta_1x</script><p>(maybe we Chinese students are more familiar with the form like <script type="math/tex">h(x)=kx+b</script>. Here <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> are just parameters. And our goal is to choose <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> so that <script type="math/tex">h_\theta(x)</script> is close to y for our training examples(x,y).<br>The <strong>cost function</strong> takes an average difference of all the results of the hypothesis with inputs from x’s and the actual output y’s.</p>
+<h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>: “input” variable / features<br><strong>y</strong>: “output” variable / “target” variable<br><strong>(x^{(i)},y^{(i)})</strong> : ith training example: Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. (Sorry there’s something wrong with the LaTex syntax, so I can’t display it correctly)</p>
+<h4 id="Hypothesis-Function-and-Cost-Function"><a href="#Hypothesis-Function-and-Cost-Function" class="headerlink" title="Hypothesis Function and Cost Function"></a>Hypothesis Function and Cost Function</h4><p>A slightly more formal description of supervised learning problem is that given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis.</p>
+<p><img src="images/ML/figure1.png" alt=""></p>
+<p>In this example of linear regression with one variable, the <strong>hypothesis function</strong> can be denoted as </p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>(maybe we Chinese students are more familiar with the form like h(x)=kx+b) Here <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> are just parameters. And our goal is to choose <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> so that <script type="math/tex">h_\theta(x)</script> is close to y for our training examples(x,y).<br>The <strong>cost function</strong> takes an average difference of all the results of the hypothesis with inputs from x’s and the actual output y’s.</p>
 <script type="math/tex; mode=display">J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^m(\hat{y}_i-y_i)^2=\frac{1}{2m}\sum_{i=1}^m(h_\theta(x_i)-y_i)^2</script><p>This function is otherwise called the “Squared error function”, or “Mean squared error”. The coefficient 1/2 is used for gradient descent so that the partial derivative result will be cleaner.</p>
 <h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><p>the Gradient descent algorithm:</p>
 <p>repeat until convergence {</p>
@@ -698,6 +692,25 @@ $$h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n<
 <p><code>ones(ROW, COLUMN)</code>, <code>zeros(ROW, COLUMN)</code><br>Create a ROW×COLUMN matrix of all ones/zeros.</p>
 <p><code>rand(ROW, COLUMN)</code><br><code>rand</code> generates random numbers from the standard uniform distribution (0,1)<br><code>randn</code> generates random numbers from standard normal distribution.</p>
 <p><code>eye(ROW)</code><br>(Eye is maybe a pun on the word identity.) Create a ROW by ROW identity matrix.</p>
+<h2 id="Week-Three"><a href="#Week-Three" class="headerlink" title="Week Three"></a>Week Three</h2><h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><p><strong>Binary Classification</strong><br>The output y can take only two values, 0 and 1. Thus, y∈{0,1}, where the value 0 represents negative class and the value 1 represents positive class. It’s not advisable to use linear regression to represent the hypothesis. It’s logistic regression that has a range of (0,1).</p>
+<p><strong>Multiclass Classification:One-vs-all</strong><br>Train a logistic regression classifier <script type="math/tex">h_\theta^{(i)}(x)</script> for each class <em>i</em> to predict the probability that <em>y = i</em>.<br>On a new input <em>x</em>, to make a prediction, pick the class <em>i</em> that maximizes<script type="math/tex">h_\theta(x)</script>.</p>
+<h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}</script><p>The function is called <strong>sigmoid function</strong> or <strong>logistic function</strong>, and the function image is as shown below:</p>
+<p><img src="\images\ML\sigmoidFunction.jpg" alt=""></p>
+<p><strong>What is the interpretation of hypothesis output?</strong></p>
+<script type="math/tex; mode=display">h_\theta(x)$$ estimated probability that y = 1, given x, parameterized by θ. In mathematical formula it can be denoted as 
+$$h_\theta(x)=P(y=1|x;\theta)</script><p>Using probability theory knowledge, we can also know that</p>
+<script type="math/tex; mode=display">P(y=0|x;\theta)+P(y=1|x;\theta)=1</script><p><strong>Decision Boundary</strong><br>Suppose predict “y=1” if <script type="math/tex">h_\theta(x)>=0.5</script>, and predict “y=0” if <script type="math/tex">h_\theta(x)<0.5</script>.<br>That is equal to</p>
+<script type="math/tex; mode=display">\theta^TX\ge0\ \ =>\ \ y=1</script><script type="math/tex; mode=display">\theta^TX<0\ \ =>\ \ y=0</script><h4 id="Cost-function-and-Gradient-Descent"><a href="#Cost-function-and-Gradient-Descent" class="headerlink" title="Cost function and Gradient Descent"></a>Cost function and Gradient Descent</h4><p>Cost function in logistic regression is different from that in linear regression.</p>
+<script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)})</script><script type="math/tex; mode=display">Cost(h_\theta(x^{(i)},y^{(i)})=-y\cdot log(h_\theta(x))-(1-y)\cdot log(1-h_\theta(x))</script><p>that means:</p>
+<script type="math/tex; mode=display">Cost(h_\theta(x^{(i)},y^{(i)})=-log(h_\theta(x))$$    if y = 1;
+$$Cost(h_\theta(x^{(i)},y^{(i)})=-log(1-h_\theta(x))$$   if y = 0.
+
+Vectorized implementation of cost function:
+$$h=g(X\theta)</script><script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\cdot (-y^Tlog(h)-(1-y)^Tlog(1-h))</script><p><strong>Gradient Descent</strong>:</p>
+<p>repeat {</p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j-\frac{\alpha}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><p>}</p>
+<p>Vectorized implementation of gradient descent:</p>
+<script type="math/tex; mode=display">\theta:=\theta-\frac{\alpha}{m}X^T(g(X\theta)-y)</script><p><em>Advanced optimization</em><br>Except gradient descent, there’re <strong>Conjugate gradient</strong>, <strong>BFGS</strong> and <strong>L-BFGS</strong> optimization algorithms. They have advantages that 1.No need to manually pick α;2.Often faster than gradient descent. But they’re more complex than gradient descent.</p>
 
           
         
