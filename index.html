@@ -512,8 +512,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-10T23:36:06+08:00">
-                2017-11-10
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-11T23:10:17+08:00">
+                2017-11-11
               </time>
             
           </span>
@@ -711,6 +711,26 @@ $$h=g(X\theta)</script><script type="math/tex; mode=display">J(\theta)=\frac{1}{
 <script type="math/tex; mode=display">\theta_j:=\theta_j-\frac{\alpha}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><p>}</p>
 <p>Vectorized implementation of gradient descent:</p>
 <script type="math/tex; mode=display">\theta:=\theta-\frac{\alpha}{m}X^T(g(X\theta)-y)</script><p><em>Advanced optimization</em><br>Except gradient descent, there’re <strong>Conjugate gradient</strong>, <strong>BFGS</strong> and <strong>L-BFGS</strong> optimization algorithms. They have advantages that 1.No need to manually pick α;2.Often faster than gradient descent. But they’re more complex than gradient descent.</p>
+<h3 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h3><h4 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h4><p>If we have too many features, the learn hypothesis may fit the training set very well, but fail to generalize to new examples. (Also known high variance)<br>There’s also another problem called <strong>Underfit</strong> problem, which has high bias.<br>Two examples:<br><img src="/images/ML/linearOverfit.jpg" alt=""></p>
+<p><img src="/images/ML/logisticOverfit.jpg" alt=""></p>
+<p><strong>How to address overfitting</strong></p>
+<ol>
+<li><p>Reduce number of features.<br>- Manually select which features to keep<br>- Model selection algorithm</p>
+</li>
+<li><p>Regularization.<br>- Keep all the features, but reduce magnitude/values of parameters <script type="math/tex">\theta_j</script></p>
+</li>
+</ol>
+<p><strong>Cost function:</strong></p>
+<script type="math/tex; mode=display">J(\theta)=\frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^n\theta_j^2]</script><p>The additional part is called regularization parameter. Note that λ should be set a proper value. If λ is set to an extremely large value, the algorithm may fail to eliminate overfitting or results in underfitting.</p>
+<h4 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h4><p><strong>Gradient Descent:</strong></p>
+<p>Repeat {</p>
+<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}</script><script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha[(\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)})+\frac{\lambda}{m}\theta_j]\ \ \ \ (j=1,2,3,...,n)</script><p>}</p>
+<p>The second line can also denoted as:</p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j(1-\alpha\frac{\lambda}{m})-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><p>The coefficient <script type="math/tex">1-\alpha\frac{\lambda}{m}</script> will always be less than 1.</p>
+<p><strong>Normal Equation:</strong></p>
+<script type="math/tex; mode=display">\theta=(X^TX+\lambda\cdot L)^{-1}X^Ty</script><script type="math/tex; mode=display">L=\begin{bmatrix}0&\ &\ &\ &\ \\\ &1&\ &\ &\ \\\ &\ &1&\ &\ \\\ &\ &\ &...&\ \\\ &\ &\ &\ &1\end{bmatrix}</script><p>If λ&gt;0, this normal equation makes it invertible.</p>
+<h4 id="Regularized-Logical-Regression"><a href="#Regularized-Logical-Regression" class="headerlink" title="Regularized Logical Regression"></a>Regularized Logical Regression</h4><p><strong>Gradient Descent:</strong><br>Repeat {</p>
+<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}</script><script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha[(\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)})+\frac{\lambda}{m}\theta_j]\ \ \ \ (j=1,2,3,...,n)</script><p>}</p>
 
           
         
