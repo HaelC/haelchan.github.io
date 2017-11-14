@@ -512,7 +512,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T16:20:13+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T17:42:01+08:00">
                 2017-11-14
               </time>
             
@@ -620,7 +620,7 @@
 <p><strong>Matrix Transpose</strong><br>Let A be an m×n matrix, and let <script type="math/tex">B=A^T</script>. Then B is an n×m matrix, and</p>
 <script type="math/tex; mode=display">B_{ij}=A_{ji}</script><h2 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h2><h3 id="Multivariate-Linear-Regression"><a href="#Multivariate-Linear-Regression" class="headerlink" title="Multivariate Linear Regression"></a>Multivariate Linear Regression</h3><h4 id="from-one-variable-to-multiple-variables"><a href="#from-one-variable-to-multiple-variables" class="headerlink" title="from one variable to multiple variables"></a>from one variable to multiple variables</h4><p>In the first week’s course, we learned linear with one variable <em>x</em>, and the hypothesis could be <script type="math/tex">h_{\theta}(x)=\theta_0+\theta_1x</script>. As a matter of fact, there can be more than one variables. So here’re the new notations:<br><strong>m</strong>: the number of training examples<br><strong>n</strong>: the number of features</p>
 <script type="math/tex; mode=display">x^{(i)}$$: input (features) of ith training example
-`$x_j^{(i)}: value of feature j in ith training example
+$$x_j^{(i)}$$: value of feature j in ith training example
 
 The hypothesis should be transformed to:
 $$h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n</script><p>(for convenience of notation, we define x0=1).<br>Using the definition of matrix multiplication, our multivariable hypothesis function can be concisely represented as:</p>
@@ -697,7 +697,8 @@ $$h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n<
 <h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}</script><p>The function is called <strong>sigmoid function</strong> or <strong>logistic function</strong>, and the function image is as shown below:</p>
 <p><img src="\images\ML\sigmoidFunction.jpg" alt=""></p>
 <p><strong>What is the interpretation of hypothesis output?</strong></p>
-<script type="math/tex; mode=display">h_\theta(x)$$ estimated probability that y = 1, given x, parameterized by θ. In mathematical formula it can be denoted as 
+<script type="math/tex; mode=display">h_\theta(x)$$  estimated probability that y = 1, given x, parameterized by θ. In mathematical formula it can be denoted as 
+
 $$h_\theta(x)=P(y=1|x;\theta)</script><p>Using probability theory knowledge, we can also know that</p>
 <script type="math/tex; mode=display">P(y=0|x;\theta)+P(y=1|x;\theta)=1</script><p><strong>Decision Boundary</strong><br>Suppose predict “y=1” if <script type="math/tex">h_\theta(x)>=0.5</script>, and predict “y=0” if <script type="math/tex">h_\theta(x)<0.5</script>.<br>That is equal to</p>
 <script type="math/tex; mode=display">\theta^TX\ge0\ \ =>\ \ y=1</script><script type="math/tex; mode=display">\theta^TX<0\ \ =>\ \ y=0</script><h4 id="Cost-function-and-Gradient-Descent"><a href="#Cost-function-and-Gradient-Descent" class="headerlink" title="Cost function and Gradient Descent"></a>Cost function and Gradient Descent</h4><p>Cost function in logistic regression is different from that in linear regression.</p>
@@ -731,10 +732,10 @@ $$h=g(X\theta)</script><script type="math/tex; mode=display">J(\theta)=\frac{1}{
 <script type="math/tex; mode=display">\theta=(X^TX+\lambda\cdot L)^{-1}X^Ty</script><script type="math/tex; mode=display">L=\begin{bmatrix}0&\ &\ &\ &\ \\\ &1&\ &\ &\ \\\ &\ &1&\ &\ \\\ &\ &\ &...&\ \\\ &\ &\ &\ &1\end{bmatrix}</script><p>If λ&gt;0, this normal equation makes it invertible.</p>
 <h4 id="Regularized-Logical-Regression"><a href="#Regularized-Logical-Regression" class="headerlink" title="Regularized Logical Regression"></a>Regularized Logical Regression</h4><p><strong>Gradient Descent:</strong><br>Repeat {</p>
 <script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}</script><script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha[(\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)})+\frac{\lambda}{m}\theta_j]\ \ \ \ (j=1,2,3,...,n)</script><p>}</p>
-<h2 id="Week-Four"><a href="#Week-Four" class="headerlink" title="Week Four"></a>Week Four</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><p>At a very  At a very simple level, neurons are basically computational units that take inputs (<strong>dendrites</strong>) as electrical inputs (called “spikes”) that are channeled to outputs (<strong>axons</strong>). In our model, our dendrites are like the input features x1⋯xn, and the output is the result of our hypothesis function. In this model our x0 input node is sometimes called the “bias unit.” It is always equal to 1. In neural networks, we use the same logistic function as in classification, <code>$$\frac{1}{1+e^{-\theta^TX}}</code>, yet we sometimes call it a sigmoid (logistic) activation function. In this situation, our “theta” parameters are sometimes called “weights”.<br>There’re several layers in the neural network. The first layer is called <strong>Input Layer</strong>, the last layer is called <strong>Output Layer</strong>, and the others is called <strong>Hidden Layer</strong>. </p>
+<h2 id="Week-Four"><a href="#Week-Four" class="headerlink" title="Week Four"></a>Week Four</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><p>At a very  At a very simple level, neurons are basically computational units that take inputs (<strong>dendrites</strong>) as electrical inputs (called “spikes”) that are channeled to outputs (<strong>axons</strong>). In our model, our dendrites are like the input features x1⋯xn, and the output is the result of our hypothesis function. In this model our x0 input node is sometimes called the “bias unit.” It is always equal to 1. In neural networks, we use the same logistic function as in classification, <script type="math/tex">\frac{1}{1+e^{-\theta^TX}}</script>, yet we sometimes call it a sigmoid (logistic) activation function. In this situation, our “theta” parameters are sometimes called “weights”.<br>There’re several layers in the neural network. The first layer is called <strong>Input Layer</strong>, the last layer is called <strong>Output Layer</strong>, and the others is called <strong>Hidden Layer</strong>. </p>
 <p><strong>Notations:</strong></p>
-<script type="math/tex; mode=display">a_i^{(j)}$$= "activation" of unit i in layer j
-$$\Theta^{(j)}$$= matrix of weights controlling function mapping from layer j to layer j+1
+<script type="math/tex; mode=display">a_i^{(j)}$$ = "activation" of unit i in layer j
+$$\Theta^{(j)}$$ = matrix of weights controlling function mapping from layer j to layer j+1
 
 In a simple example like this:
 ![](/images/ML/neuralEX.jpg)
