@@ -370,6 +370,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -388,47 +419,17 @@
       
         
           
-            <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<p>This semester I’m taking the E-commerce System Structure, and we have come to learn about personalization. In E-commerce, the form of personalization is to recommend items to the user.</p>
-<p><strong>Recommendation Metrics</strong></p>
-<ul>
-<li>Prediction accuracy</li>
-<li>Coverage</li>
-<li>Novelty</li>
-<li>Diversity</li>
-<li>Privacy</li>
-<li>Scalability</li>
-</ul>
-<p><strong>Recommendation Strategies</strong></p>
-<ul>
-<li>Popularity</li>
-<li>Association role</li>
-<li>Content based</li>
-<li>Collaborative filtering</li>
-<li>Hybrid</li>
-</ul>
-<h2 id="Summary-of-Item-Based-CFRA"><a href="#Summary-of-Item-Based-CFRA" class="headerlink" title="Summary of Item-Based CFRA"></a>Summary of Item-Based CFRA</h2><p>In the corresponding experiment, our assignment is to read the paper <em>Item-Based Collaborative Filtering Recommendation Algorithms</em>, a famous paper in recommender system. And I’d like to record some key point.</p>
-<h3 id="Related-recommender-systems"><a href="#Related-recommender-systems" class="headerlink" title="Related recommender systems"></a>Related recommender systems</h3><p><strong>Tapestry</strong><br>One of the earliest implementations of collaborative filtering-based recommender systems. It relied on the explicit opinions of people from a close-knit community, such as an office workgroup.<br>Later, several rating-based automated recommender systems were developed, such as pseudonymous CF solution provided by the GroupLens research  system, Ringo and Video Recommender.<br><strong>Bayesian networks</strong><br>Bayesian networks create a model based on a training set with a decision tree at each node and edges representing user information. Bayesian networks may prove practical for environments in which knowledge of user preferences changes slowly with respect to the time needed to build the model but are not suitable for environments in which user preference models must be updated rapidly or frequently since the process of building the model can be slow.<br><strong>Clustering</strong><br>Clustering techniques work by identifying groups of users who appear to have similar preferences.<br>Clustering techniques usually produce less-personal recommendations than other methods, and in some cases, the clusters have worse accuracy than nearest neighbor algorithms.<br>Clustering techniques can be applied as a “first step” for shrinking the candidate set in a nearest neighbor algorithm or for distributing nearest-neighbor computation across several recommender engines.<br>Horting is a graph-based technique in which nodes are users, and edges between nodes indicate degree of similarity between two users. Predictions are produced by walking the graph to nearby nodes and combining the opinions of the nearby users.</p>
-<h3 id="Collaborative-Filtering-Based-Recommender-Systems"><a href="#Collaborative-Filtering-Based-Recommender-Systems" class="headerlink" title="Collaborative Filtering Based Recommender Systems"></a>Collaborative Filtering Based Recommender Systems</h3><p><img src="images/CFRA/1.jpg" alt=""><br>Figure 1 shows the schematic diagram of the collaborative filtering process. CF algorithms represent the entire m×n user-item data as a ratings matrix, <em>A</em>. Each entry <script type="math/tex">a_{i,j}</script> in <em>A</em> represents the preference score (ratings) of the <em>i</em>th user on the <em>j</em>th item. Each individual ratings is within a numerical scale and it can as well be 0 indicating that the user has not yet rated that item.<br><strong>Prediction</strong> is a numerical value.<br><strong>Recommendation</strong> is a list of N items.</p>
-<h4 id="Memory-based-and-Model-based-algorithms"><a href="#Memory-based-and-Model-based-algorithms" class="headerlink" title="Memory-based and Model-based algorithms"></a>Memory-based and Model-based algorithms</h4><p><strong>Memory-based CF Algorithms</strong><br>Memory-based algorithms utilize the entire user-item database to generate a prediction. These systems employ statistical techniques to find a set of users, known as <em>neighbors</em>, that have a history of agreeing with the target user. The techniques, also known as nearest-neighbor or user-based collaborative filtering, are more popular and widely used in practice.</p>
-<p><strong>Model-based CF Algorithms</strong><br>Model-based collaborative filtering algorithms provide item recommendation by first developing a model of user ratings. Algorithms in this category take a probabilistic approach and envision the collaborative filtering process as computing the expected value of a user prediction, give his/her ratings on other items.</p>
-<h4 id="Challenges-of-User-based-CF-Algorithms"><a href="#Challenges-of-User-based-CF-Algorithms" class="headerlink" title="Challenges of User-based CF Algorithms"></a>Challenges of User-based CF Algorithms</h4><ul>
-<li><strong>Sparsity</strong>. Large E-commerce systems like Amazon and Taobao have large item sets, but users can only by a small fraction of the total item set.</li>
-<li><strong>Scalability</strong>. With millions of users and items, a typical web-based recommender system running existing algorithms will suffer serious scalability problems.</li>
-</ul>
-<h2 id="Item-based-Collaborative-Filtering-Algorithm"><a href="#Item-based-Collaborative-Filtering-Algorithm" class="headerlink" title="Item-based Collaborative Filtering Algorithm"></a>Item-based Collaborative Filtering Algorithm</h2><p>The item-based approach looks into the set of items the target user has rated and computes how similar they are to the target item <em>i</em> and then selects <em>k</em> most similar items. At the same time their corresponding similarities are also computed. Once the most similar items are found, the prediction is then computed by taking a weighted average of the target user’s ratings on these similar items.</p>
-<h3 id="Item-Similarity-Computation"><a href="#Item-Similarity-Computation" class="headerlink" title="Item Similarity Computation"></a>Item Similarity Computation</h3><p><img src="images/CFRA/2.jpg" alt=""></p>
-<h4 id="Cosine-based-Similarity"><a href="#Cosine-based-Similarity" class="headerlink" title="Cosine-based Similarity"></a>Cosine-based Similarity</h4><script type="math/tex; mode=display">sim(i,j)=cos(\vec i,\vec j)=\frac{\vec i\cdot\vec j}{||\vec i||*||\vec j||}</script><p>Two items are thought of as two vectors in the m dimensional user-space. The similarity betweeen them is measured by computing the cosine of the angle between these two vectors.</p>
-<h4 id="Correlation-based-Similarity"><a href="#Correlation-based-Similarity" class="headerlink" title="Correlation-based Similarity"></a>Correlation-based Similarity</h4><script type="math/tex; mode=display">sim(i,j)=\frac{\sum_{u\in U}(R_{u,i}-\overline R_i)(R_{u,j}-\overline R_j)}{\sqrt{\sum_{u\in U}(R_{u,i}-\overline R_i)^2}\sqrt{\sum_{u\in U}(R_{u,j}-\overline R_j)^2}}</script><p>Similarity between two items <em>i</em> and <em>j</em> is measured by computing the <em>Pearson-r</em> correlation. To make the correlation computation accurate, first isolate the co-rated cases(i.e., cases where the users rated both i and j). Let the set of users who both rated i and j are denoted by U.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** </span></div><div class="line"><span class="comment">  * Implementation of Correlation-based Similarity</span></div><div class="line"><span class="comment">  * reference: Wang Menghan's implementation</span></div><div class="line"><span class="comment">  * </span></div><div class="line"><span class="comment">  * <span class="doctag">@author</span> Hael Chan</span></div><div class="line"><span class="comment">  * <span class="doctag">@version</span> 1.0</span></div><div class="line"><span class="comment">  * <span class="doctag">@time</span> 2017-11-05 23:51：09</span></div><div class="line"><span class="comment">  */</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">double</span>[][] calSimilarity(<span class="keyword">double</span> [][]uiRating) &#123;</div><div class="line"></div><div class="line">		<span class="comment">/* uiRating is a u*i matrix,</span></div><div class="line"><span class="comment">		 * where u is the number of users,</span></div><div class="line"><span class="comment">		 * and i is the number of items</span></div><div class="line"><span class="comment">		 */</span></div><div class="line">		<span class="keyword">int</span> userNum = uiRating.length;								<span class="comment">// the number of rows of uiRating</span></div><div class="line">		<span class="keyword">int</span> itemNum = uiRating[<span class="number">0</span>].length;							<span class="comment">// the number of columns of uiRating</span></div><div class="line">		<span class="keyword">double</span>[][] simResult = <span class="keyword">new</span> <span class="keyword">double</span>[itemNum][itemNum];		<span class="comment">// a new matrix for similarity among items</span></div><div class="line"></div><div class="line">		<span class="keyword">double</span>[] average = <span class="keyword">new</span> <span class="keyword">double</span>[itemNum];</div><div class="line">		<span class="keyword">int</span>[] nonZero = <span class="keyword">new</span> <span class="keyword">int</span>[itemNum];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; itemNum; c++) &#123;							<span class="comment">// for every item, iterate every user's rating,</span></div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; userNum; r++) &#123;						<span class="comment">// so the nested for loop may be a bit nonintuitive</span></div><div class="line">				<span class="keyword">if</span> (uiRating[r][c] &gt; <span class="number">0</span>) &#123;							<span class="comment">// if uiRating[r][c] == 0, then just ignore it</span></div><div class="line">					average[c] += uiRating[r][c];</div><div class="line">					nonZero[c]++;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">// Calculate every item's average rating</span></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; itemNum; i++) &#123;</div><div class="line">			average[i] /= nonZero[i];</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">// Calculate the similarity</span></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; itemNum; i++) &#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; itemNum; j++) &#123;					<span class="comment">// here j starts with i + 1 to improve efficient and avoid (i == j) case</span></div><div class="line">				<span class="keyword">double</span> num = <span class="number">0</span>, den = <span class="number">0</span>;</div><div class="line">				<span class="keyword">double</span> den1 = <span class="number">0</span>, den2 = <span class="number">0</span>;</div><div class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; userNum; k++) &#123;</div><div class="line">					<span class="keyword">double</span> diff1 = <span class="number">0</span>, diff2 = <span class="number">0</span>;</div><div class="line">					</div><div class="line">					 <span class="keyword">if</span> (uiRating[k][i] &gt; <span class="number">0</span>) &#123;</div><div class="line">					 	diff1 = uiRating[k][i] - average[i];		<span class="comment">// R_&#123;u,i&#125;-\overline R_i (LaTex syntax)</span></div><div class="line">					 &#125;</div><div class="line">					 <span class="keyword">if</span> (uiRating[k][j] &gt; <span class="number">0</span>) &#123;</div><div class="line">					 	diff2 = uiRating[k][j] - average[j];		<span class="comment">// R_&#123;u,j&#125;-\overline R_j (LaTex syntax)</span></div><div class="line">					 &#125;</div><div class="line">					 num += diff1 * diff2;</div><div class="line">					 den1 += diff1 * diff1;</div><div class="line">					 den2 += diff2 * diff2;</div><div class="line">				&#125;</div><div class="line">				den = Math.sqrt(den1) * Math.sqrt(den2);</div><div class="line">				simResult[i][j] = (den == <span class="number">0</span>) ? <span class="number">0</span> : num / den;		<span class="comment">// remember the case that den may be zero</span></div><div class="line">				simResult[j][i] = simResult[i][j];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> simResult;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h4 id="Adjusted-Cosine-Similarity"><a href="#Adjusted-Cosine-Similarity" class="headerlink" title="Adjusted Cosine Similarity"></a>Adjusted Cosine Similarity</h4><script type="math/tex; mode=display">sim(i,j)=\frac{\sum_{u\in U}(R_{u,i}-\overline R_u)(R_{u,j}-\overline R_u)}{\sqrt{\sum_{u\in U}(R_{u,i}-\overline R_u)^2}\sqrt{\sum_{u\in U}(R_{u,j}-\overline R_u)^2}}</script><p>The adjusted cosine similarity offsets cosine measure case’s important drawback - the differences in rating scale between different users are not taken into account, by subtracting the corresponding user average from each co-rated pair.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">	 * Implementation of Adjusted Cosine Similarity</span></div><div class="line"><span class="comment">	 * </span></div><div class="line"><span class="comment">	 * <span class="doctag">@author</span> Hael</span></div><div class="line"><span class="comment">	 * <span class="doctag">@version</span> 1.0</span></div><div class="line"><span class="comment">	 * <span class="doctag">@time</span> 2017-11-07 09:49:51</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">double</span>[][] calSimilarity(<span class="keyword">double</span> [][]uiRating) &#123;</div><div class="line">		</div><div class="line">		<span class="comment">/*</span></div><div class="line"><span class="comment">		 * Basically the method is the same as the </span></div><div class="line"><span class="comment">		 * implementation of Correlation-based Similarity,</span></div><div class="line"><span class="comment">		 * except the computation of average is different.</span></div><div class="line"><span class="comment">		 */</span></div><div class="line">		<span class="keyword">int</span> userNum = uiRating.length;</div><div class="line">		<span class="keyword">int</span> itemNum = uiRating[<span class="number">0</span>].length;</div><div class="line">		<span class="keyword">double</span>[][] similarityResult = <span class="keyword">new</span> <span class="keyword">double</span>[itemNum][itemNum];</div><div class="line">		</div><div class="line">		<span class="keyword">double</span>[] average = <span class="keyword">new</span> <span class="keyword">double</span>[userNum];</div><div class="line">		<span class="keyword">int</span>[] nonZero = <span class="keyword">new</span> <span class="keyword">int</span>[userNum];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; userNum; r++) &#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; itemNum; c++) &#123;</div><div class="line">				<span class="keyword">if</span> (uiRating[r][c] &gt; <span class="number">0</span>) &#123;</div><div class="line">					average[r] += uiRating[r][c];</div><div class="line">					nonZero[r]++;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="comment">// Calculate every user's average rating instead of every item's</span></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; userNum; i++) &#123;</div><div class="line">			average[i] /= nonZero[i];</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; itemNum; i++) &#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; itemNum; j++) &#123;</div><div class="line">				<span class="keyword">double</span> num = <span class="number">0</span>, den = <span class="number">0</span>;</div><div class="line">				<span class="keyword">double</span> den1 = <span class="number">0</span>, den2 = <span class="number">0</span>;</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; userNum; k++) &#123;</div><div class="line">					<span class="keyword">double</span> diff1 = <span class="number">0</span>, diff2 = <span class="number">0</span>;</div><div class="line">					<span class="keyword">if</span> (uiRating[k][i] &gt; <span class="number">0</span>) &#123;</div><div class="line">						diff1 = uiRating[k][i] - average[k];          <span class="comment">// subtract user's average rating</span></div><div class="line">					&#125;</div><div class="line">					<span class="keyword">if</span> (uiRating[k][j] &gt; <span class="number">0</span>) &#123;</div><div class="line">						diff2 = uiRating[k][j] - average[k];</div><div class="line">					&#125;</div><div class="line">					num += diff1 * diff2;</div><div class="line">					den1 += diff1 * diff1;</div><div class="line">					den2 += diff2 * diff2;</div><div class="line">				&#125;</div><div class="line">				den = Math.sqrt(den1) * Math.sqrt(den2);</div><div class="line">				similarityResult[i][j] = (den == <span class="number">0</span>) ? <span class="number">0</span> : num / den;</div><div class="line">				similarityResult[j][i] = similarityResult[i][j];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> similarityResult;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h2 id="Prediction-Computation"><a href="#Prediction-Computation" class="headerlink" title="Prediction Computation"></a>Prediction Computation</h2><h3 id="Weighted-Sum"><a href="#Weighted-Sum" class="headerlink" title="Weighted Sum"></a>Weighted Sum</h3><p>This method computes the prediction on an item <em>i</em> for a user <em>u</em> by computing the sum of the ratings given by the user on the items similar to <em>i</em>. Each ratings is weighted by the corresponding similarity <script type="math/tex">s_{i,j}</script> between items <em>i</em> and <em>j</em>. </p>
-<script type="math/tex; mode=display">P_{u,i}=\frac{\sum_{all\ similar\ items,N}(s_{i,N}*R_{u,N})}{\sum_{all\ similar\ items,N}(|s_i,N|)}</script><h3 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h3><p>In practice, the similarities computed using cosine or correlation measures may be misleading in the sense that two rating vectors may be distant(in Euclidean sense) yet may have very high similarity. The basic idea is to use the same formula as the weighted sum technique, but instead of using the similar item N’s “raw” ratings values <script type="math/tex">R_{u,N}</script>‘s, this model uses their approximated values <script type="math/tex">R_{u,N}'</script> based on a linear regression model.</p>
-<script type="math/tex; mode=display">\overline{R_N'}=\alpha\overline R_i+\beta+\epsilon</script><p>The respective vectors of the target item <em>i</em> and the similar item <em>N</em> are denoted by <script type="math/tex">R_i</script> and <script type="math/tex">R_N</script>.</p>
-
           
+
+This semester I’m taking the E-commerce System Structure, and we have come to learn about personalization. In E-commerce, the form of personalizatio
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/03/Item-Based-CFRA-reading-report/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -522,7 +523,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T19:53:52+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T20:38:37+08:00">
                 2017-11-14
               </time>
             
@@ -562,6 +563,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -580,172 +612,19 @@
       
         
           
-            <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<h2 id="Week-One"><a href="#Week-One" class="headerlink" title="Week One"></a>Week One</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>What is machine learning?</strong></p>
-<blockquote>
-<p>Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel</p>
-<p>A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T as measured by P improves with experience E. — By Tom Mitchell</p>
-</blockquote>
-<h4 id="Machine-learning-algorithms"><a href="#Machine-learning-algorithms" class="headerlink" title="Machine learning algorithms"></a>Machine learning algorithms</h4><p><strong>Supervised learning</strong></p>
-<ul>
-<li><p>Regression<br>try to map input variables to some continuous function. </p>
-</li>
-<li><p>Classification<br>predict results in a discrete output.</p>
-</li>
-</ul>
-<p><strong>Unsupervised learning</strong><br>approach problems with little or no idea what our results should look like</p>
-<p>Example:</p>
-<ul>
-<li>Clustering</li>
-<li>Non-clustering</li>
-</ul>
-<h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>: “input” variable / features<br><strong>y</strong>: “output” variable / “target” variable<br>-<strong><script type="math/tex">(x^{(i)},y^{(i)})</script></strong> : ith training example: Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. (Sorry there’s something wrong with the LaTex syntax, so I can’t display it correctly)</p>
-<h4 id="Hypothesis-Function-and-Cost-Function"><a href="#Hypothesis-Function-and-Cost-Function" class="headerlink" title="Hypothesis Function and Cost Function"></a>Hypothesis Function and Cost Function</h4><p>A slightly more formal description of supervised learning problem is that given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis.</p>
-<p><img src="/images/ML/figure1.jpg" alt=""></p>
-<p>In this example of linear regression with one variable, the <strong>hypothesis function</strong> can be denoted as </p>
-<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>(maybe we Chinese students are more familiar with the form like h(x)=kx+b) Here <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> are just parameters. And our goal is to choose <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> so that <script type="math/tex">h_\theta(x)</script> is close to y for our training examples(x,y).<br>The <strong>cost function</strong> takes an average difference of all the results of the hypothesis with inputs from x’s and the actual output y’s.</p>
-<script type="math/tex; mode=display">J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^m(\hat{y}_i-y_i)^2=\frac{1}{2m}\sum_{i=1}^m(h_\theta(x_i)-y_i)^2</script><p>This function is otherwise called the “Squared error function”, or “Mean squared error”. The coefficient 1/2 is used for gradient descent so that the partial derivative result will be cleaner.</p>
-<h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><p>the Gradient descent algorithm:</p>
-<p>repeat until convergence {</p>
-<script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)\ \ (simultaneously\ update\ \theta_0\ and\ \theta_1)</script><p>} </p>
-<p>The value of α should not be too small or too large.<br>If α is too small, gradient descent can be slow.<br>If α is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge.<br>In general, gradient descent can converge to a local minimum, even with the learning rate α fixed.</p>
-<p>After calculating partial derivation, we can get the algorithm as :</p>
-<p>repeat until convergence {</p>
-<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})</script><script type="math/tex; mode=display">\theta_1:=\theta_1-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})\cdot x^{(i)}</script><p>  <em>(update θ0 and θ1 simultaneously)</em><br>}</p>
-<h3 id="Linear-Algebra-Review"><a href="#Linear-Algebra-Review" class="headerlink" title="Linear Algebra Review"></a>Linear Algebra Review</h3><p><strong>Matrix:</strong> 2-dimensional array.<br><strong>Vector:</strong> An n×1 matrix</p>
-<p><em>Notation</em>:Generally the uppercase letters are used for matrix and the lowercase letters are used for vector.</p>
-<h4 id="Matrix-Manipulation"><a href="#Matrix-Manipulation" class="headerlink" title="Matrix Manipulation"></a>Matrix Manipulation</h4><p><strong>Addition</strong></p>
-<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d \end{bmatrix}+\begin{bmatrix} w&x\\y&z \end{bmatrix}=\begin{bmatrix} a+w&b+x\\c+y&d +z\end{bmatrix}\\</script><p><strong>Scalar multiplication</strong></p>
-<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d \end{bmatrix}\times x=\begin{bmatrix} a\times x&b\times x\\c\times x&d\times x \end{bmatrix}</script><p><strong>Matrix-vector multiplication</strong></p>
-<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d\\e&f \end{bmatrix}\times\begin{bmatrix} x\\y \end{bmatrix}=\begin{bmatrix}ax+by\\cx+dy\\ex+fy \end{bmatrix}</script><p>Let <em>A</em> be an m×n matrix, <em>x</em> be an n-dimensional vector, then the result <em>A×x</em> will be an m-dimensional vector.<br>To get yi, multiply A’s ith row with elements of vector x, and add them up.</p>
-<p><strong>Matrix-matrix multiplication</strong></p>
-<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d\\e&f \end{bmatrix}\times\begin{bmatrix} w&x\\y&z \end{bmatrix}=\begin{bmatrix} aw+by&ax+bz\\cw+dy&cx+dz\\ew+fy&ex+dy \end{bmatrix}</script><p>Let <em>A</em> be an m×n matrix, <em>B</em> be an n×o matrix, then the result <em>A×B</em> will be an m×o matrix.<br>The ith column of the matrix C is obtained by multiplying A with the ith column of B.(for i=1,2,…,o). Then the calculation can be simplified to matrix-vector multiplication.</p>
-<h4 id="Matrix-multiplication-properties"><a href="#Matrix-multiplication-properties" class="headerlink" title="Matrix multiplication properties"></a>Matrix multiplication properties</h4><p><strong>Not commutative</strong><br>Let A and B be matrices. Then <em>in general</em>, A×B≠B×A.</p>
-<p><strong>Associative</strong><br>A×(B×C)=(A×B)×C</p>
-<h4 id="Special-matrix"><a href="#Special-matrix" class="headerlink" title="Special matrix"></a>Special matrix</h4><p><strong>Identity Matrix</strong><br>The identity matrix, which is denoted as <em>I</em>(sometimes with n×n subscript), simply has 1’s on the diagonal (upper left to lower right diagonal) and 0’s elsewhere. For example:</p>
-<script type="math/tex; mode=display">\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}</script><p>For any matrix A, A×I=I×A=A</p>
-<p><strong>Matrix Inverse</strong><br>If A is an m×m matrix, and if it has an inverse(not all matrix have an inverse), </p>
-<script type="math/tex; mode=display">A\times A^{-1}=A^{-1}\times A=I</script><p>Matrices that don’t have an inverse are <em>singular</em> or <em>degenerate</em>.</p>
-<p><strong>Matrix Transpose</strong><br>Let A be an m×n matrix, and let <script type="math/tex">B=A^T</script>. Then B is an n×m matrix, and</p>
-<script type="math/tex; mode=display">B_{ij}=A_{ji}</script><h2 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h2><h3 id="Multivariate-Linear-Regression"><a href="#Multivariate-Linear-Regression" class="headerlink" title="Multivariate Linear Regression"></a>Multivariate Linear Regression</h3><h4 id="from-one-variable-to-multiple-variables"><a href="#from-one-variable-to-multiple-variables" class="headerlink" title="from one variable to multiple variables"></a>from one variable to multiple variables</h4><p>In the first week’s course, we learned linear with one variable <em>x</em>, and the hypothesis could be <script type="math/tex">h_{\theta}(x)=\theta_0+\theta_1x</script>. As a matter of fact, there can be more than one variables. So here’re the new notations:<br><strong>m</strong>: the number of training examples<br><strong>n</strong>: the number of features</p>
-<p>-<script type="math/tex">x^{(i)}</script> : input (features) of ith training example<br>-<script type="math/tex">x_j^{(i)}</script> : value of feature j in ith training example</p>
-<p>The hypothesis should be transformed to:</p>
-<script type="math/tex; mode=display">h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n</script><p>(for convenience of notation, we define x0=1).<br>Using the definition of matrix multiplication, our multivariable hypothesis function can be concisely represented as:</p>
-<script type="math/tex; mode=display">h_{\theta}(x)=\begin{bmatrix}\theta_0&\theta_1&...&\theta_n\end{bmatrix}\begin{bmatrix}x_0\\x_1\\...\\x_n\end{bmatrix}=\theta^Tx</script><p>We can see that linear regression with one variable is just the special case when n=1.</p>
-<p>Similarly, the new gradient descent algorithm would be represented as:<br>repeat until convergence{</p>
-<script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)})x_j^{(i)}\ \ (simultaneously\ update\ \theta_j\ for\ j=0,...,n)</script><p>}</p>
-<h4 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h4><p>The idea is to make sure features are on a similar scale so that the gradient descent can be sped up.<br>Generally, get every feature into approximately a <script type="math/tex">-1<=x_i<=1</script> range. (the range is not limited to [-1,1])<br>Often used formula:</p>
-<script type="math/tex; mode=display">x_i:=\frac{x_i}{max-min}</script><h4 id="Mean-normalization"><a href="#Mean-normalization" class="headerlink" title="Mean normalization"></a>Mean normalization</h4><p>Replace <script type="math/tex">x_i</script> with <script type="math/tex">x_i-\mu_i</script> to make features have approximately zero mean.<br>Formula:</p>
-<script type="math/tex; mode=display">x_i:=\frac{x_i-\mu_i}{s_i}</script><p>where <script type="math/tex">\mu_i</script> is the average of all the values for feature(i) and si is the range of values(max - min) or the standard deviation.</p>
-<h4 id="Something-more-about-learning-rate"><a href="#Something-more-about-learning-rate" class="headerlink" title="Something more about learning rate"></a>Something more about learning rate</h4><p>The idea of learning rate is same as in the first week. And <strong>how to make sure gradient descent is working correctly(or say, debugging)</strong>?<br>Make a plot with number of iterations on the x-axis. Now plot the cost function, J(θ) over the number of iterations of gradient descent. If J(θ) ever increases, then you probably need to decrease α.</p>
-<p><strong>How to declare convergence</strong>?<br>If J(θ) decreased by less than <script type="math/tex">\epsilon(small\ value\ like 10^{-3})</script> in one iteration.</p>
-<h4 id="Polynomial-regression"><a href="#Polynomial-regression" class="headerlink" title="Polynomial regression"></a>Polynomial regression</h4><p>linear:</p>
-<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>quadratic:</p>
-<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2</script><p>cubic:</p>
-<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+\theta_3x^3</script><p>square root:</p>
-<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2\sqrt{x}</script><p>One important thing to keep in mind is, if you choose your features this way then feature scaling becomes very important.</p>
-<h3 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h3><p>Gradient descent gives one way of minimizing J, and normal equation is another way. In the “Normal Equation” method, we will minimize J by explicitly taking its derivatives with respect to the θj ’s, and setting them to zero. This allows us to find the optimum theta without iteration.<br>Formula:</p>
-<script type="math/tex; mode=display">\theta=(X^TX)^{-1}X^Ty</script><p>Here, X is m×(n+1) matrix(remember that x0 = 1), y is m-dimensional vector, and θ is (n+1) dimensional vector.</p>
-<p>The advantage of normal equation:</p>
-<ul>
-<li>no need to choose α</li>
-<li>don’t need to iterate</li>
-</ul>
-<p>Comparison of gradient descent and normal equation </p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Gradient Descent</th>
-<th>Normal Equation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>need to choose α</td>
-<td>no need to choose α</td>
-</tr>
-<tr>
-<td>need many iterations</td>
-<td>no need to iterate</td>
-</tr>
-<tr>
-<td>O(kn²)</td>
-<td>O(n³)(need to calculate inverse)</td>
-</tr>
-<tr>
-<td>works well when n is large</td>
-<td>slow if n is very large</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="normal-equation-noninvertibility"><a href="#normal-equation-noninvertibility" class="headerlink" title="normal equation noninvertibility"></a>normal equation noninvertibility</h4><p>Sometimes <script type="math/tex">X^TX</script> can be invertible, the common causes might be having:</p>
-<ul>
-<li>Redundant features(linear dependent)</li>
-<li>Too many features(e.g. m≤n)</li>
-</ul>
-<h3 id="Octave-MATLAB-Tutorial"><a href="#Octave-MATLAB-Tutorial" class="headerlink" title="Octave/MATLAB Tutorial"></a>Octave/MATLAB Tutorial</h3><p>Generally the commands are both used in MATLAB and Octave. (It is suggested that change Octave’s command prompt using <code>PS1(&#39;&gt;&gt; &#39;)</code>.)</p>
-<p><strong>Elementary math operations</strong><br>e.g., <code>1+2</code>, <code>3-4</code>, <code>5*6</code>, <code>7/8</code>, <code>2^6</code><br>//Note: if the result is floating point, the default digits after decimal point is different between Octave (6 digits) and MATLAB (4 digits).</p>
-<p><strong>Logical operations</strong><br>Equality.<br><code>1==2</code>, <code>1~=2  %~=: not equal</code></p>
-<p>AND, OR, XOR.<br><code>1 &amp;&amp; 0</code>, <code>1 || 0</code>, <code>xor(1,0)</code></p>
-<p>The result of logical operations is 0(false) or 1(true).</p>
-<p><strong>Variable</strong><br>Simple form.<br><code>a = 3</code>, <code>a = 3;</code><br>The semicolon suppresses the print output.<br>The assignment can be constants, strings, boolean expressions, etc.</p>
-<p>Display variable.<br><code>a</code>, <code>disp(a)</code>, <code>disp(sprintf(&#39;2 decimals: %0.2f&#39;, a)</code><br>Suppose a = 3, then the output of the command <code>a</code> is <code>a = 3</code>, of the command <code>disp(a)</code> is <code>3</code> and of the command <code>disp(sprintf(&#39;2 decimals: %0.2f&#39;, a)</code> is <code>2 decimals: 3.00</code>.</p>
-<p>Format.<br><code>sprintf</code> is a C-like syntax that defines the output format.<br><code>format long</code>, <code>format short</code> makes the all of the following commands output in long or short format.</p>
-<p><strong>Vectors and Matrices</strong><br>Matrix.<br><code>A = [1, 2; 3, 4; 5, 6]</code><br>We can memorize that the semicolon <code>;</code> means the next row of the matrix and the comma <code>,</code> (which can be replaced by space <code> </code>) means the next column.</p>
-<p>Vector.<br><code>v = [1 2 3]</code>, <code>v = [1; 2; 3]</code><br>The former creates a row vector (1×3 matrix), and the latter creates a column vector (3×1 matrix).</p>
-<p><strong>Some useful notation</strong><br><code>v = START(:INCREMENT):END</code><br>Create a row vector from START to END with each step incremented by INCREMENT. If <code>:INCREMENT</code> is omitted, the increment is 1.</p>
-<p><code>ones(ROW, COLUMN)</code>, <code>zeros(ROW, COLUMN)</code><br>Create a ROW×COLUMN matrix of all ones/zeros.</p>
-<p><code>rand(ROW, COLUMN)</code><br><code>rand</code> generates random numbers from the standard uniform distribution (0,1)<br><code>randn</code> generates random numbers from standard normal distribution.</p>
-<p><code>eye(ROW)</code><br>(Eye is maybe a pun on the word identity.) Create a ROW by ROW identity matrix.</p>
-<h2 id="Week-Three"><a href="#Week-Three" class="headerlink" title="Week Three"></a>Week Three</h2><h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><p><strong>Binary Classification</strong><br>The output y can take only two values, 0 and 1. Thus, y∈{0,1}, where the value 0 represents negative class and the value 1 represents positive class. It’s not advisable to use linear regression to represent the hypothesis. It’s logistic regression that has a range of (0,1).</p>
-<p><strong>Multiclass Classification:One-vs-all</strong><br>Train a logistic regression classifier <script type="math/tex">h_\theta^{(i)}(x)</script> for each class <em>i</em> to predict the probability that <em>y = i</em>.<br>On a new input <em>x</em>, to make a prediction, pick the class <em>i</em> that maximizes <script type="math/tex">h_\theta(x)</script>.</p>
-<h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}</script><p>The function is called <strong>sigmoid function</strong> or <strong>logistic function</strong>, and the function image is as shown below:</p>
-<p><img src="/images/ML/sigmoidFunction.jpg" alt=""></p>
-<p><strong>What is the interpretation of hypothesis output?</strong></p>
-<p>-<script type="math/tex">h_\theta(x)</script>  estimated probability that y = 1, given x, parameterized by θ. In mathematical formula it can be denoted as </p>
-<script type="math/tex; mode=display">h_\theta(x)=P(y=1|x;\theta)</script><p>Using probability theory knowledge, we can also know that</p>
-<script type="math/tex; mode=display">P(y=0|x;\theta)+P(y=1|x;\theta)=1</script><p><strong>Decision Boundary</strong><br>Suppose predict “y=1” if <script type="math/tex">h_\theta(x)>=0.5</script>, and predict “y=0” if <script type="math/tex">h_\theta(x)<0.5</script>.<br>That is equal to</p>
-<script type="math/tex; mode=display">\theta^TX\ge0\ \ =>\ \ y=1</script><script type="math/tex; mode=display">\theta^TX<0\ \ =>\ \ y=0</script><h4 id="Cost-function-and-Gradient-Descent"><a href="#Cost-function-and-Gradient-Descent" class="headerlink" title="Cost function and Gradient Descent"></a>Cost function and Gradient Descent</h4><p>Cost function in logistic regression is different from that in linear regression.</p>
-<script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)})</script><script type="math/tex; mode=display">Cost(h_\theta(x^{(i)},y^{(i)})=-y\cdot log(h_\theta(x))-(1-y)\cdot log(1-h_\theta(x))</script><p>that means:</p>
-<p>-<script type="math/tex">Cost(h_\theta(x^{(i)},y^{(i)})=-log(h_\theta(x))</script>    if y = 1;<br>-<script type="math/tex">Cost(h_\theta(x^{(i)},y^{(i)})=-log(1-h_\theta(x))</script>   if y = 0.</p>
-<p>Vectorized implementation of cost function:</p>
-<script type="math/tex; mode=display">h=g(X\theta)</script><script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\cdot (-y^Tlog(h)-(1-y)^Tlog(1-h))</script><p><strong>Gradient Descent</strong>:</p>
-<p>repeat {</p>
-<script type="math/tex; mode=display">\theta_j:=\theta_j-\frac{\alpha}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><p>}</p>
-<p>Vectorized implementation of gradient descent:</p>
-<script type="math/tex; mode=display">\theta:=\theta-\frac{\alpha}{m}X^T(g(X\theta)-y)</script><p><em>Advanced optimization</em><br>Except gradient descent, there’re <strong>Conjugate gradient</strong>, <strong>BFGS</strong> and <strong>L-BFGS</strong> optimization algorithms. They have advantages that 1.No need to manually pick α;2.Often faster than gradient descent. But they’re more complex than gradient descent.</p>
-<h3 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h3><h4 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h4><p>If we have too many features, the learn hypothesis may fit the training set very well, but fail to generalize to new examples. (Also known high variance)<br>There’s also another problem called <strong>Underfit</strong> problem, which has high bias.<br>Two examples:<br><img src="/images/ML/linearOverfit.jpg" alt=""></p>
-<p><img src="/images/ML/logisticOverfit.jpg" alt=""></p>
-<p><strong>How to address overfitting</strong></p>
-<ol>
-<li><p>Reduce number of features.<br>- Manually select which features to keep<br>- Model selection algorithm</p>
-</li>
-<li><p>Regularization.<br>- Keep all the features, but reduce magnitude/values of parameters <script type="math/tex">\theta_j</script></p>
-</li>
-</ol>
-<p><strong>Cost function:</strong></p>
-<script type="math/tex; mode=display">J(\theta)=\frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^n\theta_j^2]</script><p>The additional part is called regularization parameter. Note that λ should be set a proper value. If λ is set to an extremely large value, the algorithm may fail to eliminate overfitting or results in underfitting.</p>
-<h4 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h4><p><strong>Gradient Descent:</strong></p>
-<p>Repeat {</p>
-<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}</script><script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha[(\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)})+\frac{\lambda}{m}\theta_j]\ \ \ \ (j=1,2,3,...,n)</script><p>}</p>
-<p>The second line can also denoted as:</p>
-<script type="math/tex; mode=display">\theta_j:=\theta_j(1-\alpha\frac{\lambda}{m})-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><p>The coefficient <script type="math/tex">1-\alpha\frac{\lambda}{m}</script> will always be less than 1.</p>
-<p><strong>Normal Equation:</strong></p>
-<script type="math/tex; mode=display">\theta=(X^TX+\lambda\cdot L)^{-1}X^Ty</script><script type="math/tex; mode=display">L=\begin{bmatrix}0&\ &\ &\ &\ \\\ &1&\ &\ &\ \\\ &\ &1&\ &\ \\\ &\ &\ &...&\ \\\ &\ &\ &\ &1\end{bmatrix}</script><p>If λ&gt;0, this normal equation makes it invertible.</p>
-<h4 id="Regularized-Logical-Regression"><a href="#Regularized-Logical-Regression" class="headerlink" title="Regularized Logical Regression"></a>Regularized Logical Regression</h4><p><strong>Gradient Descent:</strong><br>Repeat {</p>
-<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}</script><script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha[(\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)})+\frac{\lambda}{m}\theta_j]\ \ \ \ (j=1,2,3,...,n)</script><p>}</p>
-<h2 id="Week-Four"><a href="#Week-Four" class="headerlink" title="Week Four"></a>Week Four</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><p>At a very  At a very simple level, neurons are basically computational units that take inputs (<strong>dendrites</strong>) as electrical inputs (called “spikes”) that are channeled to outputs (<strong>axons</strong>). In our model, our dendrites are like the input features x1⋯xn, and the output is the result of our hypothesis function. In this model our x0 input node is sometimes called the “bias unit.” It is always equal to 1. In neural networks, we use the same logistic function as in classification, <script type="math/tex">\frac{1}{1+e^{-\theta^TX}}</script>, yet we sometimes call it a sigmoid (logistic) activation function. In this situation, our “theta” parameters are sometimes called “weights”.<br>There’re several layers in the neural network. The first layer is called <strong>Input Layer</strong>, the last layer is called <strong>Output Layer</strong>, and the others is called <strong>Hidden Layer</strong>. </p>
-<p><strong>Notations:</strong><br>-<script type="math/tex">a_i^{(j)}</script> = “activation” of unit i in layer j<br>-<script type="math/tex">\Theta^{(j)}</script> = matrix of weights controlling function mapping from layer j to layer j+1</p>
-<p>In a simple example like this:<br><img src="/images/ML/neuralEx.jpg" alt=""></p>
-<p>we have some equations:</p>
-<script type="math/tex; mode=display">a_1^{(2)}=g(\Theta_{10}^{(1)}x_0+\Theta_{11}^{(1)}x_1+\Theta_{12}^{(1)}x_2+\Theta_{13}^{(1)}x_3)</script><script type="math/tex; mode=display">a_2^{(2)}=g(\Theta_{20}^{(1)}x_0+\Theta_{21}^{(1)}x_1+\Theta_{22}^{(1)}x_2+\Theta_{23}^{(1)}x_3)</script><script type="math/tex; mode=display">a_3^{(2)}=g(\Theta_{30}^{(1)}x_0+\Theta_{31}^{(1)}x_1+\Theta_{32}^{(1)}x_2+\Theta_{33}^{(1)}x_3)</script><script type="math/tex; mode=display">h_\Theta(x)=a_1^{(3)}=g(\Theta_{10}^{(2)}a_0^{(2)}+\Theta_{11}^{(2)}a_1^{(2)}+\Theta_{12}^{(2)}a_2^{(2)}+\Theta_{13}^{(3)}a_3^{(2)})</script><p>If network has <script type="math/tex">s_j</script> units in layer <em>j</em>, <script type="math/tex">s_{j+1}</script> units in layer <em>j+1</em>, then <script type="math/tex">\Theta^{(j)}</script> will be of dimension <script type="math/tex">s_{j+1}\times (s_j+1)</script>.</p>
-<p>Vectorized Implementation:<br>-<script type="math/tex">z^{(2)}=\Theta^{(1)}a^{(1)}</script>  (regard the input layer as <script type="math/tex">a^{(1)}</script>)</p>
-<script type="math/tex; mode=display">a^{(2)}=g(z^{(2)})</script><p>Add <script type="math/tex">a_0^{(2)}=1</script>    (add the bias unit)</p>
-<script type="math/tex; mode=display">z^{(3)}=\Theta^{(2)}a^{(2)}</script><script type="math/tex; mode=display">h_\Theta(x)=a^{(3)}=g(z^{(3)})</script>
           
+
+Week OneIntroductionWhat is machine learning?
+
+Field of study that gives computers the ability to learn without being explicitly programmed. — By Ar
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/01/machine-learning-note/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -879,6 +758,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -897,29 +807,15 @@
       
         
           
-            <h1 id="REM-Reading-Report-amp-Future-Plan"><a href="#REM-Reading-Report-amp-Future-Plan" class="headerlink" title="REM Reading Report &amp; Future Plan"></a>REM Reading Report &amp; Future Plan</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h3 id="REM-amp-PoUW"><a href="#REM-amp-PoUW" class="headerlink" title="REM &amp; PoUW"></a>REM &amp; PoUW</h3><p>REM(Resource-Efficient Mining) is a new blockchain mining framework that uses trusted hardware(Intel SGX) to achieve a fraction of the waste of PoW. It’s partially decentralized, and it achieves security guarantees similar to PoW. Its key idea, Proof-of-Useful-Work(PoUW), involves miners providing trustworthy reporting on CPU cycles they devote to inherently useful workloads. In a PoUW system, users can utilize their CPUs for any desired workload, and can simultaneously contribute their work towards securing a blockchain.</p>
-<h3 id="Fundamental-impediment-of-PoW"><a href="#Fundamental-impediment-of-PoW" class="headerlink" title="Fundamental impediment of PoW"></a>Fundamental impediment of PoW</h3><p>As Satoshi Nakamoto put Proof-of-Work(PoW) in BitCoin, PoW is widely used in blockchain so that the consensus can prevent an attacker from gaining majority power by cheaply masquerading as multiple machines. However, PoW in blockchains are wasteful, and it even has another name: Proof of Waste. PoWs serve no useful purpose beyond consensus and incur huge monetary and environmental costs, which is against FinTech’s demand.</p>
-<h3 id="PoET"><a href="#PoET" class="headerlink" title="PoET"></a>PoET</h3><p>Many attempts have been made to create a more resource useful consensus. However they have serious limitations.<br>Intel recently introduced a new instruction set architecture extension in Intel CPUs called Software Guard Extension(SGX). SGX permits the execution of trustworthy code in an isolated, tamper free environment, and can prove remotely that outputs represent the result of such execution. And Intel proposed another innovative consensus: Proof of Elapsed Time(PoET). However, PoET presents two notable technical challenges: broken chip problem(an attacker that can corrupt a single SGX-enabled node can win every consensus round and break the system completely) and stale chip problem(miners tend to power mining rigs with cheap, outmoded SGX-enabled CPUs used solely for mining).  REM addresses both the stale and broken chip problems.</p>
-<h3 id="SGX"><a href="#SGX" class="headerlink" title="SGX"></a>SGX</h3><p>SGX enables process execution in a Trusted Execution Environment(TEE), and specifically in SGX in a protected address space known as an enclave. An enclave protects the confidentiality and the integrity of the process from certain forms of hardware attack and other processes on the same host, including privileged processes like operating systems. SGX signs quotes in attestations using a group signature scheme called Enhanced Privacy ID or EPID, and Intel made the design choice that attestations can only be verified by accessing Intel’s Attestation Service(IAS), a public Web service maintained by Intel whose primary responsibility is to verify attestations upon request. </p>
-<h2 id="PoUW-and-REM"><a href="#PoUW-and-REM" class="headerlink" title="PoUW and REM"></a>PoUW and REM</h2><h3 id="two-key-assumptions"><a href="#two-key-assumptions" class="headerlink" title="two key assumptions"></a>two key assumptions</h3><p>The basic idea of PoUW, and thus REM, is to replace the wasteful computation of PoW with arbitrary useful computation. Since it is only partially decentralized, it relies for security on two key assumptions about the hardware manufacturer’s behavior: First, Intel correctly manages identities, specifically that it assigns a signing key(used for attestations) only to a valid CPU. Second, Intel does not blacklist valid nodes in the network, rendering their attestations invalid when the IAS is queried.<br>If Intel didn’t follow the two assumptions and was detected in any context, the company’s reputation and the perceived utility of SGX would be undermined and Intel would gain little revenue. So generally we can trust Intel SGX.</p>
-<h3 id="the-architecture-of-REM"><a href="#the-architecture-of-REM" class="headerlink" title="the architecture of REM"></a>the architecture of REM</h3><p><img src="/images/REM-reading-report/figure1.jpg" alt="Figure1" title="figure1"><br>There are three types of entities in the ecosystem of REM: a blockchain agent, one or more REM miners, and one or more useful work clients.<br>The useful work clients supply useful workloads to REM miners in the form of PoUW tasks, each of which encompass a PoUW enclave and some input.<br>The blockchain agent collects transactions and generates a block template, a block lacking the proof of useful work(PoUW). A REM miner will attach the required PoUW and return it to the agent. The agent then publishes the full block to the P2P network, making it part of the blockchain and receiving the corresponding reward.</p>
-<p><img src="/images/REM-reading-report/figure2.jpg" alt="Figure2" title="figure2"><br>Although CPU cycles would have been a more accurate metric, they are vulnerable to manipulation. The operating system may set their values arbitrarily and even have them double-count cycles. Therefore, REM chose instruction counting for securely evaluating effort with the existing tools available in SGX.<br>The workflow of the PoUW toolchain is as shown below: First, the useful work code (usefulwork.cpp), C / C++ source code, is assembled while reserving a register as the instruction counter. Next, the assembly code is rewritten by the toolchain such that the counter is incremented at the beginning of each basic block (a linear code sequence with no branches) by the number of instructions in that basic block. The count is performed at the beginning of a block rather than its end to prevent a cheater from jumping to the middle of a block and gaining an excessive count.</p>
-<p><img src="/images/REM-reading-report/figure3.jpg" alt="Figure3" title="figure3"><br>PoUW attestations is formed with two-layer hierarchical attestations. Zhang et al hard-code only a single program’s fingerprint into the blockchain, a static-analysis tool called compliance checker. The compliance checker runs in a trusted environment and takes a user-supplied program as input.<br>Every PoUW then includes two parts: The useful work program attestation on the mining success, and an attestation from the compliance checker of the program’s compliance. Note that the compliance attestation and the program’s attestation must be signed by the same CPU. Otherwise an attacker that compromises a single CPU could create fake compliance attestations for invalid tasks.</p>
-<h2 id="REM读书报告中文版"><a href="#REM读书报告中文版" class="headerlink" title="REM读书报告中文版"></a>REM读书报告中文版</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="REM与PoUW"><a href="#REM与PoUW" class="headerlink" title="REM与PoUW"></a>REM与PoUW</h4><p>REM（资源节约型挖矿）为一种新型的使用可信任硬件（Intel SGX）的区块链挖矿框架，大幅度减少了工作量证明(PoW)的浪费。部分去中心化的REM实现了与PoW类似的安全性保证。其核心思想，有效工作量证明(PoUW)，使得矿工提供所贡献的有效工作负载的CPU周期的可信任证明。在PoUW系统中，用户可以将CPU用于任何期望工作负载，同时贡献其工作来使得区块链更安全。</p>
-<h4 id="工作量证明的重大缺陷"><a href="#工作量证明的重大缺陷" class="headerlink" title="工作量证明的重大缺陷"></a>工作量证明的重大缺陷</h4><p>中本聪在比特币中使用的工作量证明PoW，被广泛应用于区块链技术，该共识机制可以有效防止恶意攻击者通过低成本地伪装成多台机器以获得大多数权力。然而，区块链的工作量证明是浪费的，它甚至还有一个别名：浪费量证明。除了实现共识，它别无它用，却造成了大量的资金与环境浪费，而这与金融科技的愿景是相违背的。</p>
-<h4 id="PoET-1"><a href="#PoET-1" class="headerlink" title="PoET"></a>PoET</h4><p>为了实现更加节约型的共识机制，已经有许多共识机制进行尝试。不过往往这些共识机制都有非常严格的限制。<br>近日Intel在其CPU中推行了一种新型指令集扩展结构，称为SGX(Software Guard Extension)。SGX允许可信任代码在隔绝、防干扰的环境中执行，并且远程验证程序执行的输出结果。在SGX的基础上，Intel提出了新的共识机制：运行时间证明(Proof of Elapsed Time, PoET)。然而，PoET有两个显著的技术挑战：芯片沦陷问题和芯片老旧问题。</p>
-<h4 id="SGX-1"><a href="#SGX-1" class="headerlink" title="SGX"></a>SGX</h4><p>SGX使进程执行在可信任执行环境(Trusted Execution Environment, TEE)中，而且SGX中专门有一块受保护的名为enclave（暂译为保护领地）的地址。Enclave保证了进程的机密性和完整性，避免来自硬件的攻击以及其他优先进程如操作系统等影响。SGX在认证过程中使用一种名为强化隐私ID(Enhanced Privacy ID, EPID)的群签名方案。同时Intel决定认证只能通过Intel认证服务(Intel’s Attestation Service)进行，IAS是Intel维持的公共网络服务，其首要责任是验证请求的认证。</p>
-<h3 id="PoUW和REM"><a href="#PoUW和REM" class="headerlink" title="PoUW和REM"></a>PoUW和REM</h3><h4 id="两个关键假设"><a href="#两个关键假设" class="headerlink" title="两个关键假设"></a>两个关键假设</h4><p>PoUW及REM的基本思想是将PoW中浪费的计算量替代为任意有效计算量。因为它是部分去中心化的，所以其安全性依赖关于硬件制造商行为的两个关键假设：第一，Intel正确地进行身份管理，特别是对一个有效CPU只分配唯一的签名密钥（用于认证）。第二，Intel不会针对网络中的节点设立黑名单，不会当IAS请求响应时假装其认证无效。<br>如果Intel违背上述两条假设中的任意一条，只要被检测出来，其公司的声誉以及用户对SGX的认同会大大削减，Intel得不偿失。所以总体而言我们可以信任Intel SGX。</p>
-<h4 id="REM框架"><a href="#REM框架" class="headerlink" title="REM框架"></a>REM框架</h4><p>在REM的生态中有三类实体：一位区块链代理，一位或多位REM矿工，以及一位或多位有效工作客户。<br>有效工作客户将有效工作负载以PoUW任务的形式提供给REM矿工，每一个任务包含一个PoUW enclave以及一些输入。<br>区块链代理收集处理，生成一个区块模板，一个没有PoUW的区块。REM矿工会附上所需的PoUW的区块并返回该区块。区块链代理随后将完整的区块发布至P2P网络，使其成为区块链的一部分，而矿工也获得对应的奖励。</p>
-<p>尽管CPU周期也许是更准确的测量标准，它却易被操控。操作系统可以任意修改其值，甚至可以翻倍。因此，在已有SGX工具的情况下，REM选择对指令计数，以保证评价的安全性。<br>PoUW工具链的流程如下：首先，有效工作代码，C或C++源码，以汇编形式处理，同时预留一个寄存器作为指令计数器。然后，工具链将汇编代码进行重写，使得计数器在每个基块（无分支的线性代码序列）时根据基块的指令数目进行计数。同时为了保证正确性，工具链还实现了两个强制措施：强制代码不可写入，以及强制单线程操作。</p>
-<p>PoUW的认证过程是两级认证。Zhang Fan等人硬编码单个程序的“指纹”(fingerprint)——一种称为一致性检查的静态分析工具——至区块链中。一致性检查在可信任环境中运行，以用户提供的程序作为输入。<br>每一份PoUW包含两部分：成功挖矿时的有效工作程序认证，以及来自一致性检查的程序一致性认证。注意到一致性认证以及程序认证的签名必须来自同一CPU。否则攻击者可以攻击单个CPU后为无效任务伪造一致性认证。</p>
-<h2 id="Personal-perspective"><a href="#Personal-perspective" class="headerlink" title="Personal perspective"></a>Personal perspective</h2><p>虽然在5.1的Why Count Instructions中解释了为什么采用指令计数的方式。</p>
-<blockquote>
-<p>While instructions are reasonable estimates of the CPU effort, CPU cycles would have been a more accurate metric. However, although cycles are counted, and the counts can be accessed through the CPU’s performance counters, they are vulnerable to manipulation. The operating system may set their values arbitrarily, allowing a rational operator, who controls her own OS, to improve her chances of finding a block by faking a high cycle count. Moreover, counters are incremented even if an enclave is swapped out, allowing an OS scheduler to run multiple SGX instances and having them double-count cycles. Therefore, while instruction counting is not perfect, we find it is the best method for securely evaluating effort with the existing tools available in SGX.</p>
-</blockquote>
-<p>不过个人认为还是可以采用执行时间证明(Proof of Execution Time, PoET’)的方法实现共识。CPU的晶振周期与时钟周期是固定的（本来我以为单个机器的机器周期是固定不变的，但是机器周期即为CPU周期，所以才知道是可以由操作系统改变的）。可以使用执行时间÷时钟周期（晶振周期）÷某一常数近似估计指令数目，而不需要专门设计工具链对汇编语言进行计数。<br>另外，一篇名为<a href="https://arxiv.org/pdf/1702.08719.pdf" target="_blank" rel="external">Malware Guard Extension: Using SGX to Conceal Cache Attacks(Extend Version)</a>的论文也值得引起我们对SGX安全性的重视。（这篇论文是我近日查找资料时不经意看到的搜狐报道的<a href="http://www.sohu.com/a/128162898_465914" target="_blank" rel="external">英特尔 SGX：是用来隐藏恶意软件，而不是保护系统；会泄漏加密密钥</a>后去找的论文，还没有仔细看）</p>
-
-          
+          REM Reading Report &amp; Future PlanOverviewREM &amp; PoUWREM(Resource-Efficient Mining) is a new blockchain mining framework that uses trusted hardwa
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/31/REM-reading-report/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1053,6 +949,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1071,42 +998,15 @@
       
         
           
-            <h1 id="区块链的共识机制-Blockchain-Consensus"><a href="#区块链的共识机制-Blockchain-Consensus" class="headerlink" title="区块链的共识机制 Blockchain Consensus"></a>区块链的共识机制 Blockchain Consensus</h1><p>区块链如何在分布式场景下达成一致，关键便是共识机制。共识协议的稳定性和防攻击性保证了区块链的安全运行。现整理常见的共识机制，包括PoW工作量证明(Proof of Work)、PoET运行时间证明(Proof of Elapsed Time)、PBFT拜占庭容错算法(Practical Byzantine Fault Tolerance)，以及两种新型的共识机制：PoL幸运值证明(Proof of Luck)以及PoUW有效工作证明(Proof of Useful Work)。</p>
-<h2 id="工作量证明-Proof-of-Work"><a href="#工作量证明-Proof-of-Work" class="headerlink" title="工作量证明 Proof of Work"></a>工作量证明 Proof of Work</h2><p>工作量证明是矿工在处理交易数据（对数据也是进行哈希）的同时不断的进行哈希计算，求得一位前23位为0的哈希值，这个值成为nonce黄金数。当全网有一位矿工哈希出nonce时，他就会把自己打包的区块公布出去，其他节点收到区块验证区块后就会一致性认为这个区块接到了区块链上，就继续进行下一个区块的打包和哈希计算。在这个过程中，中本聪通过算力的比拼牺牲了一部分最终一致性（因为会有分叉的产生）并且需要等待多个确认，但是这种简单暴力的方法却保证了整个区块链系统的合法性，而且把区块链系统的健壮性提升到极致，就算全网只剩下一个节点运行，这个区块链系统还是会继续运行下去。最后POW也充分提高了区块链系统的安全性，依靠51%攻击理论去破坏区块链系统是只有政府或者疯子才会采取的方法。</p>
-<p>优点：</p>
-<ul>
-<li>完全去中心化</li>
-<li>节点自由进出，容易实现。</li>
-<li>破坏系统花费的成本巨大</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>对节点的性能网络环境要求高</li>
-<li>无法达成最终一致性</li>
-<li>浪费能源</li>
-</ul>
-<p>详情可参见 Bitcoin: A Peer-to-Peer Electronic Cash System</p>
-<h2 id="消耗时间证明-Proof-of-Elapsed-Time"><a href="#消耗时间证明-Proof-of-Elapsed-Time" class="headerlink" title="消耗时间证明 Proof of Elapsed Time"></a>消耗时间证明 Proof of Elapsed Time</h2><p>为了提高分布式共识的效率，一个优良的彩票函数(lottery function)有以下几个特征：</p>
-<ul>
-<li>公平：该函数应在最广泛的可能参与者中进行领导选举的分布</li>
-<li>投入：控制领导选举进程的花费，应当与从中的收益成正比</li>
-<li>验证：对于所有的参与者而言，验证领导为合法选举产生的步骤应相对简单</li>
-</ul>
-<p>消耗时间证明算法使用新型安全的CPU指令来实现上述目标。通过这些特点，PoET保证了领导选举过程的安全性和随机性，而不需要像大多数证明算法一样需要消耗大量资源。</p>
-<p>详情可参见Introduction - Sawtooth latest documentation(Proof of Elapsed Time)</p>
-<h2 id="拜占庭容错算法-Practical-Byzantine-Fault-Tolerance"><a href="#拜占庭容错算法-Practical-Byzantine-Fault-Tolerance" class="headerlink" title="拜占庭容错算法 Practical Byzantine Fault Tolerance"></a>拜占庭容错算法 Practical Byzantine Fault Tolerance</h2><p><strong>这是一种基于消息传递的一致性算法，算法经过三个阶段达成一致性，这些阶段可能因为失败而重复进行。</strong><br>假设节点总数为3f+1，f为拜占庭错误节点：</p>
-<p>当节点发现leader作恶时，通过算法选举其他的replica为leader。<br>leader通过pre-prepare （第一个协议阶段）消息把它选择的 value广播给其他replica节点，其他的replica节点如果接受则发送 prepare（第二个协议阶段），如果失败则不发送。<br>一旦2f个节点接受prepare消息，则节点发送commit（第三个协议阶段）消息。<br>当2f+1个节点接受commit消息后，代表该value值被确定 如下图表示了4个节点，0为leader，同时节点3为fault节点，该节点不响应和发出任何消息。最终节点状态达到commited时，表示该轮共识成功达成。 注：预准备阶段（pre-prepare）： 主节点分配一个序列号n给收到的请求，然后向所有备份节点群发预准备消息，预准备消息的格式为<code>&lt;&lt;PRE-PREPARE,v,n,d&gt;,m&gt;</code>，这里v是视图编号，m是客户端发送的请求消息，d是请求消息m的摘要。 准备阶段（prepare）： 如果备份节点i接受了预准备消息&lt;<pre-prepare,v,n,d>,m&gt;，则进入准备阶段。在准备阶段的同时，该节点向所有副本节点发送准备消息<code>&lt;PREPARE,v,n,d,i&gt;</code>，并且将预准备消息和准备消息写入自己的消息日志。如果看预准备消息不顺眼，就什么都不做。 确认阶段（commit）： 当(m,v,n,i)条件为真的时候，副本i将<code>&lt;COMMIT,v,n,D(m),i&gt;</code>向其他副本节点广播，于是就进入了确认阶段。<br>优点：上述其他算法都脱离不了币的存在，币的存在及它的奖励机制会让区块链这一单一的世界穷者更穷，富者更富。<br>共识效率高，可实现高频交易。<br>缺点：当系统只剩下33%的节点运行时，系统会停止运行。</pre-prepare,v,n,d></p>
-<h2 id="幸运值证明-Proof-of-Luck"><a href="#幸运值证明-Proof-of-Luck" class="headerlink" title="幸运值证明 Proof of Luck"></a>幸运值证明 Proof of Luck</h2><p>来自UC Berkley 的 Mitar Milutinovic等学者为了克服PoW的资源消耗、交易效率低等问题，在可信任执行环境(Trusted Execution Environments)中提出了一种新型共识算法：幸运值证明。在攻击者理性以及大多数参与者良性的情况下，使用最少量的资源与算力以实现交易验证的低延时。<br>幸运值证明由两个函数组成：PolRound（幸运值证明循环）以及PolMine（幸运值证明挖矿）。在每次循环的开始，参与者准备通过调用PoLRound函数，传递已知的最新区块。经过一段时间（ROUND_TIME）后，参与者调用PoLMine函数挖掘新的区块。PolMine函数会生成[0,1)区间内一个满足均匀分布的随机值，根据该随机值决定这一轮所有的区块中的胜出区块。<br>与PoET类似，Proof of Luck也是一种彩票函数，保证了随机性与安全性。</p>
-<h2 id="有效工作量证明-Proof-of-Useful-Work"><a href="#有效工作量证明-Proof-of-Useful-Work" class="headerlink" title="有效工作量证明 Proof of Useful Work"></a>有效工作量证明 Proof of Useful Work</h2><p>面对工作量证明造成的大量浪费，Cornell的Fan Zhang等学者希望可以更充分地利用CPU资源，因此在改进PoET算法的基础上提出了有效工作量证明算法，并根据有效工作量证明设计了名为REM（资源节约型挖矿）的系统。REM系统中有三类实体：区块链代理，一个或多个REM矿工，以及一个或多个有效工作客户。有效工作客户将需要计算的工作以PoUW任务的形式提供给REM矿工，矿工接受区块模板及PoUW工作后便执行有效工作指令，可以执行科学实验、药学研究等。<br>与PoW的完全去中心化不同的是，PoUW实现的是部分中心化(partially decentralized)。它依赖于Intel的SGX(Software Guard Extension)平台。SGX允许在隔离、免受干扰的环境中执行可信任代码，并且通过远程证明输出代表着执行结果。当然，这一切是基于SGX可信的基础。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ol>
-<li><a href="https://bitshuo.com/topic/58ad85b108d6a0f32a5bc045" target="_blank" rel="external">区块链共识机制浅谈</a></li>
-<li><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="external">Bitcoin: A Peer-to-Peer Electronic Cash System</a></li>
-<li><a href="https://intelledger.github.io/introduction.html#proof-of-elapsed-time-poet" target="_blank" rel="external">Introduction - Sawtooth latest documentation</a></li>
-<li><a href="https://arxiv.org/abs/1703.05435" target="_blank" rel="external">Proof of Luck: an Efficient Blockchain Consensus Protocol</a></li>
-<li><a href="https://eprint.iacr.org/2017/179.pdf" target="_blank" rel="external">REM: Resource-Efficient Mining for Blockchains</a></li>
-</ol>
-
-          
+          区块链的共识机制 Blockchain Consensus区块链如何在分布式场景下达成一致，关键便是共识机制。共识协议的稳定性和防攻击性保证了区块链的安全运行。现整理常见的共识机制，包括PoW工作量证明(Proof of Work)、PoET运行时间证明(Proof of Elapsed Time)
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/24/about-blockchain-consensus/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1240,6 +1140,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1258,9 +1189,15 @@
       
         
           
-            <p>霜降。<br>又到了这个平凡而又特殊的日子，转眼已经21岁了呐。不会矫情地慨叹“要奔三”等话语，只是轻道一句，时光太匆匆。<br>从紫金港到玉泉，从freshman到sophomore再到junior，从懵懂无知到懵懂依旧。只是像一只蜗牛罢，一步一步倔强地往上爬。这个学期算是加入了计院的系统安全与虚拟化的实验室，和同级的佼佼者、研究生、老师同处一室，感受到自己的渺小，不过也作出了自己的小小贡献，亦愈发迫切地渴望提高。区块链Blockchain，似曾相识而又陌生的分布式技术，在阅读了一篇篇论文后，方有了一定的了解。而接下来要构思的专利及论文，依然路漫漫。<br>进入大学后第一次获得了奖学金。虽然是凭借在团学联的学生工作获得的社会工作奖学金，而不是证明成绩的学业奖学金，不过知足啦。大三学年，争取在学业与创新方面都有所进步。已经浪了两年，望不再辜负自己。<br>QQ上的生日提示肆意传播，从一大早起便收到了来自认识的不认识的好友的生日祝福。相似的祝福语，虽然只是系统自动发送的祝福语，为沉寂的手机带来一丝振动，不会一个一个去回复，可能会带来双方的尴尬，不过还是谢谢啦。以及那些记得我生日的好孩子们，感谢认识你们，比心。❤<br>21岁，新的十年之始。愿不忘初心，砥砺前行。</p>
-
-          
+          霜降。又到了这个平凡而又特殊的日子，转眼已经21岁了呐。不会矫情地慨叹“要奔三”等话语，只是轻道一句，时光太匆匆。从紫金港到玉泉，从freshman到sophomore再到junior，从懵懂无知到懵懂依旧。只是像一只蜗牛罢，一步一步倔强地往上爬。这个学期算是加入了计院的系统安全与虚拟化的实验室，和
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/23/21-year-birthday-reflection/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1394,6 +1331,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1412,27 +1380,16 @@
       
         
           
-            <h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的<a href="https://www.youtube.com/watch?v=ZfjTV57N4yQ&amp;list=PLkGAai-LjzyMjXUmqq4xy3eILdNlA-BVN" target="_blank" rel="external">教程</a></p>
-<h3 id="Linux文件系统简介"><a href="#Linux文件系统简介" class="headerlink" title="Linux文件系统简介"></a>Linux文件系统简介</h3><p>Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令），比较直观清晰。</p>
-<h3 id="工作路径"><a href="#工作路径" class="headerlink" title="工作路径"></a>工作路径</h3><p>在Terminal下可以输入指令 <code>pwd</code> (print working directory)显示当前的工作路径（绝对路径）。<br>工作路径有两种：绝对路径与相对路径。绝对路径就是从根目录(root directory)<code>/</code>开始的路径，相对路径是从主目录(home directory)<code>~</code>开始的路径。一般情况下我们都可以使用相对路径来表示我们的工作路径。<br>另外，<code>.</code>表示当前路径，<code>..</code>表示上一级路径。</p>
-<hr>
-<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><p>cd: <em>change directory</em><br><code>cd 路径名</code>： 定位至目标目录<br><code>cd</code> 或<code>cd ~</code>： 定位至主目录<br><code>cd -</code> ： 返回至之前目录<br><code>cd ..</code>： 返回至父目录</p>
-<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>cat: <em>concatenate</em><br><code>cat 文件名</code>： 输出文件内容。注意对文件夹无法进行cat命令。<br><code>cat 文件名1 文件名2 ... 文件名n</code>： 输出多个文件内容</p>
-<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>ls: list<br><code>ls</code>： 列出所有非隐藏文件<br><code>ls -1</code>： 以单列的形式列出所有非隐藏文件。（即一行只显示一个文件/文件夹）<br><code>ls -l</code>： 列出所有非隐藏文件，包含更多信息：包括文件大小、是否为文件夹、<br><code>ls -a</code>： 列出所有文件，包括隐藏文件。（文件名以.开头的都是隐藏文件/隐藏文件夹）<br><code>ls -rt</code>： 按照时间修改顺序倒序显示文件<br><code>ls -</code>后面的指令可以配合使用，例如<code>ls -alrt</code>便是以倒序显示所有文件，并且包含更多详细信息。</p>
-<h2 id="pushd-popd"><a href="#pushd-popd" class="headerlink" title="pushd / popd"></a>pushd / popd</h2><p>pushd: <em>push directory</em><br>popd: <em>pop directory</em><br>在Terminal中，经过几次cd改变路径后，有没有什么快速跳转至之前某一路径的快捷指令呢？答案就是使用<code>pushd</code>和<code>popd</code>指令，利用压栈和出栈的思想实现快速跳转。<br>具体使用方法：<br><code>pushd 新路径</code>： 对当前路径进行压栈操作，然后跳转至新路径<br><code>popd</code>： 跳转至栈顶路径<br>举例：<br>假设当前我的路径为<strong>~/Documents</strong>，使用指令<code>pushd ../Downloads</code>后，栈中保存的路径为<strong>~/Documents</strong>，而我的路径跳转到了主目录下的Downloads文件夹。此时使用指令<code>popd</code>便可以跳转至栈顶路径，即<strong>~/Documents</strong>。</p>
-<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man: <em>manual</em><br><code>man 指令名</code>： 查看对应命令的指导手册<br>例如：<code>man ls</code>，便可以查看完整的ls指令。<br>进入指导手册后，还可以进行一些操作：<br>可以通过上下方向键，或者J和K进行文本的浏览。<br>使用<code>/查找内容</code>指令可以查找特定内容。<br>    在查找时按下n（即键盘上的N键）可以查找下一处，按下N（即shift和N一起按）可以查找上一处。<br>按下Q即退出指导手册。</p>
-<p><code>man -k 关键词</code>： 显示所有指导手册中带有关键词的指令。<br>例如： <code>man -k printf</code>： 我们会发现，除了printf外，还有许多长得类似的指令。同时macOS与Ubuntu上显示的指令是不一样的。<br>Linux only：在Ubuntu下有printf(1)和printf(3)两条名称相同的指令，其中printf(1)是UNIX的系统指令，而printf(3)即是我们熟悉的C语言中的输出指令。可以通过指令<code>man 3 printf</code>查看C语言的printf手册。所以我们在Linux下使用<code>man</code>也可以查看C语言的手册。</p>
-<h2 id="cp-mv"><a href="#cp-mv" class="headerlink" title="cp / mv"></a>cp / mv</h2><p>cp: <em>copy</em><br>mv: <em>move</em><br><code>cp 源文件 新路径</code>： 复制源文件至新路径下，如果新路径原先不存在，则会自动生成对应路径（即文件夹）。<br><code>cp -r 源文件夹 新路径</code>： 复制文件夹至新路径下。-r 表示recursive即递归，表示将源文件夹下的所有文件都复制，即实现了整个文件夹的复制。<br>注意新路径下如果存在与源文件同名的文件，则直接会被覆盖。</p>
-<p><code>mv</code>的用法与<code>cp</code>基本一样。不过对文件夹进行操作时无需使用<code>-r</code>命令。</p>
-<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><p>rm: <em>remove</em><br><code>rm 文件</code><br><code>rm -r 文件夹</code><br>注意<code>rm</code>操作会直接删除对应文件/文件夹，而不存在回收站之类的东西（虽然可以有backup，但是……我不会）。所以在执行rm操作时需谨慎。</p>
-<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p><code>grep &quot;关键字&quot; 文件名</code>： 列出文件中所有包含pattern的行</p>
-<p>关键字中有两个特殊的字符，.和<em>。<br><code>.</code>可以代表任一字符<br>`</em><code>表示*前面的字符可以连续出现任意次数（包括0次）。
-例如：</code>grep “dif*” demo.txt`中，会将包含di、dif、diff的所有行都列出来。</p>
-<p>配合正则表达式，<code>grep</code>可以实现高效的查找。这里仅举几个例子供参考：<br><code>grep &quot;[ab]e&quot; fileName</code>： 查找所有包含ae或者be的行<br><code>grep &quot;^A&quot; fileName</code>： 列出所有以A开头的行<br><code>grep &quot;^B&quot; fileName</code>： 列出所有以B结尾的行<br>具体的可以使用<code>man grep</code>指令查看手册或者网上搜寻正则表达式的相关教程。</p>
-<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p><code>find . -name 文件名</code>： 在当前路径下（包括当前路径的子路径）寻找对应文件<br>与<code>grep</code>命令稍有不同，在<code>find</code>命令下使用<code>*</code>可以表示任意字符。<br><code>find . -type d</code>： 在当前路径下寻找所有文件夹</p>
-<h2 id="ctrl-C"><a href="#ctrl-C" class="headerlink" title="ctrl+C"></a>ctrl+C</h2><p>中断当前正在执行的指令</p>
-
-          
+          Foreword现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的教程
+Linux文件系统简介Linux的文件系统可以用数据结
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/21/linuxCommands/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1566,6 +1523,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1584,25 +1572,15 @@
       
         
           
-            <h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>一些功能及其对应的符号：<br>⌘：command<br>    其功能与Windows系统下的Ctrl类似，例如command+C对应Windows下的Ctrl+C等。<br>⌥：option<br>    一般情况下需与其他功能键配合使用；在输入文字时option+字母可以快捷输入各种符号。<br>⌃：control<br>    注意不要与Windows的Ctrl混淆。<br>⇧：shift<br>    通常配合command一起使用。<br>⇪：caps lock<br>    用于切换大小写、中英文输入法，符号与shift相似，不过在后面的快捷键中不会用到该键位。</p>
-<h2 id="系统常用快捷键"><a href="#系统常用快捷键" class="headerlink" title="系统常用快捷键"></a>系统常用快捷键</h2><p>下面列举的快捷键在macOS系统下的大部分软件内都可以操作，非常实用。一些快捷键如果有记忆方式我会在括号中标注~<br><code>⌘ C</code>：复制<br><code>⌘ V</code>：粘贴<br><code>⌘ X</code>：剪切<br>注意在Finder中无法使用⌘ X对文件进行剪切操作。如果需要对文件进行剪切操作，则应对文件使用<code>⌘ C</code>后，在需要粘贴的地方使用快捷键<code>⌥ ⌘ V</code>即可实现剪切与粘贴的操作。<br><code>⌘ Z</code>：撤销</p>
-<p><code>⌘ A</code>(command all)：全选<br><code>⌘ S</code>(command save)：保存<br><code>⌘ F</code>(command find)：查找<br>查找一般是查找某些文字。在Finder中进行查找时，会找出所有包含对应关键字的文件。</p>
-<p><code>⌘ H</code>(command hide)：隐藏当前应用的所有窗口<br><code>⌘ M</code>(command minimize)：最小化当前窗口<br>关于隐藏和最小化，看上去差不多不过还是有一些不同的。比如打开了多个Word文档，⌘ H会把所有的Word文档都隐藏，而⌘ M只会将最前面的一个Word最小化。另外，被隐藏的应用可以通过⌘ tab进行切换，而被最小化的应用无法直接通过⌘ tab进行切换（下文会提到）。</p>
-<p><code>⌘ tab</code>：切换应用<br>按下⌘ tab后，继续按住command键，可以看到所有当前正在运行的应用程序。然后按tab便可以在不同的应用之间切换。注意无法直接切换到被最小化的程序，需要用到下面这条比较复杂的快捷键。<br><code>⌘ tab ⌥</code>：切换至最小化的程序<br>使用方法：按下⌘ tab，调出当前运行的程序后，一直按住⌘ command，按tab将光标定位到想要切换的程序，松开tab，按下⌥ option键，即可切换至最小化的应用程序。<br><code>⌘ ~</code>：同一程序不同窗口间切换<br>有时可能会打开同一应用程序的多个窗口。还是以打开多个Word文档为例：需要在不同文档间切换时就可以使用该快捷键。~对应的就是数字键1左边、tab上面的那一颗按键。</p>
-<p><code>⌘ Q</code>(command quit)：退出应用<br><code>⌘ W</code>(command window)：关闭当前窗口<br>⌘ Q是将整个应用程序退出，同时不再占用任何进程资源；而⌘ W则只是将程序的一个窗口关闭。（可能有点难懂，还是以打开多个Word文档为例：⌘ Q是将所有窗口的关闭，同时Word本身的进程也退出了；而⌘ W则只是关闭其中的一个文档，其他文档不受印象。）</p>
-<p><code>⌘ O</code>(command open)：打开<br><code>⌘ N</code>(command new)：新建</p>
-<p><code>⌘ ,</code>：偏好设置<br>很多应用程序都会有偏好设置，可以在里面对该程序进行一些设置。<br><code>⌘ space</code>：切换输入法<br><code>⌃ space</code>：调用spotlight<br>注意切换输入法不是Windows上的Ctrl+Shift，在macOS上是⌘ space（space即空格）。注意有可能部分机器上切换输入法和调用spotlight的快捷键正好相反。</p>
-<p><code>⇧ ⌘ 3</code>：全屏幕截图<br><code>⇧ ⌘ 4</code>：选中区域截图<br>macOS自带的截图快捷键，默认保存格式为PNG。</p>
-<p><code>⌃ ⌘ space</code>：输入Emoji表情<br>在需要输入Emoji的地方使用快捷键⌃ ⌘ space就可以输入各种Emoji表情啦~</p>
-<h2 id="浏览器常用快捷键（以Safari为例）"><a href="#浏览器常用快捷键（以Safari为例）" class="headerlink" title="浏览器常用快捷键（以Safari为例）"></a>浏览器常用快捷键（以Safari为例）</h2><p><code>⌘ T</code>(command tab)：新建标签页<br><code>⌘ W</code>(command window)：关闭标签页<br><code>⇧ ⌘ ←</code>：切换到前一个标签页<br><code>⇧ ⌘ →</code>：切换到后一个标签页<br><code>⌘ 1~9</code>：切换到第1~9个标签页<br>上述快捷键不只是局限于浏览器，另外一些带有标签页的软件也都可以使用其中的部分或全部快捷键，例如PDF Expert等。</p>
-<p><code>⌘ R</code>(command refresh)：刷新<br>⌘ ←：后退<br>⌘ →：前进<br>在网页浏览时最常用到的几个快捷键</p>
-<p><code>⌘ L</code>(command link)：编辑地址栏的地址<br><code>⇧ ⌘ L</code>：显示边栏<br><code>⌘ D</code>：添加书签<br><code>⇧ ⌘ D</code>：添加到阅读列表</p>
-<h2 id="文档处理常用快捷键（以Word为例）"><a href="#文档处理常用快捷键（以Word为例）" class="headerlink" title="文档处理常用快捷键（以Word为例）"></a>文档处理常用快捷键（以Word为例）</h2><p><code>⌘ B</code>(command bold)：加粗<br><code>⌘ I</code>(command italic)：斜体<br><code>⌘ U</code>(command underline)：下划线<br>这三个快捷键在Word的工具栏中分别对应<strong>B*</strong>I*<em>U</em>三个选项。</p>
-<p><code>⌘ ←</code>：光标定位至当前行的行首<br><code>⌘ →</code>：光标定位至当前行的行尾<br><code>⌘ ↑</code>：光标定位至当前段的段首<br><code>⌘ ↓</code>：光标定位至当前段的段尾<br><code>⇧ ←</code>：选中光标左边的单个字符<br><code>⇧ →</code>：选中光标右边的单个字符<br>通过⌘和⇧ 的配合使用可以快速选择多个字符</p>
-<p><code>⌥ 1~9 A~Z</code>：输入一些字符</p>
-<h2 id="CheatSheet介绍"><a href="#CheatSheet介绍" class="headerlink" title="CheatSheet介绍"></a>CheatSheet介绍</h2><p>当然，macOS的快捷键远不止此，上述介绍的只是常用的快捷键。还有一些快捷键可以在Apple的<a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">官网</a>查看。另外在此推荐一款快捷键软件：<br>CheatSheet是一款查看快捷键的软件，可以访问其<a href="https://www.mediaatelier.com/CheatSheet/" target="_blank" rel="external">官网</a>免费下载。在安装后只需要长按⌘ 便可查看当前软件的（几乎）全部快捷键。</p>
-
-          
+          Foreword一些功能及其对应的符号：⌘：command    其功能与Windows系统下的Ctrl类似，例如command+C对应Windows下的Ctrl+C等。⌥：option    一般情况下需与其他功能键配合使用；在输入文字时option+字母可以快捷输入各种符号。⌃：control 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/20/macOS-shortcuts/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1736,6 +1714,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1754,17 +1763,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/18/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
