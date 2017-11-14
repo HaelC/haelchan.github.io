@@ -91,7 +91,8 @@
 <meta property="og:image" content="http://haelchan.me/images/ML/sigmoidFunction.jpg">
 <meta property="og:image" content="http://haelchan.me/images/ML/linearOverfit.jpg">
 <meta property="og:image" content="http://haelchan.me/images/ML/logisticOverfit.jpg">
-<meta property="og:updated_time" content="2017-11-14T09:42:01.000Z">
+<meta property="og:image" content="http://haelchan.me/images/ML/neuralEX.jpg">
+<meta property="og:updated_time" content="2017-11-14T11:46:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn fr">
@@ -337,7 +338,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T17:42:01+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-14T19:46:46+08:00">
                 2017-11-14
               </time>
             
@@ -413,7 +414,7 @@
 <li>Clustering</li>
 <li>Non-clustering</li>
 </ul>
-<h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>: “input” variable / features<br><strong>y</strong>: “output” variable / “target” variable<br><strong>(x^{(i)},y^{(i)})</strong> : ith training example: Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. (Sorry there’s something wrong with the LaTex syntax, so I can’t display it correctly)</p>
+<h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>: “input” variable / features<br><strong>y</strong>: “output” variable / “target” variable<br>-<strong><script type="math/tex">(x^{(i)},y^{(i)})</script></strong> : ith training example: Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. (Sorry there’s something wrong with the LaTex syntax, so I can’t display it correctly)</p>
 <h4 id="Hypothesis-Function-and-Cost-Function"><a href="#Hypothesis-Function-and-Cost-Function" class="headerlink" title="Hypothesis Function and Cost Function"></a>Hypothesis Function and Cost Function</h4><p>A slightly more formal description of supervised learning problem is that given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis.</p>
 <p><img src="images/ML/figure1.png" alt=""></p>
 <p>In this example of linear regression with one variable, the <strong>hypothesis function</strong> can be denoted as </p>
@@ -442,11 +443,9 @@
 <script type="math/tex; mode=display">A\times A^{-1}=A^{-1}\times A=I</script><p>Matrices that don’t have an inverse are <em>singular</em> or <em>degenerate</em>.</p>
 <p><strong>Matrix Transpose</strong><br>Let A be an m×n matrix, and let <script type="math/tex">B=A^T</script>. Then B is an n×m matrix, and</p>
 <script type="math/tex; mode=display">B_{ij}=A_{ji}</script><h2 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h2><h3 id="Multivariate-Linear-Regression"><a href="#Multivariate-Linear-Regression" class="headerlink" title="Multivariate Linear Regression"></a>Multivariate Linear Regression</h3><h4 id="from-one-variable-to-multiple-variables"><a href="#from-one-variable-to-multiple-variables" class="headerlink" title="from one variable to multiple variables"></a>from one variable to multiple variables</h4><p>In the first week’s course, we learned linear with one variable <em>x</em>, and the hypothesis could be <script type="math/tex">h_{\theta}(x)=\theta_0+\theta_1x</script>. As a matter of fact, there can be more than one variables. So here’re the new notations:<br><strong>m</strong>: the number of training examples<br><strong>n</strong>: the number of features</p>
-<script type="math/tex; mode=display">x^{(i)}$$: input (features) of ith training example
-$$x_j^{(i)}$$: value of feature j in ith training example
-
-The hypothesis should be transformed to:
-$$h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n</script><p>(for convenience of notation, we define x0=1).<br>Using the definition of matrix multiplication, our multivariable hypothesis function can be concisely represented as:</p>
+<p>-<script type="math/tex">x^{(i)}</script> : input (features) of ith training example<br>-<script type="math/tex">x_j^{(i)}</script> : value of feature j in ith training example</p>
+<p>The hypothesis should be transformed to:</p>
+<script type="math/tex; mode=display">h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n</script><p>(for convenience of notation, we define x0=1).<br>Using the definition of matrix multiplication, our multivariable hypothesis function can be concisely represented as:</p>
 <script type="math/tex; mode=display">h_{\theta}(x)=\begin{bmatrix}\theta_0&\theta_1&...&\theta_n\end{bmatrix}\begin{bmatrix}x_0\\x_1\\...\\x_n\end{bmatrix}=\theta^Tx</script><p>We can see that linear regression with one variable is just the special case when n=1.</p>
 <p>Similarly, the new gradient descent algorithm would be represented as:<br>repeat until convergence{</p>
 <script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)})x_j^{(i)}\ \ (simultaneously\ update\ \theta_j\ for\ j=0,...,n)</script><p>}</p>
@@ -516,21 +515,18 @@ $$h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n<
 <p><code>rand(ROW, COLUMN)</code><br><code>rand</code> generates random numbers from the standard uniform distribution (0,1)<br><code>randn</code> generates random numbers from standard normal distribution.</p>
 <p><code>eye(ROW)</code><br>(Eye is maybe a pun on the word identity.) Create a ROW by ROW identity matrix.</p>
 <h2 id="Week-Three"><a href="#Week-Three" class="headerlink" title="Week Three"></a>Week Three</h2><h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><p><strong>Binary Classification</strong><br>The output y can take only two values, 0 and 1. Thus, y∈{0,1}, where the value 0 represents negative class and the value 1 represents positive class. It’s not advisable to use linear regression to represent the hypothesis. It’s logistic regression that has a range of (0,1).</p>
-<p><strong>Multiclass Classification:One-vs-all</strong><br>Train a logistic regression classifier <script type="math/tex">h_\theta^{(i)}(x)</script> for each class <em>i</em> to predict the probability that <em>y = i</em>.<br>On a new input <em>x</em>, to make a prediction, pick the class <em>i</em> that maximizes<script type="math/tex">h_\theta(x)</script>.</p>
+<p><strong>Multiclass Classification:One-vs-all</strong><br>Train a logistic regression classifier <script type="math/tex">h_\theta^{(i)}(x)</script> for each class <em>i</em> to predict the probability that <em>y = i</em>.<br>On a new input <em>x</em>, to make a prediction, pick the class <em>i</em> that maximizes <script type="math/tex">h_\theta(x)</script>.</p>
 <h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}</script><p>The function is called <strong>sigmoid function</strong> or <strong>logistic function</strong>, and the function image is as shown below:</p>
 <p><img src="\images\ML\sigmoidFunction.jpg" alt=""></p>
 <p><strong>What is the interpretation of hypothesis output?</strong></p>
-<script type="math/tex; mode=display">h_\theta(x)$$  estimated probability that y = 1, given x, parameterized by θ. In mathematical formula it can be denoted as 
-
-$$h_\theta(x)=P(y=1|x;\theta)</script><p>Using probability theory knowledge, we can also know that</p>
+<p>-<script type="math/tex">h_\theta(x)</script>  estimated probability that y = 1, given x, parameterized by θ. In mathematical formula it can be denoted as </p>
+<script type="math/tex; mode=display">h_\theta(x)=P(y=1|x;\theta)</script><p>Using probability theory knowledge, we can also know that</p>
 <script type="math/tex; mode=display">P(y=0|x;\theta)+P(y=1|x;\theta)=1</script><p><strong>Decision Boundary</strong><br>Suppose predict “y=1” if <script type="math/tex">h_\theta(x)>=0.5</script>, and predict “y=0” if <script type="math/tex">h_\theta(x)<0.5</script>.<br>That is equal to</p>
 <script type="math/tex; mode=display">\theta^TX\ge0\ \ =>\ \ y=1</script><script type="math/tex; mode=display">\theta^TX<0\ \ =>\ \ y=0</script><h4 id="Cost-function-and-Gradient-Descent"><a href="#Cost-function-and-Gradient-Descent" class="headerlink" title="Cost function and Gradient Descent"></a>Cost function and Gradient Descent</h4><p>Cost function in logistic regression is different from that in linear regression.</p>
 <script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)})</script><script type="math/tex; mode=display">Cost(h_\theta(x^{(i)},y^{(i)})=-y\cdot log(h_\theta(x))-(1-y)\cdot log(1-h_\theta(x))</script><p>that means:</p>
-<script type="math/tex; mode=display">Cost(h_\theta(x^{(i)},y^{(i)})=-log(h_\theta(x))$$    if y = 1;
-$$Cost(h_\theta(x^{(i)},y^{(i)})=-log(1-h_\theta(x))$$   if y = 0.
-
-Vectorized implementation of cost function:
-$$h=g(X\theta)</script><script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\cdot (-y^Tlog(h)-(1-y)^Tlog(1-h))</script><p><strong>Gradient Descent</strong>:</p>
+<p>-<script type="math/tex">Cost(h_\theta(x^{(i)},y^{(i)})=-log(h_\theta(x))</script>    if y = 1;<br>-<script type="math/tex">Cost(h_\theta(x^{(i)},y^{(i)})=-log(1-h_\theta(x))</script>   if y = 0.</p>
+<p>Vectorized implementation of cost function:</p>
+<script type="math/tex; mode=display">h=g(X\theta)</script><script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\cdot (-y^Tlog(h)-(1-y)^Tlog(1-h))</script><p><strong>Gradient Descent</strong>:</p>
 <p>repeat {</p>
 <script type="math/tex; mode=display">\theta_j:=\theta_j-\frac{\alpha}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><p>}</p>
 <p>Vectorized implementation of gradient descent:</p>
@@ -556,18 +552,12 @@ $$h=g(X\theta)</script><script type="math/tex; mode=display">J(\theta)=\frac{1}{
 <h4 id="Regularized-Logical-Regression"><a href="#Regularized-Logical-Regression" class="headerlink" title="Regularized Logical Regression"></a>Regularized Logical Regression</h4><p><strong>Gradient Descent:</strong><br>Repeat {</p>
 <script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}</script><script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha[(\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)})+\frac{\lambda}{m}\theta_j]\ \ \ \ (j=1,2,3,...,n)</script><p>}</p>
 <h2 id="Week-Four"><a href="#Week-Four" class="headerlink" title="Week Four"></a>Week Four</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><p>At a very  At a very simple level, neurons are basically computational units that take inputs (<strong>dendrites</strong>) as electrical inputs (called “spikes”) that are channeled to outputs (<strong>axons</strong>). In our model, our dendrites are like the input features x1⋯xn, and the output is the result of our hypothesis function. In this model our x0 input node is sometimes called the “bias unit.” It is always equal to 1. In neural networks, we use the same logistic function as in classification, <script type="math/tex">\frac{1}{1+e^{-\theta^TX}}</script>, yet we sometimes call it a sigmoid (logistic) activation function. In this situation, our “theta” parameters are sometimes called “weights”.<br>There’re several layers in the neural network. The first layer is called <strong>Input Layer</strong>, the last layer is called <strong>Output Layer</strong>, and the others is called <strong>Hidden Layer</strong>. </p>
-<p><strong>Notations:</strong></p>
-<script type="math/tex; mode=display">a_i^{(j)}$$ = "activation" of unit i in layer j
-$$\Theta^{(j)}$$ = matrix of weights controlling function mapping from layer j to layer j+1
-
-In a simple example like this:
-![](/images/ML/neuralEX.jpg)
-
-we have some equations:
-$$a_1^{(2)}=g(\Theta_{10}^{(1)}x_0+\Theta_{11}^{(1)}x_1+\Theta_{12}^{(1)}x_2+\Theta_{13}^{(1)}x_3)</script><script type="math/tex; mode=display">a_2^{(2)}=g(\Theta_{20}^{(1)}x_0+\Theta_{21}^{(1)}x_1+\Theta_{22}^{(1)}x_2+\Theta_{23}^{(1)}x_3)</script><script type="math/tex; mode=display">a_3^{(2)}=g(\Theta_{30}^{(1)}x_0+\Theta_{31}^{(1)}x_1+\Theta_{32}^{(1)}x_2+\Theta_{33}^{(1)}x_3)</script><script type="math/tex; mode=display">h_\Theta(x)=a_1^{(3)}=g(\Theta_{10}^{(2)}a_0^{(2)}+\Theta_{11}^{(2)}a_1^{(2)}+\Theta_{12}^{(2)}a_2^{(2)}+\Theta_{13}^{(3)}a_3^{(2)})</script><p>If network has <script type="math/tex">s_j</script> units in layer <em>j</em>, <script type="math/tex">s_{j+1}</script> units in layer <em>j+1</em>, then <script type="math/tex">\Theta^{(j)}</script> will be of dimension <script type="math/tex">s_{j+1}\times (s_j+1)</script>.</p>
-<p>Vectorized Implementation:</p>
-<script type="math/tex; mode=display">z^{(2)}=\Theta^{(1)}a^{(1)}$$  (regard the input layer as $$a^{(1)}$$)
-$$a^{(2)}=g(z^{(2)})</script><p>Add <script type="math/tex">a_0^{(2)}=1</script>    (add the bias unit)</p>
+<p><strong>Notations:</strong><br>-<script type="math/tex">a_i^{(j)}</script> = “activation” of unit i in layer j<br>-<script type="math/tex">\Theta^{(j)}</script> = matrix of weights controlling function mapping from layer j to layer j+1</p>
+<p>In a simple example like this:<br><img src="/images/ML/neuralEX.jpg" alt=""></p>
+<p>we have some equations:</p>
+<script type="math/tex; mode=display">a_1^{(2)}=g(\Theta_{10}^{(1)}x_0+\Theta_{11}^{(1)}x_1+\Theta_{12}^{(1)}x_2+\Theta_{13}^{(1)}x_3)</script><script type="math/tex; mode=display">a_2^{(2)}=g(\Theta_{20}^{(1)}x_0+\Theta_{21}^{(1)}x_1+\Theta_{22}^{(1)}x_2+\Theta_{23}^{(1)}x_3)</script><script type="math/tex; mode=display">a_3^{(2)}=g(\Theta_{30}^{(1)}x_0+\Theta_{31}^{(1)}x_1+\Theta_{32}^{(1)}x_2+\Theta_{33}^{(1)}x_3)</script><script type="math/tex; mode=display">h_\Theta(x)=a_1^{(3)}=g(\Theta_{10}^{(2)}a_0^{(2)}+\Theta_{11}^{(2)}a_1^{(2)}+\Theta_{12}^{(2)}a_2^{(2)}+\Theta_{13}^{(3)}a_3^{(2)})</script><p>If network has <script type="math/tex">s_j</script> units in layer <em>j</em>, <script type="math/tex">s_{j+1}</script> units in layer <em>j+1</em>, then <script type="math/tex">\Theta^{(j)}</script> will be of dimension <script type="math/tex">s_{j+1}\times (s_j+1)</script>.</p>
+<p>Vectorized Implementation:<br>-<script type="math/tex">z^{(2)}=\Theta^{(1)}a^{(1)}</script>  (regard the input layer as <script type="math/tex">a^{(1)}</script>)</p>
+<script type="math/tex; mode=display">a^{(2)}=g(z^{(2)})</script><p>Add <script type="math/tex">a_0^{(2)}=1</script>    (add the bias unit)</p>
 <script type="math/tex; mode=display">z^{(3)}=\Theta^{(2)}a^{(2)}</script><script type="math/tex; mode=display">h_\Theta(x)=a^{(3)}=g(z^{(3)})</script>
       
     </div>
@@ -579,6 +569,24 @@ $$a^{(2)}=g(z^{(2)})</script><p>Add <script type="math/tex">a_0^{(2)}=1</script>
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Hael Chan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://haelchan.me/2017/11/01/machine-learning-note/" title="Machine Learning Note">http://haelchan.me/2017/11/01/machine-learning-note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
