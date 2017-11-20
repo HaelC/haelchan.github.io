@@ -88,7 +88,7 @@
 <meta property="og:description" content="以前一直不是很喜欢MATLAB。（数据都是矩阵化，运算还必须保持矩阵维度的一致；非类C的语法格式；在不喜欢的实验课上使用……）不过随着学习的深入，发现MATLAB真的很强大很实用：这个学期的数字信号处理、大作业要用到的数字图像处理、电子商务系统中Item-based CF算法的数据分析、Coursera上的机器学习，这些课程都用到了MATLAB，再加上浙大十月份刚刚购入了MATLAB的正版许可证，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/images/MATLAB/matlabDesktop.jpg">
-<meta property="og:updated_time" content="2017-11-20T07:49:03.000Z">
+<meta property="og:updated_time" content="2017-11-20T08:30:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MATLAB整理">
 <meta name="twitter:description" content="以前一直不是很喜欢MATLAB。（数据都是矩阵化，运算还必须保持矩阵维度的一致；非类C的语法格式；在不喜欢的实验课上使用……）不过随着学习的深入，发现MATLAB真的很强大很实用：这个学期的数字信号处理、大作业要用到的数字图像处理、电子商务系统中Item-based CF算法的数据分析、Coursera上的机器学习，这些课程都用到了MATLAB，再加上浙大十月份刚刚购入了MATLAB的正版许可证，">
@@ -334,7 +334,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-20T15:49:03+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-20T16:30:01+08:00">
                 2017-11-20
               </time>
             
@@ -408,6 +408,11 @@
 <p><strong>矩阵乘法与按位乘法</strong><br>矩阵乘法的话一般可分为两种：矩阵与纯量的乘法，以及矩阵与矩阵的乘法。这两种乘法都是用运算符<code>*</code>实现。如<code>2 * [1 2 3] = [2 4 6]</code>，以及<code>[1,2;3,4] * [1;1] = [3;7]</code>等。<br>有时两个矩阵的维度相同，可能无法进行矩阵的乘法运算。不过，正如之前介绍的，MATLAB还支持一种按元素运算(element-wise)，运算符为<code>.*</code>。如<code>[1,2,3] .* [2,3,4] = [2,6,12]</code>。</p>
 <p><strong>矩阵最大值</strong><br><code>max(X)</code>：若X为向量，则返回该向量中的最大值；若X为矩阵，则返回一个行向量，每一个元素对应该列的最大值。如<code>max([1,3,5;2,3,4])=[2,3,5]</code>。<br><code>[m,i]=max(X)</code>：除返回最大值外，还会返回最大值的索引。</p>
 <p><strong>矩阵求和</strong><br><code>sum(x)</code>：列求和<br><code>sum(x,2)</code>：行求和<br><code>sum(x(:))</code>：矩阵求和</p>
+<h4 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h4><p><code>&amp; |</code><br><code>&amp;</code>条件与，<code>|</code>条件或，注意和C语言中的<code>&amp;&amp;</code>，<code>||</code>不一样。同时也可以使用<code>and</code>和<code>or</code>指令实现相同作用。</p>
+<p>for循环一般用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for i = 1:n</div><div class="line">  ...</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>if条件判断：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ...</div><div class="line">elseif ...</div><div class="line">else ...</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>switch多重判断：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">switch</div><div class="line">  case 1</div><div class="line">    ...</div><div class="line">  otherwise</div><div class="line">    ...</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>用法与C类似，就是注意一下语法有所不同。</p>
 <h4 id="其他常用指令"><a href="#其他常用指令" class="headerlink" title="其他常用指令"></a>其他常用指令</h4><p><strong>注释</strong><br><code>%</code>：百分号后的内容均视为注释内容。类似于类C中的<code>//</code></p>
 <p><strong>清除指令</strong><br><code>clear</code>：清除工作区变量<br><code>clc</code>：清除命令行窗口所有指令<br><code>close all</code>：关闭所有绘图窗口</p>
 <p><strong>保存载入</strong><br><code>save</code>：保存数据为.mat文件<br><code>load</code>：导入.mat文件中的数据<br>（没怎么使用过……）</p>
@@ -646,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本"><span class="nav-number">1.</span> <span class="nav-text">基本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB语言与C语言的不同"><span class="nav-number">1.1.</span> <span class="nav-text">MATLAB语言与C语言的不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB桌面版简介"><span class="nav-number">1.2.</span> <span class="nav-text">MATLAB桌面版简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本指令"><span class="nav-number">1.3.</span> <span class="nav-text">基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#帮助函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">帮助函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单赋值"><span class="nav-number">1.3.2.</span> <span class="nav-text">简单赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.3.3.</span> <span class="nav-text">,;:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵化运算"><span class="nav-number">1.3.4.</span> <span class="nav-text">矩阵化运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他常用指令"><span class="nav-number">1.3.5.</span> <span class="nav-text">其他常用指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘图指令"><span class="nav-number">1.4.</span> <span class="nav-text">绘图指令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本"><span class="nav-number">1.</span> <span class="nav-text">基本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB语言与C语言的不同"><span class="nav-number">1.1.</span> <span class="nav-text">MATLAB语言与C语言的不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB桌面版简介"><span class="nav-number">1.2.</span> <span class="nav-text">MATLAB桌面版简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本指令"><span class="nav-number">1.3.</span> <span class="nav-text">基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#帮助函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">帮助函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单赋值"><span class="nav-number">1.3.2.</span> <span class="nav-text">简单赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.3.3.</span> <span class="nav-text">,;:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵化运算"><span class="nav-number">1.3.4.</span> <span class="nav-text">矩阵化运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件语句"><span class="nav-number">1.3.5.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他常用指令"><span class="nav-number">1.3.6.</span> <span class="nav-text">其他常用指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘图指令"><span class="nav-number">1.4.</span> <span class="nav-text">绘图指令</span></a></li></ol></li></ol></div>
             
 
           </div>
