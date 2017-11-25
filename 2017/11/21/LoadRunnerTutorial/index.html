@@ -1,0 +1,15 @@
+<p>电子商务课程的实验上要使用Load Runner进行性能和压力测试。不过Load Runner还算是一款比较小众的软件吧，网上并没有很多的资料，尤其是最新版本的12.x（如我正在使用的是12.55版本）。不过HPE的官方有Load Runner的<a href="http://lrhelp.saas.hpe.com/en/latest/help/WebHelp/Content/Tutorial/Introducing_LoadRunner.htm" target="_blank" rel="external">教程</a>，就在此当一下翻译将原英文教程翻译一下。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>LoadRunner提供的负载测试可以测试各种应用的性能，以及在应用上线前发现并解决问题。</p>
+<h3 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h3><p><strong>Virtual User Generator</strong>(VuGen)<br>捕捉终端用户业务流程，建立自动化性能测试脚本，也称为Vuser脚本。</p>
+<p><strong>Controller</strong><br>组织、驱动、管理、监视负载测试。</p>
+<p><strong>Analysis</strong><br>帮助查看、分析与比较负载测试的结果。</p>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><p><strong>事务(Transaction)</strong>：事务是用来衡量系统的性能。事务是一系列代表典型应用活动的终端用户行为。比如：登录，导航至搜索框，输入搜索字符串，点击搜索按钮，退出。<br><strong>业务流程(Business Process)</strong>：应用中代表用例或者业务功能的一系列步骤。其包括一个或多个事务。比如：搜索产品目录，预定航班，或提交订单。<br><strong>场景(Scenario)</strong>：业务流程的集合。根据性能需要，在测试会话过程中发生的事件即为场景。比如：一个场景可能包括了“建立新账户”、“搜索航班”以及“购买机票”的业务流程。<br><strong>虚拟用户(Virtual Users or Vusers)</strong>：虚拟用户在你的系统中模拟实际用户的操作。一个场景可以包括数十、数百甚至数千个虚拟用户。<br><strong>虚拟用户脚本(Vuser Script)</strong>：业务流程的记录操作。<br><strong>协议(Protocol)</strong>：客户端与服务器之间通讯的方式。<br><strong>脚本空间(Script footprint)</strong>：执行虚拟用户脚本所需要的不同压力生成器资源数量。典型的资源包括内存，CPU处理器和磁盘空间。</p>
+<h3 id="测试过程"><a href="#测试过程" class="headerlink" title="测试过程"></a>测试过程</h3><ol>
+<li><strong>计划负载测试。</strong>定义性能测试需求，比如并行用户数，典型业务流程，所需响应时间等。</li>
+<li><strong>创建虚拟用户脚本。</strong>利用VuGen将终端用户行为捕获至自动化脚本。</li>
+<li><strong>定义场景。</strong>利用Controller设置负载测试环境。</li>
+<li><strong>运行场景。</strong>使用Controller驱动、管理及监视负载测试。</li>
+<li><strong>分析结果。</strong>使用LoadRunner Analysis创建图像和报告，评估系统性能。</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>LoadRunner提供了一个Web Tour的示例。<a href="https://marketplace.saas.hpe.com/appdelivery/content/web-tours-sample-application" target="_blank" rel="external">下载地址</a>为了使Web Tours正常运行，需安装Strawberry Perl。不过其官方提供的压缩包中的Strawberry Perl安装文件是损坏的，建议到<a href="http://strawberryperl.com/releases.html" target="_blank" rel="external">Strawberry Perl官网</a>上进行下载对应的5.10.1.0版本。</p>
+<p>解压WebTours.zip，双击执行其中的StartServer.bat<br>打开Virtual User Generator，点击Add New Script(File&gt;New Script and Solution),协议选择Web-HTTP/HTML，创建一个空白的Vuser脚本。<br>为了使VuGen记录你在Web Tours中的操作，需点击Record&gt;Recording Options，选择General下的Script，勾选Track processes created as COM local servers。</p>
