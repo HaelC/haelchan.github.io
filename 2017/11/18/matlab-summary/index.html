@@ -88,7 +88,7 @@
 <meta property="og:description" content="以前一直不是很喜欢MATLAB。（数据都是矩阵化，运算还必须保持矩阵维度的一致；非类C的语法格式；在不喜欢的实验课上使用……）不过随着学习的深入，发现MATLAB真的很强大很实用：这个学期的数字信号处理、大作业要用到的数字图像处理、电子商务系统中Item-based CF算法的数据分析、Coursera上的机器学习，这些课程都用到了MATLAB，再加上浙大十月份刚刚购入了MATLAB的正版许可证，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/images/MATLAB/matlabDesktop.jpg">
-<meta property="og:updated_time" content="2017-11-24T10:08:08.000Z">
+<meta property="og:updated_time" content="2017-11-25T16:05:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MATLAB整理">
 <meta name="twitter:description" content="以前一直不是很喜欢MATLAB。（数据都是矩阵化，运算还必须保持矩阵维度的一致；非类C的语法格式；在不喜欢的实验课上使用……）不过随着学习的深入，发现MATLAB真的很强大很实用：这个学期的数字信号处理、大作业要用到的数字图像处理、电子商务系统中Item-based CF算法的数据分析、Coursera上的机器学习，这些课程都用到了MATLAB，再加上浙大十月份刚刚购入了MATLAB的正版许可证，">
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T18:08:08+08:00">
-                2017-11-24
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-26T00:05:10+08:00">
+                2017-11-26
               </time>
             
           </span>
@@ -398,12 +398,14 @@
 <p><strong>命令行窗口</strong><br>命令行窗口中可以执行多种操作。如上文提到的输入.m程序名直接执行程序（注意只需要输入文件名即可，不需要输入.m后缀），还可以复制.m程序中的部分语句到命令行中进行执行，后文还会提到功能各异的各种指令。</p>
 <p><strong>工作区</strong><br>工作区里会显示当前程序下所有变量的值/维度，便于进行调试。</p>
 <h3 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h3><h4 id="帮助函数"><a href="#帮助函数" class="headerlink" title="帮助函数"></a>帮助函数</h4><p><code>help</code><br>help可以说是MATLAB最有用的指令了。不清楚某个函数的使用方法，直接在命令行窗口中输入<code>help 函数名</code>便可以查看函数使用及相关示例，例如<code>help plot</code>。甚至还可以用<code>help help</code>来查看如何使用help函数。所以最先介绍一下<code>help</code>函数~</p>
+<p><code>doc</code><br>help指令是简单地了解指令，而doc指令则是更完整地查看MATLAB的相关文档。</p>
 <h4 id="简单赋值"><a href="#简单赋值" class="headerlink" title="简单赋值"></a>简单赋值</h4><p><strong>纯量</strong><br><code>a=5;</code><br>MATLAB中所有的变量都是数组(array)，或者说矩阵(matrix)。单独的一个数字，在MATLAB中也叫做scalar（纯量），是一个特殊的1×1的矩阵。<br>另：MATLAB中可以用<code>pi</code>直接表示圆周率π，不过不可以直接使用<em>e</em>表示自然底数（会提示未定义函数或变量’e’），要进行自然底数的运算请使用exp()函数。</p>
 <p><strong>矩阵初始化</strong><br><code>ones()</code><br><code>zeros()</code><br><code>eyes()</code><br>上面三函数都可以用于矩阵/向量的初始化。其中<code>ones</code>和<code>zeros</code>的使用方法类似。<code>ones</code>是矩阵元素均为1，<code>zeros</code>是矩阵元素均为0，<code>eyes</code>是生成单位矩阵（即主对角线上的元素均为1，其余均为0。）。<br><code>ones(N)</code>，<code>zeros(N)</code>，<code>eyes(N)</code>：生成N×N的矩阵；<br><code>ones(M,N)</code>，<code>zeros(M,N)</code>：生成M×N的矩阵。</p>
 <p><strong>随机数</strong><br><code>rand()</code>：符合均匀分布(0,1)的伪随机数<br><code>randn()</code>：符合标准正态分布的伪随机数<br><code>rand()</code>和<code>randn()</code>的使用方法与<code>ones</code>和<code>zeros</code>类似。<br><code>randi(MAX,N)</code>、<code>randi(MAX,M,N)</code>：符合均匀离散分布1:MAX的伪随机数（即1，2，…，MAX），除多一个参数MAX外，其他与<code>rand</code>和<code>randn</code>使用方法类似。</p>
 <h4 id=""><a href="#" class="headerlink" title=",;:"></a>,;:</h4><p>When you separate numbers by spaces (or commas), MATLAB combines the numbers into a row vector, which is an array with one row and multiple columns (1-by-n). When you separate them by semicolons, MATLAB creates a column vector (n-by-1)<br>当使用空格或者逗号分隔数字时，MATLAB将这些数字结合成行向量(1×n)；当用分号分隔时，MATLAB建立列向量(n×1)。换言之，在定义矩阵时，<code>,</code>（或者空格）表示同一行间不同元素的分隔，<code>;</code>表示不同行之间的分隔。如[1,2,3;4,5,6]便建立了一个2×3的矩阵</p>
-<script type="math/tex; mode=display">\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}</script><p><code>;</code>：分号除了分隔不同行外，还有一种作用是加在一条指令的最后，如<code>a=1;</code>。这样该指令会执行，不过不会在命令行窗口输出结果。所以建议在编写.m文件时，如无特殊情况每一条语句后都加上<code>;</code>。</p>
+<script type="math/tex; mode=display">\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}</script><p><code>;</code>：分号除了分隔不同行外，还有一种作用是加在一条指令的最后，作用为取消输出结果。如<code>a=1;</code>。这样该指令会执行，不过不会在命令行窗口输出结果。所以建议在编写.m文件时，如无特殊情况每一条语句后都加上<code>;</code>。</p>
 <p><code>:</code>：第一种常见用法是<code>min:max</code>或者<code>min:step:max</code>，前者建立一个[min, min + 1, min + 2, … , max]的矩阵，后者则建立一个[min, min + step, min + 2 <em> step, … , min + n </em> step]。（min + n × step ≤ max, min + (n + 1) × step &gt; max)）如<code>1:2:6</code>的结果为[1,3,5]。<br>（注：<code>linspace(first,last,number_of_elements)</code>是类似于<code>:</code>的一个函数。）<br>第二种用法是表示某一维度的所有元素。如<code>x = A(2,:)</code>即将A矩阵第二行的所有元素赋值给变量x。<br><code>x = A(1:3,:)</code> 同时使用了<code>:</code>的两种常见用法。该指令将矩阵A的前三行所有元素赋值给变量x。</p>
+<p><code>...</code>：如果一条语句比较长，则可以使用<code>...</code>后按回车继续写该语句。<code>...</code>表示语句会在下一行继续。一般在参数较多的函数中使用。</p>
 <h4 id="矩阵化运算"><a href="#矩阵化运算" class="headerlink" title="矩阵化运算"></a>矩阵化运算</h4><p><strong>矩阵与向量定义</strong><br>MATLAB通过矩阵化的运算可以有效提高运算速度。MATLAB中的数据都视作矩阵，其中维度为1×n或者n×1的为向量(vector)。<br><code>size</code>指令可以显示对应矩阵的维度，对于向量则可以使用<code>length</code>指令。</p>
 <p><strong>矩阵乘法与按位乘法</strong><br>矩阵乘法的话一般可分为两种：矩阵与纯量的乘法，以及矩阵与矩阵的乘法。这两种乘法都是用运算符<code>*</code>实现。如<code>2 * [1 2 3] = [2 4 6]</code>，以及<code>[1,2;3,4] * [1;1] = [3;7]</code>等。<br>有时两个矩阵的维度相同，可能无法进行矩阵的乘法运算。不过，正如之前介绍的，MATLAB还支持一种按元素运算(element-wise)，运算符为<code>.*</code>。如<code>[1,2,3] .* [2,3,4] = [2,6,12]</code>。</p>
 <p><strong>矩阵最大值</strong><br><code>max(X)</code>：若X为向量，则返回该向量中的最大值；若X为矩阵，则返回一个行向量，每一个元素对应该列的最大值。如<code>max([1,3,5;2,3,4])=[2,3,5]</code>。<br><code>[m,i]=max(X)</code>：除返回最大值外，还会返回最大值的索引。</p>
@@ -412,8 +414,128 @@
 <p>if条件判断：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ...</div><div class="line"><span class="keyword">elseif</span> ...</div><div class="line"><span class="keyword">else</span> ...</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
 <p>switch多重判断：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span></div><div class="line">  <span class="keyword">case</span> <span class="number">1</span></div><div class="line">    ...</div><div class="line">  <span class="keyword">otherwise</span></div><div class="line">    ...</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
 <p>用法与C类似，就是注意一下语法有所不同。</p>
-<h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><p><strong>数据保存载入：</strong><br><code>save</code>：保存数据为.mat文件<br><code>load</code>：导入.mat文件中的数据</p>
-<p><code>imread</code>：载入常用标准图片格式(GIF, JPEG, PNG, etc).(<code>imshow</code>显示该图片)</p>
+<p>下附四张表格以助理解：(Referring to Digital Image Processing Using MATLAB Second Edition)</p>
+<p><strong>Arithmetic operators</strong><br>| Operator | Name | Comments and Examples |<br>| —- | —- | —- |<br>| + | Array and matrix addition | <code>a+b,A+B,or a+A.</code> |<br>| - | Array and matrix subtraction | <code>a-b,A-B,A-a,or a-A.</code> |<br>| .<em> | Array multiplication | `C=A.</em>B,C(I,J)=A(I,J)<em>B(I,J).` |<br>| </em> | Matrix multiplication | <code>A*B,standard matrix multiplication,or a*A,multiplication of a scalar times all elements of A.</code> |<br>| ./ | Array right division | <code>C=A./B,C(I,J)=A(I,J)/B(I,J).</code> |<br>| .\ | Array left division | <code>C=A.\B,C(I,J)=B(I,J)/A(I,J).</code> |<br>| / | Matrix right division | <code>A/B is the preferred way to compute A*inv(B).</code> |<br>| \ | Matrix left division | <code>A\B is the preferred way to compute inv(A)*B.</code> |<br>| .^ | Array power | <code>If C=A.^B,thenC(I,J)=A(I,J)^B(I,J).</code> |<br>| ^ | Matrix power | <code>See help for a discussion of this operator.</code> |<br>| .’ | Vector and matrix transpose | <code>A.’,standard vector and matrix transpose.</code> |<br>| ‘ | Vector and matrix complex conjugate transpose | <code>A’,standard vector and matrix conjugate transpose.When A is real A.’=A’.</code> |<br>| + | Unary plus | <code>+A is the same as 0+A.</code> |<br>| - | Unary minus | <code>-A is the same as 0-A or -1*A.</code> |<br>| : | Colon | <code>Discussed above.</code> |</p>
+<p><strong>Relation operators</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>Less than or equal to</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>Greater than or equal to</td>
+</tr>
+<tr>
+<td>==</td>
+<td>Equal to</td>
+</tr>
+<tr>
+<td>~=</td>
+<td>Not equal to</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Logical operators</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>Elementwise AND</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Elementwise OR</td>
+</tr>
+<tr>
+<td>~</td>
+<td>Elementwise and scalar NOT</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>Scalar AND</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>Scalar OR</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Flow control statements</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Statement</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>if</td>
+<td>if,together with else and elseif,executes a group of statements based on a specified logical condition.</td>
+</tr>
+<tr>
+<td>for</td>
+<td>Executes a group of statements a fixed(specified) number of times.</td>
+</tr>
+<tr>
+<td>while</td>
+<td>Executes a group of statements an indefinite number of times,based on a specified logical condition.</td>
+</tr>
+<tr>
+<td>break</td>
+<td>Terminates execution of a for loop or while loop.</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>Passes control to the next iteration of a for or while loop,skipping any remaining statements in the body of the loop.</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>switch,together with case and otherwise,executes different groups of statements,dependiing on a specified value or string.</td>
+</tr>
+<tr>
+<td>return</td>
+<td>Causes execution to return to the invoking function.</td>
+</tr>
+<tr>
+<td>try catch</td>
+<td>Changes flow control if an error is detected during execution.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><p><strong>数据保存载入：</strong><br><code>save</code>：保存数据为.mat文件<br><code>load</code>：导入.mat文件中的数据<br>不是很常用，一般可以用鼠标代替操作。：在工作区右键可以执行保存操作，在功能区则可以执行打开操作。</p>
+<p><code>imread</code>：载入常用标准图片格式(GIF, JPEG, PNG, etc).<br><code>imshow</code>：显示该图片<br><code>imwrite</code>：将图片保存至当前路径。</p>
 <p><strong>datastore</strong><br><code>imageDatastore</code><br>例：<code>ds = imageDatastore(&#39;foo*.png&#39;)</code>：在MATLAB中建立数据储存。参数名为文件夹名或文件名，可以使用通配符<code>*</code>表示多个文件。<code>foo*</code>即表示所有以foo开头的PNG图片。<br><code>read</code>,<code>readimage</code>,<code>readall</code>.</p>
 <h4 id="其他常用指令"><a href="#其他常用指令" class="headerlink" title="其他常用指令"></a>其他常用指令</h4><p><strong>注释</strong><br><code>%</code>：百分号后的内容均视为注释内容。类似于类C中的<code>//</code></p>
 <p><strong>清除指令</strong><br><code>clear</code>：清除工作区变量<br><code>clc</code>：清除命令行窗口所有指令<br><code>close all</code>：关闭所有绘图窗口</p>
@@ -423,6 +545,15 @@
 <p><code>Ctrl C</code>：中止当前运行的程序。（注意MacBook下也是Ctrl C）</p>
 <p>一般MATLAB中常用的就这些命令啦。</p>
 <h3 id="绘图指令"><a href="#绘图指令" class="headerlink" title="绘图指令"></a>绘图指令</h3><p><a href="https://cn.mathworks.com/help/matlab/ref/linespec.html" target="_blank" rel="external">https://cn.mathworks.com/help/matlab/ref/linespec.html</a><br><a href="https://cn.mathworks.com/help/matlab/ref/chartline-properties.html" target="_blank" rel="external">https://cn.mathworks.com/help/matlab/ref/chartline-properties.html</a><br><a href="https://cn.mathworks.com/help/matlab/creating_plots/using-high-level-plotting-functions.html" target="_blank" rel="external">https://cn.mathworks.com/help/matlab/creating_plots/using-high-level-plotting-functions.html</a><br>hold on<br>title<br>xlabel<br>ylabel<br>legend</p>
+<h3 id="M函数"><a href="#M函数" class="headerlink" title="M函数"></a>M函数</h3><p>MATLAB的M文件既可以作为直接可执行的MATLAB语句，也可以是函数：接受参数并产生输出。M函数的组成通常有：</p>
+<ul>
+<li>函数定义</li>
+<li>首行</li>
+<li>帮助文本</li>
+<li>函数主体</li>
+<li>注释</li>
+</ul>
+<p><strong>函数定义</strong>：<code>function output = name(inputParameter1, inputParameter2...)</code><br><strong>首行</strong>：函数定义后的第一行<em>单行</em>注释。在函数定义与首行之间没有空行。在首行中一般<code>%</code>与第一个单词之间也没有空格，比如<code>%sum Computes the sum...%</code>。使用<code>lookfor</code>指令时显示该行内容。<br><strong>帮助文本</strong>：首行后的注释内容。在帮助文本与首行之间也没有空行。使用<code>help</code>指令时会显示首行与帮助文本内容。<br><strong>函数主体</strong>：执行计算、赋值等语句的MATLAB代码。<br><strong>注释</strong>：除首行与帮助文本外的所有注释。</p>
 <h2 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h2><p>下面记录一些在MATLAB官方的Deep Learning Onramp课程中使用的函数。<br><code>alexnet</code>：在MATLAB工作区中建立一个预训练过的深度学习网络”AlexNet”。<br><code>net = alexnet;</code></p>
 <p><code>classify</code>：对于一个图像进行预测。<br>注：在MATLAB online版本可以直接使用<code>alexnet</code>，不过在桌面版MATLAB中需安装对应支持包，才可以使用AlexNet等预训练过的网络。可以在扩展功能中搜索pretrained network免费下载对应包。</p>
 <p>You can use the splitEachLabel function to divide the images in a datastore into two separate datastores.<br><code>[ds1,ds2] = splitEachLabel(imds,p);</code><br>The proportion p (a value from 0 to 1) indicates the proportion of images with each label from imds that should be contained in ds1. The remaining files are assigned to ds2.</p>
@@ -659,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB语言与C语言的不同"><span class="nav-number">1.1.</span> <span class="nav-text">MATLAB语言与C语言的不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB桌面版简介"><span class="nav-number">1.2.</span> <span class="nav-text">MATLAB桌面版简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本指令"><span class="nav-number">1.3.</span> <span class="nav-text">基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#帮助函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">帮助函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单赋值"><span class="nav-number">1.3.2.</span> <span class="nav-text">简单赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.3.3.</span> <span class="nav-text">,;:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵化运算"><span class="nav-number">1.3.4.</span> <span class="nav-text">矩阵化运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件语句"><span class="nav-number">1.3.5.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作"><span class="nav-number">1.3.6.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他常用指令"><span class="nav-number">1.3.7.</span> <span class="nav-text">其他常用指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘图指令"><span class="nav-number">1.4.</span> <span class="nav-text">绘图指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Learning"><span class="nav-number">2.</span> <span class="nav-text">Deep Learning</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB语言与C语言的不同"><span class="nav-number">1.1.</span> <span class="nav-text">MATLAB语言与C语言的不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB桌面版简介"><span class="nav-number">1.2.</span> <span class="nav-text">MATLAB桌面版简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本指令"><span class="nav-number">1.3.</span> <span class="nav-text">基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#帮助函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">帮助函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单赋值"><span class="nav-number">1.3.2.</span> <span class="nav-text">简单赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.3.3.</span> <span class="nav-text">,;:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵化运算"><span class="nav-number">1.3.4.</span> <span class="nav-text">矩阵化运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件语句"><span class="nav-number">1.3.5.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作"><span class="nav-number">1.3.6.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他常用指令"><span class="nav-number">1.3.7.</span> <span class="nav-text">其他常用指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘图指令"><span class="nav-number">1.4.</span> <span class="nav-text">绘图指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#M函数"><span class="nav-number">1.5.</span> <span class="nav-text">M函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Learning"><span class="nav-number">2.</span> <span class="nav-text">Deep Learning</span></a></li></ol></div>
             
 
           </div>
