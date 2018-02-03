@@ -88,7 +88,14 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/images/btc/sha256.jpg">
 <meta property="og:image" content="http://haelchan.me/images/btc/hashll.jpg">
-<meta property="og:updated_time" content="2017-12-29T07:27:00.000Z">
+<meta property="og:image" content="http://haelchan.me/images/btc/goofy.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/goofy2.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/goofy3.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/doublespend.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/scrooge.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/scrooge1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/scrooge2.jpg">
+<meta property="og:updated_time" content="2018-02-03T03:30:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bitcoin-and-cryptocurrencies">
 <meta name="twitter:description" content="Week One - Introduction to Crypto and CryptocurrenciesHash functionTakes any string as inputfixed-size output (e.g. 256bits just as BitCoin)efficiently computable Security properties:Collision-freeNob">
@@ -334,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-29T15:27:00+08:00">
-                2017-12-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-03T11:30:44+08:00">
+                2018-02-03
               </time>
             
           </span>
@@ -391,21 +398,37 @@
 
       
         <h2 id="Week-One-Introduction-to-Crypto-and-Cryptocurrencies"><a href="#Week-One-Introduction-to-Crypto-and-Cryptocurrencies" class="headerlink" title="Week One - Introduction to Crypto and Cryptocurrencies"></a>Week One - Introduction to Crypto and Cryptocurrencies</h2><h3 id="Hash-function"><a href="#Hash-function" class="headerlink" title="Hash function"></a>Hash function</h3><p>Takes any string as input<br>fixed-size output (e.g. 256bits just as BitCoin)<br>efficiently computable</p>
-<h4 id="Security-properties"><a href="#Security-properties" class="headerlink" title="Security properties:"></a>Security properties:</h4><p><strong>Collision-free</strong><br>Nobody can find x and y such that x!=y and H(x)=H(y)</p>
-<p>Note: Collisions do exist. The possible outputs is finite(string of 256 bits in size), while the possible inputs can be a string of any size.</p>
-<p>To find a collision of any hash function: Trying <script type="math/tex">2^{130}</script> randomly chosen inputs and chances are 99.8% that two of them will collide. Well, it takes too long to matter.<br>For some possible H’s, there’s a faster way to find collisions; for others, we haven’t known yet. No H has been <strong>proven</strong> collision-free.</p>
-<p><strong>Hiding</strong><br>If r is chosen from a probability distribution that has high min-entropy, then given H(r|x), it is infeasible to find x.<br>High min-entropy means that the distribution is “very spread out”, so that no particular value is chosen with more than negligible probability.</p>
+<h4 id="Security-properties"><a href="#Security-properties" class="headerlink" title="Security properties:"></a>Security properties:</h4><p><strong>Collision-free</strong><br>Nobody can find x and y such that x!=y and H(x)=H(y).</p>
+<p>Note: Collisions do exist. The possible outputs are finite(string of 256 bits in size), while the possible inputs can be a string of any size.</p>
+<p>To find a collision of any hash function: Trying <script type="math/tex">2^{130}</script> randomly chosen inputs and chances are 99.8% that two of them will collide. Well, it takes too long to matter.<br>For some possible H’s, there’s a faster way to find collisions; for others, we haven’t known yet.<br>No H has been <strong>proven</strong> collision-free.</p>
+<p><strong>Hiding</strong><br>(r|x) means that take all the bits of r and put after them all the bits of x.<br>If r is chosen from a probability distribution that has high min-entropy, then given H(r|x), it is infeasible to find x.<br>High min-entropy means that the distribution is “very spread out”, so that no particular value is chosen with more than negligible probability.</p>
 <p><strong>Puzzle-friendly</strong><br>For every possible output value y, if k is chosen from a distribution with high min-entropy, then it is infeasible to find x such that H(k|x)=y.</p>
-<h4 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h4><p><strong>Hash as message digest.</strong><br>If we know H(x)=H(y), it’s safe to assume that x=y.<br>To recognize a file that we saw before, just remember its hash.<br>It’s useful because the hash is small.</p>
+<h4 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h4><p><strong>Hash as message digest.</strong><br>If we know H(x)=H(y), it’s safe to assume that x=y.<br>To recognize a file that we saw before, just remember its hash.<br>It’s useful because the hash is small, while a file may be very big.</p>
 <p><strong>Commitment</strong><br>Want to “seal a value in an envelope”, and “open the envelope” later.<br>Commit to a value, reveal it later.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(com, key) := commit(msg)</div><div class="line">match := verify(com, key, msg)</div></pre></td></tr></table></figure></p>
 <p>To seal msg in envelope:<br>  (com, key) := commit(msg) — then publish com<br>To open envelope:<br>  publish key, msg<br>  anyone can use verify() to check validity</p>
+<p><strong>Commitment API:</strong><br>commit(msg):=(H(key|msg),key) , where key is a random 256-bit value<br>verify(com, key, msg):=(H(key|msg)==com)</p>
 <p>Security properties:<br>Hiding: Given com, infeasible to find msg.<br>Binding: Infeasible to find <code>msg != msg&#39;</code> such that <code>verify(commit(msg), msg&#39;) == true</code>.</p>
 <p><strong>Search Puzzle</strong><br>Given a “puzzle ID” <em>id</em> (from high min-entropy distribution) and a target set Y,<br>try to find a “solution” x such that H(id|x)∈Y.<br>Puzzle-friendly property implies that no solving strategy is much better than trying random values of x.</p>
-<h4 id="SHA256"><a href="#SHA256" class="headerlink" title="SHA256"></a>SHA256</h4><p><img src="/images/btc/sha256.jpg" alt=""></p>
+<h4 id="SHA256"><a href="#SHA256" class="headerlink" title="SHA256"></a>SHA256</h4><p><img src="/images/btc/sha256.jpg" alt=""><br>SHA-256 takes the message that you’re hashing, and it breaks the message up into blocks that are 512 bits in size(add some padding at the end 100…00).<br>IV: 256 bit value(look up in a standards document).<br>c: the compression function. Take 768 bits(256+512) and run through this function and out comes 256 bits.</p>
 <h3 id="Hash-Pointer"><a href="#Hash-Pointer" class="headerlink" title="Hash Pointer"></a>Hash Pointer</h3><p>Hash pointer is pointer to where some info is stored, and (cryptographic) hash of the info.<br>If we have a hash pointer, we can ask to get the info back, and verify that it hasn’t changed.</p>
 <p>Data structure of blockchain:<br><img src="/images/btc/hashll.jpg" alt=""><br>This is blockchain, and it’s similar to linked list.<br>If some adversary wants to change a block’s data(e.g., the left one), then the content of that block is changed. And the middle block’s hash pointer is not consistent to the left block any more. So the adversary has to change middle block’s header, and next block’s header and so on.</p>
-<h3 id="Digital-Signature"><a href="#Digital-Signature" class="headerlink" title="Digital Signature"></a>Digital Signature</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(sk,pk):=generateKeys(keySize)</div><div class="line">sig:=sign(sk, message)</div><div class="line">isValid:=verify(pk, message, sig)</div></pre></td></tr></table></figure>
-<p><strong>Requirements for signatures</strong><br>·Valid signatures verify<br>·Can’t forge signatures</p>
+<p>Merkle tree<br>Advantages of Merkle trees:<br>Tree holds many items, but just need to remember the root hash.<br>Can verify membership in O(log n) time/space.</p>
+<h3 id="Digital-Signature"><a href="#Digital-Signature" class="headerlink" title="Digital Signature"></a>Digital Signature</h3><p>What we want from signatures is two things:</p>
+<ol>
+<li>Only you can make your signature, but anyone who sees your signature can verify that it’s valid.</li>
+<li>Signature is tied to a particular document, because signature is not just a signature, it signifies your agreement or endorsement of a particular document.</li>
+</ol>
+<p>API for digital signatures<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(sk,pk):=generateKeys(keySize)</div><div class="line">sig:=sign(sk, message)</div><div class="line">isValid:=verify(pk, message, sig)</div></pre></td></tr></table></figure></p>
+<p><strong>Requirements for signatures</strong><br>·Valid signatures verify<br>verify(pk, message, sign(sk, message))==true<br>·Can’t forge signatures<br>An adversary who knows your public key and gets to see signatures on some other messages, can’t forge your signature on some message that he wants to forge it on.</p>
+<p><strong>Practical stuff</strong><br>algorithms are randomized<br>  need good source of randomness<br>limit on message size<br>  fix: use Hash(message) rather than message<br>fun trick: sign a hash pointer<br>  signature “covers” the whole structure</p>
+<h3 id="Simple-Cryptocurrencies"><a href="#Simple-Cryptocurrencies" class="headerlink" title="Simple Cryptocurrencies"></a>Simple Cryptocurrencies</h3><h4 id="GoofyCoin"><a href="#GoofyCoin" class="headerlink" title="GoofyCoin"></a>GoofyCoin</h4><p>Goofy can create new coins.<br><img src="/images/btc/goofy.jpg" alt=""></p>
+<p>A coin’s owner can spend it.<br><img src="/images/btc/goofy2.jpg" alt=""></p>
+<p>The recipient can pass on the coin again.<br><img src="/images/btc/goofy3.jpg" alt=""></p>
+<p>Problem: <strong>Double-spending attack</strong><br>the main design challenge in digital currency<br><img src="/images/btc/doublespend.jpg" alt=""></p>
+<h4 id="ScroogeCoin"><a href="#ScroogeCoin" class="headerlink" title="ScroogeCoin"></a>ScroogeCoin</h4><p><img src="/images/btc/scrooge.jpg" alt=""></p>
+<p>CreateCoin transaction creates new coins.<br><img src="/images/btc/scrooge1.jpg" alt=""></p>
+<p>PayCoin transaction consumes (and destroys) some coins, and create new coins of the same total value.<br><img src="/images/btc/scrooge2.jpg" alt=""><br>Valid if:<br>-consumed coins valid<br>-not already consumed<br>-total value out = total value in<br>-signed by owners of all consumed coins</p>
+<p>Note: Coins are immutable, that is, coins can’t be transferred, subdivided, or combined.</p>
 
       
     </div>
@@ -631,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One-Introduction-to-Crypto-and-Cryptocurrencies"><span class="nav-number">1.</span> <span class="nav-text">Week One - Introduction to Crypto and Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-function"><span class="nav-number">1.1.</span> <span class="nav-text">Hash function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Security-properties"><span class="nav-number">1.1.1.</span> <span class="nav-text">Security properties:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.2.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SHA256"><span class="nav-number">1.1.3.</span> <span class="nav-text">SHA256</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Pointer"><span class="nav-number">1.2.</span> <span class="nav-text">Hash Pointer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">1.3.</span> <span class="nav-text">Digital Signature</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One-Introduction-to-Crypto-and-Cryptocurrencies"><span class="nav-number">1.</span> <span class="nav-text">Week One - Introduction to Crypto and Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-function"><span class="nav-number">1.1.</span> <span class="nav-text">Hash function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Security-properties"><span class="nav-number">1.1.1.</span> <span class="nav-text">Security properties:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.2.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SHA256"><span class="nav-number">1.1.3.</span> <span class="nav-text">SHA256</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Pointer"><span class="nav-number">1.2.</span> <span class="nav-text">Hash Pointer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">1.3.</span> <span class="nav-text">Digital Signature</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Cryptocurrencies"><span class="nav-number">1.4.</span> <span class="nav-text">Simple Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GoofyCoin"><span class="nav-number">1.4.1.</span> <span class="nav-text">GoofyCoin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ScroogeCoin"><span class="nav-number">1.4.2.</span> <span class="nav-text">ScroogeCoin</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
