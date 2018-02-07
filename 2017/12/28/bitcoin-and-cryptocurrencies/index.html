@@ -98,7 +98,15 @@
 <meta property="og:image" content="http://haelchan.me/images/btc/malicious.jpg">
 <meta property="og:image" content="http://haelchan.me/images/btc/bob.jpg">
 <meta property="og:image" content="http://haelchan.me/images/btc/pow.jpg">
-<meta property="og:updated_time" content="2018-02-05T13:39:50.000Z">
+<meta property="og:image" content="http://haelchan.me/images/btc/ledger1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/ledger2.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/merging.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/joint.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/transaction.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/blockStructure.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/block.jpg">
+<meta property="og:image" content="http://haelchan.me/images/btc/coinbase.jpg">
+<meta property="og:updated_time" content="2018-02-07T14:57:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bitcoin-and-cryptocurrencies">
 <meta name="twitter:description" content="Week One - Introduction to Crypto and CryptocurrenciesHash functionTakes any string as inputfixed-size output (e.g. 256bits just as BitCoin)efficiently computable Security properties:Collision-freeNob">
@@ -344,8 +352,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-05T21:39:50+08:00">
-                2018-02-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-07T22:57:45+08:00">
+                2018-02-07
               </time>
             
           </span>
@@ -462,6 +470,62 @@
 <p>Suppress some transactions?<br>· From the block chain              √<br>· From the P2P network              ×</p>
 <p>Change the block reward?            ×</p>
 <p>Destroy confidence in Bitcoin?      √√</p>
+<h2 id="Week-Three"><a href="#Week-Three" class="headerlink" title="Week Three"></a>Week Three</h2><h3 id="Bitcoin-transactions"><a href="#Bitcoin-transactions" class="headerlink" title="Bitcoin transactions"></a>Bitcoin transactions</h3><p>Comparison between an account-based ledger and a transaction-based ledger:<br><strong>An account-based ledger</strong><br><img src="/images/btc/ledger1.jpg" alt=""><br>If we want to check whether a transaction is valid, we might need to scan backwards until genesis. That’s quite inconvenient and inefficiency.</p>
+<p><strong>A transaction-based ledger</strong><br><img src="/images/btc/ledger2.jpg" alt=""><br>The verification just needs finite scan with hash pointers.</p>
+<p>Then, we can easily realize functions like merging value and joint payments.<br><strong>Merging value</strong><br><img src="/images/btc/merging.jpg" alt=""><br>(The slides shown on Coursera has some mistakes, so I have to screenshot on the course)</p>
+<p><strong>Joint payments</strong><br><img src="/images/btc/joint.jpg" alt=""></p>
+<p>Here’s what a Bitcoin transaction look like:<br><img src="/images/btc/transaction.jpg" alt=""></p>
+<h3 id="Bitcoin-Scripts"><a href="#Bitcoin-Scripts" class="headerlink" title="Bitcoin Scripts"></a>Bitcoin Scripts</h3><p>Note that in Bitcoin transaction, instead of assigning a public key, Bitcoin uses script.</p>
+<p><strong>Design goals</strong></p>
+<ul>
+<li>Build for Bitcoin (inspired by Forth)</li>
+<li>Simple, compact</li>
+<li>Support for cryptography</li>
+<li>Stack-based</li>
+<li>Limits on time/memory</li>
+<li>No looping</li>
+</ul>
+<p><strong>Instructions</strong><br>256 opcodes total (15 disabled, 75 reserved)</p>
+<ul>
+<li>Arithmetic</li>
+<li>If/then </li>
+<li>Logic/data handling</li>
+<li>Crypto: Hashes, signature verification, multi-signature verification</li>
+</ul>
+<p>Instruction:</p>
+<p><code>&lt;sig&gt;</code> : Input script. Push data onto the stack.<br><code>&lt;pubKey&gt;</code> : Push data onto the stack.</p>
+<p><code>OP_DUP</code> : Duplicate instruction. Take the value on the top of the stack, pop it off, and then write two copies back to the stack.</p>
+<p><code>OP_HASH160</code> : Take the top value on the stack and compute a cryptographic hash of it.</p>
+<p><code>pubKeyHash</code> : The hash of public key that was actually used by the recipient when trying to claim the coins.<br><code>pubKeyHash?</code> : Specified by the sender of the coins. The public key that the sender specified, had to be used to generate the signature to redeem these coins.</p>
+<p><code>OP_EQUALVERIFY</code> : Check if the two values at the top of the stack equal. It the two values aren’t equal, an error’s gonna be thrown and the script will stop executing. It they are, the instruction will consume those two data items that are at the top of the stack.</p>
+<p><code>OP_CHECKSIG</code> : Verify the entire transaction was successfully signed. Pop those remaining two items off of the stack, check the signature is valid.</p>
+<p><code>OP_CHECKMULTISIG</code> :<br>Built-in support for joint signatures<br>Specify <em>n</em> public key<br>Specify t (threshold)<br>Verification requires <em>t</em> signatures<br>(BUG: Extra data value popped from the stack and ignored)</p>
+<h3 id="Bitcoin-Blocks"><a href="#Bitcoin-Blocks" class="headerlink" title="Bitcoin Blocks"></a>Bitcoin Blocks</h3><p><img src="/images/btc/blockStructure.jpg" alt=""></p>
+<p><img src="/images/btc/block.jpg" alt=""></p>
+<p>There’s a special transaction, which is the coinbase transaction:<br><img src="/images/btc/coinbase.jpg" alt=""><br>Since this transaction creates new coins, it’s prev_out has a null hash pointer.<br>Miners can put anything in coinbase.<br>The value is slightly more than the set value, which contains transaction fees.</p>
+<h3 id="Bitcoin-Network"><a href="#Bitcoin-Network" class="headerlink" title="Bitcoin Network"></a>Bitcoin Network</h3><p>P2P Network</p>
+<ul>
+<li>Ad-hoc protocol (runs on TCP port 8333)</li>
+<li>Ad-hoc network with random topology</li>
+<li>All nodes are equal</li>
+<li>New nodes can join at any time</li>
+<li>Forget non-responding nodes after 3 hr</li>
+</ul>
+<h4 id="Propagation"><a href="#Propagation" class="headerlink" title="Propagation"></a>Propagation</h4><p><strong>Transaction propagation</strong><br>· Transaction valid with current blockchain<br>· (default) script matches a whitelist - avoid unusual scripts<br>· Haven’t seen before - Avoid infinite loops<br>· Doesn’t conflict with others I’ve relayed - avoid double-spends</p>
+<p><strong>Block propagation</strong><br>Relay a new block when you hear it if:<br>· Block meets the hash target<br>· Block has all valid transactions - Run <em>all</em> scripts, even if you wouldn’t relay<br>· Block builds on current longest chain - Avoid forks</p>
+<h4 id="Nodes"><a href="#Nodes" class="headerlink" title="Nodes"></a>Nodes</h4><p><strong>Fully-validating nodes</strong><br>· Permanently connected<br>· Store entire block chain (Storage cost: 20 GB)<br>· Hear and forward every node/transaction</p>
+<p><strong>Thin/SPV clients(not fully-validating)</strong><br>Ideas: don’t store everything<br>· Store block headers only (1000x cost saving)<br>· Request transactions as needed - to verify incoming payment<br>· Trust fully-validating nodes </p>
+<h3 id="Limitations-amp-Improvements"><a href="#Limitations-amp-Improvements" class="headerlink" title="Limitations &amp; Improvements"></a>Limitations &amp; Improvements</h3><p>Hard-coded limits in Bitcoin<br>· 10 min. average creation time per block<br>· 1 M bytes in a block<br>· 20,000 signature operations per block<br>·· 100 M <em>satoshi</em>s per bitcoin<br>·· 21 M total bitcoins maximum<br>·· 50,25,12,5… bitcoin mining reward<br>·· : These affect economic balance of power too much to change now</p>
+<p>Throughput limits in Bitcoin<br>· 1 M bytes/block (10 min)<br>· &gt;250 bytes/transaction<br>· 7 transactions/sec</p>
+<p>Cryptographic limits in Bitcoin<br>· Only 1 signature algorithm (ECDSA/P256)<br>· Hard-coded hash functions</p>
+<h4 id="Forking"><a href="#Forking" class="headerlink" title="Forking"></a>Forking</h4><p><strong>Hard-forking</strong><br>If old nodes didn’t update software, they will reject all the new transactions/blocks.<br>Old nodes will never catch up.</p>
+<p><strong>Soft forks</strong><br>Observation: we can add new features which only <em>limit</em> the set of valid transactions</p>
+<p>Need majority of nodes to enforce new rules</p>
+<p>Old nodes will approve.</p>
+<p>Risks exist that old nodes might mine now-invalid blocks, since there’re new limits on blocks.</p>
+<p><strong>Soft fork possibilities</strong><br>· New signature schemas<br>· Extra per-block metadata - Shove in the coinbase parameter; Commit to UTXO tree in each block</p>
+<p><strong>Hard forks</strong><br>· New op codes<br>· Changes to size limits<br>· Changes to mining rate<br>· Many small bug fixes (like bug in MULTISIG)</p>
+<p>Currently seem very unlikely to happen</p>
 
       
     </div>
@@ -687,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One-Introduction-to-Crypto-and-Cryptocurrencies"><span class="nav-number">1.</span> <span class="nav-text">Week One - Introduction to Crypto and Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-function"><span class="nav-number">1.1.</span> <span class="nav-text">Hash function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Security-properties"><span class="nav-number">1.1.1.</span> <span class="nav-text">Security properties:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.2.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SHA256"><span class="nav-number">1.1.3.</span> <span class="nav-text">SHA256</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Pointer"><span class="nav-number">1.2.</span> <span class="nav-text">Hash Pointer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">1.3.</span> <span class="nav-text">Digital Signature</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Cryptocurrencies"><span class="nav-number">1.4.</span> <span class="nav-text">Simple Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GoofyCoin"><span class="nav-number">1.4.1.</span> <span class="nav-text">GoofyCoin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ScroogeCoin"><span class="nav-number">1.4.2.</span> <span class="nav-text">ScroogeCoin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Two-How-Bitcoin-Achieves-Decentralization"><span class="nav-number">2.</span> <span class="nav-text">Week Two - How Bitcoin Achieves Decentralization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distributed-consensus"><span class="nav-number">3.</span> <span class="nav-text">Distributed consensus</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Incentives-and-Proof-of-Work"><span class="nav-number">3.1.</span> <span class="nav-text">Incentives and Proof of Work</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One-Introduction-to-Crypto-and-Cryptocurrencies"><span class="nav-number">1.</span> <span class="nav-text">Week One - Introduction to Crypto and Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-function"><span class="nav-number">1.1.</span> <span class="nav-text">Hash function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Security-properties"><span class="nav-number">1.1.1.</span> <span class="nav-text">Security properties:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.2.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SHA256"><span class="nav-number">1.1.3.</span> <span class="nav-text">SHA256</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Pointer"><span class="nav-number">1.2.</span> <span class="nav-text">Hash Pointer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">1.3.</span> <span class="nav-text">Digital Signature</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Cryptocurrencies"><span class="nav-number">1.4.</span> <span class="nav-text">Simple Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GoofyCoin"><span class="nav-number">1.4.1.</span> <span class="nav-text">GoofyCoin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ScroogeCoin"><span class="nav-number">1.4.2.</span> <span class="nav-text">ScroogeCoin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Two-How-Bitcoin-Achieves-Decentralization"><span class="nav-number">2.</span> <span class="nav-text">Week Two - How Bitcoin Achieves Decentralization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distributed-consensus"><span class="nav-number">3.</span> <span class="nav-text">Distributed consensus</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Incentives-and-Proof-of-Work"><span class="nav-number">3.1.</span> <span class="nav-text">Incentives and Proof of Work</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Three"><span class="nav-number">4.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-transactions"><span class="nav-number">4.1.</span> <span class="nav-text">Bitcoin transactions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Scripts"><span class="nav-number">4.2.</span> <span class="nav-text">Bitcoin Scripts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Blocks"><span class="nav-number">4.3.</span> <span class="nav-text">Bitcoin Blocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Network"><span class="nav-number">4.4.</span> <span class="nav-text">Bitcoin Network</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Propagation"><span class="nav-number">4.4.1.</span> <span class="nav-text">Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nodes"><span class="nav-number">4.4.2.</span> <span class="nav-text">Nodes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limitations-amp-Improvements"><span class="nav-number">4.5.</span> <span class="nav-text">Limitations & Improvements</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forking"><span class="nav-number">4.5.1.</span> <span class="nav-text">Forking</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
