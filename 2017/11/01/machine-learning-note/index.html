@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://haelchan.me/images/ML/posExm.jpg">
 <meta property="og:image" content="http://haelchan.me/images/ML/negExm.jpg">
 <meta property="og:image" content="http://haelchan.me/images/ML/stoch.jpg">
-<meta property="og:updated_time" content="2018-02-06T10:45:23.000Z">
+<meta property="og:updated_time" content="2018-02-08T11:05:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn from">
@@ -355,8 +355,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-06T18:45:23+08:00">
-                2018-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-08T19:05:53+08:00">
+                2018-02-08
               </time>
             
           </span>
@@ -574,7 +574,7 @@
 <script type="math/tex; mode=display">a_1^{(2)}=g(\Theta_{10}^{(1)}x_0+\Theta_{11}^{(1)}x_1+\Theta_{12}^{(1)}x_2+\Theta_{13}^{(1)}x_3)</script><script type="math/tex; mode=display">a_2^{(2)}=g(\Theta_{20}^{(1)}x_0+\Theta_{21}^{(1)}x_1+\Theta_{22}^{(1)}x_2+\Theta_{23}^{(1)}x_3)</script><script type="math/tex; mode=display">a_3^{(2)}=g(\Theta_{30}^{(1)}x_0+\Theta_{31}^{(1)}x_1+\Theta_{32}^{(1)}x_2+\Theta_{33}^{(1)}x_3)</script><script type="math/tex; mode=display">h_\Theta(x)=a_1^{(3)}=g(\Theta_{10}^{(2)}a_0^{(2)}+\Theta_{11}^{(2)}a_1^{(2)}+\Theta_{12}^{(2)}a_2^{(2)}+\Theta_{13}^{(3)}a_3^{(2)})</script><p>If network has <script type="math/tex">s_j</script> units in layer <em>j</em>, <script type="math/tex">s_{j+1}</script> units in layer <em>j+1</em>, then <script type="math/tex">\Theta^{(j)}</script> will be of dimension <script type="math/tex">s_{j+1}\times (s_j+1)</script>.</p>
 <p>Vectorized Implementation:<br>-<script type="math/tex">z^{(2)}=\Theta^{(1)}a^{(1)}</script>  (regard the input layer as <script type="math/tex">a^{(1)}</script>)</p>
 <script type="math/tex; mode=display">a^{(2)}=g(z^{(2)})</script><p>Add <script type="math/tex">a_0^{(2)}=1</script>    (add the bias unit)</p>
-<script type="math/tex; mode=display">z^{(3)}=\Theta^{(2)}a^{(2)}</script><script type="math/tex; mode=display">h_\Theta(x)=a^{(3)}=g(z^{(3)})</script><h2 id="Week-Five"><a href="#Week-Five" class="headerlink" title="Week Five"></a>Week Five</h2><h3 id="Neural-Networks-Learning"><a href="#Neural-Networks-Learning" class="headerlink" title="Neural Networks: Learning"></a>Neural Networks: Learning</h3><p>-L: total no. of layers in network<br>-<script type="math/tex">s_l</script>: no. of units(not counting bias unit) in layer l<br>-K: no. of units in the output layer(<script type="math/tex">s_l</script>)<br>(K=2:Binary classification, K≥3:Multi-class classification)</p>
+<script type="math/tex; mode=display">z^{(3)}=\Theta^{(2)}a^{(2)}</script><script type="math/tex; mode=display">h_\Theta(x)=a^{(3)}=g(z^{(3)})</script><h2 id="Week-Five"><a href="#Week-Five" class="headerlink" title="Week Five"></a>Week Five</h2><h3 id="Neural-Networks-Learning"><a href="#Neural-Networks-Learning" class="headerlink" title="Neural Networks: Learning"></a>Neural Networks: Learning</h3><p>-L: total no. of layers in network<br>-<script type="math/tex">s_l</script>: no. of units(not counting bias unit) in layer l<br>-K: no. of units in the output layer(<script type="math/tex">s_l</script>)<br>(K=1:Binary classification, K≥3:Multi-class classification)</p>
 <h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><script type="math/tex; mode=display">h_{\Theta}(x)\in\mathbb{R}^K\ \ (h_{\Theta}(x))_i=i^{th}\ output</script><script type="math/tex; mode=display">J(\Theta)=-\frac{1}{m}[\sum_{i=1}^m\sum_{k=1}^Ky_k^{(i)}log(h_{\Theta}(x^{(i)}))_k+(1-y_k^{(i)})log(1-(h_{\Theta}(x^{(i)}))_k)]+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_l+1}(\Theta_{ji}^{(l)})^2</script><p>Compared with the cost function of logistic regression, we have added a few nested summations to account for our multiple output nodes. In the first part of the equation, before the square brackets, we have an additional nested summation that loops through the number of output nodes.(k = 1:K)<br>In the regularization part, after the square brackets, we must account for multiple theta matrices. The number of columns in our current theta matrix is equal to the number of nodes in our current layer (including the bias unit). The number of rows in our current theta matrix is equal to the number of nodes in the next layer (excluding the bias unit).</p>
 <h4 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h4><p>To minimize <script type="math/tex">J(\Theta)</script>, we need code to compute <script type="math/tex">J(\Theta)</script> and <script type="math/tex">\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)</script>. The formula of <script type="math/tex">J(\Theta)</script> is described above, and now let’s have a recall at forward propagation first.<br><img src="/images/ML/neural4layer.jpg" alt=""><br>In a 4-layer neural network, we have the following forward propagation:</p>
 <script type="math/tex; mode=display">a^{(1)}=x</script><script type="math/tex; mode=display">z^{(2)}=\Theta^{(1)}a^{(1)}</script><script type="math/tex; mode=display">a^{(2)}=g(z^{(2)})\ (add\ a_0^{(2)})</script><script type="math/tex; mode=display">z^{(3)}=\Theta^{(2)}a^{(2)}</script><script type="math/tex; mode=display">a^{(3)}=g(z^{(3)})\ (add\ a_0^{(3)})</script><script type="math/tex; mode=display">z^{(4)}=\Theta^{(3)}a^{(3)}</script><script type="math/tex; mode=display">a^{(4)}=h_{\Theta}(x)=g(z^{(4)})</script><p>Then what about backward propagation(Intuition: <script type="math/tex">\delta_j^{(l)}</script> = “error” of node j in layer l)?</p>
@@ -903,7 +903,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -925,7 +925,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

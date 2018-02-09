@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="learning note," />
 
 
 
@@ -80,6 +80,7 @@
 
 
 <meta name="description" content="Week One - Introduction to Crypto and CryptocurrenciesHash functionTakes any string as inputfixed-size output (e.g. 256bits just as BitCoin)efficiently computable Security properties:Collision-freeNob">
+<meta name="keywords" content="learning note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bitcoin-and-cryptocurrencies">
 <meta property="og:url" content="http://haelchan.me/2017/12/28/bitcoin-and-cryptocurrencies/index.html">
@@ -106,7 +107,7 @@
 <meta property="og:image" content="http://haelchan.me/images/btc/blockStructure.jpg">
 <meta property="og:image" content="http://haelchan.me/images/btc/block.jpg">
 <meta property="og:image" content="http://haelchan.me/images/btc/coinbase.jpg">
-<meta property="og:updated_time" content="2018-02-07T14:57:45.000Z">
+<meta property="og:updated_time" content="2018-02-09T09:17:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bitcoin-and-cryptocurrencies">
 <meta name="twitter:description" content="Week One - Introduction to Crypto and CryptocurrenciesHash functionTakes any string as inputfixed-size output (e.g. 256bits just as BitCoin)efficiently computable Security properties:Collision-freeNob">
@@ -352,8 +353,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-07T22:57:45+08:00">
-                2018-02-07
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-09T17:17:40+08:00">
+                2018-02-09
               </time>
             
           </span>
@@ -525,7 +526,17 @@
 <p>Risks exist that old nodes might mine now-invalid blocks, since there’re new limits on blocks.</p>
 <p><strong>Soft fork possibilities</strong><br>· New signature schemas<br>· Extra per-block metadata - Shove in the coinbase parameter; Commit to UTXO tree in each block</p>
 <p><strong>Hard forks</strong><br>· New op codes<br>· Changes to size limits<br>· Changes to mining rate<br>· Many small bug fixes (like bug in MULTISIG)</p>
-<p>Currently seem very unlikely to happen</p>
+<p>Currently seem very unlikely to happen.</p>
+<h2 id="Week-Five"><a href="#Week-Five" class="headerlink" title="Week Five"></a>Week Five</h2><h3 id="Mining-Hardware"><a href="#Mining-Hardware" class="headerlink" title="Mining Hardware"></a>Mining Hardware</h3><h4 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h4><p>Throughput on a high-end PC = 10-20 MHz ≈ 2^24<br>139461 years on average to find a block today</p>
+<h4 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h4><p>GPUs designed for high-performance graphics - high parallelism &amp; high throughput<br>First used for Bitcoin ca. October 2010<br>Implemented in OpenCL - Later: hacks for specific cards</p>
+<p><strong>Advantages</strong><br>· easily available, easy to set up<br>· parallel ALUs<br>· bit-specific instructions<br>· can drive many from 1 CPU<br>· can overclock</p>
+<p><strong>Disadvantages</strong><br>· poor utilization of hardware<br>· poor cooling<br>· large power draw<br>· few boards to hold multiple GPUs</p>
+<p>Throughput on a good card = 20-200 MHz ≈ 2^27<br>173 years on average to find a block w/100 cards</p>
+<h4 id="FPGA"><a href="#FPGA" class="headerlink" title="FPGA"></a>FPGA</h4><p>First used for Bitcoin ca. June 2011<br>Implemented in Verilog</p>
+<p><strong>Advantages</strong><br>· higher performance than GPUs - excellent performance on bitwise operations<br>· better cooling<br>· extensive customization, optimization</p>
+<p><strong>Disadvantages</strong><br>· higher power draw than GPUs designed for - frequent malfunctions, errors<br>· poor optimization of 32-bit adds<br>· fewer hobbyists with sufficient expertise<br>· more expensive than GPUs<br>· marginal performance/cost advantage over GPUs</p>
+<p>Throughput on a good card = 100-1000 MHz ≈ 2^30<br>25 years on average to find a block w/100 boards</p>
+<h4 id="Bitcoin-ASIC"><a href="#Bitcoin-ASIC" class="headerlink" title="Bitcoin ASIC"></a>Bitcoin ASIC</h4><p>· special purpose - approaching known limits on feature sizes, less than 10x performance improvement expected<br>· designed to be run constantly for life<br>· require significant expertise, long lead-times<br>· perhaps the fastest chip development ever</p>
 
       
     </div>
@@ -558,6 +569,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
+          
+        </div>
       
 
       
@@ -668,7 +685,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -690,7 +707,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -751,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One-Introduction-to-Crypto-and-Cryptocurrencies"><span class="nav-number">1.</span> <span class="nav-text">Week One - Introduction to Crypto and Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-function"><span class="nav-number">1.1.</span> <span class="nav-text">Hash function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Security-properties"><span class="nav-number">1.1.1.</span> <span class="nav-text">Security properties:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.2.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SHA256"><span class="nav-number">1.1.3.</span> <span class="nav-text">SHA256</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Pointer"><span class="nav-number">1.2.</span> <span class="nav-text">Hash Pointer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">1.3.</span> <span class="nav-text">Digital Signature</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Cryptocurrencies"><span class="nav-number">1.4.</span> <span class="nav-text">Simple Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GoofyCoin"><span class="nav-number">1.4.1.</span> <span class="nav-text">GoofyCoin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ScroogeCoin"><span class="nav-number">1.4.2.</span> <span class="nav-text">ScroogeCoin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Two-How-Bitcoin-Achieves-Decentralization"><span class="nav-number">2.</span> <span class="nav-text">Week Two - How Bitcoin Achieves Decentralization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distributed-consensus"><span class="nav-number">3.</span> <span class="nav-text">Distributed consensus</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Incentives-and-Proof-of-Work"><span class="nav-number">3.1.</span> <span class="nav-text">Incentives and Proof of Work</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Three"><span class="nav-number">4.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-transactions"><span class="nav-number">4.1.</span> <span class="nav-text">Bitcoin transactions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Scripts"><span class="nav-number">4.2.</span> <span class="nav-text">Bitcoin Scripts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Blocks"><span class="nav-number">4.3.</span> <span class="nav-text">Bitcoin Blocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Network"><span class="nav-number">4.4.</span> <span class="nav-text">Bitcoin Network</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Propagation"><span class="nav-number">4.4.1.</span> <span class="nav-text">Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nodes"><span class="nav-number">4.4.2.</span> <span class="nav-text">Nodes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limitations-amp-Improvements"><span class="nav-number">4.5.</span> <span class="nav-text">Limitations & Improvements</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forking"><span class="nav-number">4.5.1.</span> <span class="nav-text">Forking</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One-Introduction-to-Crypto-and-Cryptocurrencies"><span class="nav-number">1.</span> <span class="nav-text">Week One - Introduction to Crypto and Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-function"><span class="nav-number">1.1.</span> <span class="nav-text">Hash function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Security-properties"><span class="nav-number">1.1.1.</span> <span class="nav-text">Security properties:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.2.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SHA256"><span class="nav-number">1.1.3.</span> <span class="nav-text">SHA256</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Pointer"><span class="nav-number">1.2.</span> <span class="nav-text">Hash Pointer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">1.3.</span> <span class="nav-text">Digital Signature</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Cryptocurrencies"><span class="nav-number">1.4.</span> <span class="nav-text">Simple Cryptocurrencies</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GoofyCoin"><span class="nav-number">1.4.1.</span> <span class="nav-text">GoofyCoin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ScroogeCoin"><span class="nav-number">1.4.2.</span> <span class="nav-text">ScroogeCoin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Two-How-Bitcoin-Achieves-Decentralization"><span class="nav-number">2.</span> <span class="nav-text">Week Two - How Bitcoin Achieves Decentralization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distributed-consensus"><span class="nav-number">3.</span> <span class="nav-text">Distributed consensus</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Incentives-and-Proof-of-Work"><span class="nav-number">3.1.</span> <span class="nav-text">Incentives and Proof of Work</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Three"><span class="nav-number">4.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-transactions"><span class="nav-number">4.1.</span> <span class="nav-text">Bitcoin transactions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Scripts"><span class="nav-number">4.2.</span> <span class="nav-text">Bitcoin Scripts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Blocks"><span class="nav-number">4.3.</span> <span class="nav-text">Bitcoin Blocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Network"><span class="nav-number">4.4.</span> <span class="nav-text">Bitcoin Network</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Propagation"><span class="nav-number">4.4.1.</span> <span class="nav-text">Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nodes"><span class="nav-number">4.4.2.</span> <span class="nav-text">Nodes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limitations-amp-Improvements"><span class="nav-number">4.5.</span> <span class="nav-text">Limitations & Improvements</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forking"><span class="nav-number">4.5.1.</span> <span class="nav-text">Forking</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Five"><span class="nav-number">5.</span> <span class="nav-text">Week Five</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mining-Hardware"><span class="nav-number">5.1.</span> <span class="nav-text">Mining Hardware</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU"><span class="nav-number">5.1.1.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPU"><span class="nav-number">5.1.2.</span> <span class="nav-text">GPU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FPGA"><span class="nav-number">5.1.3.</span> <span class="nav-text">FPGA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bitcoin-ASIC"><span class="nav-number">5.1.4.</span> <span class="nav-text">Bitcoin ASIC</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
