@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://haelchan.me/images/ML/posExm.jpg">
 <meta property="og:image" content="http://haelchan.me/images/ML/negExm.jpg">
 <meta property="og:image" content="http://haelchan.me/images/ML/stoch.jpg">
-<meta property="og:updated_time" content="2018-02-08T11:05:53.000Z">
+<meta property="og:updated_time" content="2018-02-10T04:49:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn from">
@@ -355,8 +355,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-08T19:05:53+08:00">
-                2018-02-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-10T12:49:46+08:00">
+                2018-02-10
               </time>
             
           </span>
@@ -608,7 +608,7 @@
 <script type="math/tex; mode=display">J_{test}(\theta)=\frac{1}{2m_{test}}\sum_{i=1}^{m_{test}}(h_{\Theta}(x_{test}^{(i)})-y_{test}^{(i)})^2</script><p>Model Selection: eg. for d = 1:10, when trying to minimize <script type="math/tex">J(\theta)</script>, we get the object <script type="math/tex">\theta^{(d)}</script>. Then using the θ we get, we can estimate generalization error for test set.</p>
 <h4 id="bias-v-s-variance"><a href="#bias-v-s-variance" class="headerlink" title="bias v.s. variance"></a>bias v.s. variance</h4><p><strong>High bias</strong>: underfit<br><strong>High variance</strong>: overfit</p>
 <p><img src="/images/ML/biasVariance.jpg" alt=""></p>
-<p>Just as the figure shown above, with the implement of degree of polynomial d, the training error will be less and less. However, if the degree is too high, the cross validation error would be high again(overfitting).<br>Bias:<br>-<script type="math/tex">J_{train}(\theta)</script> will be high.<br>-<script type="math/tex">J_{cv}(\theta)\approx J_{train}(\theta)</script><br>Variance:<br>-<script type="math/tex">J_{train}(\theta)</script> will be low.<br>-<script type="math/tex">J_{cv}(\theta)>>J_{train}(\theta)</script></p>
+<p>Just as the figure shown above, with the increment of degree of polynomial d, the training error will be less and less. However, if the degree is too high, the cross validation error would be high again(overfitting).<br>Bias:<br>-<script type="math/tex">J_{train}(\theta)</script> will be high.<br>-<script type="math/tex">J_{cv}(\theta)\approx J_{train}(\theta)</script><br>Variance:<br>-<script type="math/tex">J_{train}(\theta)</script> will be low.<br>-<script type="math/tex">J_{cv}(\theta)>>J_{train}(\theta)</script></p>
 <h4 id="Regularization-and-bias-variance"><a href="#Regularization-and-bias-variance" class="headerlink" title="Regularization and bias/variance"></a>Regularization and bias/variance</h4><p>Now let’s take the parameter λ that we use in regularization into consideration.<br>If λ is too large, it may lead to high bias. If λ is too small, it may lead to high variance.(e.g. λ=0)<br><img src="/images/ML/lambdaCurve.jpg" alt=""></p>
 <h4 id="Learning-curves"><a href="#Learning-curves" class="headerlink" title="Learning curves"></a>Learning curves</h4><p><img src="/images/ML/highBias.png" alt=""><br><img src="/images/ML/highVariance.png" alt=""></p>
 <h4 id="Debugging-a-learning-algorithm"><a href="#Debugging-a-learning-algorithm" class="headerlink" title="Debugging a learning algorithm"></a>Debugging a learning algorithm</h4><p>Fixing high bias:</p>
