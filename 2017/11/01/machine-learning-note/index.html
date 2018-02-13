@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://haelchan.me/images/ML/posExm.jpg">
 <meta property="og:image" content="http://haelchan.me/images/ML/negExm.jpg">
 <meta property="og:image" content="http://haelchan.me/images/ML/stoch.jpg">
-<meta property="og:updated_time" content="2018-02-10T04:49:46.000Z">
+<meta property="og:updated_time" content="2018-02-13T08:01:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn from">
@@ -355,8 +355,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-10T12:49:46+08:00">
-                2018-02-10
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T16:01:45+08:00">
+                2018-02-13
               </time>
             
           </span>
@@ -672,13 +672,13 @@
 <h4 id="Kernels"><a href="#Kernels" class="headerlink" title="Kernels"></a>Kernels</h4><p>For SVM, there’s a different(better) choice of the features:<br>given x, compute new features depending on proximity to landmarks <script type="math/tex">l^{(1)},l^{(2)},l^{(3)}</script>.<br><img src="/images/ML/landmarks.jpg" alt=""><br>For example, </p>
 <script type="math/tex; mode=display">f1=similarity(x,l^{(1)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma ^2})</script><script type="math/tex; mode=display">f2=similarity(x,l^{(2)})=exp(-\frac{||x-l^{(2)}||^2}{2\sigma ^2})</script><script type="math/tex; mode=display">f3=similarity(x,l^{(3)})=exp(-\frac{||x-l^{(3)}||^2}{2\sigma ^2})</script><p>Here the similarity is called the <strong>kernel function</strong>, and the corresponding kernel function is <strong>Gaussian Kernel</strong> which uses <code>exp</code>.</p>
 <p>How to choose landmarks?<br>Landmarks is just the input examples.<br>Given <script type="math/tex">(x^{(1)},y^{(1)},(x^{(2)},y^{(2)}),...,(x^{(m)},y^{(m)}),</script>,<br>choose <script type="math/tex">l^{(1)}=x^{(1)},l^{(2)}=x^{(2)},...,l^{(m)}=x^{(m)}</script>.<br>And calculate features using kernals.<br>Hypothesis: Given x, compute features <script type="math/tex">f\in \mathbb{R}^{m+1}</script>, predict “y=1” if <script type="math/tex">\theta^Tf\ge 0</script>.<br>Training:</p>
-<script type="math/tex; mode=display">minC\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)}+(1-y^{(i)})cost_0(\theta^Tf^{(i)})+\frac{1}{2}\sum_{j=1}^n\theta_j^2</script><p>Here n is equal to m.<br>And for some SVM, the computation of <script type="math/tex">\frac{1}{2}\sum_{j=1}^n\theta_j^2</script> is using <script type="math/tex">\theta^TM\theta</script> rather than <script type="math/tex">\theta^T\theta</script>.</p>
+<script type="math/tex; mode=display">\min_\theta C\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)}+(1-y^{(i)})cost_0(\theta^Tf^{(i)})+\frac{1}{2}\sum_{j=1}^n\theta_j^2</script><p>Here n is equal to m.<br>And for some SVM, the computation of <script type="math/tex">\frac{1}{2}\sum_{j=1}^n\theta_j^2</script> is using <script type="math/tex">\theta^TM\theta</script> rather than <script type="math/tex">\theta^T\theta</script>.</p>
 <h4 id="SVM-parameters"><a href="#SVM-parameters" class="headerlink" title="SVM parameters"></a>SVM parameters</h4><p><strong>C</strong><br>Large C: Lower bias, higher variance.<br>Small C: Higher bias, lower variance.<br>(regard C as 1/λ).</p>
 <p><strong>σ²</strong><br>Large σ²: Features f vary more smoothly. Higher bias, lower variance.<br>Small σ²: Features f vary less smoothly. Lower bias, higher variance.</p>
 <h4 id="Using-an-SVM"><a href="#Using-an-SVM" class="headerlink" title="Using an SVM"></a>Using an SVM</h4><p>SVM package: liblinear, libsvm, etc.</p>
 <p>Choice of kernels:<br><strong>Linear kernel</strong>(No kernel)<br>Predict “y=1” if <script type="math/tex">\theta^Tx\ge 0</script></p>
 <p><strong>Gaussian kernel</strong></p>
-<script type="math/tex; mode=display">f_i=exp(-\frac{||x-l^{(i)}||^2}{2\sigma^2}</script><p>(Remember to perform feature scaling before using Gaussian kernel.)</p>
+<script type="math/tex; mode=display">f_i=exp(-\frac{||x-l^{(i)}||^2}{2\sigma^2})</script><p>(Remember to perform feature scaling before using Gaussian kernel.)</p>
 <p><strong>Polynomial kernel</strong></p>
 <script type="math/tex; mode=display">(X^Tl+const)^{degree}</script><p><strong>More esoteric</strong><br>String kernel, chi-square kernel, histogram intersection kernel, …</p>
 <p><strong>Logistic regression or SVM?</strong><br>If n is large(relative to m): use logistic regression, or SVM without a kernel.<br>If n is small, m is intermediate: use SVM with Gaussian kernel.<br>If n is small, m is large: add more features, then use logistic regression, or SVM without a kernel</p>
