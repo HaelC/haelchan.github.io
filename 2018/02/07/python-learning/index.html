@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="ForewordWhatLearning Python by myself. Here’s some environment configuration:Version: Python 3.6.3Platform: macOS 10.12.6Interpreter: terminalText editor: Sublime Text 3 Why Self interest Courses Prer">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-16T15:51:41.000Z">
+<meta property="og:updated_time" content="2018-02-17T15:27:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Learning">
 <meta name="twitter:description" content="ForewordWhatLearning Python by myself. Here’s some environment configuration:Version: Python 3.6.3Platform: macOS 10.12.6Interpreter: terminalText editor: Sublime Text 3 Why Self interest Courses Prer">
@@ -332,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-16T23:51:41+08:00">
-                2018-02-16
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-17T23:27:51+08:00">
+                2018-02-17
               </time>
             
           </span>
@@ -408,7 +408,7 @@
 <h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><h3 id="Interactive-Mode-amp-Executable-mode"><a href="#Interactive-Mode-amp-Executable-mode" class="headerlink" title="Interactive Mode &amp; Executable mode"></a>Interactive Mode &amp; Executable mode</h3><p>When commands are read from a tty, the interpreter is said to be in <em>interactive mode</em>. To start interactive mode, type <code>Python3</code> in terminal(the default Python version of macOS is Python2, so type <code>Python</code> would start Python2). To stop interactive mode, type <code>exit()</code> to quit.</p>
 <p>If code is saved as file with <code>.py</code>, then type <code>Python3 filename.py</code> in terminal to compile and run the file.</p>
 <p>On BSD’ish Unix systems, Python scripts can be made directly executable, like shell scripts, by putting the line <code>#!/usr/bin/env python3</code>.<br>The script can be given an executable mode, or permission, using the <code>chmod +x script.py</code> command.<br>On Windows systems, there is no notion of an “executable mode”. The Python installer automatically associates <code>.py</code> files with <code>python.exe</code> so that a double-click on a Python file will run it as a script. The extension can also be <code>pyw</code>, in that case, the console window that normally appears is suppressed.</p>
-<h3 id="Comment-amp-Prompt"><a href="#Comment-amp-Prompt" class="headerlink" title="Comment &amp; Prompt"></a>Comment &amp; Prompt</h3><p><strong>Comment</strong><br>Comments in Python start with the hash character, #, and extend to the end of the physical line. It seems that there’s no block comments in Python, so just start with # every line if there’re many lines to be commented.</p>
+<h3 id="Comment-amp-Prompt"><a href="#Comment-amp-Prompt" class="headerlink" title="Comment &amp; Prompt"></a>Comment &amp; Prompt</h3><p><strong>Comment</strong><br>Comments in Python start with the hash character, #, and extend to the end of the physical line.<br>The <code>#</code> sign will only comment out a single line, if it’s necessary to add multi-line comments, just begin with <code>#</code> each line. (For multi-line comments, include the whole block in a set of triple quotation marks is okay in .py file, but not interactive mode.)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># This is a comment.</span></div><div class="line"><span class="comment"># Here's another</span></div></pre></td></tr></table></figure>
 <p><strong>Prompt</strong><br>When commands are read from a tty, the interpreter is said to be in interactive mode. In this mode it prompts for the next command with the <em>primary prompt</em>, usually three greater-than signs (<code>&gt;&gt;&gt;</code>); for continuation lines it prompts with the <em>secondary prompt</em>, by default three dots (<code>...</code>).<br>Generally the prompts are primary prompt. Secondary prompts are used in control flow like <code>if</code>, <code>while</code>, etc.<br><em>Primary prompt</em> (after <code>python3</code> command in my terminal): </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ python3</div><div class="line">Python <span class="number">3.6</span><span class="number">.3</span> (default, Oct <span class="number">28</span> <span class="number">2017</span>, <span class="number">21</span>:<span class="number">24</span>:<span class="number">10</span>) </div><div class="line">[GCC <span class="number">4.2</span><span class="number">.1</span> Compatible Apple LLVM <span class="number">8.1</span><span class="number">.0</span> (clang<span class="number">-802.0</span><span class="number">.42</span>)] on darwin</div><div class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
@@ -447,8 +447,7 @@
 <p><strong>Slicing</strong><br>Like MATLAB, Python supports slicing(<code>word[0:2]</code>), which allows to obtain substring.<br>Note the start is always included, and the end always excluded.<br>Default: an omitted first index defaults to zero, an omitted second index defaults to the size of the string being sliced.</p>
 <p>Attempting to use an index that is too large will result in an error. However, out of range slice indexes are handled gracefully when used for slicing.</p>
 <p><strong>Immutable</strong><br>Python strings are immutable, just as in Java. Thus, if it’s necessary to edit a string, just create a new one.</p>
-<p><strong>Others</strong><br>The built-in function <code>len()</code> returns the length of a string.</p>
-<p><strong>Others</strong><br>The built-in function <code>len()</code> also applies to lists.<br>It is also possible to nest lists (create lists containing other lists).</p>
+<p><strong>Others</strong><br>The built-in function <code>len()</code> returns the length of a string.<br><a href="https://docs.python.org/3.6/library/stdtypes.html?highlight=upper#string-methods" target="_blank" rel="external">String Methods</a></p>
 <h3 id="Control-Flow"><a href="#Control-Flow" class="headerlink" title="Control Flow"></a>Control Flow</h3><p><strong>if Statement</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ... :</div><div class="line">    ...</div><div class="line"><span class="keyword">elif</span> ... :</div><div class="line">    ...</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    ...</div></pre></td></tr></table></figure>
 <p>There can be zero or more <code>elif</code> parts, and the <code>else</code> part is optional.<br>Note there’s no <code>switch</code> <code>case</code> in Python.</p>
@@ -613,6 +612,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/02/18/deep-learning-note/" rel="prev" title="deep-learning-note">
+                deep-learning-note <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -699,7 +702,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -721,7 +724,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

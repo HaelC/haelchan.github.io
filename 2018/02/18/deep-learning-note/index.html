@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="learning note,machine learning,deep learning," />
 
 
 
@@ -79,13 +79,26 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hael&#39;s Blog">
-<meta property="og:url" content="http://haelchan.me/tags/tips/index.html">
+<meta name="description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note. House price Prediction can be regarded as the simplest neural network:The">
+<meta name="keywords" content="learning note,machine learning,deep learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="deep-learning-note">
+<meta property="og:url" content="http://haelchan.me/2018/02/18/deep-learning-note/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
+<meta property="og:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note. House price Prediction can be regarded as the simplest neural network:The">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://haelchan.me/images/DL/neuron.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/ReLU.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/NNexamples.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/structured.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/scaleDrive.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/sigmoidFunction.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/logisticDerivative.jpg">
+<meta property="og:updated_time" content="2018-02-18T13:33:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hael&#39;s Blog">
+<meta name="twitter:title" content="deep-learning-note">
+<meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note. House price Prediction can be regarded as the simplest neural network:The">
+<meta name="twitter:image" content="http://haelchan.me/images/DL/neuron.jpg">
 
 
 
@@ -115,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://haelchan.me/tags/tips/"/>
+  <link rel="canonical" href="http://haelchan.me/2018/02/18/deep-learning-note/"/>
 
 
 
 
 
-  <title>标签: tips | Hael's Blog</title>
+  <title>deep-learning-note | Hael's Blog</title>
   
 
 
@@ -140,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -268,110 +281,290 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>tips<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2018/02/18/deep-learning-note/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hael Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hael's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/11/18/matlab-summary/" itemprop="url">
-              
-                <span itemprop="name">MATLAB整理</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">deep-learning-note</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-18T23:42:11+08:00"
-              content="2017-11-18" >
-          11-18
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-18T12:01:32+08:00">
+                2018-02-18
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-18T21:33:15+08:00">
+                2018-02-18
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/18/deep-learning-note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/18/deep-learning-note/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/18/deep-learning-note/" class="leancloud_visitors" data-flag-title="deep-learning-note">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/21/linuxCommands/" itemprop="url">
-              
-                <span itemprop="name">Linux系统下常用指令</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-21T16:53:19+08:00"
-              content="2017-10-21" >
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/20/macOS-shortcuts/" itemprop="url">
-              
-                <span itemprop="name">macOS常用快捷键整理</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-20T15:46:32+08:00"
-              content="2017-10-20" >
-          10-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="Neural-Networks-and-Deep-Learning"><a href="#Neural-Networks-and-Deep-Learning" class="headerlink" title="Neural Networks and Deep Learning"></a>Neural Networks and Deep Learning</h2><h3 id="Week-One"><a href="#Week-One" class="headerlink" title="Week One"></a>Week One</h3><p>(Neural network is also introduced in Machine Learning course, with <a href="http://haelchan.me/2017/11/01/machine-learning-note/#Week-Four">my learning note</a>.</p>
+<p>House price Prediction can be regarded as the simplest neural network:<br><img src="/images/DL/neuron.jpg" alt=""><br>The function can be ReLU (REctified Linear Unit), which we’ll see a lot.<br><img src="/images/DL/ReLU.jpg" alt=""></p>
+<p>This is a single neuron. A larger neural network is then formed by taking many of the single neurons and stacking them together.</p>
+<p>Almost all the economic value created by neural networks has been through <strong>supervised learning</strong>.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Input(x)</th>
+<th>Output(y)</th>
+<th>Application</th>
+<th>Neural Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>House feature</td>
+<td>Price</td>
+<td>Real estate</td>
+<td>Standard NN</td>
+</tr>
+<tr>
+<td>Ad, user info</td>
+<td>Click on ad?(0/1)</td>
+<td>Online advertising</td>
+<td>Standard NN</td>
+</tr>
+<tr>
+<td>Photo</td>
+<td>Object(Index 1,…,1000)</td>
+<td>Photo tagging</td>
+<td>CNN</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>Text transcript</td>
+<td>Speech recognition</td>
+<td>RNN</td>
+</tr>
+<tr>
+<td>English</td>
+<td>Chinese</td>
+<td>Machine translation</td>
+<td>RNN</td>
+</tr>
+<tr>
+<td>Image, Radar info</td>
+<td>Position of other cars</td>
+<td>Autonomous driving</td>
+<td>Custom/Hybrid</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Neural Network examples</strong><br><img src="/images/DL/NNexamples.jpg" alt=""><br>CNN: often for image data<br>RNN: often for one-dimensional sequence data</p>
+<p><strong>Structured data and Unstructured data</strong><br><img src="/images/DL/structured.jpg" alt=""></p>
+<p><strong>Scale drives deep learning progress</strong><br><img src="/images/DL/scaleDrive.jpg" alt=""><br>Scale: both the size of the neural network and the scale of the data.</p>
+<ul>
+<li>Data</li>
+<li>Computation</li>
+<li>Algorithms</li>
+</ul>
+<p>Using ReLU instead of sigmoid function as activation function can improve efficiency.</p>
+<h3 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h3><p><strong>Notation</strong><br><em>(x,y)</em>: a single training example. <script type="math/tex">x\in\mathbb{R}^{n_x},y\in\{0,1\}</script><br><em>m</em> training examples: <script type="math/tex">\{(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),...,(x^{(m)},y^{(m)})\}</script></p>
+<script type="math/tex; mode=display">X=\begin{bmatrix}|&|&\ &|\\x^{(1)}&x^{(2)}&...&x^{(m)}\\|&|&\ &|\end{bmatrix}</script><script type="math/tex; mode=display">X\in\mathbb{R}^{n_x\times m}</script><p>Take training set inputs x1, x2 and so on and stacking them in columns. (This make the implementation much easier than X’s transpose)</p>
+<script type="math/tex; mode=display">Y=\begin{bmatrix}y^{(1)}&y^{(2)}&...&y^{(m)}\end{bmatrix}</script><script type="math/tex; mode=display">Y\in\mathbb{R}^{1\times m}</script><h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><p><strong>Differences with former course</strong><br>Notation is a bit different from what is introduced in Machine Learning(<a href="http://haelchan.me/2017/11/01/machine-learning-note/#Week-Four">note</a>).<br>Originally, we add <script type="math/tex">x_0=1</script> so that <script type="math/tex">x\in\mathbb{R}^{n_x+1}</script>.</p>
+<script type="math/tex; mode=display">\hat{y}=\sigma(\theta^Tx)</script><p>where <script type="math/tex">\theta=\begin{bmatrix}\theta_0\\\theta_1\\\theta_2\\...\\\theta_{n_x}\end{bmatrix}</script>.</p>
+<p>Here in Deep Learning course, we use <em>b</em> to represent <script type="math/tex">\theta_0</script>, and <em>w</em> to represent <script type="math/tex">\theta_1,...,\theta_{n_m}</script>. Just keep <em>b</em> and <em>w</em> as separate parameters.<br>Given <em>x</em>, want <script type="math/tex">\hat{y}=P(y=1|x)</script>. <script type="math/tex">x\in\mathbb{R}^{n_x},0\le\hat y\le1</script><br>Parameters: <script type="math/tex">w\in\mathbb{R}^{n_x},b\in\mathbb{R}</script><br>Output: <script type="math/tex">\hat{y}=\sigma(w^Tx+b)</script><br>σ is sigmoid function: <script type="math/tex">\sigma(z)=\frac{1}{1+e^{-z}}</script><br><img src="/images/DL/sigmoidFunction.jpg" alt=""></p>
+<p><strong>Cost Function</strong></p>
+<script type="math/tex; mode=display">\mathscr{L}(\hat{y},y)=-(y\log\hat{y}+(1-y)\log(1-\hat{y}))</script><p>If <script type="math/tex">y=1:\mathscr{L}(\hat{y},y)=-\log\hat{y}</script><br>If <script type="math/tex">y=0:\mathscr{L}(\hat{y},y)=-\log(1-\hat{y})</script></p>
+<p>Cost function:</p>
+<script type="math/tex; mode=display">J(w,b)=\frac{1}{m}\sum_{i=1}^m\mathscr{L}(\hat{y}^{(i)},y^{(i)})=-\frac{1}{m}\sum_{i=1}^m(y^{(i)}\log\hat{y}^{(i)}+(1-y^{(i)})\log(1-\hat{y}^{(i)}))</script><p>Loss function is applied to just a single training example.<br>Cost function is the cost of your parameters, it is the average of the loss functions of the entire training set.</p>
+<p><strong>Gradient Descent</strong><br>Usually initialize the value to zero in logistic regression. Random initialization also works, but people don’t usually do that for logistic regression.</p>
+<p>Repeat {</p>
+<script type="math/tex; mode=display">w:=w-\alpha\frac{\partial J(w,b)}{\partial w}</script><script type="math/tex; mode=display">b:=b-\alpha\frac{\partial J(w,b)}{\partial b}</script><p>}</p>
+<p><img src="/images/DL/logisticDerivative.jpg" alt=""><br>From forward propagation, we calculate <em>z</em>, <em>a</em> and finally <script type="math/tex">\mathscr{L}(a,y)</script><br>From back propagation, we calculate the derivatives step by step:</p>
+<script type="math/tex; mode=display">da=\frac{d\mathscr{L}(a,y)}{da}=-\frac{y}{a}+\frac{1-y}{1-a}</script><script type="math/tex; mode=display">dz=\frac{d\mathscr{L}(a,y)}{dz}=\frac{d\mathscr{L}}{da}\cdot\frac{da}{dz}=(-\frac{y}{a}+\frac{1-y}{1-a})\cdot a(1-a)=a-y</script><script type="math/tex; mode=display">dw_1=\frac{d\mathscr{L}}{dw_1}=x_1\cdot dz</script><script type="math/tex; mode=display">dw_2=x_2\cdot dz</script><script type="math/tex; mode=display">db=dz</script><p><strong>Algorithm</strong><br>(Repeat)<br>J=0; dw1,dw2,…dwn=0; db=0<br>for i = 1 to m</p>
+<script type="math/tex; mode=display">z^{(i)}=w^Tx^{(i)}+b</script><script type="math/tex; mode=display">a^{(i)}=\sigma(z^{(i)})</script><script type="math/tex; mode=display">J+=-[y^{(i)}\log a^{(i)}+(1-y^{(i)})\log(1-a^{(i)})]</script><script type="math/tex; mode=display">dz^{(i)}=a^{(i)}-y^{(i)}</script><p>  for j = 1 to n: <script type="math/tex">dw_j+=x^{(i)}_jdz^{(i)}</script></p>
+<script type="math/tex; mode=display">db+=dz^{(i)}</script><p>J /= m;<br>dw1,dw2,…,dwn /= m;<br>db /= m</p>
+<p>w1:=w1-αdw1<br>w2:=w2-αdw2<br>b:=b-αdb</p>
+<p>In the for loop, there’s no superscript i for <em>dw</em> variable, because the value of <em>dw</em> in the code is cumulative. While <em>dz</em> is referring to one training example.</p>
+<p><strong>Vectorization</strong><br>Original <code>for</code> loop:<br>for i = 1 to m</p>
+<script type="math/tex; mode=display">z^{(i)}=w^Tx^{(i)}+b</script><script type="math/tex; mode=display">a^{(i)}=\sigma(z^{(i)})</script><p>Vectorized:</p>
+<script type="math/tex; mode=display">Z=\begin{bmatrix}z^{(1)}&z^{(2)}&...&z^{(m)}\end{bmatrix}=w^TX+\begin{bmatrix}b&b&...&b\end{bmatrix}=\begin{bmatrix}w^Tx^{(1)}+b&w^Tx^{(2)}+b&...&w^Tx^{(m)}+b\end{bmatrix}</script><script type="math/tex; mode=display">A=\begin{bmatrix}a^{(1)}&a^{(2)}&...&a^{(m)}\end{bmatrix}=\sigma(z)</script><script type="math/tex; mode=display">Y=\begin{bmatrix}y^{(1)}&...&y^{(m)}\end{bmatrix}</script><script type="math/tex; mode=display">dZ=\begin{bmatrix}dz^{(1)}&dz^{(2)}&...&dz^{(m)}\end{bmatrix}=A-Y</script><p>Code:<br><code>z = np.dot(w.T, X) + b</code><br><code>db = 1 / m * np.sum(dZ)</code><br><code>dw = 1 / m * X * dZ.T</code></p>
+<h3 id="About-Python"><a href="#About-Python" class="headerlink" title="About Python"></a>About Python</h3><p><code>A.sum(axis = 0)</code>: sum vertically<br><code>A.sum(axis = 1)</code>: sum horizontally</p>
+<p><strong>Broadcasting</strong><br>If an (m, n) matrix operates with (+-*/) a (1, n) row vector, just expand the vector vertically to (m, n) by copying m times.<br>If an (m, n) matrix operates with a (m, 1) column vector, just expand the vector horizontally to (m, n) by copying n times.<br>If an row/column vector operates with a real number, just expand the real number to the corresponding vector.<br><a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="external">documention</a></p>
+<p><strong>Rank 1 Array</strong><br><code>a = np.random.randn(5)</code> creates a <em>rank 1 array</em> whose shape is <code>(5,)</code>.<br>Try to avoid using rank 1 array. Use <code>a = a.reshape((5, 1))</code> or <code>a = np.random.randn(5, 1)</code>.</p>
+<p>Note that <code>np.dot()</code> performs a matrix-matrix or matrix-vector multiplication. This is different from <code>np.multiply()</code> and the <code>*</code> operator (which is equivalent to <code>.*</code> in MATLAB/Octave), which performs an element-wise multiplication.</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Hael Chan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://haelchan.me/2018/02/18/deep-learning-note/" title="deep-learning-note">http://haelchan.me/2018/02/18/deep-learning-note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/07/python-learning/" rel="next" title="Python Learning">
+                <i class="fa fa-chevron-left"></i> Python Learning
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -379,6 +572,17 @@
 
 
           
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
 
         </div>
         
@@ -399,8 +603,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -492,6 +705,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Neural Networks and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One"><span class="nav-number">1.1.</span> <span class="nav-text">Week One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two"><span class="nav-number">1.2.</span> <span class="nav-text">Week Two</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.3.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#About-Python"><span class="nav-number">1.4.</span> <span class="nav-text">About Python</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -624,6 +853,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -641,6 +874,18 @@
       <script id="dsq-count-scr" src="https://hael.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://haelchan.me/2018/02/18/deep-learning-note/';
+          this.page.identifier = '2018/02/18/deep-learning-note/';
+          this.page.title = 'deep-learning-note';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hael.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
