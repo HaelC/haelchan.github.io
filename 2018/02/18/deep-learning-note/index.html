@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note. House price Prediction can be regarded as the simplest neural network:The">
+<meta name="description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
 <meta name="keywords" content="learning note,machine learning,deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="deep-learning-note">
 <meta property="og:url" content="http://haelchan.me/2018/02/18/deep-learning-note/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
-<meta property="og:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note. House price Prediction can be regarded as the simplest neural network:The">
+<meta property="og:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/images/DL/neuron.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/ReLU.jpg">
@@ -94,10 +94,19 @@
 <meta property="og:image" content="http://haelchan.me/images/DL/scaleDrive.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/sigmoidFunction.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/logisticDerivative.jpg">
-<meta property="og:updated_time" content="2018-02-18T13:33:15.000Z">
+<meta property="og:image" content="http://haelchan.me/images/DL/singleNeuron.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/neuralRepre.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/x1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/a1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/justification.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/act0.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/act1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/act2.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/act3.jpg">
+<meta property="og:updated_time" content="2018-02-19T12:31:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deep-learning-note">
-<meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note. House price Prediction can be regarded as the simplest neural network:The">
+<meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
 <meta name="twitter:image" content="http://haelchan.me/images/DL/neuron.jpg">
 
 
@@ -340,8 +349,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-18T21:33:15+08:00">
-                2018-02-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-19T20:31:29+08:00">
+                2018-02-19
               </time>
             
           </span>
@@ -396,7 +405,7 @@
       
 
       
-        <h2 id="Neural-Networks-and-Deep-Learning"><a href="#Neural-Networks-and-Deep-Learning" class="headerlink" title="Neural Networks and Deep Learning"></a>Neural Networks and Deep Learning</h2><h3 id="Week-One"><a href="#Week-One" class="headerlink" title="Week One"></a>Week One</h3><p>(Neural network is also introduced in Machine Learning course, with <a href="http://haelchan.me/2017/11/01/machine-learning-note/#Week-Four">my learning note</a>.</p>
+        <h2 id="Neural-Networks-and-Deep-Learning"><a href="#Neural-Networks-and-Deep-Learning" class="headerlink" title="Neural Networks and Deep Learning"></a>Neural Networks and Deep Learning</h2><h3 id="Week-One"><a href="#Week-One" class="headerlink" title="Week One"></a>Week One</h3><p>(Neural network is also introduced in Machine Learning course, with <a href="http://haelchan.me/2017/11/01/machine-learning-note/#Week-Four">my learning note</a>).</p>
 <p>House price Prediction can be regarded as the simplest neural network:<br><img src="/images/DL/neuron.jpg" alt=""><br>The function can be ReLU (REctified Linear Unit), which we’ll see a lot.<br><img src="/images/DL/ReLU.jpg" alt=""></p>
 <p>This is a single neuron. A larger neural network is then formed by taking many of the single neurons and stacking them together.</p>
 <p>Almost all the economic value created by neural networks has been through <strong>supervised learning</strong>.</p>
@@ -461,9 +470,9 @@
 <p>Using ReLU instead of sigmoid function as activation function can improve efficiency.</p>
 <h3 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h3><p><strong>Notation</strong><br><em>(x,y)</em>: a single training example. <script type="math/tex">x\in\mathbb{R}^{n_x},y\in\{0,1\}</script><br><em>m</em> training examples: <script type="math/tex">\{(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),...,(x^{(m)},y^{(m)})\}</script></p>
 <script type="math/tex; mode=display">X=\begin{bmatrix}|&|&\ &|\\x^{(1)}&x^{(2)}&...&x^{(m)}\\|&|&\ &|\end{bmatrix}</script><script type="math/tex; mode=display">X\in\mathbb{R}^{n_x\times m}</script><p>Take training set inputs x1, x2 and so on and stacking them in columns. (This make the implementation much easier than X’s transpose)</p>
-<script type="math/tex; mode=display">Y=\begin{bmatrix}y^{(1)}&y^{(2)}&...&y^{(m)}\end{bmatrix}</script><script type="math/tex; mode=display">Y\in\mathbb{R}^{1\times m}</script><h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><p><strong>Differences with former course</strong><br>Notation is a bit different from what is introduced in Machine Learning(<a href="http://haelchan.me/2017/11/01/machine-learning-note/#Week-Four">note</a>).<br>Originally, we add <script type="math/tex">x_0=1</script> so that <script type="math/tex">x\in\mathbb{R}^{n_x+1}</script>.</p>
+<script type="math/tex; mode=display">Y=\begin{bmatrix}y^{(1)}&y^{(2)}&...&y^{(m)}\end{bmatrix}</script><script type="math/tex; mode=display">Y\in\mathbb{R}^{1\times m}</script><h4 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h4><p><strong>Differences with former course</strong><br>Notation is a bit different from what is introduced in Machine Learning(<a href="http://haelchan.me/2017/11/01/machine-learning-note/#Week-Four">note</a>).<br>Originally, we add <script type="math/tex">x_0=1</script> so that <script type="math/tex">x\in\mathbb{R}^{n_x+1}</script>.</p>
 <script type="math/tex; mode=display">\hat{y}=\sigma(\theta^Tx)</script><p>where <script type="math/tex">\theta=\begin{bmatrix}\theta_0\\\theta_1\\\theta_2\\...\\\theta_{n_x}\end{bmatrix}</script>.</p>
-<p>Here in Deep Learning course, we use <em>b</em> to represent <script type="math/tex">\theta_0</script>, and <em>w</em> to represent <script type="math/tex">\theta_1,...,\theta_{n_m}</script>. Just keep <em>b</em> and <em>w</em> as separate parameters.<br>Given <em>x</em>, want <script type="math/tex">\hat{y}=P(y=1|x)</script>. <script type="math/tex">x\in\mathbb{R}^{n_x},0\le\hat y\le1</script><br>Parameters: <script type="math/tex">w\in\mathbb{R}^{n_x},b\in\mathbb{R}</script><br>Output: <script type="math/tex">\hat{y}=\sigma(w^Tx+b)</script><br>σ is sigmoid function: <script type="math/tex">\sigma(z)=\frac{1}{1+e^{-z}}</script><br><img src="/images/DL/sigmoidFunction.jpg" alt=""></p>
+<p>Here in Deep Learning course, we use <em>b</em> to represent <script type="math/tex">\theta_0</script>, and <em>w</em> to represent <script type="math/tex">\theta_1,...,\theta_{n_m}</script>. Just keep <em>b</em> and <em>w</em> as separate parameters.<br>Given <em>x</em>, want <script type="math/tex">\hat{y}=P(y=1|x)</script>. <script type="math/tex">x\in\mathbb{R}^{n_x},0\le\hat y\le1</script><br>Parameters: <script type="math/tex">w\in\mathbb{R}^{n_x},b\in\mathbb{R}</script><br>Output: <script type="math/tex">\hat{y}=\sigma(w^Tx+b)</script><br>σ() is sigmoid function: <script type="math/tex">\sigma(z)=\frac{1}{1+e^{-z}}</script><br><img src="/images/DL/sigmoidFunction.jpg" alt=""></p>
 <p><strong>Cost Function</strong></p>
 <script type="math/tex; mode=display">\mathscr{L}(\hat{y},y)=-(y\log\hat{y}+(1-y)\log(1-\hat{y}))</script><p>If <script type="math/tex">y=1:\mathscr{L}(\hat{y},y)=-\log\hat{y}</script><br>If <script type="math/tex">y=0:\mathscr{L}(\hat{y},y)=-\log(1-\hat{y})</script></p>
 <p>Cost function:</p>
@@ -479,11 +488,34 @@
 <p>In the for loop, there’s no superscript i for <em>dw</em> variable, because the value of <em>dw</em> in the code is cumulative. While <em>dz</em> is referring to one training example.</p>
 <p><strong>Vectorization</strong><br>Original <code>for</code> loop:<br>for i = 1 to m</p>
 <script type="math/tex; mode=display">z^{(i)}=w^Tx^{(i)}+b</script><script type="math/tex; mode=display">a^{(i)}=\sigma(z^{(i)})</script><p>Vectorized:</p>
-<script type="math/tex; mode=display">Z=\begin{bmatrix}z^{(1)}&z^{(2)}&...&z^{(m)}\end{bmatrix}=w^TX+\begin{bmatrix}b&b&...&b\end{bmatrix}=\begin{bmatrix}w^Tx^{(1)}+b&w^Tx^{(2)}+b&...&w^Tx^{(m)}+b\end{bmatrix}</script><script type="math/tex; mode=display">A=\begin{bmatrix}a^{(1)}&a^{(2)}&...&a^{(m)}\end{bmatrix}=\sigma(z)</script><script type="math/tex; mode=display">Y=\begin{bmatrix}y^{(1)}&...&y^{(m)}\end{bmatrix}</script><script type="math/tex; mode=display">dZ=\begin{bmatrix}dz^{(1)}&dz^{(2)}&...&dz^{(m)}\end{bmatrix}=A-Y</script><p>Code:<br><code>z = np.dot(w.T, X) + b</code><br><code>db = 1 / m * np.sum(dZ)</code><br><code>dw = 1 / m * X * dZ.T</code></p>
-<h3 id="About-Python"><a href="#About-Python" class="headerlink" title="About Python"></a>About Python</h3><p><code>A.sum(axis = 0)</code>: sum vertically<br><code>A.sum(axis = 1)</code>: sum horizontally</p>
+<script type="math/tex; mode=display">Z=\begin{bmatrix}z^{(1)}&z^{(2)}&...&z^{(m)}\end{bmatrix}=w^TX+\begin{bmatrix}b&b&...&b\end{bmatrix}=\begin{bmatrix}w^Tx^{(1)}+b&w^Tx^{(2)}+b&...&w^Tx^{(m)}+b\end{bmatrix}</script><script type="math/tex; mode=display">A=\begin{bmatrix}a^{(1)}&a^{(2)}&...&a^{(m)}\end{bmatrix}=\sigma(z)</script><script type="math/tex; mode=display">Y=\begin{bmatrix}y^{(1)}&...&y^{(m)}\end{bmatrix}</script><script type="math/tex; mode=display">dZ=\begin{bmatrix}dz^{(1)}&dz^{(2)}&...&dz^{(m)}\end{bmatrix}=A-Y</script><p>Code:<br><code>z = np.dot(w.T, X) + b</code><br><code>dz = A - Y</code><br><code>cost = -1 / m * np.sum(Y * np.log(A) + (1 - Y) * np.log(1 - A))</code><br><code>db = 1 / m * np.sum(dZ)</code><br><code>dw = 1 / m * X * dZ.T</code></p>
+<h4 id="About-Python"><a href="#About-Python" class="headerlink" title="About Python"></a>About Python</h4><p><code>A.sum(axis = 0)</code>: sum vertically<br><code>A.sum(axis = 1)</code>: sum horizontally</p>
 <p><strong>Broadcasting</strong><br>If an (m, n) matrix operates with (+-*/) a (1, n) row vector, just expand the vector vertically to (m, n) by copying m times.<br>If an (m, n) matrix operates with a (m, 1) column vector, just expand the vector horizontally to (m, n) by copying n times.<br>If an row/column vector operates with a real number, just expand the real number to the corresponding vector.<br><a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="external">documention</a></p>
 <p><strong>Rank 1 Array</strong><br><code>a = np.random.randn(5)</code> creates a <em>rank 1 array</em> whose shape is <code>(5,)</code>.<br>Try to avoid using rank 1 array. Use <code>a = a.reshape((5, 1))</code> or <code>a = np.random.randn(5, 1)</code>.</p>
 <p>Note that <code>np.dot()</code> performs a matrix-matrix or matrix-vector multiplication. This is different from <code>np.multiply()</code> and the <code>*</code> operator (which is equivalent to <code>.*</code> in MATLAB/Octave), which performs an element-wise multiplication.</p>
+<h3 id="Week-Three"><a href="#Week-Three" class="headerlink" title="Week Three"></a>Week Three</h3><h4 id="Neural-Network-Overview"><a href="#Neural-Network-Overview" class="headerlink" title="Neural Network Overview"></a>Neural Network Overview</h4><p>Superscript with square brackets dotes the layer, superscript with round brackets refers to i’th training example.</p>
+<p><img src="/images/DL/singleNeuron.jpg" alt=""><br>Logistic regression can be regarded as the simplest neural network. The neuron takes in the inputs and make two computations: <code>$z=w^Tx+b$,a=\sigma(z)</code></p>
+<p><img src="/images/DL/neuralRepre.jpg" alt=""><br>Neural network functions similarly. (Note that this neural network has 2 layers. When counting layers, input layer is not included.)<br>Take the first node in the hidden layer as example:</p>
+<script type="math/tex; mode=display">z^{[1]}_1=w_1^{[1]T}x+b^{[1]}_1</script><script type="math/tex; mode=display">a^{[1]}_1=\sigma(z^{[1]}_1)</script><p>The superscript <script type="math/tex">[l]</script> denotes the layer, and subscript <code>i</code> represents the node in layer.<br>Similarly,</p>
+<script type="math/tex; mode=display">z^{[1]}_2=w_2^{[1]T}x+b^{[1]}_2</script><script type="math/tex; mode=display">a^{[1]}_2=\sigma(z^{[1]}_2)</script><script type="math/tex; mode=display">z^{[1]}_3=w_1^{[1]T}x+b^{[1]}_3</script><script type="math/tex; mode=display">a^{[1]}_3=\sigma(z^{[1]}_3)</script><script type="math/tex; mode=display">z^{[1]}_4=w_1^{[1]T}x+b^{[1]}_4</script><script type="math/tex; mode=display">a^{[1]}_4=\sigma(z^{[1]}_4)</script><p>Vectorization:</p>
+<script type="math/tex; mode=display">z^{[1]}=\begin{bmatrix}-&w_1^{[1]}&-\\-&w_2^{[1]}&-\\-&w_3^{[1]}&-\\-&w_4^{[1]}&-\end{bmatrix}\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}+\begin{bmatrix}b_1^{[1]}\\b_2^{[1]}\\b_3^{[1]}\\b_4^{[1]}\end{bmatrix}=\begin{bmatrix}w_1^{[1]T}x+b_1^{[1]}\\w_2^{[1]T}x+b_2^{[1]}\\w_3^{[1]T}x+b_3^{[1]}\\w_4^{[1]T}x+b_4^{[1]}\end{bmatrix}=\begin{bmatrix}z^{[1]}_1\\z^{[1]}_2\\z^{[1]}_3\\z^{[1]}_4\end{bmatrix}</script><script type="math/tex; mode=display">a^{[1]}=\begin{bmatrix}a_1^{[1]}\\a^{[1]}_2\\a^{[1]}_3\\a^{[1]}_4\end{bmatrix}=\sigma(z^{[1]})</script><p>Formula:</p>
+<script type="math/tex; mode=display">z^{[1]}=W^{[1]}a[0]+b^{[1]}</script><script type="math/tex; mode=display">a^{[1]}=\sigma(z^{[1]})</script><script type="math/tex; mode=display">z^{[2]}=W^{[2]}a^{[1]}+b^{[2]}</script><script type="math/tex; mode=display">a^{[2]}=\sigma(z^{[2]})</script><p>(dimensions: <script type="math/tex">z^{[1]}:(4,1),W^{[1]}:(4,3),a^{[0]}:(3,1),b^{[1]}:(4,1),a^{[1]}:(4,1);z^{[2]}:(1,1),W^{[2]}:(1,4),b^{[2]}:(1,1),a^{[2]}:(1,1)</script>)</p>
+<p>Vectorizing across multiple examples:</p>
+<script type="math/tex; mode=display">Z^{[1]}=W^{[1]}X+b^{[1]}</script><script type="math/tex; mode=display">A[1]=\sigma(Z^{[1]})</script><script type="math/tex; mode=display">Z^{[2]}=W^{[2]}A^{[1]}+b^{[2]}</script><script type="math/tex; mode=display">A^{[2]}=\sigma(Z^{[2]})</script><p>Explanation<br><img src="/images/DL/x1.jpg" alt=""><br><img src="/images/DL/a1.jpg" alt=""><br>Stack elements in column.<br>Each column represents a training example, each row represents a hidden unit.</p>
+<p><img src="/images/DL/justification.jpg" alt=""></p>
+<h4 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h4><p><strong>Sigmoid Function</strong></p>
+<script type="math/tex; mode=display">a=\frac{1}{1+e^{-z}}</script><p><img src="/images/DL/act0.jpg" alt=""><br>Only used in binary classification’s output layer(with output 0 or 1).<br>Not used in other occasion. <code>tanh</code> is a better choice.</p>
+<script type="math/tex; mode=display">g'(z)=\frac{d}{dz}g(z)=\frac{1}{1+e^{-z}}(1-\frac{1}{1+e^{-z}})=a(1-a)</script><p><strong>tanh Function</strong></p>
+<script type="math/tex; mode=display">a=\tanh(z)=\frac{e^z-e^{-z}}{e^z+e^{-z}}</script><p><img src="/images/DL/act1.jpg" alt=""><br>With a range of <script type="math/tex">(-1,1)</script>, it performs better than sigmoid function.<br>Both sigmoid and tanh function have a disadvantage that when <em>z</em> is very large(<script type="math/tex">\to\infty</script>) or very small(<script type="math/tex">\to-\infty</script>), the derivative can be close to 0, so the gradient descent would be very slow.</p>
+<script type="math/tex; mode=display">g'(z)=\frac{d}{dz}g(z)=1-(tanh(z)^2)=1-a^2</script><p><strong>ReLU</strong></p>
+<script type="math/tex; mode=display">a=\max(0,z)</script><p><img src="/images/DL/act2.jpg" alt=""><br>Default choice of activation function.<br>With <script type="math/tex">g'(z)=1</script> when z is positive, it performs well in practice.<br>(Although the <code>g&#39;(z)=0</code> when z is positive, and technically the derivative when <script type="math/tex">z=0</script> is not well-defined)</p>
+<p><strong>Leaky ReLU</strong></p>
+<script type="math/tex; mode=display">a=\max(0.01z,z)</script><p><img src="/images/DL/act3.jpg" alt=""><br>Makes sure that derivatives not equal to 0 when z &lt; 0.</p>
+<p>Linear Activation Function</p>
+<script type="math/tex; mode=display">g(z)=z</script><p>Also called identity function.<br>Not used in neural network, because even many hidden layers still gets a linear result. Just used in machine learning when the output is a real number.</p>
+<h4 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a>Gradient descent</h4><p>Forward propagation:</p>
+<script type="math/tex; mode=display">Z^{[1]}=W^{[1]}X+b^{[1]}</script><script type="math/tex; mode=display">A^{[1]}=g^{[1]}(Z^{[1]})</script><script type="math/tex; mode=display">Z^{[2]}=W^{[2]}A^{[1]}+b^{[2]}</script><script type="math/tex; mode=display">A^{[2]}=g^{[2]}(Z^{[2]})</script><p>Backward propagation:</p>
+<script type="math/tex; mode=display">dZ^{[2]}=A^{[2]}-Y</script><script type="math/tex; mode=display">dW^{[2]}=\frac{1}{m}dZ^{[2]}A^{[1]T}</script><script type="math/tex; mode=display">db^{[2]}=\frac{1}{m}np.sum(dZ^{[2]},axis=1,keepdims=True)</script><script type="math/tex; mode=display">dZ^{[1]}=W^{[2]T}dZ^{[2]}*g^{[1]'}(Z^{[1]})</script><script type="math/tex; mode=display">dW^{[1]}=\frac{1}{m}dZ^{[1]}X^T</script><script type="math/tex; mode=display">db^{[1]}=\frac{1}{m}np.sum(dZ^{[1]},axis=1,keepdims=True)</script><p>note:<br><code>keepdims=True</code> makes sure that Python won’t produce <em>rank-1 array</em> with shape of <code>(n,)</code>.<br><code>*</code> is element-wise product. <script type="math/tex">dZ^{[1]}</script>:(n[1],m);<script type="math/tex">W^{[2]T}dZ^{[2]}</script>:(n[1],m);<script type="math/tex">g^{[1]'}(Z^{[1]})</script>:(n[1],m).</p>
 
       
     </div>
@@ -715,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Neural Networks and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One"><span class="nav-number">1.1.</span> <span class="nav-text">Week One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two"><span class="nav-number">1.2.</span> <span class="nav-text">Week Two</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.3.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#About-Python"><span class="nav-number">1.4.</span> <span class="nav-text">About Python</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Neural Networks and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One"><span class="nav-number">1.1.</span> <span class="nav-text">Week One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two"><span class="nav-number">1.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#About-Python"><span class="nav-number">1.2.2.</span> <span class="nav-text">About Python</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three"><span class="nav-number">1.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Network-Overview"><span class="nav-number">1.3.1.</span> <span class="nav-text">Neural Network Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activation-Function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Activation Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">1.3.3.</span> <span class="nav-text">Gradient descent</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
