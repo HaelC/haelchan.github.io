@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="learning note,machine learning,deep learning," />
+  <meta name="keywords" content="machine learning,learning note,deep learning," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
-<meta name="keywords" content="learning note,machine learning,deep learning">
+<meta name="keywords" content="machine learning,learning note,deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="deep-learning-note">
 <meta property="og:url" content="http://haelchan.me/2018/02/18/deep-learning-note/index.html">
@@ -103,7 +103,9 @@
 <meta property="og:image" content="http://haelchan.me/images/DL/act1.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/act2.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/act3.jpg">
-<meta property="og:updated_time" content="2018-02-20T12:29:29.000Z">
+<meta property="og:image" content="http://haelchan.me/images/DL/drop.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/normalization.jpg">
+<meta property="og:updated_time" content="2018-02-22T15:33:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deep-learning-note">
 <meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
@@ -349,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-20T20:29:29+08:00">
-                2018-02-20
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-22T23:33:02+08:00">
+                2018-02-22
               </time>
             
           </span>
@@ -531,6 +533,44 @@
 <script type="math/tex; mode=display">dZ^{[l]}=dA^{[l]}*g^{[l]'}(Z^{[l]})</script><script type="math/tex; mode=display">dW^{[l]}=\frac{1}{m}dZ^{[l]}A^{[l-1]T}</script><script type="math/tex; mode=display">db^{[l]}=\frac{1}{m}np.sum(dZ^{[l]},axis=1,keepdims=True)</script><script type="math/tex; mode=display">dA^{[l-1]}=W^{[l]T}dZ^{[l]}</script><h4 id="Hyperparameters-and-Parameters"><a href="#Hyperparameters-and-Parameters" class="headerlink" title="Hyperparameters and Parameters"></a>Hyperparameters and Parameters</h4><p>Hyperparameters determine the final value parameters.</p>
 <p><strong>Parameters</strong><br>· <script type="math/tex">W^{[1]},b^{[1]},W^{[2]},b^{[2]},W^{[3]},b^{[3]}...</script></p>
 <p><strong>Hyperparameters</strong><br>· learning rate <script type="math/tex">\alpha</script><br>· number of iterations<br>· number of hidden layers <script type="math/tex">L</script><br>· number of hidden units <script type="math/tex">n^{[1]},n^{[2]},...</script><br>· choice of activation function<br>· momentum, minibatch size, regularizations, etc.</p>
+<h2 id="Improving-Deep-Neural-Networks-Hyperparameter-tuning-Regularization-and-Optimization"><a href="#Improving-Deep-Neural-Networks-Hyperparameter-tuning-Regularization-and-Optimization" class="headerlink" title="Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization"></a>Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization</h2><h3 id="Week-One-1"><a href="#Week-One-1" class="headerlink" title="Week One"></a>Week One</h3><h4 id="Setting-up-your-Machine-Learning-Application"><a href="#Setting-up-your-Machine-Learning-Application" class="headerlink" title="Setting up your Machine Learning Application"></a>Setting up your Machine Learning Application</h4><h5 id="Train-dev-test-sets"><a href="#Train-dev-test-sets" class="headerlink" title="Train/dev/test sets"></a>Train/dev/test sets</h5><p><strong>Training set</strong>:<br>Keep on training algorithms on the training sets.</p>
+<p><strong>Development set</strong><br>Also called <em>Hold-out cross validation set</em>, <em>Dev set</em> for short.<br>Use <em>dev set</em> to see which of many different models performs best on the <em>dev set</em>.</p>
+<p><strong>Test set</strong><br>To get an unbiased estimate of how well your algorithm is doing.</p>
+<p><strong>Proportion</strong><br>Previous era: the data amount is not too large, it’s common to take all the data and split it as 70%/30% or 60%/20%/20%.<br>Big data: there’re millions of examples, 10000 examples used in dev set and 10000 examples used in test set is enough. The proportion can be 98/1/1 or even 99.5/0.4/0.1</p>
+<p><strong>Notes</strong><br>Make sure dev set and test set come from same distribution.</p>
+<p>Not having a test set might be okay if it’s not necessary to get an unbiased estimate of performance. Though dev set is called ‘test set’ if there’s no real test set.</p>
+<h5 id="Bias-Variance"><a href="#Bias-Variance" class="headerlink" title="Bias/Variance"></a>Bias/Variance</h5><p><strong>Solutions</strong><br>High bias:<br>Bigger network<br>Train longer<br>(Neural network architecture search)</p>
+<p>High variance:<br>More data<br>Regularization<br>(Neural network architecture search)</p>
+<p><strong>Bias Variance trade-off</strong><br>Originally, reducing bias may increase variance, and vice versa. So it’s necessary to trade-off between bias and variance.<br>But in deep learning, there’re ways to reduce one without increasing another. So don’t worry about bias variance trade-off.</p>
+<h4 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h4><h5 id="L2-Regularization"><a href="#L2-Regularization" class="headerlink" title="L2 Regularization"></a>L2 Regularization</h5><p><strong>Logistic regression</strong></p>
+<script type="math/tex; mode=display">J(w,b)=\frac{1}{m}\sum_{i=1}^m\mathscr{L}(\hat{y},y^{(i)})+\frac{\lambda}{2m}||w||_2^2</script><p><em>L2 regularization</em>: <script type="math/tex">||w||_2^2=\sum_{j=1}^{n_x}w_j^2=w^Tw</script><br>L1 regularization: <script type="math/tex">||w||_1=\sum_{j=1}^{n_x}|w_j|</script><br>(L1 regularization leads <script type="math/tex">w</script> to be sparse, but not very effictive)</p>
+<p><strong>Neural network</strong></p>
+<script type="math/tex; mode=display">J(w^{[1]},b^{[1]},...,w^{[L]},b^{[L]})=\frac{1}{m}\sum_{i=1}^m\mathscr{L}(\hat{y},y^{(i)})+\frac{\lambda}{2m}\sum_{l=1}^L||w^{[l]}||_F^2</script><p>-<script type="math/tex">||w^{[l]}||_F^2=\sum_{i=1}^{n^{[l]}}\sum_{j=1}^{n^{[l-1]}}(w_{ij}^{[l]})^2</script>, it’s called <em>Frobenius norm</em> which is different from Euclidean distance.</p>
+<p>Back propagation:</p>
+<script type="math/tex; mode=display">dW^{[l]}=(from\ backprop)+\frac{\lambda}{m}W^{[l]}</script><script type="math/tex; mode=display">W^{[l]}:=W^{[l]}-\alpha dW^{[l]}</script><h5 id="Dropout-regularization"><a href="#Dropout-regularization" class="headerlink" title="Dropout regularization"></a>Dropout regularization</h5><p>With dropout, what we’re going to do is go through each of the layers of the network and set some probability of eliminating a node in neural network.<br>For each training example, you would train it using one of these neural based networks.<br><img src="/images/DL/drop.jpg" alt=""><br>Usually used in Computer Vision.</p>
+<p><strong>Implementation with layer 3</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d3 = np.random.rand(a3.shape[<span class="number">0</span>], a3.shape[<span class="number">1</span>]) &lt; keep_prob <span class="comment"># boolean matrix with 0/1</span></div><div class="line">a3 = np.multiply(a3, d3)  <span class="comment"># a3 *= d3, element-wise multiply</span></div><div class="line">a3 /= keep_prob <span class="comment"># ensures that the expected value of a3 remains the same. Make test time easier because of less scaling problem</span></div></pre></td></tr></table></figure>
+<h5 id="Other-regularization-methods"><a href="#Other-regularization-methods" class="headerlink" title="Other regularization methods"></a>Other regularization methods</h5><p><strong>Data augmentation</strong><br>Take image input for example. Flipping the image horizontally, rotating and sort of randomly zooming, distortion, etc.<br>Get more training set without paying much to reduce overfitting.</p>
+<p><strong>Early stopping</strong><br>Stop early so that <script type="math/tex">||w||_F^2</script> is relatively small.<br>Early stopping violates <em>Orthogonalization</em>, which suggests separate <strong>Optimize cost function J</strong> and <strong>Not overfit</strong>.</p>
+<h4 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h4><h5 id="Normalizing-inputs"><a href="#Normalizing-inputs" class="headerlink" title="Normalizing inputs"></a>Normalizing inputs</h5><p><strong>1.Subtract mean</strong></p>
+<script type="math/tex; mode=display">\mu=\frac{1}{m}\sum_{i=1}^mx^{(i)}</script><script type="math/tex; mode=display">x:=x-\mu</script><p><strong>2.Normalize variance</strong></p>
+<script type="math/tex; mode=display">\sigma^2=\frac{1}{m}\sum_{i=1}^mx^{(i)}**2</script><script type="math/tex; mode=display">x/=\sigma^2</script><p>Note: use same <script type="math/tex">\mu,\sigma^2</script> to normalize test set.</p>
+<p>Intuition:<br><img src="/images/DL/normalization.jpg" alt="intuition"></p>
+<h5 id="Vanishing-Exploding-gradients"><a href="#Vanishing-Exploding-gradients" class="headerlink" title="Vanishing/Exploding gradients"></a>Vanishing/Exploding gradients</h5><p>Since the number of layers in deep learning may be quite large, the product of <em>L</em> layers may tend to <script type="math/tex">\infty</script> or <script type="math/tex">0</script>. (just think about <script type="math/tex">1.001^{1000}</script> and <script type="math/tex">0.999^{1000}</script>)</p>
+<p><strong>Weight initialization for deep networks</strong><br>Take a single neuron as example: <script type="math/tex">z=w_1x_1+w_2x_2+...+w_nx_n</script><br>If <script type="math/tex">n</script> is large, then <script type="math/tex">w_i</script> would be smaller. Our goal is to get <script type="math/tex">Var(w:)=\frac{1}{n}or\frac{2}{n}</script></p>
+<p>Random initialization for ReLU:</p>
+<script type="math/tex; mode=display">W^{[l]}=np.random.randn(shape.)*np.sqrt(\frac{2}{n^{[l-1]}})</script><p>For tanh: use <script type="math/tex">\sqrt(\frac{1}{n^{[l-1]}})</script><br>Xavier initialization: <script type="math/tex">\sqrt(\frac{2}{n^{[l-1]}+n^{[l]}})</script></p>
+<h5 id="Gradient-checking"><a href="#Gradient-checking" class="headerlink" title="Gradient checking"></a>Gradient checking</h5><script type="math/tex; mode=display">g(\theta)=\frac{f(\theta+\epsilon)-f(\theta-\epsilon)}{2\epsilon}</script><p>Take <script type="math/tex">W^{[1]},b^{[1]},...,W^{[L]},b^{[L]}</script> and reshape into a big vector <script type="math/tex">\theta</script>: <script type="math/tex">J(W^{[1]},b^{[1]},...,W^{[L]},b^{[L]})=J(\theta)</script><br>Take <script type="math/tex">dW^{[1]},db^{[1]},...,dW^{[L]},db^{[L]}</script> and reshape into a big vector <script type="math/tex">d\theta</script></p>
+<p>for each i:<br>  -<script type="math/tex">d\theta_{approx}[i]=\frac{J(\theta_1,\theta_2,...,\theta_i+\epsilon,...)-J(\theta_1,\theta_2,...,\theta_i-\epsilon,...)}{2\epsilon}</script></p>
+<p>check if <script type="math/tex">d\theta_{approx}\approx d\theta</script>?<br>Calculate <script type="math/tex">\frac{||d\theta_{approx}-d\theta||_2}{||d\theta_{approx}||_2+||d\theta||}</script>. (<script type="math/tex">10^{-7}</script> is great)</p>
+<p><strong>Note</strong></p>
+<ul>
+<li>Don’t use in training - only to debug.</li>
+<li>If algorithm fails grad check, look at components to try to identify bug.</li>
+<li>Remember regularization.</li>
+<li>Doesn’t work with dropout.</li>
+<li>Run at random initialization; perhaps again after some training.</li>
+</ul>
 
       
     </div>
@@ -566,9 +606,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/learning-note/" rel="tag"># learning note</a>
-          
             <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
           
             <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
           
@@ -762,7 +802,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Neural Networks and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One"><span class="nav-number">1.1.</span> <span class="nav-text">Week One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two"><span class="nav-number">1.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#About-Python"><span class="nav-number">1.2.2.</span> <span class="nav-text">About Python</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three"><span class="nav-number">1.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Network-Overview"><span class="nav-number">1.3.1.</span> <span class="nav-text">Neural Network Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activation-Function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Activation Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">1.3.3.</span> <span class="nav-text">Gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Random-Initialization"><span class="nav-number">1.3.4.</span> <span class="nav-text">Random Initialization</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Four"><span class="nav-number">1.4.</span> <span class="nav-text">Week Four</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forward-and-Backward-Propagation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Forward and Backward Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameters-and-Parameters"><span class="nav-number">1.4.2.</span> <span class="nav-text">Hyperparameters and Parameters</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Neural Networks and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One"><span class="nav-number">1.1.</span> <span class="nav-text">Week One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two"><span class="nav-number">1.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#About-Python"><span class="nav-number">1.2.2.</span> <span class="nav-text">About Python</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three"><span class="nav-number">1.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Network-Overview"><span class="nav-number">1.3.1.</span> <span class="nav-text">Neural Network Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activation-Function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Activation Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">1.3.3.</span> <span class="nav-text">Gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Random-Initialization"><span class="nav-number">1.3.4.</span> <span class="nav-text">Random Initialization</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Four"><span class="nav-number">1.4.</span> <span class="nav-text">Week Four</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forward-and-Backward-Propagation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Forward and Backward Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameters-and-Parameters"><span class="nav-number">1.4.2.</span> <span class="nav-text">Hyperparameters and Parameters</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Improving-Deep-Neural-Networks-Hyperparameter-tuning-Regularization-and-Optimization"><span class="nav-number">2.</span> <span class="nav-text">Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One-1"><span class="nav-number">2.1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Setting-up-your-Machine-Learning-Application"><span class="nav-number">2.1.1.</span> <span class="nav-text">Setting up your Machine Learning Application</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Train-dev-test-sets"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Train/dev/test sets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Bias-Variance"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Bias/Variance</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularization"><span class="nav-number">2.1.2.</span> <span class="nav-text">Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#L2-Regularization"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">L2 Regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dropout-regularization"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Dropout regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Other-regularization-methods"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">Other regularization methods</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optimization"><span class="nav-number">2.1.3.</span> <span class="nav-text">Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Normalizing-inputs"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">Normalizing inputs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vanishing-Exploding-gradients"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">Vanishing/Exploding gradients</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Gradient-checking"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">Gradient checking</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
