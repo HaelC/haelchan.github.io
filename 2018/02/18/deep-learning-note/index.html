@@ -109,7 +109,11 @@
 <meta property="og:image" content="http://haelchan.me/images/DL/partition.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/biasCorrect.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/momentum.jpg">
-<meta property="og:updated_time" content="2018-02-25T05:00:49.000Z">
+<meta property="og:image" content="http://haelchan.me/images/DL/oldWay.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/modernWay.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/example.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/bayes.jpg">
+<meta property="og:updated_time" content="2018-03-06T05:09:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deep-learning-note">
 <meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
@@ -355,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-25T13:00:49+08:00">
-                2018-02-25
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-06T13:09:45+08:00">
+                2018-03-06
               </time>
             
           </span>
@@ -634,7 +638,134 @@
 <p>2 typical ways to create and use sessions in TensorFlow:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sess = tf.Session()</div><div class="line"><span class="comment"># Run the variables initialization (if needed), run the operations</span></div><div class="line">result = sess.run(..., feed_dict = &#123;...&#125;)</div><div class="line">sess.close() <span class="comment"># Close the session</span></div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    <span class="comment"># run the variables initialization (if needed), run the operations</span></div><div class="line">    result = sess.run(..., feed_dict = &#123;...&#125;)</div><div class="line">    <span class="comment"># This takes care of closing the session</span></div></pre></td></tr></table></figure>
-
+<h2 id="Structuring-Machine-Learning-Projects"><a href="#Structuring-Machine-Learning-Projects" class="headerlink" title="Structuring Machine Learning Projects"></a>Structuring Machine Learning Projects</h2><h3 id="Week-One-2"><a href="#Week-One-2" class="headerlink" title="Week One"></a>Week One</h3><h4 id="Orthogonalization"><a href="#Orthogonalization" class="headerlink" title="Orthogonalization"></a>Orthogonalization</h4><p>Orthogonalization or orthogonality is a system design property that assures that modifying an instruction or a component of an algorithm will not create or propagate side effects to other components of the system. It becomes easier to verify the algorithms independently from one another, and it reduces testing and development time.</p>
+<p>When a supervised learning system is designed, these are the 4 assumptions that need to be true and orthogonal.</p>
+<ol>
+<li>Fit training set well on cost function - bigger network, Adam, etc</li>
+<li>Fit dev set well on cost function - regularization, bigger training set, etc</li>
+<li>Fit test set well on cost function - bigger dev set</li>
+<li>Performs well in real world - change dev set or cost function</li>
+</ol>
+<h4 id="Single-number-evaluation-metric"><a href="#Single-number-evaluation-metric" class="headerlink" title="Single number evaluation metric"></a>Single number evaluation metric</h4><p><strong>Precision</strong></p>
+<script type="math/tex; mode=display">Precision(\%)=\frac{True\ positive}{Number\ of\ predicted\ positive}\times100=\frac{True\ positive}{True\ positive+False\ positive}\times100</script><p>Among all the prediction, estimate how much predictions are right.</p>
+<p><strong>Recall</strong></p>
+<script type="math/tex; mode=display">Recall(\%)=\frac{True\ positive}{Number\ of\ predicted\ actually\ positive}\times100=\frac{True\ positive}{True\ positive+False\ negative}\times100</script><p>Among all the positive examples, estimate how much positive examples are correctly predicted.</p>
+<p><strong>F1-Score</strong></p>
+<script type="math/tex; mode=display">F1\_Score=\frac{2}{\frac{1}{p}+\frac{1}{r}}</script><p>The problem with using precision/recall as the evaluation metric is that you are not sure which one is better since in this case, both of them have a good precision et recall. F1-score, a harmonic mean, combine both precision and recall.</p>
+<p><strong>Satisficing and optimizing metric</strong><br>There are different metrics to evaluate the performance of a classifier, they are called evaluation matrices. They can be categorized as satisficing and optimizing matrices. It is important to note that these evaluation matrices must be evaluated on a training set, a development set or on the test set.<br>The general rule is:</p>
+<script type="math/tex; mode=display">N_{metric}=\begin{cases}1&\text{Optimizing metric}\\N_{metric}-1 &\text{Satisficing metric}\end{cases}</script><p>For example:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Classifier</th>
+<th>Accuracy</th>
+<th>Running Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>90%</td>
+<td>80ms</td>
+</tr>
+<tr>
+<td>B</td>
+<td>92%</td>
+<td>95ms</td>
+</tr>
+<tr>
+<td>C</td>
+<td>95%</td>
+<td>1500ms</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example, there’re two evaluation metrics: accuracy and running time. Take accuracy as optimizing metric and the following(running time) as satisficing metric(s). The satisficing metric has to meet expectation set and improve the optimizing metric as much as possible.</p>
+<h4 id="Train-Dev-Test-Set"><a href="#Train-Dev-Test-Set" class="headerlink" title="Train/Dev/Test Set"></a>Train/Dev/Test Set</h4><p>It’s important to choose the development and test sets from the same distribution and it must be taken randomly from all the data.<br><strong>Guideline</strong>: Choose a dev set and test set to reflect data you expect to get in the future and consider important to do well on.</p>
+<p><strong>Size</strong><br>Old way of splitting data:<br>We had smaller data set, therefore, we had to use a greater percentage of data to develop and test ideas and models.<br><img src="/images/DL/oldWay.jpg" alt=""></p>
+<p>Modern era - Big data:<br>Now, because a larger amount of data is available, we don’t have to compromise and can use a greater portion to train the model.<br><img src="/images/DL/modernWay.jpg" alt=""></p>
+<p>Set your dev set to be big enough to detect differences in algorithms/models you’re trying out.<br>Set your test set to be big enough to give high confidence in the overall performance of your system.</p>
+<p><strong>When to change dev/test sets and metrics</strong><br><img src="/images/DL/example.jpg" alt=""></p>
+<p>Orthogonalization:<br>How to define a metric to evaluate classifiers.<br>Worry separately about how to do well on this metric.</p>
+<p>If doing well on your metric + dev/test set does not correspond to doing well on your application, change your metric and/or dev/test set.</p>
+<h4 id="Comparing-to-human-level-performance"><a href="#Comparing-to-human-level-performance" class="headerlink" title="Comparing to human-level performance"></a>Comparing to human-level performance</h4><p><img src="/images/DL/bayes.jpg" alt=""><br>The graph shows the performance of humans and machine learning over time.<br>Machine learning progresses slowly when it surpasses human-level performance. One of the reason is that human-level performance can be close to Bayes optimal error, especially for natural perception problem.<br><strong>Bayes optimal error</strong> is defined as the best possible error. In other words, it means that any functions mapping from x to y can’t surpass a certain level of accuracy(for different reasons, e.g. blurring images, audio with noise, etc).</p>
+<p>Humans are quite good at a lot of tasks. So long as machine learning is worse than humans, you can:</p>
+<ul>
+<li>Get labeled data from humans</li>
+<li>Gain insight from manual error analysis: Why did a person get this right?</li>
+<li>Better analysis of bias/variance</li>
+</ul>
+<p>Human-level error as a proxy for Bayes error(i.e. Human-level error ≈ Bayes error).<br>The difference between Human-level error and training error is also regarded as <strong>“Avoidable bias”</strong>.</p>
+<p>If the difference between human-level error and the training error is bigger than the difference between the training error and the development error. The focus should be on bias reduction technique.<br>· Train bigger model<br>· Train longer/better optimization algorithms(momentum, RMSprop, Adam)<br>· NN architecture/hyperparameters search(RNN,CNN)</p>
+<p>If the difference between training error and the development error is bigger than the difference between the human-level error and the training error. The focus should be on variance reduction technique<br>· More data<br>· Regularization(L2, dropout, data augmentation)<br>· NN architecture/hyperparameters search</p>
+<p>Problems where machine significantly surpasses human-level performance<br>Feature: Structured data, not natural perception, lots of data.<br>· Online advertising<br>· Product recommendations<br>· Logistics(predicting transit time)<br>· Loan approvals</p>
+<p>The two fundamental assumptions of supervised learning:<br>You can fit the training set pretty well.(avoidable bias ≈ 0)<br>The training set performance generalizes pretty well to the dev/test set.(variance ≈ 0) </p>
+<h3 id="Week-Two-2"><a href="#Week-Two-2" class="headerlink" title="Week Two"></a>Week Two</h3><h4 id="Error-Analysis"><a href="#Error-Analysis" class="headerlink" title="Error Analysis"></a>Error Analysis</h4><p>Spread sheet:<br>Before deciding how to improve the accuracy, set up a spread sheet find out what matters.<br>For example:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>Dog</th>
+<th>Great Cat</th>
+<th>Blurry</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td>small white dog</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>lion in rainy day</td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Percentage</td>
+<td>5%</td>
+<td>41%</td>
+<td>63%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Mislabeled examples</strong> refer to if your learning algorithm outputs the wrong value of Y.<br><strong>Incorrectly labeled examples</strong> refer to if in the data set you have in the training/dev/test set, the label for Y, whatever a human label assigned to this piece of data, is actually incorrect.</p>
+<p>Deep learning algorithms are quite robust to random errors in the training set, but less robust to systematic errors.</p>
+<p>Guideline: Build system quickly, then iterate.</p>
+<ol>
+<li>Set up development/test set and metrics</li>
+</ol>
+<ul>
+<li>Set up a target</li>
+</ul>
+<ol>
+<li>Build an initial system quickly</li>
+</ol>
+<ul>
+<li>Train training set quickly: Fit the parameters</li>
+<li>Development set: Tune the parameters</li>
+<li>Test set: Assess the performance</li>
+</ul>
+<ol>
+<li>Use bias/variance analysis &amp; Error analysis to prioritize next steps</li>
+</ol>
+<h4 id="Mismatched-training-and-dev-test-set"><a href="#Mismatched-training-and-dev-test-set" class="headerlink" title="Mismatched training and dev/test set"></a>Mismatched training and dev/test set</h4>
       
     </div>
     
@@ -865,7 +996,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Neural Networks and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One"><span class="nav-number">1.1.</span> <span class="nav-text">Week One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two"><span class="nav-number">1.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#About-Python"><span class="nav-number">1.2.2.</span> <span class="nav-text">About Python</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three"><span class="nav-number">1.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Network-Overview"><span class="nav-number">1.3.1.</span> <span class="nav-text">Neural Network Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activation-Function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Activation Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">1.3.3.</span> <span class="nav-text">Gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Random-Initialization"><span class="nav-number">1.3.4.</span> <span class="nav-text">Random Initialization</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Four"><span class="nav-number">1.4.</span> <span class="nav-text">Week Four</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forward-and-Backward-Propagation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Forward and Backward Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameters-and-Parameters"><span class="nav-number">1.4.2.</span> <span class="nav-text">Hyperparameters and Parameters</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Improving-Deep-Neural-Networks-Hyperparameter-tuning-Regularization-and-Optimization"><span class="nav-number">2.</span> <span class="nav-text">Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One-1"><span class="nav-number">2.1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Setting-up-your-Machine-Learning-Application"><span class="nav-number">2.1.1.</span> <span class="nav-text">Setting up your Machine Learning Application</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Train-dev-test-sets"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Train/dev/test sets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Bias-Variance"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Bias/Variance</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularization"><span class="nav-number">2.1.2.</span> <span class="nav-text">Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#L2-Regularization"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">L2 Regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dropout-regularization"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Dropout regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Other-regularization-methods"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">Other regularization methods</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optimization"><span class="nav-number">2.1.3.</span> <span class="nav-text">Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Normalizing-inputs"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">Normalizing inputs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vanishing-Exploding-gradients"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">Vanishing/Exploding gradients</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Gradient-checking"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">Gradient checking</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two-1"><span class="nav-number">2.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mini-batch-gradient-descent"><span class="nav-number">2.2.1.</span> <span class="nav-text">Mini-batch gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exponentially-weighted-averages"><span class="nav-number">2.2.2.</span> <span class="nav-text">Exponentially weighted averages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent-with-momentum"><span class="nav-number">2.2.3.</span> <span class="nav-text">Gradient descent with momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RMSprop"><span class="nav-number">2.2.4.</span> <span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adam-optimization-algorithm"><span class="nav-number">2.2.5.</span> <span class="nav-text">Adam optimization algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Learning-rate-decay"><span class="nav-number">2.2.6.</span> <span class="nav-text">Learning rate decay</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three-1"><span class="nav-number">2.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameter-tuning"><span class="nav-number">2.3.1.</span> <span class="nav-text">Hyperparameter tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Batch-Normalization"><span class="nav-number">2.3.2.</span> <span class="nav-text">Batch Normalization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-class-classification"><span class="nav-number">2.3.3.</span> <span class="nav-text">Multi-class classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-Learning-frameworks"><span class="nav-number">2.3.4.</span> <span class="nav-text">Deep Learning frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TensorFlow"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">TensorFlow</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Neural Networks and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One"><span class="nav-number">1.1.</span> <span class="nav-text">Week One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two"><span class="nav-number">1.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#About-Python"><span class="nav-number">1.2.2.</span> <span class="nav-text">About Python</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three"><span class="nav-number">1.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Network-Overview"><span class="nav-number">1.3.1.</span> <span class="nav-text">Neural Network Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activation-Function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Activation Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">1.3.3.</span> <span class="nav-text">Gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Random-Initialization"><span class="nav-number">1.3.4.</span> <span class="nav-text">Random Initialization</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Four"><span class="nav-number">1.4.</span> <span class="nav-text">Week Four</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forward-and-Backward-Propagation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Forward and Backward Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameters-and-Parameters"><span class="nav-number">1.4.2.</span> <span class="nav-text">Hyperparameters and Parameters</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Improving-Deep-Neural-Networks-Hyperparameter-tuning-Regularization-and-Optimization"><span class="nav-number">2.</span> <span class="nav-text">Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One-1"><span class="nav-number">2.1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Setting-up-your-Machine-Learning-Application"><span class="nav-number">2.1.1.</span> <span class="nav-text">Setting up your Machine Learning Application</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Train-dev-test-sets"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Train/dev/test sets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Bias-Variance"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Bias/Variance</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularization"><span class="nav-number">2.1.2.</span> <span class="nav-text">Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#L2-Regularization"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">L2 Regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dropout-regularization"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Dropout regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Other-regularization-methods"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">Other regularization methods</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optimization"><span class="nav-number">2.1.3.</span> <span class="nav-text">Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Normalizing-inputs"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">Normalizing inputs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vanishing-Exploding-gradients"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">Vanishing/Exploding gradients</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Gradient-checking"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">Gradient checking</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two-1"><span class="nav-number">2.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mini-batch-gradient-descent"><span class="nav-number">2.2.1.</span> <span class="nav-text">Mini-batch gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exponentially-weighted-averages"><span class="nav-number">2.2.2.</span> <span class="nav-text">Exponentially weighted averages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent-with-momentum"><span class="nav-number">2.2.3.</span> <span class="nav-text">Gradient descent with momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RMSprop"><span class="nav-number">2.2.4.</span> <span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adam-optimization-algorithm"><span class="nav-number">2.2.5.</span> <span class="nav-text">Adam optimization algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Learning-rate-decay"><span class="nav-number">2.2.6.</span> <span class="nav-text">Learning rate decay</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three-1"><span class="nav-number">2.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameter-tuning"><span class="nav-number">2.3.1.</span> <span class="nav-text">Hyperparameter tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Batch-Normalization"><span class="nav-number">2.3.2.</span> <span class="nav-text">Batch Normalization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-class-classification"><span class="nav-number">2.3.3.</span> <span class="nav-text">Multi-class classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-Learning-frameworks"><span class="nav-number">2.3.4.</span> <span class="nav-text">Deep Learning frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TensorFlow"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">TensorFlow</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structuring-Machine-Learning-Projects"><span class="nav-number">3.</span> <span class="nav-text">Structuring Machine Learning Projects</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One-2"><span class="nav-number">3.1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Orthogonalization"><span class="nav-number">3.1.1.</span> <span class="nav-text">Orthogonalization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Single-number-evaluation-metric"><span class="nav-number">3.1.2.</span> <span class="nav-text">Single number evaluation metric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Train-Dev-Test-Set"><span class="nav-number">3.1.3.</span> <span class="nav-text">Train/Dev/Test Set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Comparing-to-human-level-performance"><span class="nav-number">3.1.4.</span> <span class="nav-text">Comparing to human-level performance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two-2"><span class="nav-number">3.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Error-Analysis"><span class="nav-number">3.2.1.</span> <span class="nav-text">Error Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mismatched-training-and-dev-test-set"><span class="nav-number">3.2.2.</span> <span class="nav-text">Mismatched training and dev/test set</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
