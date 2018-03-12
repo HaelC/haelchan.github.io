@@ -122,8 +122,9 @@
 <meta property="og:image" content="http://haelchan.me/images/DL/filter.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/edges.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/cnnEg.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/pools.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/cnnEg1.jpg">
-<meta property="og:updated_time" content="2018-03-11T15:32:38.000Z">
+<meta property="og:updated_time" content="2018-03-12T15:16:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deep-learning-note">
 <meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
@@ -369,8 +370,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-11T23:32:38+08:00">
-                2018-03-11
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-12T23:16:41+08:00">
+                2018-03-12
               </time>
             
           </span>
@@ -821,6 +822,7 @@
 <p>Vertical edge detection examples<br><img src="/images/DL/edges.jpg" alt=""></p>
 <p><strong>Valid and Same Convolutions</strong><br>Suppose that the original image has a size of <em>n×n</em>, the filter has a size of <em>f×f</em>, then the result has a size of <em>(n-f+1)×(n-f+1)</em>. This is called <strong>Valid convolution</strong>.<br>The size will get smaller and smaller with the process of valid convolution.</p>
 <p>To avoid such a problem, we can use <em>paddings</em> to enlarge the original image before convolution so that output size is the same as the input size.<br>If the filter’s size is f×f, then the padding <script type="math/tex">p=\frac{f-1}{2}</script>.</p>
+<p>The main benefits of padding are the following:<br>· It allows  you to use a CONV layer without necessarily shrinking the height and width of the volumes. This is important for building deeper networks, since otherwise the height/width would shrink as you go to deeper layers. An important special case is the “same” convolution, in which the height/width is exactly preserved after one layer.<br>· It helps us keep more of the information at the border of an image. Without padding, very few values at the next layer would be affected by pixels as the edges of an image.</p>
 <p><strong>Stride</strong><br>The simplest stride is 1, which means that the filter moves 1 step at a time. However, the stride can be not 1. For example, moves 2 steps at a time instead. That’s called <strong>strided convolution</strong>.</p>
 <p>Given that:<br>Size of <script type="math/tex">n\times n</script> image, <script type="math/tex">f\times f</script> filter, padding <em>p</em>, stride <em>s</em>,<br>output size:</p>
 <script type="math/tex; mode=display">\lfloor{\frac{n+2p-f}{s}+1}\rfloor\times\lfloor{\frac{n+2p-f}{s}+1}\rfloor</script><p><strong>technical</strong><br>In mathematics and DSP, the convolution involves another “flip” step. However, this step is omitted in CNN. The “real” technical note should be “cross-correlation” rather than convolution.<br>In convention, just use Convolution in CNN. </p>
@@ -845,8 +847,12 @@
 <li>Pooling (pool)</li>
 <li>Fully Connected (FC)</li>
 </ul>
-<p><strong>Pooling layers</strong><br>Max pooling<br>Take the max item of some blocks.</p>
-<p>Average pooling<br>Take the average of some blocks.</p>
+<p><strong>Pooling layers</strong></p>
+<ul>
+<li>Max pooling: slides an (f,f) window over the input and stores the max value of the window in the output.</li>
+<li>Average pooling: slides an (f,f) window over the input and stores the average value of the window in the output.</li>
+</ul>
+<p><img src="/images/DL/pools.jpg" alt=""></p>
 <p>Hyperparameters:<br>f: filter size<br>s: stride<br>Max or average pooling<br>Note no parameters to learn.</p>
 <p>Suppose that the input has a size of <script type="math/tex">n_H\times n_w\times n_c</script>, then after pooling, the output has a size of <script type="math/tex">\lfloor{\frac{n_H-f}{s}+1}\rfloor\times\lfloor{\frac{n_H-f}{s}+1}\rfloor\times n_c</script></p>
 <p>A more complicated cnn:<br><img src="/images/DL/cnnEg1.jpg" alt=""></p>
