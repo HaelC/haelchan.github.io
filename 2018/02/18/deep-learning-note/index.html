@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="learning note,machine learning,deep learning," />
+  <meta name="keywords" content="machine learning,learning note,deep learning," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
-<meta name="keywords" content="learning note,machine learning,deep learning">
+<meta name="keywords" content="machine learning,learning note,deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="deep-learning-note">
 <meta property="og:url" content="http://haelchan.me/2018/02/18/deep-learning-note/index.html">
@@ -132,7 +132,7 @@
 <meta property="og:image" content="http://haelchan.me/images/DL/inceptionModule.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/inceptionNetwork.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/slidingWindows.jpg">
-<meta property="og:updated_time" content="2018-03-18T08:55:48.000Z">
+<meta property="og:updated_time" content="2018-03-18T15:35:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deep-learning-note">
 <meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
@@ -378,7 +378,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-18T16:55:48+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-18T23:35:55+08:00">
                 2018-03-18
               </time>
             
@@ -905,8 +905,9 @@
 <script type="math/tex; mode=display">y=\begin{bmatrix}p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\\p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\end{bmatrix}</script><p>(Manually choose the shape of anchor boxes.)</p>
 <h4 id="Region-proposals"><a href="#Region-proposals" class="headerlink" title="Region proposals"></a>Region proposals</h4><p>Paper link:<a href="https://arxiv.org/pdf/1311.2524" target="_blank" rel="external">Rich feature hierarchies for accurate object detection and semantic segmentation</a><br>Instead using sliding windows over and over again, use segmentation algorithm to predict which regions may contain objects.</p>
 <p>R-CNN: Propose regions. Classify proposed regions one at a time. Output label + bounding box.<br>Fast R-CNN: Propose regions. Use convolution implementation of sliding windows to classify all the proposed regions.<br>Faster R-CNN: Use convolutional network to propose regions.</p>
-<h3 id="Week-Four-1"><a href="#Week-Four-1" class="headerlink" title="Week Four"></a>Week Four</h3><h4 id="Face-Recognition"><a href="#Face-Recognition" class="headerlink" title="Face Recognition"></a>Face Recognition</h4><p>Face verification &amp; Face recognition<br>Verification:<br>· Input image, name/ID<br>· Output whether the input image is that of the claimed person.<br>(1:1)</p>
-<p>Recognition:<br>· Has a database of K persons<br>· Get an input image<br>· Output ID if the image is any of the K persons(or “not recognized”)<br>(1:K. High demand for single accuracy.)</p>
+<h3 id="Week-Four-1"><a href="#Week-Four-1" class="headerlink" title="Week Four"></a>Week Four</h3><h4 id="Face-Recognition"><a href="#Face-Recognition" class="headerlink" title="Face Recognition"></a>Face Recognition</h4><p>Face verification &amp; Face recognition<br>Verification:<br>· Input image, name/ID<br>· Output whether the input image is that of the claimed person.<br>This is a 1:1 matching problem.</p>
+<p>Recognition:<br>· Has a database of K persons<br>· Get an input image<br>· Output ID if the image is any of the K persons(or “not recognized”)<br>This is a 1:K matching problem.<br>(High demand for single accuracy.)</p>
+<p>Face verification requires comparing a new picture against one person’s face, whereas face recognition requires comparing a new picture against K person’s faces.</p>
 <h5 id="One-shot-learning"><a href="#One-shot-learning" class="headerlink" title="One-shot learning"></a>One-shot learning</h5><p>Learning from one example to recognize the person again. The idea is learning a “similarity” function. (A bit similar to recommendation system.)<br>d(img1, img2) = degree of difference between images.<br>If <script type="math/tex">d(img1,img2)\le\tau</script>, the output is same; else the output is different.</p>
 <h5 id="Siamese-network"><a href="#Siamese-network" class="headerlink" title="Siamese network"></a>Siamese network</h5><p>Parameters of NN define an encoding <script type="math/tex">f(x^{(i)})</script>. (Use a vector to represent the image x)<br>Goal: Learn parameters so that<br>if <script type="math/tex">x^{(i)},x^{(j)}</script> are the same person, <script type="math/tex">||f(x^{(i)})-f(x^{(j)})||^2</script> is small;<br>if <script type="math/tex">x^{(i)},x^{(j)}</script> are different person, <script type="math/tex">||f(x^{(i)})-f(x^{(j)})||^2</script> is large.</p>
 <h5 id="Triplet-loss"><a href="#Triplet-loss" class="headerlink" title="Triplet loss"></a>Triplet loss</h5><p>Pick an anchor image(denoted as “A”), a positive image(denoted as “P”) and a negative image(denoted as “N”).<br>We can calculate the differences between A and P, A and N.</p>
@@ -925,7 +926,9 @@
 </ul>
 <script type="math/tex; mode=display">J_{content}(C,G)=\frac{1}{2}||a^{[l](C)}-a^{[l](G)}||^2</script><p><strong>Style cost function</strong><br>Say you are using layer <em>l</em>‘s activation to measure style.<br>Define style as <em>correlation</em> between activations across channels.</p>
 <p>Let <script type="math/tex">a^{[l]}_{i,j,k}</script> = activation at (i,j,k). <script type="math/tex">G^{[l]}</script> is <script type="math/tex">n_C^{[l]}\times n_C^{[l]}</script></p>
-<script type="math/tex; mode=display">G^{[l](S)}_{kk'}=\sum_{i=1}^{n_H^{[l]}}\sum_{j=1}^{n_W^{[l]}}a_{i,j,k}^{[l](S)}a_{i,j,k'}^{[l](S)}</script><script type="math/tex; mode=display">G^{[l](G)}_{kk'}=\sum_{i=1}^{n_H^{[l]}}\sum_{j=1}^{n_W^{[l]}}a_{i,j,k}^{[l](G)}a_{i,j,k'}^{[l](G)}</script><script type="math/tex; mode=display">J^{[l]}_{style}(S,G)=\frac{1}{2n_H^{[l]}n_W^{[l]}n_C^{[l]}}||G^{[l](S)}-G^{[l](G)}||^2_F=\frac{1}{2n_H^{[l]}n_W^{[l]}n_C^{[l]}}\sum_k\sum_{k'}(G_{kk'}^{[l](S)}-G_{kk'}^{[l](G)})^2</script><script type="math/tex; mode=display">J_{style}(S,G)=\sum_{\lambda}\lambda^{[l]}J_{style}^{[l]}(S,G)</script>
+<script type="math/tex; mode=display">G^{[l](S)}_{kk'}=\sum_{i=1}^{n_H^{[l]}}\sum_{j=1}^{n_W^{[l]}}a_{i,j,k}^{[l](S)}a_{i,j,k'}^{[l](S)}</script><script type="math/tex; mode=display">G^{[l](G)}_{kk'}=\sum_{i=1}^{n_H^{[l]}}\sum_{j=1}^{n_W^{[l]}}a_{i,j,k}^{[l](G)}a_{i,j,k'}^{[l](G)}</script><p>The style matrix is also called a “Gram matrix”. In linear algebra, the Gram matrix G of a set of vectors(<script type="math/tex">v_1,...,v_n</script>) is the matrix of dot products, whose entries are <script type="math/tex">G_{ij}=v_i^Tv_j=np.dot(v_i,v_j)</script>. In other words, <script type="math/tex">G_{ij}</script> compares how similar <script type="math/tex">v_i</script> is similar to <script type="math/tex">v_j</script>: If they are highly similar, you would expect them to have a large dot product, and thus for <script type="math/tex">G_{ij}</script> to be large.</p>
+<script type="math/tex; mode=display">J^{[l]}_{style}(S,G)=\frac{1}{2n_H^{[l]}n_W^{[l]}n_C^{[l]}}||G^{[l](S)}-G^{[l](G)}||^2_F=\frac{1}{2n_H^{[l]}n_W^{[l]}n_C^{[l]}}\sum_k\sum_{k'}(G_{kk'}^{[l](S)}-G_{kk'}^{[l](G)})^2</script><script type="math/tex; mode=display">J_{style}(S,G)=\sum_{\lambda}\lambda^{[l]}J_{style}^{[l]}(S,G)</script><p>The style of an image can be represented using the Gram matrix of a hidden layer’s activations. However, we get even better results combining this representation  from multiple different layers. This is in contrast to the content representation, where usually using just a single hidden layer is sufficient.<br>Minimizing the style cost will cause the image G to follow the style of the image S.</p>
+
       
     </div>
     
@@ -960,9 +963,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/learning-note/" rel="tag"># learning note</a>
-          
             <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
           
             <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
           
