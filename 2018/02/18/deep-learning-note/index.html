@@ -146,7 +146,7 @@
 <meta property="og:image" content="http://haelchan.me/images/DL/LSTMpic.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/conditionalLanguageModel.jpg">
 <meta property="og:image" content="http://haelchan.me/images/DL/attentionModel.jpg">
-<meta property="og:updated_time" content="2018-03-25T09:32:55.000Z">
+<meta property="og:updated_time" content="2018-03-30T14:21:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deep-learning-note">
 <meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
@@ -392,8 +392,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-25T17:32:55+08:00">
-                2018-03-25
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-30T22:21:41+08:00">
+                2018-03-30
               </time>
             
           </span>
@@ -635,7 +635,7 @@
 <p>Hyperparameters:<br>-<script type="math/tex">\alpha</script>: needs to be tune<br>-<script type="math/tex">\beta_1</script>: 0.9<br>-<script type="math/tex">\beta_2</script>: 0.999<br>-<script type="math/tex">\epsilon$:10^{-8}</script></p>
 <p>(<strong>Adam</strong> just means Adaption moment estimation)</p>
 <h4 id="Learning-rate-decay"><a href="#Learning-rate-decay" class="headerlink" title="Learning rate decay"></a>Learning rate decay</h4><p>Mini-batch gradient descent won’t converge, but step around at the optimal instead. To help converge, it’s advisable to decay learning rate with the number of iterations.<br>Some formula:<br>-<script type="math/tex">\alpha=\frac{1}{1+decay-rate*epoch-num}\alpha_0</script><br>-<script type="math/tex">\alpha=0.95^{epoch-num}\alpha_0</script><br>-<script type="math/tex">\alpha=\frac{k}{\sqrt{epoch-num}}\alpha_0</script><br>-discrete stair case (half α after some iterations)<br>-manual decay</p>
-<h3 id="Week-Three-1"><a href="#Week-Three-1" class="headerlink" title="Week Three"></a>Week Three</h3><h4 id="Hyperparameter-tuning"><a href="#Hyperparameter-tuning" class="headerlink" title="Hyperparameter tuning"></a>Hyperparameter tuning</h4><p>Hyperparameters: <script type="math/tex">\alpha,\beta,\beta_1,\beta_2,\epsilon</script>, number of layers, number of units, learning rate decay, mini-batch size, etc.<br>Priority: <script type="math/tex">\alpha>\beta,#hidden\ units,mini-batch\ size>#layers,learning\ rate\ decay</script></p>
+<h3 id="Week-Three-1"><a href="#Week-Three-1" class="headerlink" title="Week Three"></a>Week Three</h3><h4 id="Hyperparameter-tuning"><a href="#Hyperparameter-tuning" class="headerlink" title="Hyperparameter tuning"></a>Hyperparameter tuning</h4><p>Hyperparameters: <script type="math/tex">\alpha,\beta,\beta_1,\beta_2,\epsilon</script>, number of layers, number of units, learning rate decay, mini-batch size, etc.<br>Priority: <script type="math/tex">\alpha>\beta,\#hidden\ units,mini-batch\ size>\#layers,learning\ rate\ decay</script></p>
 <p>Try to use random values of hyperparameters rather than grid.<br><em>Coarse to fine</em>: if finds some region with good result, try more in that region.</p>
 <p>Appropriate scale:<br>It’s okay to sample uniformly at random for some hyperparameters: number of layers, number of units.<br>While for some hyperparameters like <script type="math/tex">\alpha,\beta</script>, instead of sampling uniformly at random, sample randomly on logarithmic scale.</p>
 <p>Pandas &amp; Caviar<br>Panda: babysitting one model at a time<br>Caviar: training many models in parallel<br>Largely determined by the amount of computational power you can access.</p>
