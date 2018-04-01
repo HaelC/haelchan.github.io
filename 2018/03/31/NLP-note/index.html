@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="learning note,natural language processing," />
+  <meta name="keywords" content="natural language processing,learning note," />
 
 
 
@@ -79,19 +79,21 @@
 
 
 
-<meta name="description" content="IntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine TranslationIn">
-<meta name="keywords" content="learning note,natural language processing">
+<meta name="description" content="IntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine TranslationTr">
+<meta name="keywords" content="natural language processing,learning note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Natural Language Processing Note">
 <meta property="og:url" content="http://haelchan.me/2018/03/31/NLP-note/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
-<meta property="og:description" content="IntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine TranslationIn">
+<meta property="og:description" content="IntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine TranslationTr">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/images/NLP/overview.jpg">
-<meta property="og:updated_time" content="2018-03-31T15:51:33.000Z">
+<meta property="og:image" content="http://haelchan.me/images/NLP/parsing.jpg">
+<meta property="og:image" content="http://haelchan.me/images/NLP/syntactic.jpg">
+<meta property="og:updated_time" content="2018-04-01T11:21:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing Note">
-<meta name="twitter:description" content="IntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine TranslationIn">
+<meta name="twitter:description" content="IntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine TranslationTr">
 <meta name="twitter:image" content="http://haelchan.me/images/NLP/overview.jpg">
 
 
@@ -334,8 +336,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-31T23:51:33+08:00">
-                2018-03-31
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-01T19:21:08+08:00">
+                2018-04-01
               </time>
             
           </span>
@@ -391,10 +393,21 @@
 
       
         <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>What is natural language processing?<br>computers using natural language as input and/or output<br>NLP contains two types: understanding(NLU) and generation(NLG).<br><img src="/images/NLP/overview.jpg" alt=""></p>
-<h3 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h3><p><strong>Machine Translation</strong><br><strong>Information Extraction</strong><br><strong>Text Summarization</strong><br><strong>Dialogue Systems</strong></p>
-<h3 id="Basic-NLP-Problems"><a href="#Basic-NLP-Problems" class="headerlink" title="Basic NLP Problems"></a>Basic NLP Problems</h3><h4 id="Tagging"><a href="#Tagging" class="headerlink" title="Tagging"></a>Tagging</h4><p>Strings to Tagged Sequences<br><strong>Part-of-speech tagging</strong></p>
-<p><strong>Name Entity Recognition</strong></p>
-<h4 id="Parsing"><a href="#Parsing" class="headerlink" title="Parsing"></a>Parsing</h4>
+<h3 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h3><p><strong>Machine Translation</strong><br>Translate from one language to another.<br><strong>Information Extraction</strong><br>Take some text as input, and produce structured(database) representation of some key content in the text.<br>Goal: Map a document collection to structured database<br>Motivation: Complex searches, Statistical queries.</p>
+<p><strong>Text Summarization</strong><br>Take a single document, or potentially a group of several documents, and try to condense them down to summarize main information in those documents.</p>
+<p><strong>Dialogue Systems</strong><br>Human can interact with computer.</p>
+<h3 id="Basic-NLP-Problems"><a href="#Basic-NLP-Problems" class="headerlink" title="Basic NLP Problems"></a>Basic NLP Problems</h3><h4 id="Tagging"><a href="#Tagging" class="headerlink" title="Tagging"></a>Tagging</h4><p>Strings to Tagged Sequences<br>Examples:<br><strong>Part-of-speech tagging</strong><br>Profits(/N) soared(/V) at(/P) Boeing(/N) Co.(/N) .(/.) easily(/ADV) topping(/V) forecasts(/N) on (/P) Wall(/N) Street(/N) .(/.)</p>
+<p><strong>Name Entity Recognition</strong><br>Profits(/NA) soared(/NA) at(/NA) Boeing(/SC) Co.(/CC) .(/NA) easily(/NA) topping(/NA) forecasts(/NA) on (/NA) Wall(/SL) Street(/CL) .(/.)<br>/NA: not any entity<br>/SC: start of company<br>/CC: continuation of company<br>/SL: start of location<br>/CL: continuation of location</p>
+<h4 id="Parsing"><a href="#Parsing" class="headerlink" title="Parsing"></a>Parsing</h4><p><img src="/images/NLP/parsing.jpg" alt=""></p>
+<h3 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h3><blockquote>
+<p>At last, a computer that understands you like your mother.</p>
+</blockquote>
+<h4 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h4><p>This sentence can be interpreted in different ways:<br>1.It understands you as well as your mother understands you.<br>2.It understands (that) you like your mother.<br>3.It understands you as well as it understands your mother.</p>
+<p>Ambiguity at Many Levels:<br><strong>Acoustic</strong> level<br>In speech recognition:<br>1.”… a computer that understands <em>you like</em> your mother”<br>2.”… a computer that understands <em>lie cured</em> mother”</p>
+<p><strong>Syntactic</strong> level<br><img src="/images/NLP/syntactic.jpg" alt=""></p>
+<p><strong>Semantic</strong> level<br>A word may have a variety of meanings and it may cause word sense ambiguity.</p>
+<p><strong>Discourse</strong> (multi-clause) level<br>Alice says they’ve built a computer that understands you like your mother<br>But she…<br>  … doesn’t know any details<br>  … doesn’t understand me at all<br>This is an instance of <strong>anaphora</strong>, where <em>she</em> referees to some other discourse entity.</p>
+
       
     </div>
     
@@ -429,9 +442,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/learning-note/" rel="tag"># learning note</a>
-          
             <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
           
         </div>
       
@@ -637,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
