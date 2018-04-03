@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="natural language processing,learning note," />
+  <meta name="keywords" content="learning note,natural language processing," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
-<meta name="keywords" content="natural language processing,learning note">
+<meta name="keywords" content="learning note,natural language processing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Natural Language Processing Note">
 <meta property="og:url" content="http://haelchan.me/2018/03/31/NLP-note/index.html">
@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://haelchan.me/images/NLP/overview.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/parsing.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/syntactic.jpg">
-<meta property="og:updated_time" content="2018-04-02T06:50:10.000Z">
+<meta property="og:updated_time" content="2018-04-03T14:20:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-02T14:50:10+08:00">
-                2018-04-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-03T22:20:55+08:00">
+                2018-04-03
               </time>
             
           </span>
@@ -413,7 +413,8 @@
 <p>the STOP<br>a STOP<br>the fan STOP<br>the fan saw Beckham STOP<br>the fan saw saw STOP<br>the fan saw Beckham play for Real Madrid STOP</p>
 </blockquote>
 <p>· We have a <em>training sample</em> of example sentences in English<br>· We need to “learn” a probability distribution <em>p</em> i.e., <em>p</em> is a function that satisfies</p>
-<script type="math/tex; mode=display">\sum_{x\in\mathscr{V^\dagger}}p(x)=1,\ p(x)\ge0\text{ for all }x\in\mathscr{V^\dagger}</script><p>Language models are very useful in a broad range of applications, the most obvious perhaps being speech recognition and machine translation. In many applications it is very useful to have a good “prior” distribution <script type="math/tex">p(x_1...x_n)</script> over which sentences are or aren’t probable in a language. For example, in speech recognition the language model is combined with an acoustic model that models the pronunciation of different words: one way to think about it is that the acoustic model generates a large number of candidate sentences, together with probabilities; the language model is then used to reorder these possibilities based on how likely they are to be a sentence in the language.<br>The techniques we describe for defining the function <em>p</em>, and for estimating the parameters of the resulting model from training examples, will be useful in several other contexts during the course: for example in hidden Markov models and in models for natural language parsing.</p>
+<script type="math/tex; mode=display">\sum_{x\in\mathscr{V^\dagger}}p(x)=1,\ p(x)\ge0\text{ for all }x\in\mathscr{V^\dagger}</script><p>Definition: A language model consists of a finite set <script type="math/tex">\mathscr{V}</script>, and a function <script type="math/tex">p(x_1,x_2,...,x_n)</script> such that:<br>1.For any <script type="math/tex"><x_1...x_n>\in\mathscr{V^\dagger}</script>, <script type="math/tex">p(x_1,x_2,...,x_n)\ge 0</script><br>2.In addition, <script type="math/tex">\sum_{<x_1...x_n>\in\mathscr{V^\dagger}}p(x_1,x_2,...,x_n)=1</script></p>
+<p>Language models are very useful in a broad range of applications, the most obvious perhaps being speech recognition and machine translation. In many applications it is very useful to have a good “prior” distribution <script type="math/tex">p(x_1...x_n)</script> over which sentences are or aren’t probable in a language. For example, in speech recognition the language model is combined with an acoustic model that models the pronunciation of different words: one way to think about it is that the acoustic model generates a large number of candidate sentences, together with probabilities; the language model is then used to reorder these possibilities based on how likely they are to be a sentence in the language.<br>The techniques we describe for defining the function <em>p</em>, and for estimating the parameters of the resulting model from training examples, will be useful in several other contexts during the course: for example in hidden Markov models and in models for natural language parsing.</p>
 <h4 id="A-Naive-Method"><a href="#A-Naive-Method" class="headerlink" title="A Naive Method"></a>A Naive Method</h4><p>We have N training sentences.<br>For any sentence <script type="math/tex">x_1...x_n,\ c(x_1...x_n)</script> is the number of times the sentence is seen in our training data.</p>
 <script type="math/tex; mode=display">p(x_1...x_n)=\frac{c(x_1...x_n)}{N}</script><p>This is a poor model: in particular it will assign probability 0 to any sentence not seen in the training corpus. Thus it fails to generalize to sentences that have not seen in the training data. The key technical contribution of this chapter will be to introduce methods that do generalize to sentences that are not seen in our training data.</p>
 <h4 id="Markov-Models"><a href="#Markov-Models" class="headerlink" title="Markov Models"></a>Markov Models</h4><p><strong>First-Order Markov Processes</strong></p>
@@ -423,6 +424,14 @@
 <script type="math/tex; mode=display">\begin{aligned}&P(X_1=x_1,X_2=x_2,...,X_n=x_n)\\=&P(X_1=x_1)
 \times P(X_2=x_2|X_1=x_1)\prod_{i=3}^nP(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})\\=&\prod_{i=1}^nP(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})\end{aligned}</script><p>(For convenience we assume <script type="math/tex">x_0=x_{-1}=*</script>, where * is a special “start” symbol.)</p>
 <p>Compared with first-order Markov process, we make a slightly weaker assumption, namely that each word depends on the previous <em>two</em> words in the sequence. And the second-order Markov process will form the basis of trigram language models.</p>
+<p>The length of sequence <em>n</em> can itself vary. We just assume that the <em>n</em>‘th word in the sequence, <script type="math/tex">X_n</script> is always equal to a special symbol, the STOP symbol. This symbol can only appear at the end of a sequence and it doesn’t belong to the set <script type="math/tex">\mathscr{V}</script>.</p>
+<p>Process:</p>
+<ol>
+<li>Initialize <em>i</em> = 1, and <script type="math/tex">x_0=x_{-1}=*</script></li>
+<li>Generate <script type="math/tex">x_i</script> from the distribution <script type="math/tex">P(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})</script></li>
+<li>If <script type="math/tex">x_i=STOP</script> then return the sequence <script type="math/tex">x_1...x_n</script>. Otherwise, set <script type="math/tex">i=i+1</script> and return to step 2.</li>
+</ol>
+<h4 id="Trigram"><a href="#Trigram" class="headerlink" title="Trigram"></a>Trigram</h4><p>A trigram language model consists of a finite set <script type="math/tex">\mathscr{V}</script>, and a parameter <script type="math/tex">q(w|u,v)</script> for each trigram u,v,w such that <script type="math/tex">w\in\mathscr{V}\cup\{STOP\}</script>, and <script type="math/tex">u,v\in\mathscr{V}\cup\{*\}</script>. The value for <script type="math/tex">q(w|u,v)</script> can be interpreted as the probability of seeing the word <em>w</em> immediately after the bigram <em>(u,v)</em>. For any sentence <script type="math/tex">x_1...x_n</script> where <script type="math/tex">x_i\in\mathscr{V}</script> for <em>i</em> = 1…(n-1), and <script type="math/tex">x_n=STOP</script>, the probability of the sentence under the trigram language model is <script type="math/tex">p(x_1...x_n)=\prod_{i=1}^nq(x_i|x_{i-2},x_{i-1})</script>, where we define <script type="math/tex">x_0=x_{-1}=*</script>.</p>
 
       
     </div>
@@ -458,9 +467,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
-          
             <a href="/tags/learning-note/" rel="tag"># learning note</a>
+          
+            <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
           
         </div>
       
@@ -666,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Modeling"><span class="nav-number">1.2.</span> <span class="nav-text">Language Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-Naive-Method"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">A Naive Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markov-Models"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">Markov Models</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Modeling"><span class="nav-number">1.2.</span> <span class="nav-text">Language Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-Naive-Method"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">A Naive Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markov-Models"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">Markov Models</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Trigram"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">Trigram</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
