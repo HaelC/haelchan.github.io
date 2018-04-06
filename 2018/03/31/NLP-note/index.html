@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="learning note,natural language processing," />
+  <meta name="keywords" content="natural language processing,learning note," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
-<meta name="keywords" content="learning note,natural language processing">
+<meta name="keywords" content="natural language processing,learning note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Natural Language Processing Note">
 <meta property="og:url" content="http://haelchan.me/2018/03/31/NLP-note/index.html">
@@ -90,7 +90,8 @@
 <meta property="og:image" content="http://haelchan.me/images/NLP/overview.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/parsing.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/syntactic.jpg">
-<meta property="og:updated_time" content="2018-04-05T15:18:22.000Z">
+<meta property="og:image" content="http://haelchan.me/images/NLP/trigramDiscount.jpg">
+<meta property="og:updated_time" content="2018-04-06T15:40:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
@@ -336,8 +337,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-05T23:18:22+08:00">
-                2018-04-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-06T23:40:02+08:00">
+                2018-04-06
               </time>
             
           </span>
@@ -449,6 +450,11 @@
 <p>By the way, <script type="math/tex">lambda_1</script> should be 0 if <script type="math/tex">c(u,v)=0</script>, because in this case the trigram estimate <script type="math/tex">q_{ML}(w|u,v)=\frac{c(u,v,w)}{c(u,v)}</script> is undefined. Similarly, if both <script type="math/tex">c(u,v)</script> and <script type="math/tex">c(v)</script> are equal to zero, we need <script type="math/tex">\lambda_1=\lambda_2=0</script></p>
 <p>In the referencing note, a simple method is introduced:</p>
 <script type="math/tex; mode=display">\lambda_1=\frac{c(u,v)}{c(u,v)+\gamma}</script><script type="math/tex; mode=display">\lambda_2=(1-\lambda_1)\times\frac{c(v)}{c(v)+\gamma}</script><script type="math/tex; mode=display">\lambda_3=1-\lambda_1-\lambda_2</script><p>γ&gt;0.<br>Under this definition, it can be seen that <script type="math/tex">\lambda_1</script> increases as <script type="math/tex">c(u,v)</script> increases, and similarly that <script type="math/tex">\lambda_2</script> increases as <script type="math/tex">c(v)</script> increases. This method is relatively crude, and is not likely to be optimal. It is, however, very simple, and in practice it can work well in some applications.</p>
+<h4 id="Discounting-Methods"><a href="#Discounting-Methods" class="headerlink" title="Discounting Methods"></a>Discounting Methods</h4><p>For any bigram <script type="math/tex">Count(w_{i-1},w)</script> such that <script type="math/tex">Count(w_{i-1},w)>0</script>, we define the discounted count as</p>
+<script type="math/tex; mode=display">Count^*(w_{i-1},w)=Count(w_{i-1},w)-\beta</script><p>where β is a value between 0 and 1 (a typical value might be β=0.5). Thus we simply subtract a constant value, β, from the count. This reflects the intuition that if we take counts from the training corpus, we will systematically over-estimate the probability of bigrams seen in the corpus(and under-estimate bigrams not seen in the corpus).<br>For any bigram <script type="math/tex">(w_{i-1},w)</script> such that <script type="math/tex">Count(w_{i-1},w)>0</script>, we can then define <script type="math/tex">q(w|w_{i-1})=\frac{Count^*(w_{i-1},w)}{Count(w_{i-1})}</script>. For any context <script type="math/tex">w_{i-1}</script>, this definition leads to some <em>missing probability mass</em>, defined as <script type="math/tex">\alpha(v)=1-\sum_{w:Count(w_{i-1},w)>0}\frac{Count^*(w_{i-1},w)}{Count(w_{i-1})}</script><br>The intuition behind discounted methods is to divide this “missing mass” between the words <em>w</em> such that <script type="math/tex">Count(w_{i-1},w)=0</script>.<br>Define two sets</p>
+<script type="math/tex; mode=display">\mathcal{A}(w_{i-1})=\{w:Count(w_{i-1},w)>0</script><script type="math/tex; mode=display">\mathcal{B}(w_{i-1})=\{w:Count(w_{i-1},w)=0</script><p>Then the back-off model is defined as</p>
+<script type="math/tex; mode=display">q_{BO}(w_i|w_{i-1})=\begin{cases}\frac{Count^*(w_{i-1},w_i)}{Count(w_{i-1})}\text{  if }w_i\in\mathcal{A}(w_{i-1})\\\alpha(w_{i-1})\frac{q_{ML}(w_i)}{\sum_{w\in\mathcal{B}(w_{i-1})}q_{ML}(w)}\text{  if }w_i\in\mathcal{B}(w_{i-1})\end{cases}</script><p>Thus if <script type="math/tex">Count(w_{i-1},w)>0</script> we return the estimate <script type="math/tex">\frac{Count^*(w_{i-1},w_i)}{Count(w_{i-1})}</script>; otherwise we divide the remaining probability mass <script type="math/tex">\alpha(w_{i-1})</script> in proportion to the unigram estimate <script type="math/tex">q_{ML}(w)</script>.</p>
+<p>The method can be generalized to trigram language models in a natural, recursive way:<br><img src="/images/NLP/trigramDiscount.jpg" alt=""></p>
 
       
     </div>
@@ -484,9 +490,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/learning-note/" rel="tag"># learning note</a>
-          
             <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
           
         </div>
       
@@ -692,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Modeling"><span class="nav-number">1.2.</span> <span class="nav-text">Language Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-Naive-Method"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">A Naive Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markov-Models"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">Markov Models</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Trigram"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">Trigram</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-Interpolation"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">Linear Interpolation</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Modeling"><span class="nav-number">1.2.</span> <span class="nav-text">Language Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-Naive-Method"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">A Naive Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markov-Models"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">Markov Models</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Trigram"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">Trigram</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-Interpolation"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">Linear Interpolation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Discounting-Methods"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">Discounting Methods</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
