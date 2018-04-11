@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="natural language processing,learning note," />
+  <meta name="keywords" content="learning note,natural language processing," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
-<meta name="keywords" content="natural language processing,learning note">
+<meta name="keywords" content="learning note,natural language processing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Natural Language Processing Note">
 <meta property="og:url" content="http://haelchan.me/2018/03/31/NLP-note/index.html">
@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://haelchan.me/images/NLP/parsing.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/syntactic.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/trigramDiscount.jpg">
-<meta property="og:updated_time" content="2018-04-11T06:59:46.000Z">
+<meta property="og:updated_time" content="2018-04-11T09:55:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
@@ -337,7 +337,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-11T14:59:46+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-11T17:55:53+08:00">
                 2018-04-11
               </time>
             
@@ -483,6 +483,15 @@
 <li>In the noisy channel approach, we use the training example to estimate models <script type="math/tex">p(y)</script> and <script type="math/tex">p(x|y)</script>. These models define a joint(generative) model: <script type="math/tex">p(x,y)=p(y)p(x|y)</script></li>
 <li>Given a new test example <em>x</em>, we predict the label <script type="math/tex">f(x)=\arg\max_{y\in\mathcal{Y}}p(y)p(x|y)</script>. Finding the output <em>f(x)</em> for an input <em>x</em> is often referred to as the <em>decoding problem</em>.</li>
 </ul>
+<p>Assume a finite set of words <script type="math/tex">\mathcal{V}</script>, and a finite set of tags <script type="math/tex">\mathcal{K}</script>. Define <script type="math/tex">\mathcal{S}</script> to be the set of all sequence/tag-sequence pairs <script type="math/tex"><x_1...x_n,y_1...y_n></script> such that <script type="math/tex">n\ge0,x_i\in\mathcal{V}for\ i=1...n,and\ y_i\in\mathcal{K}for\ i=1...n</script>. A generative tagging model is then a function p such that:</p>
+<ol>
+<li>For any <script type="math/tex"><x_1...x_n,y_1...y_n>\in\mathcal{S},p(x_1...x_n,y_1...y_n)\ge0</script></li>
+<li>In addition, <script type="math/tex">\sum_{<x_1...x_n,y_1...y_n>\in\mathcal{S}}p(x_1...x_n,y_1...y_n)=1</script></li>
+</ol>
+<p>Hense <script type="math/tex">p(x_1...x_n,y_1...y_n)</script> is a probability distribution over pairs of sequences(i.e., a probability distribution over the set <script type="math/tex">\mathcal{S}</script>).<br>Given a generative tagging model, the function from sentences <script type="math/tex">x_1...x_n</script> to tag sequence <script type="math/tex">y_1...y_n</script> is defined as</p>
+<script type="math/tex; mode=display">f(x_1...x_n)=\arg\max_{y_1...y_n}p(x_1...x_n,y_1...y_n)</script><p>where the <em>arg max</em> is taken over all sequences <script type="math/tex">y_1...y_n</script> such that <script type="math/tex">y_i\in\mathcal{K}for\ i\in\{1...n\}</script>. Thus for any input <script type="math/tex">x_1...x_n</script>, we take the highest probability tag sequence as the output from the model.</p>
+<h2 id="Hidden-Markov-Models"><a href="#Hidden-Markov-Models" class="headerlink" title="Hidden Markov Models"></a>Hidden Markov Models</h2><h3 id="Trigram-HMMs"><a href="#Trigram-HMMs" class="headerlink" title="Trigram HMMs"></a>Trigram HMMs</h3><p>A trigram HMM consists of a finite set <script type="math/tex">\mathcal{V}</script> of possible words, and a finite set <script type="math/tex">\mathcal{K}</script> of possible tags, together with the following parameters:<br>· A parameter <script type="math/tex">q(s|u,v)</script> for any trigram <script type="math/tex">(u,v,s)</script> such that <script type="math/tex">s\in\mathcal{K]\cup\{STOP\}</script>, and <script type="math/tex">u,v\in\mathcal{K}\cup\{*\}</script>. The value for <script type="math/tex">q(s|u,v)</script> can be interpreted as the probability of seeing the tag <em>s</em> immediately after the bigram of tags <script type="math/tex">(u,v)</script>.<br>· A parameter <script type="math/tex">e(x|s)</script> for any <script type="math/tex">x\in\mathcal{V},s\in\mathcal{K}</script>. The value for <script type="math/tex">e(x|s)</script> can be interpreted as the probability of seeing observation <em>x</em> paired with state <em>s</em>.<br>Define <script type="math/tex">\mathcal{S}</script> to be the set of all sequence/tag-sequence pairs <script type="math/tex"><x_1...x_n,y_1...y_{n+1}></script> such that <script type="math/tex">n\ge0,x_i\in\mathcal{V}for\ i=1...n,y_i\in\mathcal{K}for\ i=1...n,and\ y_{n+1}=STOP</script>.<br>We then define the probability for any <script type="math/tex"><x_1...x_n,y_1...y_{n+1}\in\mathcal{S}</script> as</p>
+<script type="math/tex; mode=display">p(x_1...x_n,y_1...y_{n+1})=\prod_{i=1}^{n+1}q(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ne(x_i|y_i)</script><p>where we have assumed that <script type="math/tex">y_0=y_{-1}=*</script>.</p>
 
       
     </div>
@@ -518,9 +527,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
-          
             <a href="/tags/learning-note/" rel="tag"># learning note</a>
+          
+            <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
           
         </div>
       
@@ -730,7 +739,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Modeling"><span class="nav-number">1.2.</span> <span class="nav-text">Language Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Naive-Method"><span class="nav-number">1.2.1.</span> <span class="nav-text">A Naive Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markov-Models"><span class="nav-number">1.2.2.</span> <span class="nav-text">Markov Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram"><span class="nav-number">1.2.3.</span> <span class="nav-text">Trigram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Interpolation"><span class="nav-number">1.2.4.</span> <span class="nav-text">Linear Interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discounting-Methods"><span class="nav-number">1.2.5.</span> <span class="nav-text">Discounting Methods</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-Two"><span class="nav-number">2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tagging-1"><span class="nav-number">2.1.</span> <span class="nav-text">Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#POS-Tagging"><span class="nav-number">2.1.1.</span> <span class="nav-text">POS Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tags"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Tags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Challenges-1"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sources-of-information"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">Sources of information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Named-Entity"><span class="nav-number">2.1.2.</span> <span class="nav-text">Named-Entity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generative-Models"><span class="nav-number">2.2.</span> <span class="nav-text">Generative Models</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Modeling"><span class="nav-number">1.2.</span> <span class="nav-text">Language Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Naive-Method"><span class="nav-number">1.2.1.</span> <span class="nav-text">A Naive Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markov-Models"><span class="nav-number">1.2.2.</span> <span class="nav-text">Markov Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram"><span class="nav-number">1.2.3.</span> <span class="nav-text">Trigram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Interpolation"><span class="nav-number">1.2.4.</span> <span class="nav-text">Linear Interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discounting-Methods"><span class="nav-number">1.2.5.</span> <span class="nav-text">Discounting Methods</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-Two"><span class="nav-number">2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tagging-1"><span class="nav-number">2.1.</span> <span class="nav-text">Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#POS-Tagging"><span class="nav-number">2.1.1.</span> <span class="nav-text">POS Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tags"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Tags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Challenges-1"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sources-of-information"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">Sources of information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Named-Entity"><span class="nav-number">2.1.2.</span> <span class="nav-text">Named-Entity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generative-Models"><span class="nav-number">2.2.</span> <span class="nav-text">Generative Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hidden-Markov-Models"><span class="nav-number">2.3.</span> <span class="nav-text">Hidden Markov Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram-HMMs"><span class="nav-number">2.3.1.</span> <span class="nav-text">Trigram HMMs</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
