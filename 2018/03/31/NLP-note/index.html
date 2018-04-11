@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="natural language processing,learning note," />
+  <meta name="keywords" content="learning note,natural language processing," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
-<meta name="keywords" content="natural language processing,learning note">
+<meta name="keywords" content="learning note,natural language processing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Natural Language Processing Note">
 <meta property="og:url" content="http://haelchan.me/2018/03/31/NLP-note/index.html">
@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://haelchan.me/images/NLP/parsing.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/syntactic.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/trigramDiscount.jpg">
-<meta property="og:updated_time" content="2018-04-10T11:36:49.000Z">
+<meta property="og:updated_time" content="2018-04-11T06:33:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-10T19:36:49+08:00">
-                2018-04-10
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-11T14:33:41+08:00">
+                2018-04-11
               </time>
             
           </span>
@@ -471,7 +471,19 @@
 <p><strong>Contextual</strong><br>The context has an important effect on the part of speech for a word. In particular, some sequences of POS tags are much more likely than others. If we consider POS trigrams, the sequence <code>D N V</code> will be frequent in English, whereas the sequence <code>D V N</code> is much less likely.<br>Sometimes these two sources of evidence are in conflict. For example, in the sentence <em>The trash can is hard to find</em>, the part of speech for <em>can</em> is a noun-however, <em>can</em> can also be a modal verb, and in fact it is much more frequently seen as a modal verb in English. In this sentence the context has overridden the tendency for <em>can</em> to be a verb as opposed to a noun.</p>
 <h3 id="Named-Entity"><a href="#Named-Entity" class="headerlink" title="Named-Entity"></a>Named-Entity</h3><p>For named-entity problem, the input is again a sentence. The output is the sentence with entity-boundaries marked. Recognizing entities such as people, locations and organizations has many applications, and name-entity recognition has been widely studies in NLP research.</p>
 <p>Once this mapping has been performed on training examples, we can train a tagging model on these training examples. Given a new test sentence we can then recover the sequence of tags from the model, and it is straightforward to identify the entities identified by the model.</p>
-<h2 id="Generative-Models"><a href="#Generative-Models" class="headerlink" title="Generative Models"></a>Generative Models</h2>
+<h2 id="Generative-Models"><a href="#Generative-Models" class="headerlink" title="Generative Models"></a>Generative Models</h2><p><strong>Supervised Learning:</strong><br>Assume training examples <script type="math/tex">(x^{(1)},y^{(1)})...(x^{(m)},y^{(m)})</script>, where each example consists of an input <script type="math/tex">x^{(i)}</script> paired with a label <script type="math/tex">y^{(i)}</script>. We use <script type="math/tex">\mathcal{X}</script> to refer to the set of possible inputs, and <script type="math/tex">\mathcal{Y}</script> to refer to the set of possible labels. Our task is to learn a function <script type="math/tex">f:\mathcal{X}\to\mathcal{Y}</script> that maps any input x to a label f(x).<br>One way to define the function f(x) is through a <em>conditional model</em>. In this approach we define a model that defines the conditional probability <script type="math/tex">p(y|x)</script> for any x,y pair. The parameters of the model are estimated from the training examples. Given a new test example x, the output from the model is <script type="math/tex">f(x)=\arg\max_{y\in\mathcal{Y}}p(y|x)</script><br>Thus we simply take the most likely label <em>y</em> as the output from the model. If our model <script type="math/tex">p(y|x)</script> is close to the true conditional distribution of labels given inputs, the function f(x) will be close to optimal.</p>
+<p><strong>Generative Models</strong><br>Rather than directly estimating the conditional distribution <script type="math/tex">p(y|x)</script>, in generative models we instead model the <em>joint</em> probability <script type="math/tex">p(x,y)</script> over <script type="math/tex">(x,y)</script> pairs. The parameters of the model <script type="math/tex">p(x,y)</script> are again estimated from the training examples <script type="math/tex">(x^{(i)},y^{(i)})</script> for <script type="math/tex">I=1...n</script>. In many cases we further decompose the probability <script type="math/tex">p(x,y)</script> as <script type="math/tex">p(x,y)=p(y)p(x|y)</script> and then estimate the models for <script type="math/tex">p(y)</script> and <script type="math/tex">p(x|y)</script> separately. These two model components have the following interpretations:<br>· <script type="math/tex">p(y)</script> is a <em>prior</em> probability distribution over labels <em>y</em>.<br>· <script type="math/tex">p(x|y)</script> is the probability of generating the input <em>x</em>, given that the underlying label is <em>y</em>.</p>
+<p>Given a generative model, we can use Bayes rule to derive the condition probability <script type="math/tex">p(y|x)</script> for any <script type="math/tex">(x,y)</script> pair:</p>
+<script type="math/tex; mode=display">p(y|x)=\frac{p(y)p(x|y)}{p(x)}</script><p>where</p>
+<script type="math/tex; mode=display">p(x)=\sum_{y\in\mathcal{Y}}p(x,y)=\sum_{y\in\mathcal{Y}}p(y)p(x|y)</script><p>We use Bayes rule directly in applying the joint model to a new test example. Given an input <em>x</em>, the output of our model, f(x), can be derived as follows:</p>
+<script type="math/tex; mode=display">\begin{aligned}f(x)&=\arg\max_yp(y|x)\\&=\arg\max_y\frac{p(y)p(x|y)}{p(x)}\text{  (2)}\\&=\arg\max_yp(y)p(x|y)\text{  (3)}\end{aligned}</script><p>Eq. 2 follows by Bayes rule. Eq. 3 follows because the denominator, <script type="math/tex">p(x)</script>, does not depend on <em>y</em>, and hence does not affect the arg max. This is convenient, because it mean that we do not need calculate <script type="math/tex">p(x)</script>, which can be an expensive operation.<br>Models that decompose a joint probability into terms <script type="math/tex">p(y)</script> and <script type="math/tex">p(x|y)</script> are often called <em>noisy-channel</em> models. Intuitively, when we see a test example <em>x</em>, we assume that has been generated in two steps: first, a label <em>y</em> has been chosen with probability <script type="math/tex">p(y)</script>; second, the example <em>x</em> has been generated from the distribution <script type="math/tex">p(x|y)</script>. The model <script type="math/tex">p(x|y)</script> can be interpreted as a “channel” which takes a label <em>y</em> as its input, and corrupts it to produce <em>x</em> as its output. Our task is to find the most likely label <em>y</em>, given that we observe <em>x</em>.</p>
+<p>In summary:</p>
+<ul>
+<li>Our task is to learn a function from inputs <em>x</em> to labels <script type="math/tex">y=f(x)</script>. We assume training examples <script type="math/tex">(x^{(i)},y^{(i)})</script> for <script type="math/tex">i=1...n</script>.</li>
+<li>In the noisy channel approach, we use the training example to estimate models <script type="math/tex">p(y)</script> and <script type="math/tex">p(x|y)</script>. These models define a joint(generative) model: <script type="math/tex">p(x,y)=p(y)p(x|y)</script></li>
+<li>Given a new test example <em>x</em>, we predict the label <script type="math/tex">f(x)=\arg\max_{y\in\mathcal{Y}}p(y)p(x|y)</script>. Finding the output <em>f(x)</em> for an input <em>x</em> is often referred to as the <em>decoding problem</em>.</li>
+</ul>
+
       
     </div>
     
@@ -506,9 +518,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
-          
             <a href="/tags/learning-note/" rel="tag"># learning note</a>
+          
+            <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
           
         </div>
       
