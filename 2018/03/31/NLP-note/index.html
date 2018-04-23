@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="learning note,natural language processing," />
+  <meta name="keywords" content="natural language processing,learning note," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
-<meta name="keywords" content="learning note,natural language processing">
+<meta name="keywords" content="natural language processing,learning note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="COMS W4705 Natural Language Processing Note">
 <meta property="og:url" content="http://haelchan.me/2018/03/31/NLP-note/index.html">
@@ -92,7 +92,11 @@
 <meta property="og:image" content="http://haelchan.me/images/NLP/syntactic.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/trigramDiscount.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/lowFrequency.jpg">
-<meta property="og:updated_time" content="2018-04-16T12:48:08.000Z">
+<meta property="og:image" content="http://haelchan.me/images/NLP/parsingSyntactic.jpg">
+<meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo2.jpg">
+<meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo3.jpg">
+<meta property="og:updated_time" content="2018-04-23T15:06:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="COMS W4705 Natural Language Processing Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
@@ -338,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-16T20:48:08+08:00">
-                2018-04-16
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-23T23:06:44+08:00">
+                2018-04-23
               </time>
             
           </span>
@@ -516,6 +520,33 @@
 <p><img src="/images/NLP/lowFrequency.jpg" alt=""></p>
 <h3 id="The-Viterbi-Algorithm"><a href="#The-Viterbi-Algorithm" class="headerlink" title="The Viterbi Algorithm"></a>The Viterbi Algorithm</h3><p>Problem: for an input <script type="math/tex">x_1...x_n</script>,  find <script type="math/tex">\arg\max_{y_1...y_{n+1}}p(x_1...x_n,y_1...y_{n+1})</script> where the arg max is taken over all sequences <script type="math/tex">y_1...y_{n+1}</script> such that <script type="math/tex">y_i\in\mathcal{K}</script> for <script type="math/tex">i=1...n</script>, and <script type="math/tex">y_{n+1}=STOP</script>.<br>We assume that <em>p</em> again takes the form <script type="math/tex">p(x_1...x_n,y_1...y_{n+1})=\prod_{i=1}^{n+1}q(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ne(x_i|y_i)</script></p>
 <p>The naive brute force method would be hopelessly inefficient. Instead, we can efficiently find the highest probability tag sequence using a dynamic programming algorithm that is often called <em>the Viterbi algorithm</em>. The input to the algorithm is a sentence <script type="math/tex">x_1...x_n</script>.</p>
+<h1 id="Week-Three"><a href="#Week-Three" class="headerlink" title="Week Three"></a>Week Three</h1><h2 id="Parsing-1"><a href="#Parsing-1" class="headerlink" title="Parsing"></a>Parsing</h2><p>Input: a sentence<br>Output: a parse tree<br><img src="/images/NLP/parsingSyntactic.jpg" alt=""></p>
+<h3 id="Parse-tree"><a href="#Parse-tree" class="headerlink" title="Parse tree"></a>Parse tree</h3><p>A <em>parse tree</em> is a tree structure with the words in the sentence at the leaves of the tree, and the tree has labels on the internal nodes.</p>
+<p>Syntactic Formalisms: minimalism, lexical functional grammar(LFG), head-driven phrase-structure grammar(HPSG), tree adjoining grammars(TAG), categorial grammars, etc.<br>The lecture focuses on context-free grammars, which are fundamental and form the basis for all modern form atoms.</p>
+<p>Data: Penn WSJ Treebank: 50000 sentences with associated trees(annotated by hand).</p>
+<h4 id="The-Information-Conveyed-by-Parse-Tree"><a href="#The-Information-Conveyed-by-Parse-Tree" class="headerlink" title="The Information Conveyed by Parse Tree"></a>The Information Conveyed by Parse Tree</h4><h5 id="Part-of-speech-for-each-word"><a href="#Part-of-speech-for-each-word" class="headerlink" title="Part of speech for each word"></a>Part of speech for each word</h5><p>It plays the same role as POS tagging. For each word in the sentence, just put a tag for the word.<br>N = noun, V = verb, DT = determiner<br><img src="/images/NLP/parseInfo1.jpg" alt=""></p>
+<h5 id="Phrases"><a href="#Phrases" class="headerlink" title="Phrases"></a>Phrases</h5><p>Phrases, or what are often called constituents, are compositions of words.<br>NP = noun phrase, VP = verb phrase<br><img src="/images/NLP/parseInfo2.jpg" alt=""></p>
+<h5 id="Useful-Relationships"><a href="#Useful-Relationships" class="headerlink" title="Useful Relationships"></a>Useful Relationships</h5><p>Parse trees encode important grammatical relationships within a sentence.<br>Some templates: <em>subject+verb</em>, <em>verb+DIRECT OBJECT</em>.<br><img src="/images/NLP/parseInfo3.jpg" alt=""></p>
+<h2 id="Context-Free-Grammar"><a href="#Context-Free-Grammar" class="headerlink" title="Context-Free Grammar"></a>Context-Free Grammar</h2><p>A context free grammar <script type="math/tex">G=(N,\Sigma,R,S)</script> where:</p>
+<ul>
+<li><script type="math/tex">N</script> is a set of non-terminal symbols</li>
+<li><script type="math/tex">\Sigma</script> is a set of terminal symbols</li>
+<li><script type="math/tex; mode=display">R$$ is a set of rules of the form $$X\toY_1Y_2...Y_n$$ for $$n\ge0,X\inN,Y_i\in(N\cup\Sigma)</script></li>
+<li><script type="math/tex">S\inN</script> is a distinguished start symbol</li>
+</ul>
+<p><strong>Properties</strong></p>
+<ul>
+<li>A CFG defines a set of possible derivations</li>
+<li>A string <script type="math/tex">s\in\Sigma^*</script> is in the <em>language</em> defined by the CFG if there is at least one derivation that yields <em>s</em></li>
+<li>Each string in the language generated by the CFG may have more than one derivation(“ambiguity”)</li>
+</ul>
+<h3 id="Left-Most-Derivations"><a href="#Left-Most-Derivations" class="headerlink" title="Left-Most Derivations"></a>Left-Most Derivations</h3><p>A left-most derivation is a sequence of strings <script type="math/tex">s_1...s_n</script>, where </p>
+<ul>
+<li><script type="math/tex">s_1=S</script>, the start symbol</li>
+<li><script type="math/tex">s_n\in\Sigma*</script>, i.e. <script type="math/tex">s_n</script> is made up of terminal symbols only</li>
+<li>Each <script type="math/tex">s_i</script> for <script type="math/tex">i=2...n</script> is derived from <script type="math/tex">s_{i-1}</script> by picking the left-most non-terminal <em>X</em> in <script type="math/tex">s_{i-1}</script> and replacing it by some <script type="math/tex">\beta</script> where <script type="math/tex">X\to\beta</script> is a rule in <em>R</em></li>
+</ul>
+<p>E.g. [S]→[NP VP]→[D N VP]→[the N VP]→[the man VP]→[the man Vi]→[the man sleeps]</p>
 
       
     </div>
@@ -551,9 +582,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/learning-note/" rel="tag"># learning note</a>
-          
             <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
           
         </div>
       
@@ -744,6 +775,10 @@
                     <a href="https://learnerwn.github.io" title="WN_Blog" target="_blank">WN_Blog</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ruder.io" title="Sebastian Ruder" target="_blank">Sebastian Ruder</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -763,7 +798,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Modeling"><span class="nav-number">1.2.</span> <span class="nav-text">Language Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Naive-Method"><span class="nav-number">1.2.1.</span> <span class="nav-text">A Naive Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markov-Models"><span class="nav-number">1.2.2.</span> <span class="nav-text">Markov Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram"><span class="nav-number">1.2.3.</span> <span class="nav-text">Trigram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Interpolation"><span class="nav-number">1.2.4.</span> <span class="nav-text">Linear Interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discounting-Methods"><span class="nav-number">1.2.5.</span> <span class="nav-text">Discounting Methods</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-Two"><span class="nav-number">2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tagging-1"><span class="nav-number">2.1.</span> <span class="nav-text">Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#POS-Tagging"><span class="nav-number">2.1.1.</span> <span class="nav-text">POS Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tags"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Tags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Challenges-1"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sources-of-information"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">Sources of information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Named-Entity"><span class="nav-number">2.1.2.</span> <span class="nav-text">Named-Entity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generative-Models"><span class="nav-number">2.2.</span> <span class="nav-text">Generative Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hidden-Markov-Models"><span class="nav-number">2.3.</span> <span class="nav-text">Hidden Markov Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram-HMMs"><span class="nav-number">2.3.1.</span> <span class="nav-text">Trigram HMMs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Estimating"><span class="nav-number">2.3.2.</span> <span class="nav-text">Estimating</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dealing-with-Low-Frequency-Words"><span class="nav-number">2.3.3.</span> <span class="nav-text">Dealing with Low-Frequency Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Viterbi-Algorithm"><span class="nav-number">2.3.4.</span> <span class="nav-text">The Viterbi Algorithm</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">1.1.1.</span> <span class="nav-text">Applications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-NLP-Problems"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic NLP Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tagging"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Tagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Parsing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.3.</span> <span class="nav-text">Challenges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ambiguity"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Ambiguity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Modeling"><span class="nav-number">1.2.</span> <span class="nav-text">Language Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Naive-Method"><span class="nav-number">1.2.1.</span> <span class="nav-text">A Naive Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markov-Models"><span class="nav-number">1.2.2.</span> <span class="nav-text">Markov Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram"><span class="nav-number">1.2.3.</span> <span class="nav-text">Trigram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Interpolation"><span class="nav-number">1.2.4.</span> <span class="nav-text">Linear Interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discounting-Methods"><span class="nav-number">1.2.5.</span> <span class="nav-text">Discounting Methods</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-Two"><span class="nav-number">2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tagging-1"><span class="nav-number">2.1.</span> <span class="nav-text">Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#POS-Tagging"><span class="nav-number">2.1.1.</span> <span class="nav-text">POS Tagging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tags"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Tags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Challenges-1"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sources-of-information"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">Sources of information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Named-Entity"><span class="nav-number">2.1.2.</span> <span class="nav-text">Named-Entity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generative-Models"><span class="nav-number">2.2.</span> <span class="nav-text">Generative Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hidden-Markov-Models"><span class="nav-number">2.3.</span> <span class="nav-text">Hidden Markov Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram-HMMs"><span class="nav-number">2.3.1.</span> <span class="nav-text">Trigram HMMs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Estimating"><span class="nav-number">2.3.2.</span> <span class="nav-text">Estimating</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dealing-with-Low-Frequency-Words"><span class="nav-number">2.3.3.</span> <span class="nav-text">Dealing with Low-Frequency Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Viterbi-Algorithm"><span class="nav-number">2.3.4.</span> <span class="nav-text">The Viterbi Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-Three"><span class="nav-number">3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Parsing-1"><span class="nav-number">3.1.</span> <span class="nav-text">Parsing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Parse-tree"><span class="nav-number">3.1.1.</span> <span class="nav-text">Parse tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-Information-Conveyed-by-Parse-Tree"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">The Information Conveyed by Parse Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Part-of-speech-for-each-word"><span class="nav-number">3.1.1.1.1.</span> <span class="nav-text">Part of speech for each word</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Phrases"><span class="nav-number">3.1.1.1.2.</span> <span class="nav-text">Phrases</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Useful-Relationships"><span class="nav-number">3.1.1.1.3.</span> <span class="nav-text">Useful Relationships</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Context-Free-Grammar"><span class="nav-number">3.2.</span> <span class="nav-text">Context-Free Grammar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Left-Most-Derivations"><span class="nav-number">3.2.1.</span> <span class="nav-text">Left-Most Derivations</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
