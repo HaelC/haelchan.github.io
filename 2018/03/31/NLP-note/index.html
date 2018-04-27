@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo1.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo2.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo3.jpg">
-<meta property="og:updated_time" content="2018-04-24T08:17:08.000Z">
+<meta property="og:updated_time" content="2018-04-27T07:14:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="COMS W4705 Natural Language Processing Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-24T16:17:08+08:00">
-                2018-04-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-27T15:14:58+08:00">
+                2018-04-27
               </time>
             
           </span>
@@ -527,10 +527,10 @@
 <h4 id="The-Information-Conveyed-by-Parse-Tree"><a href="#The-Information-Conveyed-by-Parse-Tree" class="headerlink" title="The Information Conveyed by Parse Tree"></a>The Information Conveyed by Parse Tree</h4><h5 id="Part-of-speech-for-each-word"><a href="#Part-of-speech-for-each-word" class="headerlink" title="Part of speech for each word"></a>Part of speech for each word</h5><p>It plays the same role as POS tagging. For each word in the sentence, just put a tag for the word.<br>N = noun, V = verb, DT = determiner<br><img src="/images/NLP/parseInfo1.jpg" alt=""></p>
 <h5 id="Phrases"><a href="#Phrases" class="headerlink" title="Phrases"></a>Phrases</h5><p>Phrases, or what are often called constituents, are compositions of words.<br>NP = noun phrase, VP = verb phrase<br><img src="/images/NLP/parseInfo2.jpg" alt=""></p>
 <h5 id="Useful-Relationships"><a href="#Useful-Relationships" class="headerlink" title="Useful Relationships"></a>Useful Relationships</h5><p>Parse trees encode important grammatical relationships within a sentence.<br>Some templates: <em>subject+verb</em>, <em>verb+DIRECT OBJECT</em>.<br><img src="/images/NLP/parseInfo3.jpg" alt=""></p>
-<h2 id="Context-Free-Grammar"><a href="#Context-Free-Grammar" class="headerlink" title="Context-Free Grammar"></a>Context-Free Grammar</h2><p>A context free grammar <script type="math/tex">G=(N,\Sigma,R,S)</script> where:</p>
+<h2 id="Context-Free-Grammar"><a href="#Context-Free-Grammar" class="headerlink" title="Context-Free Grammar"></a>Context-Free Grammar</h2><p>A <strong>context free grammar</strong> <script type="math/tex">G=(N,\Sigma,R,S)</script> where:</p>
 <ul>
 <li><script type="math/tex">N</script> is a set of non-terminal symbols</li>
-<li><script type="math/tex">\Sigma</script> is a set of terminal symbols</li>
+<li><script type="math/tex">\Sigma</script> is a set of terminal symbols (the set of words in the dictionary)</li>
 <li><script type="math/tex; mode=display">R$$ is a set of rules of the form $$X\toY_1Y_2...Y_n$$ for $$n\ge0,X\inN,Y_i\in(N\cup\Sigma)</script></li>
 <li><script type="math/tex">S\inN</script> is a distinguished start symbol</li>
 </ul>
@@ -543,7 +543,7 @@
 <h3 id="Left-Most-Derivations"><a href="#Left-Most-Derivations" class="headerlink" title="Left-Most Derivations"></a>Left-Most Derivations</h3><p>A left-most derivation is a sequence of strings <script type="math/tex">s_1...s_n</script>, where </p>
 <ul>
 <li><script type="math/tex">s_1=S</script>, the start symbol</li>
-<li><script type="math/tex">s_n\in\Sigma*</script>, i.e. <script type="math/tex">s_n</script> is made up of terminal symbols only</li>
+<li><script type="math/tex">s_n\in\Sigma^*</script>, i.e. <script type="math/tex">s_n</script> is made up of terminal symbols only (<script type="math/tex">\Sigma^*</script> denotes the set of all possible strings made up of sequences of words taken from <script type="math/tex">\Sigma</script>)</li>
 <li>Each <script type="math/tex">s_i</script> for <script type="math/tex">i=2...n</script> is derived from <script type="math/tex">s_{i-1}</script> by picking the left-most non-terminal <em>X</em> in <script type="math/tex">s_{i-1}</script> and replacing it by some <script type="math/tex">\beta</script> where <script type="math/tex">X\to\beta</script> is a rule in <em>R</em></li>
 </ul>
 <p>E.g. [S]→[NP VP]→[D N VP]→[the N VP]→[the man VP]→[the man Vi]→[the man sleeps]</p>
