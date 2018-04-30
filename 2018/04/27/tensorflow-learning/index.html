@@ -88,7 +88,8 @@
 <meta property="og:description" content="OverviewInstallOfficial Install Guidance As for me, my environment is:  macOS Sierra 10.12.6Python 3.6.3pip3  The official command uses pip install --upgrade virtualenv. However, my MacBook Air doesn’">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/images/tf/dataFlowGraph.jpg">
-<meta property="og:updated_time" content="2018-04-28T14:45:02.000Z">
+<meta property="og:image" content="http://haelchan.me/images/tf/dataType.jpg">
+<meta property="og:updated_time" content="2018-04-30T08:50:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow Learning">
 <meta name="twitter:description" content="OverviewInstallOfficial Install Guidance As for me, my environment is:  macOS Sierra 10.12.6Python 3.6.3pip3  The official command uses pip install --upgrade virtualenv. However, my MacBook Air doesn’">
@@ -334,8 +335,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-28T22:45:02+08:00">
-                2018-04-28
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-30T16:50:21+08:00">
+                2018-04-30
               </time>
             
           </span>
@@ -444,7 +445,18 @@
 <p><code>tf.range(start, limit=None, delta=1, dtype=None, name=&#39;range&#39;)</code><br><code>tf.range(3, 18, 3)</code> ==&gt; [3 6 9 12 15]<br><code>tf.range(5)</code> ==&gt; [0 1 2 3 4]</p>
 <p><strong>Randomly Generated Constants</strong><br>tf.random_normal<br>tf.truncated_normal<br>tf.random_uniform<br>tf.random_shuffle<br>tf.random_crop<br>tf.multinomial<br>tf.random_gamma</p>
 <p>tf.set_random_seed(seed)</p>
-<h3 id="Basic-operations"><a href="#Basic-operations" class="headerlink" title="Basic operations"></a>Basic operations</h3>
+<h3 id="Basic-operations"><a href="#Basic-operations" class="headerlink" title="Basic operations"></a>Basic operations</h3><p><strong>Element-wise mathematical operations</strong><br>Add, Sub, Mul, Div, Exp, Log, Greater, Less, Equal, …<br>BTW, even a division has different forms in TensorFlow: <code>tf.div(), tf. divide(), tf.truediv(), tf.floordiv(), tf.realdiv(), tf.truncatediv(), tf.floor_div()</code></p>
+<p><strong>Array operations</strong><br>Concat, Slice, Split, Constant, Rank, Shape, Shuffle, …</p>
+<p><strong>Matrix operations</strong><br>MatMul, MatrixInverse, MatrixDeterminant, …</p>
+<p><strong>Stateful operations</strong><br>Variable, Assign, AssignAdd, …</p>
+<p><strong>Neural network building blocks</strong><br>SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool, …</p>
+<p><strong>Checkpointing operations</strong><br>Save, Restore</p>
+<p><strong>Queue and synchronization operations</strong><br>Enqueue, Dequeue, MutexAcquire, MutexRelease, …</p>
+<p><strong>Control flow operations</strong><br>Merge, Switch, Enter, Leave, NextIteration</p>
+<h3 id="Data-types"><a href="#Data-types" class="headerlink" title="Data types"></a>Data types</h3><p>TensorFlow takes Python natives types: boolean, numeric(int, float), strings</p>
+<p>scalars are treated like 0-d tensors<br>1-d arrays are treated like 1-d tensors<br>2-d arrays are treated like 2-d tensors</p>
+<p><img src="/images/tf/dataType.jpg" alt=""></p>
+
       
     </div>
     
@@ -693,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install"><span class="nav-number">1.1.</span> <span class="nav-text">Install</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CS20"><span class="nav-number">1.1.1.</span> <span class="nav-text">CS20</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activation-and-Deactivation"><span class="nav-number">1.2.</span> <span class="nav-text">Activation and Deactivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphs-and-Sessions"><span class="nav-number">1.3.</span> <span class="nav-text">Graphs and Sessions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Graphs"><span class="nav-number">1.3.1.</span> <span class="nav-text">Graphs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Session"><span class="nav-number">1.3.2.</span> <span class="nav-text">Session</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TensorBoard"><span class="nav-number">1.4.</span> <span class="nav-text">TensorBoard</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations"><span class="nav-number">2.</span> <span class="nav-text">Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constants"><span class="nav-number">2.1.</span> <span class="nav-text">Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-operations"><span class="nav-number">2.2.</span> <span class="nav-text">Basic operations</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install"><span class="nav-number">1.1.</span> <span class="nav-text">Install</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CS20"><span class="nav-number">1.1.1.</span> <span class="nav-text">CS20</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activation-and-Deactivation"><span class="nav-number">1.2.</span> <span class="nav-text">Activation and Deactivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphs-and-Sessions"><span class="nav-number">1.3.</span> <span class="nav-text">Graphs and Sessions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Graphs"><span class="nav-number">1.3.1.</span> <span class="nav-text">Graphs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Session"><span class="nav-number">1.3.2.</span> <span class="nav-text">Session</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TensorBoard"><span class="nav-number">1.4.</span> <span class="nav-text">TensorBoard</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations"><span class="nav-number">2.</span> <span class="nav-text">Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constants"><span class="nav-number">2.1.</span> <span class="nav-text">Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-operations"><span class="nav-number">2.2.</span> <span class="nav-text">Basic operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-types"><span class="nav-number">2.3.</span> <span class="nav-text">Data types</span></a></li></ol></li></ol></div>
             
 
           </div>
