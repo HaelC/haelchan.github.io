@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/images/tf/dataFlowGraph.jpg">
 <meta property="og:image" content="http://haelchan.me/images/tf/dataType.jpg">
-<meta property="og:updated_time" content="2018-05-03T15:54:49.000Z">
+<meta property="og:updated_time" content="2018-05-05T15:47:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow Learning">
 <meta name="twitter:description" content="OverviewInstallOfficial Install Guidance As for me, my environment is:  macOS Sierra 10.12.6Python 3.6.3pip3  The official command uses pip install --upgrade virtualenv. However, my MacBook Air doesn’">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-03T23:54:49+08:00">
-                2018-05-03
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-05T23:47:04+08:00">
+                2018-05-05
               </time>
             
           </span>
@@ -491,14 +491,35 @@ return f(*args, **kwds)</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    <span class="keyword">for</span> a_value <span class="keyword">in</span> list_of_a_values:</div><div class="line">        print(sess.run(c, &#123;a: a_value&#125;))</div></pre></td></tr></table></figure>
 <p>We can feed_dict any feedable tensor. Placeholder is just a way to indicate that something must be fed. Use <code>tf.Graph.is_feedable(tensor)</code> to check if a tensor is feedable or not.<br>feed_dict can be extremely useful to test models. When you have a large graph and just want to test out certain parts, you can provide dummy values so TensorFlow won’t waste time doing unnecessary computations.</p>
 <h4 id="Placeholder-and-tf-data"><a href="#Placeholder-and-tf-data" class="headerlink" title="Placeholder and tf.data"></a>Placeholder and tf.data</h4><p>Pros and Cons of placeholder:<br>Pro: put the data processing outside TensorFlow, making it easy to do in Python<br>Cons: users often end up processing their data in a single thread and creating data bottleneck that slows execution down</p>
+<p><strong>tf.data</strong></p>
+<p><code>tf.data.Dataset.from_tensor_slices((features, labels))</code><br><code>tf.data.Dataset.from_generator(gen, output_types, output_shapes</code></p>
+<hr>
 <p><strong>Solution for LAZY LOADING</strong></p>
 <ol>
 <li>Separate definition of ops from computing/running ops</li>
 <li>Use Python property to ensure function is also loaded once the first time it is called</li>
 </ol>
 <h2 id="Linear-and-Logistic-Regression"><a href="#Linear-and-Logistic-Regression" class="headerlink" title="Linear and Logistic Regression"></a>Linear and Logistic Regression</h2><p>Given World Development Indicators dataset, X is birth rate, Y is life expectancy. Find a linear relationship between X and Y to predict Y from X.</p>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><p>Phase 1: Assemble the graph</p>
+<ol>
+<li>Read in data</li>
+<li>Create placeholders for inputs and labels</li>
+<li>Create weight and bias</li>
+<li>Inference <code>Y_predicted = w * X + b</code></li>
+<li>Specify loss function</li>
+<li>Create optimizer</li>
+</ol>
+<p>Phase 2: Train the model</p>
+<ol>
+<li>Initialize variables</li>
+<li>Run optimizer</li>
+</ol>
+<p>Write log files using a FileWriter</p>
+<p>See it on TensorBoard</p>
+<hr>
 <p><strong>Huber loss</strong><br>One way to deal with outliers is to use Huber loss.<br>If the difference between the predicted value and the real value is small, square it<br>If it’s large, take its absolute value</p>
-<script type="math/tex; mode=display">L_\delta(y,f(x))=\begin{cases}\frac{1}{2}(y-f(x))^2\ \ \ \text{for }|y-f(x)|\le\delta\\\delta|y-f(x)|-\frac{1}{2}\delta^2\ \ \text{ otherwise}\end{cases}</script>
+<script type="math/tex; mode=display">L_\delta(y,f(x))=\begin{cases}\frac{1}{2}(y-f(x))^2\ \ \ \text{for }|y-f(x)|\le\delta\\\delta|y-f(x)|-\frac{1}{2}\delta^2\ \ \text{ otherwise}\end{cases}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">huber_loss</span><span class="params">(labels, predictions, delta=<span class="number">14.0</span>)</span>:</span></div><div class="line">    residual = tf.abs(labels - predictions)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span> <span class="keyword">return</span> <span class="number">0.5</span> * tf.square(residual)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">()</span>:</span> <span class="keyword">return</span> delta * residual - <span class="number">0.5</span> * tf.square(delta)</div><div class="line">    <span class="keyword">return</span> tf.cond(residual &lt; delta, f1, f2)</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -747,7 +768,7 @@ return f(*args, **kwds)</code></p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install"><span class="nav-number">1.1.</span> <span class="nav-text">Install</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CS20"><span class="nav-number">1.1.1.</span> <span class="nav-text">CS20</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activation-and-Deactivation"><span class="nav-number">1.2.</span> <span class="nav-text">Activation and Deactivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphs-and-Sessions"><span class="nav-number">1.3.</span> <span class="nav-text">Graphs and Sessions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Graphs"><span class="nav-number">1.3.1.</span> <span class="nav-text">Graphs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Session"><span class="nav-number">1.3.2.</span> <span class="nav-text">Session</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TensorBoard"><span class="nav-number">1.4.</span> <span class="nav-text">TensorBoard</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations"><span class="nav-number">2.</span> <span class="nav-text">Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constants"><span class="nav-number">2.1.</span> <span class="nav-text">Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-operations"><span class="nav-number">2.2.</span> <span class="nav-text">Basic operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-types"><span class="nav-number">2.3.</span> <span class="nav-text">Data types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable"><span class="nav-number">2.4.</span> <span class="nav-text">Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Creating-variables"><span class="nav-number">2.4.1.</span> <span class="nav-text">Creating variables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Initialization"><span class="nav-number">2.4.2.</span> <span class="nav-text">Initialization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Assignment"><span class="nav-number">2.4.3.</span> <span class="nav-text">Assignment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Control-Dependencies"><span class="nav-number">2.4.4.</span> <span class="nav-text">Control Dependencies</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Placeholders"><span class="nav-number">2.5.</span> <span class="nav-text">Placeholders</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Placeholder-and-tf-data"><span class="nav-number">2.5.1.</span> <span class="nav-text">Placeholder and tf.data</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-and-Logistic-Regression"><span class="nav-number">3.</span> <span class="nav-text">Linear and Logistic Regression</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install"><span class="nav-number">1.1.</span> <span class="nav-text">Install</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CS20"><span class="nav-number">1.1.1.</span> <span class="nav-text">CS20</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activation-and-Deactivation"><span class="nav-number">1.2.</span> <span class="nav-text">Activation and Deactivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphs-and-Sessions"><span class="nav-number">1.3.</span> <span class="nav-text">Graphs and Sessions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Graphs"><span class="nav-number">1.3.1.</span> <span class="nav-text">Graphs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Session"><span class="nav-number">1.3.2.</span> <span class="nav-text">Session</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TensorBoard"><span class="nav-number">1.4.</span> <span class="nav-text">TensorBoard</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations"><span class="nav-number">2.</span> <span class="nav-text">Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constants"><span class="nav-number">2.1.</span> <span class="nav-text">Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-operations"><span class="nav-number">2.2.</span> <span class="nav-text">Basic operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-types"><span class="nav-number">2.3.</span> <span class="nav-text">Data types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable"><span class="nav-number">2.4.</span> <span class="nav-text">Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Creating-variables"><span class="nav-number">2.4.1.</span> <span class="nav-text">Creating variables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Initialization"><span class="nav-number">2.4.2.</span> <span class="nav-text">Initialization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Assignment"><span class="nav-number">2.4.3.</span> <span class="nav-text">Assignment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Control-Dependencies"><span class="nav-number">2.4.4.</span> <span class="nav-text">Control Dependencies</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Placeholders"><span class="nav-number">2.5.</span> <span class="nav-text">Placeholders</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Placeholder-and-tf-data"><span class="nav-number">2.5.1.</span> <span class="nav-text">Placeholder and tf.data</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-and-Logistic-Regression"><span class="nav-number">3.</span> <span class="nav-text">Linear and Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps"><span class="nav-number">3.1.</span> <span class="nav-text">Steps</span></a></li></ol></li></ol></div>
             
 
           </div>
