@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haelchan.me/images/tf/dataFlowGraph.jpg">
 <meta property="og:image" content="http://haelchan.me/images/tf/dataType.jpg">
-<meta property="og:updated_time" content="2018-05-08T15:50:03.000Z">
+<meta property="og:updated_time" content="2018-05-09T06:39:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow Learning">
 <meta name="twitter:description" content="OverviewInstallOfficial Install Guidance As for me, my environment is:  macOS Sierra 10.12.6Python 3.6.3pip3  The official command uses pip install --upgrade virtualenv. However, my MacBook Air doesn’">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-08T23:50:03+08:00">
-                2018-05-08
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-09T14:39:54+08:00">
+                2018-05-09
               </time>
             
           </span>
@@ -548,6 +548,27 @@ return f(*args, **kwds)</code></p>
 <p>CON:</p>
 <p><em>Difficult to debug</em><br>· errors are reported long after graph construction<br>· execution cannot by debugged with <code>pdb</code> or print statements</p>
 <p><em>Un-Pythonic</em><br>· writing a TensorFlow program is an exercise in metaprogramming<br>· control flow(e.g., <code>tf.while_loop</code>) differs from Python<br>· can’t easily mix graph construction with custom data structures</p>
+<hr>
+<blockquote>
+<p>A NumPy-like library for numerical computation with support for GPU acceleration and automatic differentiation, and a flexible platform for machine learning research and experimentation.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> tensorflow.contrib.eager <span class="keyword">as</span> tfe</div><div class="line">tfe.enable_eager_execution()</div></pre></td></tr></table></figure>
+<p>Key advantages of eager execution</p>
+<ul>
+<li>Compatible with Python debugging tools<ul>
+<li><code>pdb.set_trace()</code> to heart content</li>
+</ul>
+</li>
+<li>Provides immediate error reporting</li>
+<li>Permits use of Python data structures<ul>
+<li>e.g., for structured input</li>
+</ul>
+</li>
+<li>Enables easy, Pythonic control flow<ul>
+<li><code>if</code> statements, <code>for</code> loops, recursion</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
