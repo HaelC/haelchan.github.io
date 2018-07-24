@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="learning note,natural language processing,Python," />
+  <meta name="keywords" content="natural language processing,learning note,Python," />
 
 
 
@@ -80,17 +80,19 @@
 
 
 <meta name="description" content="This note is based on Natural Language Processing with Python - Analyzing Text with the Natural Language Toolkit Texts and wordsTexts are represented in Python using lists. We can use indexing, slicin">
-<meta name="keywords" content="learning note,natural language processing,Python">
+<meta name="keywords" content="natural language processing,learning note,Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Natural Language Processing with Python and NLTK">
 <meta property="og:url" content="http://haelchan.me/2018/07/23/nlp-with-python-and-nltk/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="This note is based on Natural Language Processing with Python - Analyzing Text with the Natural Language Toolkit Texts and wordsTexts are represented in Python using lists. We can use indexing, slicin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-23T12:33:58.000Z">
+<meta property="og:image" content="http://haelchan.me/images/linguistic/text-corpus-structure.png">
+<meta property="og:updated_time" content="2018-07-24T07:48:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing with Python and NLTK">
 <meta name="twitter:description" content="This note is based on Natural Language Processing with Python - Analyzing Text with the Natural Language Toolkit Texts and wordsTexts are represented in Python using lists. We can use indexing, slicin">
+<meta name="twitter:image" content="http://haelchan.me/images/linguistic/text-corpus-structure.png">
 
 
 
@@ -342,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-23T20:33:58+08:00">
-                2018-07-23
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-24T15:48:20+08:00">
+                2018-07-24
               </time>
             
           </span>
@@ -413,6 +415,152 @@
 <p>A <strong>frequency distribution</strong> tells us the frequency of each vocabulary item in the text.<br>FreqDist can be treated as <code>dictionary</code> in Python, where the word(or word length, etc) is the key, and the occurrence is the corresponding value.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">fdist1 = FreqDist(text1)                        <span class="comment"># invoke FreqDist(), pass the name of the text as an argument</span></div><div class="line">fdist1.most_common(<span class="number">50</span>)                          <span class="comment"># gives a list of the 50 most frequently occurring types in the text</span></div><div class="line">fdist1[<span class="string">'whale'</span>]                                 <span class="comment"># the frequency of the given word</span></div><div class="line">fdist1.hapaxes()                                <span class="comment"># find the words that occur only once</span></div><div class="line"></div><div class="line">fdist = FreqDist(len(w) <span class="keyword">for</span> w <span class="keyword">in</span> text1)         <span class="comment"># the length of words' frequency distribution</span></div><div class="line">fdist.most_common()                             <span class="comment"># if no argument is passed, just print all word lengths</span></div><div class="line">fdist.max()                                     <span class="comment"># print the most frequent word length</span></div><div class="line">fdist[<span class="number">3</span>]                                        <span class="comment"># print the word length 3's occurrence</span></div><div class="line">fdist.freq(<span class="number">3</span>)                                   <span class="comment"># print the frequency of word length 3</span></div></pre></td></tr></table></figure>
 <p>functions defined for NLTK’s Frequency Distributions can be found <a href="http://www.nltk.org/book/ch01.html#tab-word-tests" target="_blank" rel="external">here</a></p>
+<h2 id="Text-Corpora-and-Lexical-Resources"><a href="#Text-Corpora-and-Lexical-Resources" class="headerlink" title="Text Corpora and Lexical Resources"></a>Text Corpora and Lexical Resources</h2><h3 id="Accessing-Text-Corpora"><a href="#Accessing-Text-Corpora" class="headerlink" title="Accessing Text Corpora"></a>Accessing Text Corpora</h3><p>A text corpus is a large, structured collection of texts. Some text corpora are categorized, e.g., by genre or topic; sometimes the categories of a corpus overlap each other.<br><img src="/images/linguistic/text-corpus-structure.png" alt=""><br>The NLTK has many corpus in the package <code>nltk.corpus</code>. To perform the functions introduced before, we have to employ the following pair of statements:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">emma = nltk.Text(nltk.corpus.guterberg.words(<span class="string">'austen-emma.txt'</span>))        <span class="comment"># type cast, from StreamBackedCorpusView to Text</span></div><div class="line">emma.concordance(<span class="string">'surprise'</span>)</div></pre></td></tr></table></figure>
+<p>A short program to display information about each text, by looping over all the values of <code>fileid</code> corresponding to the <code>gutenberg</code> file identifiers and then computing statistics for each text.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> fileid <span class="keyword">in</span> gutenberg.fileids():</div><div class="line">    num_chars = len(gutenberg.raw(fileid))                              <span class="comment"># raw() tells us how many letters occur in the text</span></div><div class="line">    num_words = len(gutenberg.words(fileid))                            <span class="comment"># words() divides the text into words</span></div><div class="line">    num_sents = len(gutenberg.sents(fileid))                            <span class="comment"># sents() divides the text up into its sentences, where each sentence is a list of words</span></div><div class="line">    num_vocab = len(set(w.lower() <span class="keyword">for</span> w <span class="keyword">in</span> gutenberg.words(fileid)))    <span class="comment"># count unique words</span></div><div class="line">    print(round(num_chars/num_words), round(num_words/num_sents), round(num_words/num_vocab), fileid)   <span class="comment"># use round() to round each number to the nearest integer</span></div><div class="line">    <span class="comment"># average word lenth, average sentence length, the number of times each vocabulary item appears in the text on average</span></div></pre></td></tr></table></figure>
+<p><strong>Brown Corpus</strong><br>The Brown Corpus was the first million-word electronic corpus of English, created in 1961 at Brown University. This corpus contains text from 500 sources, and the sources have been categorized by genre.(see <a href="http://www.nltk.org/book/ch02.html#tab-brown-sources" target="_blank" rel="external">here</a> for detail)<br>We can access the corpus as a list of words, or a list of sentences. We can optionally specify particular categories or files to read.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">brown.categories()</div><div class="line">brown.fileids()</div><div class="line">brown.words(categories=<span class="string">'news'</span>)</div><div class="line">brown.words(fileids=<span class="string">'cg22'</span>)</div><div class="line">brown.sents(categories=[<span class="string">'news'</span>, <span class="string">'editorial'</span>, <span class="string">'reviews'</span>])</div></pre></td></tr></table></figure>
+<p>Use Brown Corpus to study <strong>stylistics</strong>: systematic differences between genres.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">news_text = brown.words(categories=<span class="string">'news'</span>)</div><div class="line">fdist = nltk.FreqDist(w.lower() <span class="keyword">for</span> w <span class="keyword">in</span> news_text)</div><div class="line">modals = [<span class="string">'can'</span>, <span class="string">'could'</span>, <span class="string">'may'</span>, <span class="string">'might'</span>, <span class="string">'must'</span>, <span class="string">'will'</span>]</div><div class="line"><span class="keyword">for</span> m <span class="keyword">in</span> modals:</div><div class="line">    print(m + <span class="string">':'</span>, fdist[m], end=<span class="string">' '</span>)</div><div class="line">print()                                                                         <span class="comment"># I add this line to modify the output</span></div><div class="line"></div><div class="line">cfd = nltk.ConditionalFreqDist(</div><div class="line">            (genre, word.lower())                                               <span class="comment"># to count the Uppercased words as well, or the statistics would be inconsistent</span></div><div class="line">            <span class="keyword">for</span> genre <span class="keyword">in</span> brown.categories()</div><div class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> brown.words(categories=genre))</div><div class="line">genres = [<span class="string">'news'</span>, <span class="string">'religion'</span>, <span class="string">'hobbies'</span>, <span class="string">'science_fiction'</span>, <span class="string">'romance'</span>, <span class="string">'humor'</span>]         <span class="comment"># genres = brown.categories()</span></div><div class="line">cfd.tabulate(conditions=genres, samples=modals)</div></pre></td></tr></table></figure>
+<p>A conditional frequency distribution is a collection of frequency distributions, each one for a different “condition”. The condition will often be the category of the text.<br>A frequency distribution counts observable events, such as the appearance of words in a text. A conditional frequency distribution needs to pair each event with a condition. </p>
+<p>NLTK’s Conditional Frequency Distributions: commonly-used methods and idioms for defining, accessing, and visualizing a conditional frequency distribution of counters.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cfdist = ConditionalFreqDist(pairs)</td>
+<td>create a conditional frequency distribution from a list of pairs</td>
+</tr>
+<tr>
+<td>cfdist.conditions()</td>
+<td>the conditions</td>
+</tr>
+<tr>
+<td>cfdist[condition]</td>
+<td>the frequency distribution for this condition</td>
+</tr>
+<tr>
+<td>cfdist[condition][sample]</td>
+<td>frequency for the given sample for this condition</td>
+</tr>
+<tr>
+<td>cfdist.tabulate()</td>
+<td>tabulate the conditional frequency distribution</td>
+</tr>
+<tr>
+<td>cfdist.tabulate(samples, conditions)</td>
+<td>tabulation limited to the specified samples and conditions</td>
+</tr>
+<tr>
+<td>cfdist.plot()</td>
+<td>graphical plot of the conditional frequency distribution</td>
+</tr>
+<tr>
+<td>cfdist.plot(samples, conditions)</td>
+<td>graphical plot limited to the specified samples and conditions</td>
+</tr>
+<tr>
+<td>cfdist1 &lt; cfdist2</td>
+<td>test if samples in cfdist1 occur less frequently than in cfdist2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Reuters Corpus</strong><br>The Reuters Corpus contains 10788 news documents totaling 1.3 million words. The documents have been classified into 90 topics and grouped into training and test sets.<br>Unlike the Brown Corpus, categories in the Reuters corpus overlap with each other, simply because a news story often covers multiple topics. We can ask for the topics covered by one or more documents, or for the documents included in one or more categories.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">reuters.categories(<span class="string">'training/9865'</span>)</div><div class="line">reuters.fileids(<span class="string">'barley'</span>)</div></pre></td></tr></table></figure>
+<p><a href="http://www.nltk.org/book/ch02.html#tab-corpora" target="_blank" rel="external">Here</a> lists some of the Corpora and Corpus Samples Distributed with NLTK. For more information consult <a href="http://www.nltk.org/howto/" target="_blank" rel="external">NLTK HOWTOs</a>.</p>
+<p>Basic Corpus Functionality defined in NLTK:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fileids()</td>
+<td>the files of the corpus</td>
+</tr>
+<tr>
+<td>fileids([categories])</td>
+<td>the files of the corpus corresponding to these categories</td>
+</tr>
+<tr>
+<td>categories()</td>
+<td>the categories of the corpus</td>
+</tr>
+<tr>
+<td>categories([fileids])</td>
+<td>the categories of the corpus corresponding to these files</td>
+</tr>
+<tr>
+<td>raw()</td>
+<td>the raw content of the corpus</td>
+</tr>
+<tr>
+<td>raw(fileids=[f1,f2,f3])</td>
+<td>the raw content of the specified files</td>
+</tr>
+<tr>
+<td>raw(categories=[c1,c2])</td>
+<td>the raw content of the specified categories</td>
+</tr>
+<tr>
+<td>words()</td>
+<td>the words of the whole corpus</td>
+</tr>
+<tr>
+<td>words(fileids=[f1,f2,f3])</td>
+<td>the words of the specified fileids</td>
+</tr>
+<tr>
+<td>words(categories=[c1,c2])</td>
+<td>the words of the specified categories</td>
+</tr>
+<tr>
+<td>sents()</td>
+<td>the sentences of the whole corpus</td>
+</tr>
+<tr>
+<td>sents(fileids=[f1,f2,f3])</td>
+<td>the sentences of the specified fileids</td>
+</tr>
+<tr>
+<td>sents(categories=[c1,c2])</td>
+<td>the sentences of the specified categories</td>
+</tr>
+<tr>
+<td>abspath(fileid)</td>
+<td>the location of the given file on disk</td>
+</tr>
+<tr>
+<td>encoding(fileid)</td>
+<td>the encoding of the file (if known)</td>
+</tr>
+<tr>
+<td>open(fileid)</td>
+<td>open a stream for reading the given corpus file</td>
+</tr>
+<tr>
+<td>root</td>
+<td>if the path to the root of locally installed corpus</td>
+</tr>
+<tr>
+<td>readme()</td>
+<td>the contents of the README file of the corpus</td>
+</tr>
+</tbody>
+</table>
+</div>
 
       
     </div>
@@ -448,9 +596,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/learning-note/" rel="tag"># learning note</a>
-          
             <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
           
             <a href="/tags/Python/" rel="tag"># Python</a>
           
@@ -662,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Texts-and-words"><span class="nav-number">1.</span> <span class="nav-text">Texts and words</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Searching"><span class="nav-number">1.1.</span> <span class="nav-text">Searching</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Texts-and-words"><span class="nav-number">1.</span> <span class="nav-text">Texts and words</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Searching"><span class="nav-number">1.1.</span> <span class="nav-text">Searching</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Corpora-and-Lexical-Resources"><span class="nav-number">2.</span> <span class="nav-text">Text Corpora and Lexical Resources</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accessing-Text-Corpora"><span class="nav-number">2.1.</span> <span class="nav-text">Accessing Text Corpora</span></a></li></ol></li></ol></div>
             
 
           </div>
