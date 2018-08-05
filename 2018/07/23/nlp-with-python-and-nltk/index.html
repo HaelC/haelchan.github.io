@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://haelchan.me/images/linguistic/text-corpus-structure.png">
 <meta property="og:image" content="http://haelchan.me/images/linguistic/lexicon.png">
 <meta property="og:image" content="http://haelchan.me/images/linguistic/pipeline.png">
-<meta property="og:updated_time" content="2018-08-02T09:37:29.000Z">
+<meta property="og:updated_time" content="2018-08-05T15:57:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing with Python and NLTK">
 <meta name="twitter:description" content="This note is based on Natural Language Processing with Python - Analyzing Text with the Natural Language Toolkit. I’ve uploaded the exercises solution to GitHub. Texts and wordsTexts are represented i">
@@ -346,8 +346,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-02T17:37:29+08:00">
-                2018-08-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-05T23:57:31+08:00">
+                2018-08-05
               </time>
             
           </span>
@@ -587,6 +587,8 @@
 <p><img src="/images/linguistic/pipeline.png" alt=""></p>
 <h3 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h3><p>I’ve uploaded my summary of regular expression in the post <a href="http://haelchan.me/2018/05/23/regular-expression/">Regular Expression</a>.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">wordlist = [w <span class="keyword">for</span> w <span class="keyword">in</span> nltk.corpus.words.words(<span class="string">'en'</span>) <span class="keyword">if</span> w.islower()]</div><div class="line">[w <span class="keyword">for</span> w <span class="keyword">in</span> wordlist <span class="keyword">if</span> re.search(<span class="string">'ed$'</span>, w)]</div></pre></td></tr></table></figure>
+<p>NLTK provides a regular expression tokenizer: <code>nltk.regexp_tokenize()</code>.</p>
+
       
     </div>
     
