@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Introduction to Regular ExpressionA regular expression(RegEx) is an algebraic notation for characterizing a set of strings. They are particularly useful for searching in texts, when we have a pattern">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-04T11:38:23.000Z">
+<meta property="og:updated_time" content="2018-08-08T15:48:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regular Expression">
 <meta name="twitter:description" content="Introduction to Regular ExpressionA regular expression(RegEx) is an algebraic notation for characterizing a set of strings. They are particularly useful for searching in texts, when we have a pattern">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-04T19:38:23+08:00">
-                2018-08-04
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-08T23:48:16+08:00">
+                2018-08-08
               </time>
             
           </span>
@@ -422,6 +422,7 @@
 <p><code>$</code><br>The dollar sign <code>$</code> matches the end of a line. </p>
 <p>There are also two other anchors: <code>\b</code> matches a word boundary, and <code>\B</code> matches a non-boundary. More technically, a “word” for the purposes of a regular expression is defined as any sequence of digits, underscores, or letters.</p>
 <h3 id="Quantifiers"><a href="#Quantifiers" class="headerlink" title="Quantifiers"></a>Quantifiers</h3><p><code>?</code><br>The question mark <code>?</code> means “zero or one instances of the previous character”.<br><code>ab?</code> will match either <code>&#39;a&#39;</code> or <code>&#39;ab&#39;</code>.</p>
+<p><code>(?i)</code> makes regular expression case insensitive.</p>
 <p><code>*</code><br>Commonly called the <strong>Kleene *</strong>. The Kleene star means “zero or more occurrences of the immediately previous character or regular expression”.</p>
 <p><code>+</code><br>The <strong>Kleene +</strong> means “one or more of the previous character”.</p>
 <p>The <code>?</code>, <code>*</code> and <code>+</code> qualifiers are all <em>greedy</em>, they match as much text as possible. There are also ways to enforce <em>non-greedy</em> matching, using another meaning of the <code>?</code> qualifier(here <code>?</code> means <em>lazy</em>: cause it to match as few characters as possible): <code>*?</code>, <code>+?</code>, <code>??</code>.</p>
