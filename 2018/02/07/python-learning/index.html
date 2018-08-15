@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="ForewordWhatLearning Python by myself. Here’s some environment configuration:Version: Python 3.6.3Platform: macOS 10.12.6Interpreter: terminalText editor: Sublime Text 3Notebook: Jupyter Notebook Why">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T03:23:17.000Z">
+<meta property="og:updated_time" content="2018-08-15T12:52:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Learning">
 <meta name="twitter:description" content="ForewordWhatLearning Python by myself. Here’s some environment configuration:Version: Python 3.6.3Platform: macOS 10.12.6Interpreter: terminalText editor: Sublime Text 3Notebook: Jupyter Notebook Why">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-13T11:23:17+08:00">
-                2018-08-13
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-15T20:52:31+08:00">
+                2018-08-15
               </time>
             
           </span>
@@ -495,7 +495,7 @@
 <p><code>pass</code> can be used as a place-holder for a function or conditional body when you are working on new code, allowing you to keep thinking at a more abstract level.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">initlog</span><span class="params">(*args)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">pass</span>   <span class="comment"># Remember to implement this!</span></div><div class="line">...</div></pre></td></tr></table></figure>
 <h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><p><a href="https://docs.python.org/3/glossary.html#term-function" target="_blank" rel="external">Detail</a><br>The keyword <code>def</code> introduces a function <em>definition</em>. It must be followed by the function name and the parenthesized list of formal parameters. The statements that form the body of the function start at the next line, and must be indented.</p>
-<p><strong>docstring</strong><br>The first statement of the function body can optionally be a string literal(in three single quotes <code>&#39;&#39;&#39; &#39;&#39;&#39;</code>); this string literal is the function’s documentation string, or docstring. This line should begin with a capital letter and end with a period.</p>
+<p><strong>docstring</strong><br>The first statement of the function body can optionally be a string literal(in three single quotes <code>&#39;&#39;&#39; &#39;&#39;&#39;</code>); this string literal is the function’s documentation string, or docstring. This line should begin with a capital letter and end with a period.<br>Docstrings can include a doctest block, illustrating the use of the function and the expected output. These can be tested automatically using Python’s <code>docutils</code> module. Docstrings should document the type of each parameter to the function, and the return type. At a minimum, that can be done in plain text.</p>
 <p><strong>call by value</strong><br>The actual parameters (arguments) to a function call are introduced in the local symbol table of the called function when it is called; thus, arguments are passed using <em>call by value</em> (where the value is always an object reference, not the value of the object). When a function calls another function, a new local symbol table is created for that call.<br>Actually, <em>call by object reference</em> would be a better description, since if a mutable object is passed, the caller will see any changes the callee makes to it (items inserted into a list).</p>
 <p><strong>return</strong><br>The <code>return</code> statement returns with a value from a function. <code>return</code> without an expression argument returns <code>None</code>. Falling off the end of a function also returns <code>None</code>.</p>
 <p><strong>default argument values</strong><br>When defining functions, it’s useful to specify a default value for one or more arguments. This creates a function that can be called with fewer arguments than it is defined to allow.<br>Remember that the default value is evaluated only once. </p>
