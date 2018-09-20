@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://haelchan.me/"/>
-  <updated>2018-09-12T14:47:10.000Z</updated>
+  <updated>2018-09-20T14:55:53.000Z</updated>
   <id>http://haelchan.me/</id>
   
   <author>
@@ -17,16 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>handson_ml</title>
+    <title>Hands-on Machine Learning with Scikit-Learn &amp; TensorFlow notes</title>
     <link href="http://haelchan.me/2018/09/12/handson-ml/"/>
     <id>http://haelchan.me/2018/09/12/handson-ml/</id>
     <published>2018-09-12T14:47:10.000Z</published>
-    <updated>2018-09-12T14:47:10.000Z</updated>
+    <updated>2018-09-20T14:55:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>The note is uploaded to <a href="https://github.com/HaelChan/Hands-on_ML" target="_blank" rel="external">GitHub</a> in detail(with full code). In this post, I just record some important points.</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;The note is uploaded to &lt;a href=&quot;https://github.com/HaelChan/Hands-on_ML&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt; in detail(with full c
+      
+    
     </summary>
     
+    
+      <category term="learning note" scheme="http://haelchan.me/tags/learning-note/"/>
+    
+      <category term="machine learning" scheme="http://haelchan.me/tags/machine-learning/"/>
+    
+      <category term="deep learning" scheme="http://haelchan.me/tags/deep-learning/"/>
+    
+      <category term="Python" scheme="http://haelchan.me/tags/Python/"/>
+    
+      <category term="TensorFlow" scheme="http://haelchan.me/tags/TensorFlow/"/>
     
   </entry>
   
@@ -154,9 +171,9 @@
     
       <category term="learning note" scheme="http://haelchan.me/tags/learning-note/"/>
     
-      <category term="TensorFlow" scheme="http://haelchan.me/tags/TensorFlow/"/>
-    
       <category term="deep learning" scheme="http://haelchan.me/tags/deep-learning/"/>
+    
+      <category term="TensorFlow" scheme="http://haelchan.me/tags/TensorFlow/"/>
     
   </entry>
   
@@ -179,9 +196,9 @@
     </summary>
     
     
-      <category term="natural language language" scheme="http://haelchan.me/tags/natural-language-language/"/>
-    
       <category term="reading report" scheme="http://haelchan.me/tags/reading-report/"/>
+    
+      <category term="natural language language" scheme="http://haelchan.me/tags/natural-language-language/"/>
     
   </entry>
   
@@ -404,11 +421,11 @@
       <category term="Machine Learning" scheme="http://haelchan.me/categories/Machine-Learning/"/>
     
     
-      <category term="reading report" scheme="http://haelchan.me/tags/reading-report/"/>
-    
       <category term="machine learning" scheme="http://haelchan.me/tags/machine-learning/"/>
     
       <category term="recommender system" scheme="http://haelchan.me/tags/recommender-system/"/>
+    
+      <category term="reading report" scheme="http://haelchan.me/tags/reading-report/"/>
     
   </entry>
   
