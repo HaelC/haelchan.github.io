@@ -91,7 +91,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://haelchan.me/images/tf/dataFlowGraph.jpg">
 <meta property="og:image" content="http://haelchan.me/images/tf/dataType.jpg">
-<meta property="og:updated_time" content="2018-05-09T06:39:54.000Z">
+<meta property="og:updated_time" content="2018-10-17T02:39:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow Learning">
 <meta name="twitter:description" content="OverviewInstallOfficial Install Guidance As for me, my environment is:  macOS Sierra 10.12.6Python 3.6.3pip3  The official command uses pip install --upgrade virtualenv. However, my MacBook Air doesn’">
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-05-09T14:39:54+08:00">
-                2018-05-09
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-17T10:39:28+08:00">
+                2018-10-17
               </time>
             
           </span>
@@ -459,7 +459,7 @@ return f(*args, **kwds)</code></p>
 <p>Similar to numpy.ones, numpy.ones_like</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create a tensor filled with a scalar value</span></div><div class="line">tf.fill(dims, value, name=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
 <p>Similar to numpy.full<br><code>tf.fill([2, 3], 8)</code> ==&gt; [[8, 8, 8], [8, 8, 8]]</p>
-<p><strong>Constants as sequences</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create a sequence of  num  evenly-spaced values are generated beginning at  start . If  num  &gt; 1, the values in the sequence increase by (stop - start) / (num - 1), so that the last one is exactly  stop .</span><span class="comment"># comparable to but slightly different from numpy.linspace</span></div><div class="line">tf.lin_space(start, stop, num, name=<span class="keyword">None</span>)</div></pre></td></tr></table></figure></p>
+<p><strong>Constants as sequences</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create a sequence of  num  evenly-spaced values are generated beginning at  start . If  num  &gt; 1, the values in the sequence increase by (stop - start) / (num - 1), so that the last one is exactly  stop .</span></div><div class="line"><span class="comment"># comparable to but slightly different from numpy.linspace</span></div><div class="line">tf.lin_space(start, stop, num, name=<span class="keyword">None</span>)</div></pre></td></tr></table></figure></p>
 <p><code>tf.lin_space(10.0, 13.0, 4)</code> ==&gt; [10. 11. 12. 13.]</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create a sequence of numbers that begins at start and extends by increments of delta up to but not including limit</span></div><div class="line"><span class="comment"># slight different from range in Python</span></div><div class="line">tf.range(start, limit=<span class="keyword">None</span>, delta=<span class="number">1</span>, dtype=<span class="keyword">None</span>, name=<span class="string">'range'</span>)</div></pre></td></tr></table></figure>
 <p><code>tf.range(3, 18, 3)</code> ==&gt; [3 6 9 12 15]<br><code>tf.range(5)</code> ==&gt; [0 1 2 3 4]</p>
@@ -479,7 +479,7 @@ return f(*args, **kwds)</code></p>
 <p>TensorFlow integrates seamlessly with NumPy<br>Can pass numpy types to TensorFlow ops</p>
 <p>Use TF DType when possible:<br>Python native types: TensorFlow has to infer Python type<br>NumPy arrays: NumPy is not GPU compatible</p>
 <h3 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h3><p>Constants are stored in the graph definition. This makes loading graphs expensive when constants are big.<br>Therefore, only use constants for primitive types. Use variables or readers for more data that requires more memory.</p>
-<h4 id="Creating-variables"><a href="#Creating-variables" class="headerlink" title="Creating variables"></a>Creating variables</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">tf.get_variable(</div><div class="line">    name,    shape = <span class="keyword">None</span>, </div><div class="line">    dtype = <span class="keyword">None</span>, </div><div class="line">    initializer = <span class="keyword">None</span>, </div><div class="line">    regularizer = <span class="keyword">None</span>, </div><div class="line">    trainable = <span class="keyword">True</span>, </div><div class="line">    collections = <span class="keyword">None</span>, </div><div class="line">    caching_device = <span class="keyword">None</span>, </div><div class="line">    partitioner = <span class="keyword">None</span>, </div><div class="line">    validate_shape = <span class="keyword">True</span>, </div><div class="line">    use_resource = <span class="keyword">None</span>, </div><div class="line">    custom_getter = <span class="keyword">None</span>, </div><div class="line">    constraint = <span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<h4 id="Creating-variables"><a href="#Creating-variables" class="headerlink" title="Creating variables"></a>Creating variables</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">tf.get_variable(</div><div class="line">    name,</div><div class="line">    shape = <span class="keyword">None</span>, </div><div class="line">    dtype = <span class="keyword">None</span>, </div><div class="line">    initializer = <span class="keyword">None</span>, </div><div class="line">    regularizer = <span class="keyword">None</span>, </div><div class="line">    trainable = <span class="keyword">True</span>, </div><div class="line">    collections = <span class="keyword">None</span>, </div><div class="line">    caching_device = <span class="keyword">None</span>, </div><div class="line">    partitioner = <span class="keyword">None</span>, </div><div class="line">    validate_shape = <span class="keyword">True</span>, </div><div class="line">    use_resource = <span class="keyword">None</span>, </div><div class="line">    custom_getter = <span class="keyword">None</span>, </div><div class="line">    constraint = <span class="keyword">None</span></div><div class="line">)</div></pre></td></tr></table></figure>
 <p>With <code>tf.get_variable</code>, we can provide variable’s internal name, shape, type, and initializer to give the variable its initial value.</p>
 <p>The old way to create a variable is simply call <code>tf.Variable(&lt;initial-value&gt;, name=&lt;optional-name&gt;)</code>.(Note that it’s written <code>tf.constant</code> with lowercase ‘c’ but <code>tf.Variable</code> with uppercase ‘V’. It’s because <code>tf.constant</code> is an op, while <code>tf.Variable</code> is a class with multiple ops.) However, this old way is discouraged and TensorFlow recommends that we use the wrapper <code>tf.get_variable</code>, which allows for easy variable sharing. </p>
 <p><strong>Some initializer</strong><br><code>tf.zeros_initializer()</code><br><code>tf.ones_initializer()</code><br><code>tf.random_normal_initializer()</code><br><code>tf.random_uniform_initializer()</code></p>
@@ -491,7 +491,7 @@ return f(*args, **kwds)</code></p>
 <p>Initialize a single variable:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(W.initializer)</div></pre></td></tr></table></figure>
 <h4 id="Assignment"><a href="#Assignment" class="headerlink" title="Assignment"></a>Assignment</h4><p>Eval: get a variable’s value.<br><code>print(W.eval())  # Similar to print(sess.run(W))</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">W = tf.Variable(<span class="number">10</span>) </div><div class="line">W.assign(<span class="number">100</span>)<span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:    sess.run(W.initializer) </div><div class="line">    print(W.eval())   <span class="comment"># &gt;&gt; 10</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">W = tf.Variable(<span class="number">10</span>) </div><div class="line">W.assign(<span class="number">100</span>)</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(W.initializer) </div><div class="line">    print(W.eval())   <span class="comment"># &gt;&gt; 10</span></div></pre></td></tr></table></figure>
 <p>Why W is 10 but not 100? In fact, <code>W.assign(100)</code> creates an assign op. That op needs to be executed in a session to take effect.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">W = tf.Variable(<span class="number">10</span>)</div><div class="line">assign_op = W.assign(<span class="number">100</span>)</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(assign_op)</div><div class="line">    print(W.eval()) <span class="comment"># &gt;&gt; 100</span></div></pre></td></tr></table></figure>
 <p>Note that we don’t have to initialize W in this case, because assign() does it for us. In fact, the initializer op is an assign op that assigns the variable’s initial value to the variable itself.</p>
@@ -581,6 +581,7 @@ return f(*args, **kwds)</code></p>
 </ul>
 </li>
 </ul>
+<p>Since TensorFlow 2.0 is coming (<a href="https://groups.google.com/a/tensorflow.org/forum/#!topic/discuss/bgug1G6a89A" target="_blank" rel="external">a preview version of TensorFlow 2.0 later this year</a>) and <a href="https://www.tensorflow.org/community/roadmap" target="_blank" rel="external">eager execution is a central feature of 2.0</a>. I’ll update more after the release of TensorFlow 2.0. Looking forward to it.</p>
 
       
     </div>
@@ -890,11 +891,12 @@ return f(*args, **kwds)</code></p>
 
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
 <span id="busuanzi_container_site_uv">
-  欢迎~您是本站的第<span id="busuanzi_value_site_uv"></span>位访客
+  Welcome~ Thanks for visiting my blog.
+  Visitors: <span id="busuanzi_value_site_uv"></span>
 </span>
 
         
