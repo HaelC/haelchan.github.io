@@ -37,9 +37,9 @@
       <category term="Natural Language Processing" scheme="http://haelchan.me/categories/Natural-Language-Processing/"/>
     
     
-      <category term="Transformer" scheme="http://haelchan.me/tags/Transformer/"/>
-    
       <category term="reading note" scheme="http://haelchan.me/tags/reading-note/"/>
+    
+      <category term="Transformer" scheme="http://haelchan.me/tags/Transformer/"/>
     
   </entry>
   
@@ -64,9 +64,9 @@
       <category term="Natural Language Processing" scheme="http://haelchan.me/categories/Natural-Language-Processing/"/>
     
     
-      <category term="NLTK" scheme="http://haelchan.me/tags/NLTK/"/>
-    
       <category term="Python" scheme="http://haelchan.me/tags/Python/"/>
+    
+      <category term="NLTK" scheme="http://haelchan.me/tags/NLTK/"/>
     
   </entry>
   
@@ -89,9 +89,9 @@
     </summary>
     
     
-      <category term="linguistics" scheme="http://haelchan.me/tags/linguistics/"/>
-    
       <category term="reading note" scheme="http://haelchan.me/tags/reading-note/"/>
+    
+      <category term="linguistics" scheme="http://haelchan.me/tags/linguistics/"/>
     
   </entry>
   
@@ -167,9 +167,9 @@
       <category term="Deep Learning" scheme="http://haelchan.me/categories/Deep-Learning/"/>
     
     
-      <category term="TensorFlow" scheme="http://haelchan.me/tags/TensorFlow/"/>
-    
       <category term="learning note" scheme="http://haelchan.me/tags/learning-note/"/>
+    
+      <category term="TensorFlow" scheme="http://haelchan.me/tags/TensorFlow/"/>
     
   </entry>
   
@@ -290,9 +290,9 @@
     </summary>
     
     
-      <category term="tips" scheme="http://haelchan.me/tags/tips/"/>
-    
       <category term="learning note" scheme="http://haelchan.me/tags/learning-note/"/>
+    
+      <category term="tips" scheme="http://haelchan.me/tags/tips/"/>
     
       <category term="Python" scheme="http://haelchan.me/tags/Python/"/>
     
