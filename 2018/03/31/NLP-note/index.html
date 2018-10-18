@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="learning note,natural language processing," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -82,7 +82,6 @@
 
 
 <meta name="description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
-<meta name="keywords" content="learning note,natural language processing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="COMS W4705 Natural Language Processing Note">
 <meta property="og:url" content="http://haelchan.me/2018/03/31/NLP-note/index.html">
@@ -98,7 +97,7 @@
 <meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo1.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo2.jpg">
 <meta property="og:image" content="http://haelchan.me/images/NLP/parseInfo3.jpg">
-<meta property="og:updated_time" content="2018-04-27T08:48:04.000Z">
+<meta property="og:updated_time" content="2018-10-18T13:28:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="COMS W4705 Natural Language Processing Note">
 <meta name="twitter:description" content="Week OneIntroductionWhat is natural language processing?computers using natural language as input and/or outputNLP contains two types: understanding(NLU) and generation(NLG). ApplicationsMachine Trans">
@@ -354,8 +353,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-04-27T16:48:04+08:00">
-                2018-04-27
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T21:28:00+08:00">
+                2018-10-18
               </time>
             
           </span>
@@ -470,8 +469,7 @@
 <h3 id="Discounting-Methods"><a href="#Discounting-Methods" class="headerlink" title="Discounting Methods"></a>Discounting Methods</h3><p>For any bigram <script type="math/tex">Count(w_{i-1},w)</script> such that <script type="math/tex">Count(w_{i-1},w)>0</script>, we define the discounted count as</p>
 <script type="math/tex; mode=display">Count^*(w_{i-1},w)=Count(w_{i-1},w)-\beta</script><p>where β is a value between 0 and 1 (a typical value might be β=0.5). Thus we simply subtract a constant value, β, from the count. This reflects the intuition that if we take counts from the training corpus, we will systematically over-estimate the probability of bigrams seen in the corpus(and under-estimate bigrams not seen in the corpus).<br>For any bigram <script type="math/tex">(w_{i-1},w)</script> such that <script type="math/tex">Count(w_{i-1},w)>0</script>, we can then define <script type="math/tex">q(w|w_{i-1})=\frac{Count^*(w_{i-1},w)}{Count(w_{i-1})}</script>. For any context <script type="math/tex">w_{i-1}</script>, this definition leads to some <em>missing probability mass</em>, defined as <script type="math/tex">\alpha(v)=1-\sum_{w:Count(w_{i-1},w)>0}\frac{Count^*(w_{i-1},w)}{Count(w_{i-1})}</script><br>The intuition behind discounted methods is to divide this “missing mass” between the words <em>w</em> such that <script type="math/tex">Count(w_{i-1},w)=0</script>.<br>Define two sets</p>
 <script type="math/tex; mode=display">\mathcal{A}(w_{i-1})=\{w:Count(w_{i-1},w)>0</script><script type="math/tex; mode=display">\mathcal{B}(w_{i-1})=\{w:Count(w_{i-1},w)=0</script><p>Then the back-off model is defined as</p>
-<script type="math/tex; mode=display">q_{BO}(w_i|w_{i-1})=\begin{cases}\frac{Count^*(w_{i-1},w_i)}{Count(w_{i-1})}\text{  if }w_i\in\mathcal{A}(w_{i-1})\\\alpha(w_{i-1})\frac{q_{ML}(w_i)}{\sum_{w\in\mathcal{B}(w_{i-1})}q_{ML}(w)}\text{  if }w_i\in\mathcal{B}(w_{i-1})\end{cases}</script><p>Thus if <script type="math/tex">Count(w_{i-1},w)>0</script> we return the estimate <script type="math/tex">\frac{Count^*(w_{i-1},w_i)}{Count(w_{i-1})}</script>; otherwise we divide the remaining probability mass <script type="math/tex">\alpha(w_{i-1})</script> in proportion to the unigram estimate <script type="math/tex">q_{ML}(w)</script>.</p>
-<p>The method can be generalized to trigram language models in a natural, recursive way:<br><img src="/images/NLP/trigramDiscount.jpg" alt=""></p>
+<script type="math/tex; mode=display">q_{BO}(w_i|w_{i-1})=\begin{cases}\frac{Count^*(w_{i-1},w_i)}{Count(w_{i-1})}\text{  if }w_i\in\mathcal{A}(w_{i-1})\\\alpha(w_{i-1})\frac{q_{ML}(w_i)}{\sum_{w\in\mathcal{B}(w_{i-1})}q_{ML}(w)}\text{  if }w_i\in\mathcal{B}(w_{i-1})\end{cases}</script><p>Thus if <script type="math/tex">Count(w_{i-1},w)>0</script> we return the estimate <script type="math/tex">\frac{Count^*(w_{i-1},w_i)}{Count(w_{i-1})}</script>; otherwise we divide the remaining probability mass <script type="math/tex">\alpha(w_{i-1})</script> in proportion to the unigram estimate <script type="math/tex">q_{ML}(w)</script>.<br>The method can be generalized to trigram language models in a natural, recursive way:<br><img src="/images/NLP/trigramDiscount.jpg" alt=""></p>
 <h1 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h1><h2 id="Tagging-1"><a href="#Tagging-1" class="headerlink" title="Tagging"></a>Tagging</h2><p>Given the input to the tagging model(referred as a <em>sentence</em>) <script type="math/tex">x_1...x_n</script>, use <script type="math/tex">y_1...y_n</script> to denote the output of the tagging model(referred as the <em>state sequence</em> or <em>tag sequence</em>).<br>This type of problem, where the task is to map a sentence <script type="math/tex">x_1...x_n</script> to a tag sequence <script type="math/tex">y_1...y_n</script> is often referred to as a <strong>sequence labeling problem</strong>, or a <strong>tagging problem</strong>.<br>We will assume that we have a set of training examples, <script type="math/tex">(x^{(i)},y^{(i)})</script> for <script type="math/tex">i=1...m</script>, where each <script type="math/tex">x^{(i)}</script> is a sentence <script type="math/tex">x_1^{(i)}...x_{n_i}^{(i)}</script>, and each <script type="math/tex">y^{(i)}</script> is a tag sequence <script type="math/tex">y^{(i)}_1...y^{(i)}_{n_i}</script>(we assume that the <em>i</em>‘th training example is of length <script type="math/tex">n_i</script>). Hence <script type="math/tex">x_j^{(i)}</script> is the <em>j</em>‘th word in the <em>i</em>‘th training example, and <script type="math/tex">y_j^{(i)}</script> is the tag for that word. Our task is to learn a function that maps sentences to tag sequences from these training examples.</p>
 <h3 id="POS-Tagging"><a href="#POS-Tagging" class="headerlink" title="POS Tagging"></a>POS Tagging</h3><p>POS Tagging: Part-of-Speech tagging.<br>The input to the problem is a sentence. The output is a tagged sentence, where each word in the sentence is annotated with its part of speech. Our goal will be to construct a model that recovers POS tags for sentences with high accuracy. POS tagging is one of the most basic problems in NLP, and is useful in many natural language applications.</p>
 <h4 id="Tags"><a href="#Tags" class="headerlink" title="Tags"></a>Tags</h4><ul>
@@ -613,14 +611,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/learning-note/" rel="tag"># learning note</a>
-          
-            <a href="/tags/natural-language-processing/" rel="tag"># natural language processing</a>
-          
-        </div>
-      
 
       
       
@@ -730,7 +720,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -741,7 +731,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -752,7 +742,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
