@@ -64,9 +64,9 @@
       <category term="Natural Language Processing" scheme="http://haelchan.me/categories/Natural-Language-Processing/"/>
     
     
-      <category term="Python" scheme="http://haelchan.me/tags/Python/"/>
-    
       <category term="NLTK" scheme="http://haelchan.me/tags/NLTK/"/>
+    
+      <category term="Python" scheme="http://haelchan.me/tags/Python/"/>
     
   </entry>
   
@@ -140,9 +140,9 @@
       <category term="Natural Language Processing" scheme="http://haelchan.me/categories/Natural-Language-Processing/"/>
     
     
-      <category term="regular expression" scheme="http://haelchan.me/tags/regular-expression/"/>
-    
       <category term="Python" scheme="http://haelchan.me/tags/Python/"/>
+    
+      <category term="regular expression" scheme="http://haelchan.me/tags/regular-expression/"/>
     
   </entry>
   
@@ -394,9 +394,9 @@
       <category term="Machine Learning" scheme="http://haelchan.me/categories/Machine-Learning/"/>
     
     
-      <category term="recommender system" scheme="http://haelchan.me/tags/recommender-system/"/>
-    
       <category term="reading note" scheme="http://haelchan.me/tags/reading-note/"/>
+    
+      <category term="recommender system" scheme="http://haelchan.me/tags/recommender-system/"/>
     
   </entry>
   
