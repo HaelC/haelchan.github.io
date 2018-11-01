@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,regular expression," />
+  <meta name="keywords" content="regular expression,Python," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="Introduction to Regular ExpressionA regular expression(RegEx) is an algebraic notation for characterizing a set of strings. They are particularly useful for searching in texts, when we have a pattern">
-<meta name="keywords" content="Python,regular expression">
+<meta name="keywords" content="regular expression,Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Regular Expression">
 <meta property="og:url" content="http://haelchan.me/2018/05/23/regular-expression/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Introduction to Regular ExpressionA regular expression(RegEx) is an algebraic notation for characterizing a set of strings. They are particularly useful for searching in texts, when we have a pattern">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-18T15:06:02.000Z">
+<meta property="og:updated_time" content="2018-10-29T06:42:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regular Expression">
 <meta name="twitter:description" content="Introduction to Regular ExpressionA regular expression(RegEx) is an algebraic notation for characterizing a set of strings. They are particularly useful for searching in texts, when we have a pattern">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T23:06:02+08:00">
-                2018-10-18
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-29T14:42:31+08:00">
+                2018-10-29
               </time>
             
           </span>
@@ -431,7 +431,35 @@
 <p><code>{}</code><br><code>{n}</code>: Exactly n repeats where n is a non-negative integer<br><code>{n,}</code>: At least n repeats<br><code>{,n}</code>: No more than n repeats<br><code>{m,n}</code>: At least m and no more than n repeats</p>
 <h3 id="Alternation"><a href="#Alternation" class="headerlink" title="Alternation"></a>Alternation</h3><p>The <strong>disjunction</strong> operator, also called the <strong>pipe</strong> symbol <code>|</code> acts like a boolean OR. It matches the expression before or after the <code>|</code>.<br>In some sense, <code>|</code> is never greedy. As the target string is scanned, REs separated by <code>|</code> are tried from left to right. When one pattern completely matches, that branch is accepted. This means that once A matches, B will not be tested further, even if it would produce a longer overall match.</p>
 <h3 id="Groups"><a href="#Groups" class="headerlink" title="Groups"></a>Groups</h3><p><code>()</code><br>Enclosing a pattern in parentheses makes it act like a single character for the purposes of neighboring operators like the pipe <code>|</code> and the Kleene <code>*</code>.</p>
-<p>The parentheses have a second function, to select substrings to be extracted. If we want to use the parentheses to specify the scope of the disjunction, but not to select the material to be output, we have to add <code>?:</code>.</p>
+<h4 id="Precedence"><a href="#Precedence" class="headerlink" title="Precedence"></a>Precedence</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Operators</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parenthesis</td>
+<td>()</td>
+</tr>
+<tr>
+<td>Counters</td>
+<td>* + ? {}</td>
+</tr>
+<tr>
+<td>Sequences and anchors</td>
+<td>the ^my end$</td>
+</tr>
+<tr>
+<td>Disjunction</td>
+<td>\</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The parentheses have an another function, to select substrings to be extracted (in Python). If we want to use the parentheses to specify the scope of the disjunction, but not to select the material to be output, we have to add <code>?:</code>.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">re.findall(<span class="string">r'^.*(ing|ly|ed|ious|ies|ive|es|s|ment)$'</span>, <span class="string">'processing'</span>)     <span class="comment"># ['ing']</span></div><div class="line">re.findall(<span class="string">r'^.*(?:ing|ly|ed|ious|ies|ive|es|s|ment)$'</span>, <span class="string">'processing'</span>)   <span class="comment"># ['processing']</span></div></pre></td></tr></table></figure>
 <h2 id="Regular-Expression-in-Python"><a href="#Regular-Expression-in-Python" class="headerlink" title="Regular Expression in Python"></a>Regular Expression in Python</h2><h3 id="Raw-string"><a href="#Raw-string" class="headerlink" title="Raw string"></a>Raw string</h3><p>To the Python interpreter, a regular expression is just like any other string. If the string contains a backslash followed by particular characters, it will interpret these specially. For example <code>\b</code> would be interpreted as the backspace character. In general, when using regular expressions containing backslash, we should instruct the interpreter not to look inside the string at all, but simply to pass it directly to the <code>re</code> library for processing. We do this by prefixing the string with the letter <code>r</code>, to idicate that it is a <strong>raw string</strong>. </p>
 <h3 id="Multiple-delimiters-using-regular-expression"><a href="#Multiple-delimiters-using-regular-expression" class="headerlink" title="Multiple delimiters using regular expression"></a>Multiple delimiters using regular expression</h3><p>It seems that the original Python’s <code>split()</code> function only support one separator. However, it would be convenient to use regular expression to support multiple separators.<br><code>re.split(r&#39;\W+&#39;, original_string)</code><br>It will return the list of separated strings. But it gives us empty strings at the start and the end.<br>We can use <code>re.findall(r&#39;\w+&#39;, original_string)</code> to get the same tokens, but without the empty strings.</p>
@@ -472,9 +500,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
             <a href="/tags/regular-expression/" rel="tag"># regular expression</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -719,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-to-Regular-Expression"><span class="nav-number">1.</span> <span class="nav-text">Introduction to Regular Expression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Character-set"><span class="nav-number">1.1.</span> <span class="nav-text">Character set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Special-sequences"><span class="nav-number">1.2.</span> <span class="nav-text">Special sequences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wildcard-expression"><span class="nav-number">1.3.</span> <span class="nav-text">Wildcard expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Anchors"><span class="nav-number">1.4.</span> <span class="nav-text">Anchors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quantifiers"><span class="nav-number">1.5.</span> <span class="nav-text">Quantifiers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alternation"><span class="nav-number">1.6.</span> <span class="nav-text">Alternation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Groups"><span class="nav-number">1.7.</span> <span class="nav-text">Groups</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regular-Expression-in-Python"><span class="nav-number">2.</span> <span class="nav-text">Regular Expression in Python</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Raw-string"><span class="nav-number">2.1.</span> <span class="nav-text">Raw string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-delimiters-using-regular-expression"><span class="nav-number">2.2.</span> <span class="nav-text">Multiple delimiters using regular expression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-to-Regular-Expression"><span class="nav-number">1.</span> <span class="nav-text">Introduction to Regular Expression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Character-set"><span class="nav-number">1.1.</span> <span class="nav-text">Character set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Special-sequences"><span class="nav-number">1.2.</span> <span class="nav-text">Special sequences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wildcard-expression"><span class="nav-number">1.3.</span> <span class="nav-text">Wildcard expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Anchors"><span class="nav-number">1.4.</span> <span class="nav-text">Anchors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quantifiers"><span class="nav-number">1.5.</span> <span class="nav-text">Quantifiers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alternation"><span class="nav-number">1.6.</span> <span class="nav-text">Alternation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Groups"><span class="nav-number">1.7.</span> <span class="nav-text">Groups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Precedence"><span class="nav-number">1.7.1.</span> <span class="nav-text">Precedence</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regular-Expression-in-Python"><span class="nav-number">2.</span> <span class="nav-text">Regular Expression in Python</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Raw-string"><span class="nav-number">2.1.</span> <span class="nav-text">Raw string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-delimiters-using-regular-expression"><span class="nav-number">2.2.</span> <span class="nav-text">Multiple delimiters using regular expression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
