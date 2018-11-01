@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="reading note,Transformer," />
+  <meta name="keywords" content="reading note,Transformer,pre-training," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="Google AI Language just published their paper BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. Thang Luong, a research scientist on the Google Brain team, just called">
-<meta name="keywords" content="reading note,Transformer">
+<meta name="description" content="Google AI Language just published their paper BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding on arXiv. Thang Luong, a research scientist on the Google Brain team, jus">
+<meta name="keywords" content="reading note,Transformer,pre-training">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BERT - A new era of NLP">
 <meta property="og:url" content="http://haelchan.me/2018/10/17/bert/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
-<meta property="og:description" content="Google AI Language just published their paper BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. Thang Luong, a research scientist on the Google Brain team, just called">
+<meta property="og:description" content="Google AI Language just published their paper BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding on arXiv. Thang Luong, a research scientist on the Google Brain team, jus">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-18T15:08:14.000Z">
+<meta property="og:updated_time" content="2018-11-01T13:29:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BERT - A new era of NLP">
-<meta name="twitter:description" content="Google AI Language just published their paper BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. Thang Luong, a research scientist on the Google Brain team, just called">
+<meta name="twitter:description" content="Google AI Language just published their paper BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding on arXiv. Thang Luong, a research scientist on the Google Brain team, jus">
 
 
 
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T23:08:14+08:00">
-                2018-10-18
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-01T21:29:20+08:00">
+                2018-11-01
               </time>
             
           </span>
@@ -400,7 +400,9 @@
       
 
       
-        <p>Google AI Language just published their paper <a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="external">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a>. <a href="https://twitter.com/lmthang" target="_blank" rel="external">Thang Luong</a>, a research scientist on the Google Brain team, just called it “a new era of NLP”. It reaches SOTA on 11 tasks, even super-human performance on SWAG.<br>The lead author Jacob Devlin posted some comments on <a href="https://www.reddit.com/r/MachineLearning/comments/9nfqxz/r_bert_pretraining_of_deep_bidirectional/" target="_blank" rel="external">Reddit</a>, which gives an simple explanation of the idea. And in this post I’d like to keep notes when reading this paper.</p>
+        <p>Google AI Language just published their paper <a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="external">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a> on arXiv. <a href="https://twitter.com/lmthang" target="_blank" rel="external">Thang Luong</a>, a research scientist on the Google Brain team, just called it “a new era of NLP”. It reaches SOTA on 11 tasks, even super-human performance on SWAG.<br>The lead author Jacob Devlin posted some comments on <a href="https://www.reddit.com/r/MachineLearning/comments/9nfqxz/r_bert_pretraining_of_deep_bidirectional/" target="_blank" rel="external">Reddit</a>, which gives an simple explanation of the idea.   </p>
+<p>Google-research just released their <a href="https://github.com/google-research/bert" target="_blank" rel="external">TensorFlow code and pre-trained models for BERT</a> on Halloween and received nearly 3k stars within 24 hours.  </p>
+<p>I just glanced through the paper and I will go over it and write a detailed note. (Maybe after the graduation application).</p>
 
       
     </div>
@@ -439,6 +441,8 @@
             <a href="/tags/reading-note/" rel="tag"># reading note</a>
           
             <a href="/tags/Transformer/" rel="tag"># Transformer</a>
+          
+            <a href="/tags/pre-training/" rel="tag"># pre-training</a>
           
         </div>
       
@@ -560,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

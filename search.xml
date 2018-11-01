@@ -3,13 +3,14 @@
   <entry>
     <title><![CDATA[BERT - A new era of NLP]]></title>
     <url>%2F2018%2F10%2F17%2Fbert%2F</url>
-    <content type="text"><![CDATA[Google AI Language just published their paper BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. Thang Luong, a research scientist on the Google Brain team, just called it “a new era of NLP”. It reaches SOTA on 11 tasks, even super-human performance on SWAG.The lead author Jacob Devlin posted some comments on Reddit, which gives an simple explanation of the idea. And in this post I’d like to keep notes when reading this paper.]]></content>
+    <content type="text"><![CDATA[Google AI Language just published their paper BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding on arXiv. Thang Luong, a research scientist on the Google Brain team, just called it “a new era of NLP”. It reaches SOTA on 11 tasks, even super-human performance on SWAG.The lead author Jacob Devlin posted some comments on Reddit, which gives an simple explanation of the idea. Google-research just released their TensorFlow code and pre-trained models for BERT on Halloween and received nearly 3k stars within 24 hours. I just glanced through the paper and I will go over it and write a detailed note. (Maybe after the graduation application).]]></content>
       <categories>
         <category>Natural Language Processing</category>
       </categories>
       <tags>
         <tag>reading note</tag>
         <tag>Transformer</tag>
+        <tag>pre-training</tag>
       </tags>
   </entry>
   <entry>
