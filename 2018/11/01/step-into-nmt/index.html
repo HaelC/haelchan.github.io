@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="neural machine translation,seq-to-seq," />
 
 
 
@@ -81,13 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hael&#39;s Blog">
-<meta property="og:url" content="http://haelchan.me/archives/2017/10/index.html">
+<meta name="description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
+<meta name="keywords" content="neural machine translation,seq-to-seq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Step into Neural Machine Translation">
+<meta property="og:url" content="http://haelchan.me/2018/11/01/step-into-nmt/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
+<meta property="og:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-11-02T15:55:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hael&#39;s Blog">
+<meta name="twitter:title" content="Step into Neural Machine Translation">
+<meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://haelchan.me/archives/2017/10/"/>
+  <link rel="canonical" href="http://haelchan.me/2018/11/01/step-into-nmt/"/>
 
 
 
 
 
-  <title>Archive | Hael's Blog</title>
+  <title>Step into Neural Machine Translation | Hael's Blog</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,185 +285,222 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2018/11/01/step-into-nmt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hael Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hael's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h2 class="post-title" itemprop="name headline">Step into Neural Machine Translation</h2>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-01T21:50:16+08:00">
+                2018-11-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-02T23:55:51+08:00">
+                2018-11-02
+              </time>
+            
+          </span>
+
           
-        
-        Um..! 21 posts in total. Keep on posting.
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/01/step-into-nmt/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/11/01/step-into-nmt/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-        
+          
+          
+             <span id="/2018/11/01/step-into-nmt/" class="leancloud_visitors" data-flag-title="Step into Neural Machine Translation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/31/REM-reading-report/" itemprop="url">
-              
-                <span itemprop="name">REM Reading Report</span>
-              
-            </a>
-        
-      </h3>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-31T00:06:42+08:00"
-              content="2017-10-31" >
-          10-31
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/23/21-year-birthday-reflection/" itemprop="url">
-              
-                <span itemprop="name">21岁 你好</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-23T00:13:18+08:00"
-              content="2017-10-23" >
-          10-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/21/linuxCommands/" itemprop="url">
-              
-                <span itemprop="name">Linux系统下常用指令</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-21T16:53:19+08:00"
-              content="2017-10-21" >
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/20/macOS-shortcuts/" itemprop="url">
-              
-                <span itemprop="name">macOS常用快捷键整理</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-20T15:46:32+08:00"
-              content="2017-10-20" >
-          10-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
+        <p>This post is mainly the reading note of the tutorial <a href="https://arxiv.org/abs/1703.01619" target="_blank" rel="external">Neural Machine Translation and Sequence-to-sequence Models: A Tutorial</a> and the solutions to its questions(maybe code, if possible).  </p>
+<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p><strong>Machine translation</strong> is the technology used to translate between human language.  </p>
+<p><strong>Source language</strong>: the language input to the machine translation system  </p>
+<p><strong>Target language</strong>: the output language  </p>
+<p>Machine learning can be described as the task of converting a sequence of words in the source, and converting into a sequence of words in the target.  </p>
+<p><strong>Sequence-to-sequence models</strong> refers to the broader class of models that include all models that map one sequence to another. E.g., machine translation, tagging, dialog, speech recognition, etc.  </p>
+<h3 id="Statistical-Machine-Learning"><a href="#Statistical-Machine-Learning" class="headerlink" title="Statistical Machine Learning"></a>Statistical Machine Learning</h3><p>We define our task of machine learning as translating a source sentence $F=f<em>1,…,f_J=f_1^{|F|}$ into a target sentence $E=e_1,…,e_I=e_1^{|E|}$. Here, the subscript $_1$ at the end of the equations may be a bit misleading.  It means that the identity of the first word in the sentence is $e_1$, the identity of the second word in the sentence is $e_2$, up until the last word in the sentence being $e</em>{|E|}$.  </p>
+<p>Then, translation system can be defined as a function $\hat{E}=\text{mt}(F)$, which returns a translation hypothesis $\hat{E}$ given a source sentence $F$ as input.  </p>
+<p><strong>Statistical machine translation</strong> systems are systems that perform translation by creating a probabilistic model for the probability of $E$ given $F$, $P(E|F;\theta)$, and finding the target sentence that maximizes the probability</p>
+<script type="math/tex; mode=display">\hat{E}=\underset{E}{\operatorname{argmax}}P(E|F;\theta)</script><p>, where $\theta$ are the parameters of the model specifying the probability distribution.  </p>
+<p>The parameters $\theta$ are learned from data consisting of aligned sentences in the source and target languages, which are called parallel corpora.</p>
+<h2 id="n-gram-Language-Models"><a href="#n-gram-Language-Models" class="headerlink" title="n-gram Language Models"></a><em>n</em>-gram Language Models</h2><p>Instead of calculating the original joint probability $P(E)=P(|E|=T,e_1^T)$, it’s more manageable to calculate by multiplying together conditional probabilities for each of its elements: </p>
+<script type="math/tex; mode=display">P(E)=\prod_{t=1}^{T+1}P(e_t|e_1^{t-1})</script><p>where $e_{T+1}=\langle/s\rangle$. It’s an implicit <em>sentence end</em> symbol, which we will indicate when we have terminated the sentence. By examining the position of the $\langle/s\rangle$ symbol, we can determine whether $|E|=T$.  </p>
+<p>Then how to calculate the next word given the previous words $P(e_t|e_1^{t-1})$? The first way is simple: prepare a set of training data from which we can count word strings, count up the number of times we have seen a particular string of words, and divide it by the number of times we have seen the context.</p>
+<script type="math/tex; mode=display">P_{ML(e_t|e_t^{t-1})}=\frac{c_{prefix}(e_1^t)}{c_{prefix}(e_1^{t-1})}</script><p>Here $c_{prefix}(\cdot)$ is the count of the number of times this particular word string appeared at the beginning of a sentence in the training data.   </p>
+<p>However, this language model will assign a probability of zero to every sentenec that it hasn’t seen before in the training corpus, which is not very useful.  </p>
+<p>To solve the problem, we set a fixed window of previous words upon which we will base our probability calculations instead of calculating probabilities from the beginning of the sentence. If we limit our context to $n-1$ previous words, this would amount to:</p>
+<script type="math/tex; mode=display">P(e_t|e_1^{t-1})\approx P_{ML}(e_t|e_{t-n+1}^{t-1})</script><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
+<li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
+<p>There are $V^T$.</p>
+</li>
+</ul>
+<h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2>
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Hael Chan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://haelchan.me/2018/11/01/step-into-nmt/" title="Step into Neural Machine Translation">http://haelchan.me/2018/11/01/step-into-nmt/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/neural-machine-translation/" rel="tag"># neural machine translation</a>
+          
+            <a href="/tags/seq-to-seq/" rel="tag"># seq-to-seq</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/17/bert/" rel="next" title="BERT - A new era of NLP">
+                <i class="fa fa-chevron-left"></i> BERT - A new era of NLP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -466,6 +508,17 @@
 
 
           
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
 
         </div>
         
@@ -486,8 +539,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -629,6 +691,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">3.</span> <span class="nav-text">Questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">4.</span> <span class="nav-text">Exercises</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -760,6 +838,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -777,6 +859,18 @@
       <script id="dsq-count-scr" src="https://hael.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://haelchan.me/2018/11/01/step-into-nmt/';
+          this.page.identifier = '2018/11/01/step-into-nmt/';
+          this.page.title = 'Step into Neural Machine Translation';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hael.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
@@ -1238,26 +1332,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
