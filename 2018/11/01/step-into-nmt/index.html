@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-02T15:55:51.000Z">
+<meta property="og:updated_time" content="2018-11-03T15:03:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-02T23:55:51+08:00">
-                2018-11-02
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-03T23:03:12+08:00">
+                2018-11-03
               </time>
             
           </span>
@@ -417,9 +417,15 @@
 <script type="math/tex; mode=display">P_{ML(e_t|e_t^{t-1})}=\frac{c_{prefix}(e_1^t)}{c_{prefix}(e_1^{t-1})}</script><p>Here $c_{prefix}(\cdot)$ is the count of the number of times this particular word string appeared at the beginning of a sentence in the training data.   </p>
 <p>However, this language model will assign a probability of zero to every sentenec that it hasn’t seen before in the training corpus, which is not very useful.  </p>
 <p>To solve the problem, we set a fixed window of previous words upon which we will base our probability calculations instead of calculating probabilities from the beginning of the sentence. If we limit our context to $n-1$ previous words, this would amount to:</p>
-<script type="math/tex; mode=display">P(e_t|e_1^{t-1})\approx P_{ML}(e_t|e_{t-n+1}^{t-1})</script><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
+<script type="math/tex; mode=display">P(e_t|e_1^{t-1})\approx P_{ML}(e_t|e_{t-n+1}^{t-1})</script><p>Models that make this assumption are called <em>n-**</em>gram models**. Specifically, when models where $n=1$ are called unigram models, $n=2$ bigram models, $n=3$ trigram models, etc.  </p>
+<p>In the simplest form, the parameters $\theta$ of <em>n</em>-gram models consist of probabilities of the next word given $n-1$ previous words can be calculated using maximum likelihood estimation as follows:</p>
+<script type="math/tex; mode=display">\theta_{e_{t-n+1}^t}=P_{ML}(e_t|e_{t-n+1}^{t-1})=\frac{c(e_{t-n+1}^t)}{e_{t-n+1}^{t-1}}​</script><p>However, what if we encounter a two-word string that has never appeared in the training corpus? <em>n</em>-gram models fix this problem by <strong>smoothing</strong> probabilities, combining the maximum likelihood estimates for various values of <em>n</em>.  In the simple case of smoothing unigram and bigram probabilities, we can think of a model that combines together the probabilities as follows:</p>
+<script type="math/tex; mode=display">P(e_t|e_{t-1})=(1-\alpha)P_{ML}(e_t|e_{t-1})+\alpha P_{ML}(e_t)</script><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are $V^T$.</p>
+</li>
+<li><p><em>How many parameters does an n-gram model with a particular n have?</em> (on page 6)</p>
+<p>There are $V^n$ parameters.</p>
 </li>
 </ul>
 <h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2>
@@ -1332,6 +1338,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
