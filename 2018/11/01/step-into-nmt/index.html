@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="neural machine translation,seq-to-seq," />
+  <meta name="keywords" content="neural machine translation,seq2seq," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
-<meta name="keywords" content="neural machine translation,seq-to-seq">
+<meta name="keywords" content="neural machine translation,seq2seq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Step into Neural Machine Translation">
 <meta property="og:url" content="http://haelchan.me/2018/11/01/step-into-nmt/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-03T15:03:12.000Z">
+<meta property="og:updated_time" content="2018-11-04T15:37:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-03T23:03:12+08:00">
-                2018-11-03
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-04T23:37:29+08:00">
+                2018-11-04
               </time>
             
           </span>
@@ -419,8 +419,10 @@
 <p>To solve the problem, we set a fixed window of previous words upon which we will base our probability calculations instead of calculating probabilities from the beginning of the sentence. If we limit our context to $n-1$ previous words, this would amount to:</p>
 <script type="math/tex; mode=display">P(e_t|e_1^{t-1})\approx P_{ML}(e_t|e_{t-n+1}^{t-1})</script><p>Models that make this assumption are called <em>n-**</em>gram models**. Specifically, when models where $n=1$ are called unigram models, $n=2$ bigram models, $n=3$ trigram models, etc.  </p>
 <p>In the simplest form, the parameters $\theta$ of <em>n</em>-gram models consist of probabilities of the next word given $n-1$ previous words can be calculated using maximum likelihood estimation as follows:</p>
-<script type="math/tex; mode=display">\theta_{e_{t-n+1}^t}=P_{ML}(e_t|e_{t-n+1}^{t-1})=\frac{c(e_{t-n+1}^t)}{e_{t-n+1}^{t-1}}​</script><p>However, what if we encounter a two-word string that has never appeared in the training corpus? <em>n</em>-gram models fix this problem by <strong>smoothing</strong> probabilities, combining the maximum likelihood estimates for various values of <em>n</em>.  In the simple case of smoothing unigram and bigram probabilities, we can think of a model that combines together the probabilities as follows:</p>
-<script type="math/tex; mode=display">P(e_t|e_{t-1})=(1-\alpha)P_{ML}(e_t|e_{t-1})+\alpha P_{ML}(e_t)</script><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
+<script type="math/tex; mode=display">\theta_{e_{t-n+1}^t}=P_{ML}(e_t|e_{t-n+1}^{t-1})=\frac{c(e_{t-n+1}^t)}{e_{t-n+1}^{t-1}}</script><h3 id="Smoothing"><a href="#Smoothing" class="headerlink" title="Smoothing"></a>Smoothing</h3><p>However, what if we encounter a two-word string that has never appeared in the training corpus? <em>n</em>-gram models fix this problem by <strong>smoothing</strong> probabilities, combining the maximum likelihood estimates for various values of <em>n</em>.  In the simple case of smoothing unigram and bigram probabilities, we can think of a model that combines together the probabilities as follows:</p>
+<script type="math/tex; mode=display">P(e_t|e_{t-1})=(1-\alpha)P_{ML}(e_t|e_{t-1})+\alpha P_{ML}(e_t)</script><p>where $\alpha$ is a variable specifying how much probability mass we hold out for the unigram distribution. As long as $\alpha&gt;0$, all the words in our vocabulary will be assigned some probability. This method is called <strong>interpolation</strong>, and is one of the standard ways to make probabilistic models more robust to low-frequency phenomena.  </p>
+<p>Some more sophisticated methods for smoothing: Context-dependent smoothing coefficients, Back-off, Modified distributions, Modified Kneser-Ney smoothing.</p>
+<h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are $V^T$.</p>
 </li>
@@ -465,7 +467,7 @@
           
             <a href="/tags/neural-machine-translation/" rel="tag"># neural machine translation</a>
           
-            <a href="/tags/seq-to-seq/" rel="tag"># seq-to-seq</a>
+            <a href="/tags/seq2seq/" rel="tag"># seq2seq</a>
           
         </div>
       
@@ -706,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">3.</span> <span class="nav-text">Questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">4.</span> <span class="nav-text">Exercises</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">3.</span> <span class="nav-text">Questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">4.</span> <span class="nav-text">Exercises</span></a></li></ol></div>
             
 
           </div>
