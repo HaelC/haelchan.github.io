@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
 
@@ -89,7 +91,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-04T15:37:29.000Z">
+<meta property="og:updated_time" content="2018-11-06T13:02:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
@@ -344,8 +346,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-04T23:37:29+08:00">
-                2018-11-04
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-06T21:02:43+08:00">
+                2018-11-06
               </time>
             
           </span>
@@ -422,13 +424,31 @@
 <script type="math/tex; mode=display">\theta_{e_{t-n+1}^t}=P_{ML}(e_t|e_{t-n+1}^{t-1})=\frac{c(e_{t-n+1}^t)}{e_{t-n+1}^{t-1}}</script><h3 id="Smoothing"><a href="#Smoothing" class="headerlink" title="Smoothing"></a>Smoothing</h3><p>However, what if we encounter a two-word string that has never appeared in the training corpus? <em>n</em>-gram models fix this problem by <strong>smoothing</strong> probabilities, combining the maximum likelihood estimates for various values of <em>n</em>.  In the simple case of smoothing unigram and bigram probabilities, we can think of a model that combines together the probabilities as follows:</p>
 <script type="math/tex; mode=display">P(e_t|e_{t-1})=(1-\alpha)P_{ML}(e_t|e_{t-1})+\alpha P_{ML}(e_t)</script><p>where $\alpha$ is a variable specifying how much probability mass we hold out for the unigram distribution. As long as $\alpha&gt;0$, all the words in our vocabulary will be assigned some probability. This method is called <strong>interpolation</strong>, and is one of the standard ways to make probabilistic models more robust to low-frequency phenomena.  </p>
 <p>Some more sophisticated methods for smoothing: Context-dependent smoothing coefficients, Back-off, Modified distributions, Modified Kneser-Ney smoothing.</p>
+<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p><strong>Likelihood</strong>  </p>
+<script type="math/tex; mode=display">P(\mathcal{E}_{test};\theta)=\prod_{E\in\mathcal{E}_{test}}P(E;\theta)</script><p>The most straight-forward way of defining accuracy is the likelihood of the model with respect to the development or test data. The likelihood of the parameters $\theta$ iwith respect to this data is equal to the probability that the model assigns to the data. </p>
+<p><strong>Log likelihood</strong>  </p>
+<script type="math/tex; mode=display">\log P(\mathcal{E_{test};\theta})=\sum_{E\in\mathcal{E}_{test}}\log P(E;\theta)</script><p>The log likelihood is used for a couple reasons. The first is because the probability of any particular sentence according to the language model can be a very small number, and the product of these small numbers can become a very small number that will cause numerical precision problems on standard computing hardware. The second is because sometimes</p>
+<ol>
+<li>product of small probability leads to very small number</li>
+<li>mathematically more convenient</li>
+</ol>
+<p><strong>Perplexity</strong>  </p>
+<script type="math/tex; mode=display">\text{ppl}(\mathcal{E}_{test};\theta)=e^{-(\log P(\mathcal{E}_{test};\theta))/\text{length}(\mathcal{E_{test}})}</script><p>An intuitive explanation of the perplexity is “how confused is the model about its decision?” More accurately, it expresses the value “if we randomly picked words from the probability distribution calculated by the language model at each time step, on average how many words would it have to pick to get the correct one?”  </p>
+<h3 id="Handling-Unknown-Words"><a href="#Handling-Unknown-Words" class="headerlink" title="Handling Unknown Words"></a>Handling Unknown Words</h3><ul>
+<li>Assume closed vocabulary</li>
+<li>Interpolate with an unknown words distribution</li>
+<li>Add an $\langle \text{unk}\rangle$ word</li>
+</ul>
+<p>Further reading includes large-scale language modeling, language model adaptation, longer-distance language count-based models, syntex-based language models.   </p>
+<p><a href="http://www.cs.columbia.edu/~mcollins/lm-spring2013.pdf" target="_blank" rel="external">Course note</a> by Michael Collins from Columbia Univeristy is another good material.</p>
 <h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are $V^T$.</p>
 </li>
 <li><p><em>How many parameters does an n-gram model with a particular n have?</em> (on page 6)</p>
-<p>There are $V^n$ parameters.</p>
-</li>
+<script type="math/tex; mode=display">V^n</script></li>
+<li><p><em>What is this probability?</em> (on page 7)</p>
+<script type="math/tex; mode=display">P=P(e_2=\text{am}|e_1=\text{i})\cdot P(e_3=\text{from}|e_2=\text{am})\cdot P(e_4=\text{utah}|e_3=\text{from}\cdot P(e_5=.|e_4=\text{utah}))\\=\frac{1}{2}\cdot1\cdot\frac{1}{2}\cdot1\\=\frac{1}{4}</script></li>
 </ul>
 <h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2>
       
@@ -708,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">3.</span> <span class="nav-text">Questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">4.</span> <span class="nav-text">Exercises</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.2.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Unknown-Words"><span class="nav-number">2.3.</span> <span class="nav-text">Handling Unknown Words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">3.</span> <span class="nav-text">Questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">4.</span> <span class="nav-text">Exercises</span></a></li></ol></div>
             
 
           </div>
