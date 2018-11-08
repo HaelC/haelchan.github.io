@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
 
@@ -91,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-07T14:53:52.000Z">
+<meta property="og:updated_time" content="2018-11-08T14:05:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
@@ -346,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-07T22:53:52+08:00">
-                2018-11-07
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-08T22:05:20+08:00">
+                2018-11-08
               </time>
             
           </span>
@@ -439,6 +437,7 @@
 <li>Interpolate with an unknown words distribution</li>
 <li>Add an <script type="math/tex">\langle \text{unk}\rangle</script> word</li>
 </ul>
+<hr>
 <p>Further reading includes large-scale language modeling, language model adaptation, longer-distance language count-based models, syntex-based language models.   </p>
 <p><a href="http://www.cs.columbia.edu/~mcollins/lm-spring2013.pdf" target="_blank" rel="external">Course note</a> by Michael Collins from Columbia Univeristy is another good material.</p>
 <h2 id="Log-linear-Langauge-Models"><a href="#Log-linear-Langauge-Models" class="headerlink" title="Log-linear Langauge Models"></a>Log-linear Langauge Models</h2><h3 id="Model-Formulation"><a href="#Model-Formulation" class="headerlink" title="Model Formulation"></a>Model Formulation</h3><p>Log-linear language models revolve around the concept of <strong>features</strong>. We define a feature function $\phi(e_{t-n+1}^{t-1})$ that takes a context as input, and outputs a real-valued <strong>feature vector</strong> <script type="math/tex">\mathbf{x}\in\mathbb{R}^N</script> that describe the context using <em>N</em> different features.  </p>
@@ -448,7 +447,17 @@
 <script type="math/tex; mode=display">\mathbf{s}=\sum_{\{j:x_j\ne0\}}\mathit{W}_{\cdot,j}x_j+\mathbf{b},</script><p>where <script type="math/tex">\mathit{W}_{\cdot,j}</script> is the <script type="math/tex">j\text{th}</script> column of <script type="math/tex">\mathit{W}</script>.   </p>
 <p><strong>Calculating probabilities</strong>: </p>
 <script type="math/tex; mode=display">p_j=\frac{\exp{(s_j)}}{\sum_\tilde{j}\exp(s_\tilde{j})}</script><p>By taking the exponent and dividing by the sum of the values over the entire vocabulary, these scores can be turned into probabilities that are between 0 and 1 and sum to 1. This function is called the <strong>softmax</strong> function, and often expressed in vector form as follows:</p>
-<script type="math/tex; mode=display">\mathbf{p}=\text{softmax}(\mathbf{s})</script><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
+<script type="math/tex; mode=display">\mathbf{p}=\text{softmax}(\mathbf{s})</script><h3 id="Learning-Model-Parameters"><a href="#Learning-Model-Parameters" class="headerlink" title="Learning Model Parameters"></a>Learning Model Parameters</h3><p>Sentence level loss function</p>
+<script type="math/tex; mode=display">\ell(\mathcal{E_{train},\theta})=\log P(\mathcal{E}_{train}|\theta)=-\sum_{E\in\mathcal{E}_{train}}\log P(E|\theta)</script><p>Per-word level</p>
+<script type="math/tex; mode=display">\ell(e_{t-n+1}^t,\theta)=\log P(e_t|e_{t-n+1}^{t-1})</script><p><strong>Methods for SGD</strong></p>
+<p>Adjusting the learning rate, early stopping, shuffling training order, SGD with momentum, AdaGrad, Adam. (Common methods in machine learning)</p>
+<p><strong>Derivative</strong></p>
+<script type="math/tex; mode=display">\frac{d\ell(e_{t-n+1}^t,\theta)}{d\theta}</script><script type="math/tex; mode=display">\theta\larr\theta-\eta\frac{d\ell(e_{t-n+1}^t,\theta)}{d\theta}</script><p>Stepping through the full loss function in one pass:</p>
+<script type="math/tex; mode=display">\mathbf{x}=\phi(e_{t-n+1}^{t-1})</script><script type="math/tex; mode=display">\mathbf{s}=\sum_{\{j:x_j\ne0\}}\mathit{W}_{\cdot,j}x_j+\mathbf{b}</script><script type="math/tex; mode=display">\mathbf{p}=\text{softmax}(\mathbf{s})</script><script type="math/tex; mode=display">\ell=-\log\mathbf{p}_{e_t}</script><p>Using the chain rule:</p>
+<script type="math/tex; mode=display">\frac{d\ell(e_{t-n+1}^t,W,\mathbf{b})}{d\mathbf{b}}=\frac{d\ell}{d\mathbf{p}}\frac{d\mathbf{p}}{d\mathbf{s}}\frac{d\mathbf{s}}{d\mathbf{b}}=\mathbf{p}-\text{onehot}(e_t)</script><script type="math/tex; mode=display">\frac{d\ell(e_{t-n+1}^t,W,\mathbf{b})}{dW_{\cdot,j}}=\frac{d\ell}{d\mathbf{p}}\frac{d\mathbf{p}}{d\mathbf{s}}\frac{d\mathbf{s}}{dW_{\cdot,j}}=x_j(\mathbf{p}-\text{onehot}(e_t))</script><hr>
+<p>One reason why log-linear models are nice is because they allow us to flexibly design features that we think might be useful for predicting the next word. Features include <em>Context word features, Context class, Context suffix features, Bag-of-words features,</em> etc.  </p>
+<p>There are Further reading includes <em>Whole-sentence language models, Discriminative language models</em>.</p>
+<h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are <script type="math/tex">V^T</script>.</p>
 </li>
@@ -457,7 +466,7 @@
 <li><p><em>What is this probability?</em> (on page 7)</p>
 <script type="math/tex; mode=display">P=P(e_2=\text{am}|e_1=\text{i})\cdot P(e_3=\text{from}|e_2=\text{am})\cdot P(e_4=\text{utah}|e_3=\text{from}\cdot P(e_5=.|e_4=\text{utah}))\\=\frac{1}{2}\cdot1\cdot\frac{1}{2}\cdot1\\=\frac{1}{4}</script></li>
 </ul>
-<h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2>
+
       
     </div>
     
@@ -735,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.2.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Unknown-Words"><span class="nav-number">2.3.</span> <span class="nav-text">Handling Unknown Words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-linear-Langauge-Models"><span class="nav-number">3.</span> <span class="nav-text">Log-linear Langauge Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Formulation"><span class="nav-number">3.1.</span> <span class="nav-text">Model Formulation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">4.</span> <span class="nav-text">Questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">5.</span> <span class="nav-text">Exercises</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.2.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Unknown-Words"><span class="nav-number">2.3.</span> <span class="nav-text">Handling Unknown Words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-linear-Langauge-Models"><span class="nav-number">3.</span> <span class="nav-text">Log-linear Langauge Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Formulation"><span class="nav-number">3.1.</span> <span class="nav-text">Model Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Model-Parameters"><span class="nav-number">3.2.</span> <span class="nav-text">Learning Model Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">4.</span> <span class="nav-text">Questions</span></a></li></ol></div>
             
 
           </div>
