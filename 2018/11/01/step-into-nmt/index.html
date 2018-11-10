@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
 
@@ -91,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-08T14:05:20.000Z">
+<meta property="og:updated_time" content="2018-11-10T15:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
@@ -346,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-08T22:05:20+08:00">
-                2018-11-08
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-10T23:53:44+08:00">
+                2018-11-10
               </time>
             
           </span>
@@ -459,7 +457,11 @@
 <script type="math/tex; mode=display">\frac{d\ell(e_{t-n+1}^t,W,\mathbf{b})}{d\mathbf{b}}=\frac{d\ell}{d\mathbf{p}}\frac{d\mathbf{p}}{d\mathbf{s}}\frac{d\mathbf{s}}{d\mathbf{b}}=\mathbf{p}-\text{onehot}(e_t)</script><script type="math/tex; mode=display">\frac{d\ell(e_{t-n+1}^t,W,\mathbf{b})}{dW_{\cdot,j}}=\frac{d\ell}{d\mathbf{p}}\frac{d\mathbf{p}}{d\mathbf{s}}\frac{d\mathbf{s}}{dW_{\cdot,j}}=x_j(\mathbf{p}-\text{onehot}(e_t))</script><hr>
 <p>One reason why log-linear models are nice is because they allow us to flexibly design features that we think might be useful for predicting the next word. Features include <em>Context word features, Context class, Context suffix features, Bag-of-words features,</em> etc.  </p>
 <p>There are Further reading includes <em>Whole-sentence language models, Discriminative language models</em>.</p>
-<h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
+<h2 id="Neural-Networks-and-Feed-forward-Language-Models"><a href="#Neural-Networks-and-Feed-forward-Language-Models" class="headerlink" title="Neural Networks and Feed-forward Language Models"></a>Neural Networks and Feed-forward Language Models</h2><p>Multi-layer perceptrons(MLPs) consist one or more hidden layers that consist of an affine transform (a fancy name for a multiplication followed by an addition) followed by a non-linear function (step function, tanh, relu, etc), culminating in an output layer that calculates some variety of output.  </p>
+<p>Neural networks can be thought of as a chain of functions that takes some input and calculates some desired output. The power of neural networks lies in the fact that chaining together a variety of simpler functions makes it possible to represent more complicated functions in an easily trainable, parameter-efficient way. </p>
+<h3 id="Training-Neural-Networks"><a href="#Training-Neural-Networks" class="headerlink" title="Training Neural Networks"></a>Training Neural Networks</h3><p>Calculating loss function:</p>
+<script type="math/tex; mode=display">\mathbf{h}'=W_{xh}\mathbf{x}+\mathbf{b}_h</script><script type="math/tex; mode=display">\mathbf{h}=\tanh(\mathbf{h}')</script><script type="math/tex; mode=display">y=\mathbf{w}_{hy}\mathbf{h}+b_y</script><script type="math/tex; mode=display">\ell=(y^*-y)^2</script><p>The derivatives:</p>
+<script type="math/tex; mode=display">\frac{d\ell}{db_y}=\frac{d\ell}{dy}\frac{d_y}{db_y}</script><script type="math/tex; mode=display">\frac{d\ell}{d\mathbf{w}_{hy}}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{w}_{hy}}</script><script type="math/tex; mode=display">\frac{d\ell}{d\mathbf{b}_h}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{h}}\frac{d\mathbf{h}}{d\mathbf{h}'}\frac{d\mathbf{h}'}{d\mathbf{b}_h}</script><script type="math/tex; mode=display">\frac{d\ell}{dW_{xh}}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{h}}\frac{d\mathbf{h}}{d\mathbf{h}'}\frac{d\mathbf{h}'}{dW_{xh}}</script><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are <script type="math/tex">V^T</script>.</p>
 </li>
@@ -746,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.2.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Unknown-Words"><span class="nav-number">2.3.</span> <span class="nav-text">Handling Unknown Words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-linear-Langauge-Models"><span class="nav-number">3.</span> <span class="nav-text">Log-linear Langauge Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Formulation"><span class="nav-number">3.1.</span> <span class="nav-text">Model Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Model-Parameters"><span class="nav-number">3.2.</span> <span class="nav-text">Learning Model Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">4.</span> <span class="nav-text">Questions</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.2.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Unknown-Words"><span class="nav-number">2.3.</span> <span class="nav-text">Handling Unknown Words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-linear-Langauge-Models"><span class="nav-number">3.</span> <span class="nav-text">Log-linear Langauge Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Formulation"><span class="nav-number">3.1.</span> <span class="nav-text">Model Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Model-Parameters"><span class="nav-number">3.2.</span> <span class="nav-text">Learning Model Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Feed-forward-Language-Models"><span class="nav-number">4.</span> <span class="nav-text">Neural Networks and Feed-forward Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-Neural-Networks"><span class="nav-number">4.1.</span> <span class="nav-text">Training Neural Networks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">5.</span> <span class="nav-text">Questions</span></a></li></ol></div>
             
 
           </div>
