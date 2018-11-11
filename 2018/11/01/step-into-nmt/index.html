@@ -89,10 +89,12 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-10T15:53:44.000Z">
+<meta property="og:image" content="http://haelchan.me/images/nmt/ComputationGraph.jpg">
+<meta property="og:updated_time" content="2018-11-11T15:34:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
+<meta name="twitter:image" content="http://haelchan.me/images/nmt/ComputationGraph.jpg">
 
 
 
@@ -344,8 +346,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-10T23:53:44+08:00">
-                2018-11-10
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-11T23:34:11+08:00">
+                2018-11-11
               </time>
             
           </span>
@@ -461,7 +463,14 @@
 <p>Neural networks can be thought of as a chain of functions that takes some input and calculates some desired output. The power of neural networks lies in the fact that chaining together a variety of simpler functions makes it possible to represent more complicated functions in an easily trainable, parameter-efficient way. </p>
 <h3 id="Training-Neural-Networks"><a href="#Training-Neural-Networks" class="headerlink" title="Training Neural Networks"></a>Training Neural Networks</h3><p>Calculating loss function:</p>
 <script type="math/tex; mode=display">\mathbf{h}'=W_{xh}\mathbf{x}+\mathbf{b}_h</script><script type="math/tex; mode=display">\mathbf{h}=\tanh(\mathbf{h}')</script><script type="math/tex; mode=display">y=\mathbf{w}_{hy}\mathbf{h}+b_y</script><script type="math/tex; mode=display">\ell=(y^*-y)^2</script><p>The derivatives:</p>
-<script type="math/tex; mode=display">\frac{d\ell}{db_y}=\frac{d\ell}{dy}\frac{d_y}{db_y}</script><script type="math/tex; mode=display">\frac{d\ell}{d\mathbf{w}_{hy}}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{w}_{hy}}</script><script type="math/tex; mode=display">\frac{d\ell}{d\mathbf{b}_h}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{h}}\frac{d\mathbf{h}}{d\mathbf{h}'}\frac{d\mathbf{h}'}{d\mathbf{b}_h}</script><script type="math/tex; mode=display">\frac{d\ell}{dW_{xh}}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{h}}\frac{d\mathbf{h}}{d\mathbf{h}'}\frac{d\mathbf{h}'}{dW_{xh}}</script><h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
+<script type="math/tex; mode=display">\frac{d\ell}{db_y}=\frac{d\ell}{dy}\frac{d_y}{db_y}</script><script type="math/tex; mode=display">\frac{d\ell}{d\mathbf{w}_{hy}}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{w}_{hy}}</script><script type="math/tex; mode=display">\frac{d\ell}{d\mathbf{b}_h}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{h}}\frac{d\mathbf{h}}{d\mathbf{h}'}\frac{d\mathbf{h}'}{d\mathbf{b}_h}</script><script type="math/tex; mode=display">\frac{d\ell}{dW_{xh}}=\frac{d\ell}{dy}\frac{dy}{d\mathbf{h}}\frac{d\mathbf{h}}{d\mathbf{h}'}\frac{d\mathbf{h}'}{dW_{xh}}</script><p>We could go through all of the derivations above by hand and precisely calculate the gradients of all parameters in the model. But even for a simple model like the one above, it is quite a lot of work and error prone. Fortunately, when we actually implement neural networks on a computer, there is a very useful tool that saves us a large portion of this pain: <strong>automatic differentiation</strong> (autodiff). To understand automatic differentiation, it is useful to think of our computation in a data structure called a <strong>computation graph</strong>. As shown in the following figure (figure 10 from the original paper), each node represents either an input to the network or the result of one computational operation, such as a multiplication, addition, tanh, or squared error. The first graph in the figure calculates the function of interest itself and would be used when we want to make predictions using our model, and the second graph calculates the loss function and would be used in training.</p>
+<p><img src="/images/nmt/ComputationGraph.jpg" alt=""></p>
+<p>Automatic differentiation is a two-step dynamic programming algorithm that operates over the second graph and performs:</p>
+<ul>
+<li><strong>Forward calculation</strong>, which traverses the nodes in the graph in topological order, calculating the actual result of the computation</li>
+<li><strong>Back propagation</strong>, which traverses the nodes in reverse topological order, calculating the gradients</li>
+</ul>
+<h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are <script type="math/tex">V^T</script>.</p>
 </li>
