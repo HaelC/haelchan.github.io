@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
 
@@ -90,7 +92,8 @@
 <meta property="og:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://haelchan.me/images/nmt/ComputationGraph.jpg">
-<meta property="og:updated_time" content="2018-11-11T15:34:11.000Z">
+<meta property="og:image" content="http://haelchan.me/images/nmt/NNLM.jpg">
+<meta property="og:updated_time" content="2018-11-12T15:17:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
@@ -346,8 +349,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-11T23:34:11+08:00">
-                2018-11-11
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-12T23:17:40+08:00">
+                2018-11-12
               </time>
             
           </span>
@@ -470,6 +473,11 @@
 <li><strong>Forward calculation</strong>, which traverses the nodes in the graph in topological order, calculating the actual result of the computation</li>
 <li><strong>Back propagation</strong>, which traverses the nodes in reverse topological order, calculating the gradients</li>
 </ul>
+<h3 id="Neural-network-Language-Models"><a href="#Neural-network-Language-Models" class="headerlink" title="Neural-network Language Models"></a>Neural-network Language Models</h3><p><img src="/images/nmt/NNLM.jpg" alt=""></p>
+<p>A tri-gram neural network model with a single layer is structured as shown in the figure above.</p>
+<script type="math/tex; mode=display">\mathbf{m}=\text{concat}(M_{\cdot,e_{t-2}},M_{\cdot,e_{t-1}})</script><script type="math/tex; mode=display">\mathbf{h}=\tanh(W_{mh}\mathbf{m}+\mathbf{b}_h)</script><script type="math/tex; mode=display">\mathbf{s}=W_{hs}\mathbf{h}+\mathbf{b}_s</script><script type="math/tex; mode=display">\mathbf{p}=\text{softmax}(\mathbf{s})</script><p>In the first line, we obtain a vector $\mathbf{m}$ representing the context $e_{i-n+1}^{i-1}$. Here, <em>M</em> is a matrix with $|V|$ columns and $L_m$ rows, where each column corresponds to an $L_m$-length vector representing a single word in the vocabulary. This vector is called a <strong>word embedding</strong> or a <strong>word representation</strong>, which is a vector of real numbers corresponding to particular words in the vocabulary.  </p>
+<p>The vecror $\mathbf{m}$ then results from the concatenation of the word vectors for all of the words in the context, so $|\mathbf{m}|=L_m*(n-1)$. Once we have this $\mathbf{m}$, we run the vectors through a hidden layer to obtain vector $\mathbf{h}$. By doing so, the model can learn combination features that reflect information regarding multiple words in the context.  </p>
+<p>Next, we calculate the score vector for each word: $\mathbf{s}\in\mathbb{R}^{|V|}$. This is done by performing an affine transform of the hidden vector $\mathbf{h}$ with a weight matrix $W<em>{hs}\in\mathbb{R}^{|V|\times|\mathbf{h}|}$ and adding a bias vector $\mathbf{b}_s\in\mathbb{R}^{|V|}$. Finally, we get a probability estimate $\mathbf{p}$ by running the calculated scores through a softmax function, like we did in the log-linear language models. For training, if we know $e_t$ we can also calculate the loss function $\ell=-\log(p</em>{e_t})$.</p>
 <h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are <script type="math/tex">V^T</script>.</p>
@@ -757,7 +765,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.2.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Unknown-Words"><span class="nav-number">2.3.</span> <span class="nav-text">Handling Unknown Words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-linear-Langauge-Models"><span class="nav-number">3.</span> <span class="nav-text">Log-linear Langauge Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Formulation"><span class="nav-number">3.1.</span> <span class="nav-text">Model Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Model-Parameters"><span class="nav-number">3.2.</span> <span class="nav-text">Learning Model Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Feed-forward-Language-Models"><span class="nav-number">4.</span> <span class="nav-text">Neural Networks and Feed-forward Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-Neural-Networks"><span class="nav-number">4.1.</span> <span class="nav-text">Training Neural Networks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">5.</span> <span class="nav-text">Questions</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistical-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">Statistical Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-gram-Language-Models"><span class="nav-number">2.</span> <span class="nav-text">n-gram Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">2.1.</span> <span class="nav-text">Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.2.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Unknown-Words"><span class="nav-number">2.3.</span> <span class="nav-text">Handling Unknown Words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-linear-Langauge-Models"><span class="nav-number">3.</span> <span class="nav-text">Log-linear Langauge Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Formulation"><span class="nav-number">3.1.</span> <span class="nav-text">Model Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Model-Parameters"><span class="nav-number">3.2.</span> <span class="nav-text">Learning Model Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Feed-forward-Language-Models"><span class="nav-number">4.</span> <span class="nav-text">Neural Networks and Feed-forward Language Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-Neural-Networks"><span class="nav-number">4.1.</span> <span class="nav-text">Training Neural Networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-network-Language-Models"><span class="nav-number">4.2.</span> <span class="nav-text">Neural-network Language Models</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">5.</span> <span class="nav-text">Questions</span></a></li></ol></div>
             
 
           </div>
