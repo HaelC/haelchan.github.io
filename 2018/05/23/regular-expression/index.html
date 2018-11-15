@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,regular expression," />
+  <meta name="keywords" content="regular expression,Python," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="Introduction to Regular ExpressionA regular expression(RegEx) is an algebraic notation for characterizing a set of strings. They are particularly useful for searching in texts, when we have a pattern">
-<meta name="keywords" content="Python,regular expression">
+<meta name="keywords" content="regular expression,Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Regular Expression">
 <meta property="og:url" content="http://haelchan.me/2018/05/23/regular-expression/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Introduction to Regular ExpressionA regular expression(RegEx) is an algebraic notation for characterizing a set of strings. They are particularly useful for searching in texts, when we have a pattern">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-15T15:59:20.000Z">
+<meta property="og:updated_time" content="2018-11-15T16:03:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regular Expression">
 <meta name="twitter:description" content="Introduction to Regular ExpressionA regular expression(RegEx) is an algebraic notation for characterizing a set of strings. They are particularly useful for searching in texts, when we have a pattern">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-15T23:59:20+08:00">
-                2018-11-15
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-16T00:03:40+08:00">
+                2018-11-16
               </time>
             
           </span>
@@ -466,6 +466,7 @@
 <p><code>re.findall(r&quot;\w+(?:[-&#39;]\w+)*|&#39;|[-.(]+|\S\w*&quot;, raw)</code><br>This way helps to deal with the words like <code>it&#39;s</code> and <code>ward-hearted</code>.</p>
 <h3 id="Markdown-inline-LaTeX"><a href="#Markdown-inline-LaTeX" class="headerlink" title="Markdown inline LaTeX"></a>Markdown inline LaTeX</h3><p>The markdown editors supports inline <script type="math/tex">\LaTeX</script> well. However, to support LaTeX on Hexo, it’s necessary to  use mathjax and add inline code surrounding the dollor sign. Now it’s time to use regular expression to modify the format.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pattern = r&apos; \$[\w\\=|&#123;&#125;()^\*-]+\$&apos;</div><div class="line">repl = r&apos; `\1`&apos;</div><div class="line">re.sub(pattern, repl, originText)</div></pre></td></tr></table></figure>
+<p>(Well, I just use Sublime Text’s Replace function to make the modification.)</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://web.stanford.edu/~jurafsky/slp3/2.pdf" target="_blank" rel="external">Regular Expressions, Text Normalization, Edit Distance</a> (from <em>Speech and Language Processing(3rd ed. draft)</em>)<br><a href="https://docs.python.org/3/library/re.html" target="_blank" rel="external">re - Regular expression operations</a><br><a href="https://docs.python.org/3/howto/regex.html#regex-howto" target="_blank" rel="external">Regular Expression HOWTO</a></p>
 
       
@@ -502,9 +503,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
             <a href="/tags/regular-expression/" rel="tag"># regular expression</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
