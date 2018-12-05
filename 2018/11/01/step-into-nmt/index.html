@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://haelchan.me/images/nmt/NNLM.jpg">
 <meta property="og:image" content="http://haelchan.me/images/nmt/RNN.jpg">
 <meta property="og:image" content="http://haelchan.me/images/nmt/encoder-decoder.jpg">
-<meta property="og:updated_time" content="2018-12-02T06:57:05.000Z">
+<meta property="og:updated_time" content="2018-12-05T15:52:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-02T14:57:05+08:00">
-                2018-12-02
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-05T23:52:13+08:00">
+                2018-12-05
               </time>
             
           </span>
@@ -503,6 +503,10 @@
 <p><img src="/images/nmt/encoder-decoder.jpg" alt=""></p>
 <script type="math/tex; mode=display">\boldsymbol{m}_t^{(f)}=M_{\cdot,f_t}^{(f)}</script><script type="math/tex; mode=display">\boldsymbol{h}_t^{(f)}=\begin{cases}\text{RNN}^{(f)}(\boldsymbol{m}_t^{(f)},\boldsymbol{h}_{t-1}^{(f)})&t\ge1,\\0&\text{otherwise.}\end{cases}</script><script type="math/tex; mode=display">\boldsymbol{m}_t^{(e)}=M_{\cdot,e_{t-1}}^{(e)}</script><script type="math/tex; mode=display">\boldsymbol{h}_t^{(e)}=\begin{cases}\text{RNN}^{(e)}(\boldsymbol{m}_t^{(e)},\boldsymbol{h}_{t-1}^{(e)})&t\ge1,\\\boldsymbol{h}_{|F|}^{(f)}&\text{otherwise}.\end{cases}</script><script type="math/tex; mode=display">\boldsymbol{p}_t^{(e)}=\text{softmax}(W_{hs}\boldsymbol{h}_t^{(e)}+b_s)</script><p>In the first two lines, we look up the embedding <script type="math/tex">\boldsymbol{m}_t^{(f)}</script> and calculate the encoder hidden state <script type="math/tex">\boldsymbol{h}_t^{(f)}</script> for the <em>t</em>th word in the source sequence <em>F</em>. We start with am empty vector <script type="math/tex">\boldsymbol{h}_0^{(f)}=\boldsymbol{0}</script>, and by <script type="math/tex">\boldsymbol{h}_{|F|}^{(f)}</script>, the encoder has seen all the words in the source sentence. Thus, this hidden state should theoretically be able to encode all of the information in the source sentence.  </p>
 <p>In the decoder phase, we predict the probability of word <script type="math/tex">e_t</script> at each time step. First, we similarly look up <script type="math/tex">\boldsymbol{m}_t^{(e)}</script>, but this time use the previous word <script type="math/tex">e_{t-1}</script>, as we must condition the probability of <script type="math/tex">e_t</script> on the previous word, not on itself. Then, we run the decoder to calculate <script type="math/tex">\boldsymbol{h}_t^{(e)}</script>, whose initial state <script type="math/tex">\boldsymbol{h}_0^{(e)}=\boldsymbol{h}_{|F|}^{(f)}</script>. Finally, we calculate the probability <script type="math/tex">\boldsymbol{p}_t^{(e)}</script> by using a softmax on the hidden state <script type="math/tex">\boldsymbol{h}_t^{(e)}</script>.</p>
+<p>In general, given the probability model <script type="math/tex">P(E|F)</script>, we can generate output according to several criteria:</p>
+<p><strong>Random Sampling</strong>: Randomly select an output <script type="math/tex">E</script> from the probability distribution <script type="math/tex">P(E|F)</script>. This is usually denoted <script type="math/tex">\hat{E}\sim P(E|F)</script>. Useful for a dialog system.</p>
+<p><strong>1-best Search</strong>: Find the <script type="math/tex">E</script> that maximizes <script type="math/tex">P(E|F)</script>, denoted <script type="math/tex">\hat { E } = \underset { E } { \operatorname { argmax } } P ( E | F )</script>. Useful in machine translation.</p>
+<p><strong>n-best Search</strong>: Find the <em>n</em> outputs with the highest probabilities according to <script type="math/tex">P(E|F)</script>.</p>
 <h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are <script type="math/tex">V^T</script>.</p>
