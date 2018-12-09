@@ -93,7 +93,8 @@
 <meta property="og:image" content="http://haelchan.me/images/nmt/NNLM.jpg">
 <meta property="og:image" content="http://haelchan.me/images/nmt/RNN.jpg">
 <meta property="og:image" content="http://haelchan.me/images/nmt/encoder-decoder.jpg">
-<meta property="og:updated_time" content="2018-12-08T15:31:22.000Z">
+<meta property="og:image" content="http://haelchan.me/images/nmt/attn.jpg">
+<meta property="og:updated_time" content="2018-12-09T15:53:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Step into Neural Machine Translation">
 <meta name="twitter:description" content="This post is mainly the reading note of the tutorial Neural Machine Translation and Sequence-to-sequence Models: A Tutorial and the solutions to its questions(maybe code, if possible).   ConceptsMachi">
@@ -349,8 +350,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-08T23:31:22+08:00">
-                2018-12-08
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-09T23:53:55+08:00">
+                2018-12-09
               </time>
             
           </span>
@@ -519,7 +520,14 @@
 <script type="math/tex; mode=display">\boldsymbol{h}_j^{(f)}=[\overleftarrow{\boldsymbol{h}}_j^{(f)};\overrightarrow{\boldsymbol{h}}_j^{(f)}]</script><p>We can further concatenate these vectors into a matrix:</p>
 <script type="math/tex; mode=display">H^{(f)}=\text{concat_col}(\boldsymbol{h}_1^{(f)},...,\boldsymbol{h}_{|F|}^{(f)})</script><p>The key insight of attention is that we calculate a vector <script type="math/tex">\boldsymbol\alpha_t</script> that can be used to combine together the columns of <em>H</em> into a vector <script type="math/tex">\boldsymbol{c}_t</script></p>
 <script type="math/tex; mode=display">\boldsymbol{c}_t=H^{(f)}\boldsymbol{\alpha}_t</script><p>the <script type="math/tex">\boldsymbol{\alpha}_t</script> is called the <strong>attentional vector</strong>, and is generally assumed to have elements that are between zero and one and add to one.  </p>
-<p>The basic idea behind the attention vector is that it is telling us how much we are “focusing” on a particular source word at a particular time step. The larger the value in <script type="math/tex">\boldsymbol{\alpha}_t​</script>, the more impact a word will have when predicting the next word in the output sentence.</p>
+<p>The basic idea behind the attention vector is that it is telling us how much we are “focusing” on a particular source word at a particular time step. The larger the value in <script type="math/tex">\boldsymbol{\alpha}_t</script>, the more impact a word will have when predicting the next word in the output sentence.  </p>
+<p>Then how to get the <script type="math/tex">\boldsymbol\alpha_t</script>? The answer lies in the <em>decoder</em> RNN, which we use to track our state while we are generating output. The decoder’s hidden state <script type="math/tex">\boldsymbol{h}_t^{(e)}</script> is a fixed-length continuous vector representing the previous target words <script type="math/tex">e_1^{t-1}</script>, initialized as <script type="math/tex">\boldsymbol{h}_0^{(e)}=\boldsymbol{h}_{|F|+1}^{(f)}</script>. This is used to calculate a context vector <script type="math/tex">\boldsymbol{c}_t</script> that is used to summarize the source attentional context used in choosing target word <script type="math/tex">e_t</script>, and initialized as <script type="math/tex">\boldsymbol{c}_t=0</script>.  </p>
+<p>First, we update the hidden state to $\boldsymbol{h}_t^{(e)}$ based on the word representation and context vector from the previous target time step</p>
+<script type="math/tex; mode=display">\boldsymbol{h}_t^{(e)}=\text{enc}([\text{embed}(e_{t-1});\boldsymbol{c}_{t-1}],\boldsymbol{h}_{t-1}^{(e)})</script><p>Based on this <script type="math/tex">\boldsymbol{h}_t^{(e)}</script>, we calculate an attention score $\boldsymbol{a}_t$, with each element equal to</p>
+<script type="math/tex; mode=display">a_{t,j}=\text{attn_score}(\boldsymbol{h}_j^{(f)},\boldsymbol{h}_t^{(e)})</script><p>We then normalize this into the actual attention vector itself by taking a softmax over the scores:</p>
+<script type="math/tex; mode=display">\boldsymbol\alpha_t=\text{softmax}(\boldsymbol{a}_t)</script><p>Then we can use this attention vector to weight the encoded representation <script type="math/tex">H^{(f)}</script> to create a context vector $\boldsymbol{c}_t$ for the current time step. </p>
+<script type="math/tex; mode=display">\boldsymbol{c}_t=H^{(f)}\boldsymbol{\alpha}_t</script><p>We now have a context vector <script type="math/tex">\boldsymbol{c}_t</script> and hidden state <script type="math/tex">\boldsymbol{h}_t^{(e)}</script> for time step <em>t</em>, which we can pass down to downstream tasks.</p>
+<p><img src="/images/nmt/attn.jpg" alt=""></p>
 <h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ul>
 <li><p><em>If V is the size of the target vocabulary, how many are there for a sentence of length T?</em> (on page 4)</p>
 <p>There are <script type="math/tex">V^T</script>.</p>
