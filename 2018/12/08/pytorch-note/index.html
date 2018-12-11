@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
 
@@ -91,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from PyTorch official tut">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-08T15:45:19.000Z">
+<meta property="og:updated_time" content="2018-12-11T15:36:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Points on PyTorch">
 <meta name="twitter:description" content="Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from PyTorch official tut">
@@ -346,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-08T23:45:19+08:00">
-                2018-12-08
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-11T23:36:19+08:00">
+                2018-12-11
               </time>
             
           </span>
@@ -412,6 +410,10 @@
 </ul>
 <p><strong>In-place operation</strong>  </p>
 <p>An in-place operation is an operation that changes directly the content of a given tensor without making a copy. In-place operations in PyTorch are always postfixed with a <code>_</code>, like <code>.add_()</code>. The <code>.resize_()</code> mentioned above is also an in-place operation.</p>
+<p><strong>NumPy to Torch and back</strong></p>
+<p>PyTorch has a great feature for converting between NumPy arrays and Torch tensors. To create a tensor from a NumPy array, use <code>torch.from_numpy()</code>. To convert a tensor to a NumPy array, use the <code>.numpy()</code> method.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">a = np.random.rand(<span class="number">4</span>, <span class="number">3</span>)</div><div class="line">b = torch.from_numpy(a)</div><div class="line">b.numpy()</div></pre></td></tr></table></figure>
+<p>The memory is shared between the NumPy array and Torch tensor.</p>
 
       
     </div>
