@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://haelchan.me/"/>
-  <updated>2018-12-11T15:36:19.000Z</updated>
+  <updated>2018-12-12T15:40:56.000Z</updated>
   <id>http://haelchan.me/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Processing Corpus with Python</title>
+    <link href="http://haelchan.me/2018/12/12/processing-corpus-with-python/"/>
+    <id>http://haelchan.me/2018/12/12/processing-corpus-with-python/</id>
+    <published>2018-12-12T10:58:56.000Z</published>
+    <updated>2018-12-12T15:40:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Recently I’ve been doing a corpus-based research. There are several corpus tools available. Some are free, like <a href="http://www.laurenceanthony.net/software/antconc/" target="_blank" rel="external">AntConc</a>, <a href="http://corpora.lancs.ac.uk/lancsbox/" target="_blank" rel="external">#LancsBox</a>; and some are paid, like <a href="https://www.lexically.net/wordsmith/" target="_blank" rel="external">WordSmith</a> and <a href="https://www.powergrep.com" target="_blank" rel="external">PowerGREP</a>. The paid softwares are too expensive, and the free softwares just provide some general functions and cannot meet my requirements. Therefore, I decided to implement the processing procedure using Python on my own. <a href="http://www.nltk.org" target="_blank" rel="external">NLTK</a> offers methods to load corpus, but it doens’t support tagged corpus. So … just start it from pure Python. In this post, I’d keep my experience with code. I’ll try to make it as detailed as possible so that some of my friends majoring in linguistics can benefit from this post and maybe process corpus with Python at their will :D  </p><h2 id="Before-Getting-Started"><a href="#Before-Getting-Started" class="headerlink" title="Before Getting Started"></a>Before Getting Started</h2><h3 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h3><h4 id="Download-Anaconda"><a href="#Download-Anaconda" class="headerlink" title="Download Anaconda"></a>Download Anaconda</h4><p>It is okay whether you have known Python before or not. As long as you have learned some programming language, e.g., Java or C,  that’s enough. Python is user-friendly and easy to use. You can refer to <a href="https://docs.python.org/3/tutorial/index.html" target="_blank" rel="external">Python’s official tutorial</a> any time for better understanding, or you can just leave it out and follow my post step by step. Anyway, I’d suggest that you download <a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>. It is straight-forward and helps to manage trouble-some settings. You can write code freely once you installed it. And I’d highly recommend writing in Jupyter Notebook, which is installed together with Anaconda.  </p><h4 id="Launch-Jupyter-Notebook"><a href="#Launch-Jupyter-Notebook" class="headerlink" title="Launch Jupyter Notebook"></a>Launch Jupyter Notebook</h4><ul><li><p>For Windows users, click Open Menu (or press <code>Windows key</code> on the keyboard) - Anaconda3 - Jupyter Notebook. </p></li><li><p>For macOS users, open Launchpad (or press <code>F4</code> on the keyboard) - Anaconda Navigator - notebook.</p></li></ul><p>After that, a command window (black in Windows, white in macOS) will pop up. You can ignore it (but don’t close it!). Then your default browser will open automatically. Click <em>New</em> on the top right corner and select <em>Python 3</em>, you can start writing Python code now!  </p><p><img src="/images/corpus/clickNew.jpg" alt=""></p><h4 id="Basic-of-Jupyter-Notebook"><a href="#Basic-of-Jupyter-Notebook" class="headerlink" title="Basic of Jupyter Notebook"></a>Basic of Jupyter Notebook</h4><p>The notebook consists of a sequence of cells. There are three types of cells: <strong>code cells</strong>, <strong>markdown cells</strong>, and <strong>raw cells</strong>. By default, the cell is code cell, and you can write Python code directly. You don’t need to worry about markdown or raw cells.  </p><p>The cell has two modes: <strong>command mode</strong> and <strong>edit mode</strong>. Generally, the cell is in edit mode and you can type freely. If it’s in command mode, you can navigate around the notebook using keyboard shortcuts.</p><h4 id="Keyboard-Shortcuts"><a href="#Keyboard-Shortcuts" class="headerlink" title="Keyboard Shortcuts"></a>Keyboard Shortcuts</h4><p><code>Shift + Enter</code>: run cell  </p><p><code>Esc</code>: turn cell into command mode  </p><p><code>Enter</code>: turn cell into edit mode  </p><p><code>D, D</code>: delete the cell  </p><p><code>A</code>: insert cell above  </p><p><code>B</code>: insert cell below  </p><p>These are shortcuts that I use most frequently. For the full list of available shortcuts, click Help - Keyboard Shortcuts in the notebook menus.</p><p>Well, this is a simple introduction to Jupyter Notebook. (You can download my code later and run it in Jupyter Notebook.)</p><h3 id="Get-an-Overview-of-Your-Corpus"><a href="#Get-an-Overview-of-Your-Corpus" class="headerlink" title="Get an Overview of Your Corpus"></a>Get an Overview of Your Corpus</h3><p>You have to glance through your corpus before processing. Generally the format of corpus is <code>.txt</code> or <code>.xml</code>. You can use the default text editor in your operating system to open the file, or you can use some advanced text editor like <a href="https://www.sublimetext.com" target="_blank" rel="external">Sublime Text</a> for better vision.</p><p><img src="/images/corpus/lcmc.jpg" alt=""></p><p>The above  image shows the heading of LCMC_A.xml. (<em>The Lancaster Corpus of Mandarin Chinese (LCMC)</em> addresses an increasing need within the research community for a publicly available balanced corpus of Mandarin Chinese. Click <a href="http://www.lancaster.ac.uk/fass/projects/corpus/LCMC/" target="_blank" rel="external">here</a> for more information about this corpus.) We don’t need to care the heading, which indicate the information about creator, date, etc. By focusing the main body, we can know each word is tagged with  <code>&lt;w POS=&quot;&quot;&gt;</code> and followed by <code>&lt;/w&gt;</code>, like <code>&lt;w POS=&quot;a&quot;&gt;大&lt;/w&gt;</code>. Different corpora may have different taggings, here (and in the following sections) I just take LCMC as an example.</p><h2 id="Processing-a-single-file"><a href="#Processing-a-single-file" class="headerlink" title="Processing a single file"></a>Processing a single file</h2><p>All right. Let’s get started with a single file. </p><h3 id="Read-file"><a href="#Read-file" class="headerlink" title="Read file"></a>Read file</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">filename = <span class="string">'LCMC_A.xml'</span></div><div class="line"><span class="keyword">with</span> open(filename, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</div><div class="line">    read_data = f.read()</div></pre></td></tr></table></figure><p>The first line declares a variable called <em>filename</em>. The second line tells the system to open the file. Note that <code>encoding=&#39;utf-8&#39;</code> indicates the encoding of the file, and currently <em>utf-8</em> is the most frequently used encoding. If you don’t know the file’s encoding, take utf-8 by default. Later I’ll write how to dealing with other encodings. The third line just read the entire content and pass it to a variable <em>read_data</em>.  </p><p>You can type <code>read_data</code> in a new cell and run the cell to see whether it’s successful.</p><h3 id="Extract-Useful-Part"><a href="#Extract-Useful-Part" class="headerlink" title="Extract Useful Part"></a>Extract Useful Part</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">tag = re.findall(<span class="string">r'&lt;[wc] POS="(\w&#123;0,4&#125;)"&gt;.&#123;0,7&#125;&lt;/[wc]&gt;'</span>, read_data)</div><div class="line">token = re.findall(<span class="string">r'&lt;[wc] POS="\w&#123;0,4&#125;"&gt;(.&#123;0,7&#125;)&lt;/[wc]&gt;'</span>, read_data)</div></pre></td></tr></table></figure><p>The most useful information is the tags and the words. With the above code we can extract these parts in two lists. Here I use the regular expression (re) and maybe it is a bit abstruce. Well, you just need to know what it does: recall the word form: <code>&lt;w POS=&quot;a&quot;&gt;大&lt;/w&gt;</code>, the second line extract the content between the quotes(<code>a</code>, which is a tag); the third line extract the content between the right angle bracket and the left angle bracket(<code>大</code>, which is a token).</p><h3 id="Count-Frequency"><a href="#Count-Frequency" class="headerlink" title="Count Frequency"></a>Count Frequency</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line">counter = collections.Counter(token)</div><div class="line">counter.most_common()</div></pre></td></tr></table></figure><p>Since we have extract the useful part, we can count the frequencies. The first line import a library <code>collections</code> for counting. The second line counts the token list and the third line outputs the lists in reverse order. </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Recently I’ve been doing a corpus-based research. There are several corpus tools available. Some are free, like &lt;a href=&quot;http://www.laure
+      
+    
+    </summary>
+    
+    
+      <category term="tips" scheme="http://haelchan.me/tags/tips/"/>
+    
+      <category term="Python" scheme="http://haelchan.me/tags/Python/"/>
+    
+      <category term="linguistics" scheme="http://haelchan.me/tags/linguistics/"/>
+    
+  </entry>
   
   <entry>
     <title>Points on PyTorch</title>
@@ -503,29 +530,6 @@
     
     
       <category term="reading note" scheme="http://haelchan.me/tags/reading-note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>21岁 你好</title>
-    <link href="http://haelchan.me/2017/10/23/21-year-birthday-reflection/"/>
-    <id>http://haelchan.me/2017/10/23/21-year-birthday-reflection/</id>
-    <published>2017-10-22T16:13:18.000Z</published>
-    <updated>2018-10-18T14:15:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>霜降。<br>又到了这个平凡而又特殊的日子，转眼已经21岁了呐。不会矫情地慨叹“要奔三”等话语，只是轻道一句，时光太匆匆。<br>从紫金港到玉泉，从freshman到sophomore再到junior，从懵懂无知到懵懂依旧。只是像一只蜗牛罢，一步一步倔强地往上爬。这个学期算是加入了计院的系统安全与虚拟化的实验室，和同级的佼佼者、研究生、老师同处一室，感受到自己的渺小，不过也作出了自己的小小贡献，亦愈发迫切地渴望提高。区块链Blockchain，似曾相识而又陌生的分布式技术，在阅读了一篇篇论文后，方有了一定的了解。而接下来要构思的专利及论文，依然路漫漫。<br>进入大学后第一次获得了奖学金。虽然是凭借在团学联的学生工作获得的社会工作奖学金，而不是证明成绩的学业奖学金，不过知足啦。大三学年，争取在学业与创新方面都有所进步。已经浪了两年，望不再辜负自己。<br>QQ上的生日提示肆意传播，从一大早起便收到了来自认识的不认识的好友的生日祝福。相似的祝福语，虽然只是系统自动发送的祝福语，为沉寂的手机带来一丝振动，不会一个一个去回复，可能会带来双方的尴尬，不过还是谢谢啦。以及那些记得我生日的好孩子们，感谢认识你们，比心。❤<br>21岁，新的十年之始。愿不忘初心，砥砺前行。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;霜降。&lt;br&gt;又到了这个平凡而又特殊的日子，转眼已经21岁了呐。不会矫情地慨叹“要奔三”等话语，只是轻道一句，时光太匆匆。&lt;br&gt;从紫金港到玉泉，从freshman到sophomore再到junior，从懵懂无知到懵懂依旧。只是像一只蜗牛罢，一步一步倔强地往上爬。这个学期算
-      
-    
-    </summary>
-    
-      <category term="Essay" scheme="http://haelchan.me/categories/Essay/"/>
-    
     
   </entry>
   
