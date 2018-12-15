@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
 
@@ -93,7 +91,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://haelchan.me/images/corpus/clickNew.jpg">
 <meta property="og:image" content="http://haelchan.me/images/corpus/lcmc.jpg">
-<meta property="og:updated_time" content="2018-12-14T15:46:57.000Z">
+<meta property="og:updated_time" content="2018-12-15T12:54:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Processing Corpus with Python">
 <meta name="twitter:description" content="Recently I’ve been doing a corpus-based research. There are several corpus tools available. Some are free, like AntConc, #LancsBox; and some are paid, like WordSmith and PowerGREP. The paid softwares">
@@ -349,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-14T23:46:57+08:00">
-                2018-12-14
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-15T20:54:06+08:00">
+                2018-12-15
               </time>
             
           </span>
@@ -416,7 +414,7 @@
 <p>After that, a command window (black in Windows, white in macOS) will pop up. You can ignore it (but don’t close it!). Then your default browser will open automatically. Click <em>New</em> on the top right corner and select <em>Python 3</em>, you can start writing Python code now!  </p>
 <p><img src="/images/corpus/clickNew.jpg" alt=""></p>
 <h4 id="Basic-of-Jupyter-Notebook"><a href="#Basic-of-Jupyter-Notebook" class="headerlink" title="Basic of Jupyter Notebook"></a>Basic of Jupyter Notebook</h4><p>The notebook consists of a sequence of cells. There are three types of cells: <strong>code cells</strong>, <strong>markdown cells</strong>, and <strong>raw cells</strong>. By default, the cell is code cell, and you can write Python code directly. You don’t need to worry about markdown or raw cells.  </p>
-<p>The cell has two modes: <strong>command mode</strong> and <strong>edit mode</strong>. Generally, the cell is in edit mode and you can type freely. If it’s in command mode, you can navigate around the notebook using keyboard shortcuts.</p>
+<p>The cell has two modes: <strong>command mode</strong> and <strong>edit mode</strong>. Generally, the cell is in edit mode and you can type freely. If it’s in command mode, you can navigate around the notebook using keyboard shortcuts.  </p>
 <h4 id="Keyboard-Shortcuts"><a href="#Keyboard-Shortcuts" class="headerlink" title="Keyboard Shortcuts"></a>Keyboard Shortcuts</h4><p><code>Shift + Enter</code>: run cell  </p>
 <p><code>Esc</code>: turn cell into command mode  </p>
 <p><code>Enter</code>: turn cell into edit mode  </p>
@@ -425,6 +423,7 @@
 <p><code>B</code>: insert cell below  </p>
 <p>These are shortcuts that I use most frequently. For the full list of available shortcuts, click Help - Keyboard Shortcuts in the notebook menus.</p>
 <p>Well, this is a simple introduction to Jupyter Notebook. You can download my <a href="https://github.com/HaelChan/Processing-Corpus-with-Python/archive/master.zip" target="_blank" rel="external">code</a> and open processing.ipynb using Jupyter Notebook, or you can continue reading this post and type the code on your own. The following content is almost the same.</p>
+<h4 id="Shutdown"><a href="#Shutdown" class="headerlink" title="Shutdown"></a>Shutdown</h4><p>Oops, I almost forget to tell you how you shut down Jupyter Notebook when you’ve finished your work. Return to the command window, press <code>Ctrl+C</code> twice quickly. Then Jupyter Notebook will shut down and everything will be okay.</p>
 <h3 id="Get-an-Overview-of-Your-Corpus"><a href="#Get-an-Overview-of-Your-Corpus" class="headerlink" title="Get an Overview of Your Corpus"></a>Get an Overview of Your Corpus</h3><p>You have to glance through your corpus before processing. Generally the format of corpus is <code>.txt</code> or <code>.xml</code>. You can use the default text editor in your operating system to open the file, or you can use some advanced text editor like <a href="https://www.sublimetext.com" target="_blank" rel="external">Sublime Text</a> for better vision.</p>
 <p><img src="/images/corpus/lcmc.jpg" alt=""></p>
 <p>The above  image shows the heading of LCMC_A.xml. (<em>The Lancaster Corpus of Mandarin Chinese (LCMC)</em> addresses an increasing need within the research community for a publicly available balanced corpus of Mandarin Chinese. Click <a href="http://www.lancaster.ac.uk/fass/projects/corpus/LCMC/" target="_blank" rel="external">here</a> for more information about this corpus.) We don’t need to care the heading, which indicate the information about creator, date, etc. By focusing the main body, we can know each word is tagged with  <code>&lt;w POS=&quot;&quot;&gt;</code> and followed by <code>&lt;/w&gt;</code>, like <code>&lt;w POS=&quot;a&quot;&gt;大&lt;/w&gt;</code>. Different corpora may have different taggings, here (and in the following sections) I just take LCMC as an example.</p>
@@ -731,7 +730,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Before-Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Before Getting Started</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jupyter-Notebook"><span class="nav-number">1.1.</span> <span class="nav-text">Jupyter Notebook</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Download-Anaconda"><span class="nav-number">1.1.1.</span> <span class="nav-text">Download Anaconda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Launch-Jupyter-Notebook"><span class="nav-number">1.1.2.</span> <span class="nav-text">Launch Jupyter Notebook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-of-Jupyter-Notebook"><span class="nav-number">1.1.3.</span> <span class="nav-text">Basic of Jupyter Notebook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Keyboard-Shortcuts"><span class="nav-number">1.1.4.</span> <span class="nav-text">Keyboard Shortcuts</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-an-Overview-of-Your-Corpus"><span class="nav-number">1.2.</span> <span class="nav-text">Get an Overview of Your Corpus</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Processing-a-Single-File"><span class="nav-number">2.</span> <span class="nav-text">Processing a Single File</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-the-File"><span class="nav-number">2.1.</span> <span class="nav-text">Read the File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extract-Useful-Parts"><span class="nav-number">2.2.</span> <span class="nav-text">Extract Useful Parts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Count-Frequency"><span class="nav-number">2.3.</span> <span class="nav-text">Count Frequency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Indexing-Target-Word"><span class="nav-number">2.4.</span> <span class="nav-text">Indexing Target Word</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Export-to-Excel"><span class="nav-number">2.5.</span> <span class="nav-text">Export to Excel</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Before-Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Before Getting Started</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jupyter-Notebook"><span class="nav-number">1.1.</span> <span class="nav-text">Jupyter Notebook</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Download-Anaconda"><span class="nav-number">1.1.1.</span> <span class="nav-text">Download Anaconda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Launch-Jupyter-Notebook"><span class="nav-number">1.1.2.</span> <span class="nav-text">Launch Jupyter Notebook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-of-Jupyter-Notebook"><span class="nav-number">1.1.3.</span> <span class="nav-text">Basic of Jupyter Notebook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Keyboard-Shortcuts"><span class="nav-number">1.1.4.</span> <span class="nav-text">Keyboard Shortcuts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shutdown"><span class="nav-number">1.1.5.</span> <span class="nav-text">Shutdown</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-an-Overview-of-Your-Corpus"><span class="nav-number">1.2.</span> <span class="nav-text">Get an Overview of Your Corpus</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Processing-a-Single-File"><span class="nav-number">2.</span> <span class="nav-text">Processing a Single File</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-the-File"><span class="nav-number">2.1.</span> <span class="nav-text">Read the File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extract-Useful-Parts"><span class="nav-number">2.2.</span> <span class="nav-text">Extract Useful Parts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Count-Frequency"><span class="nav-number">2.3.</span> <span class="nav-text">Count Frequency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Indexing-Target-Word"><span class="nav-number">2.4.</span> <span class="nav-text">Indexing Target Word</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Export-to-Excel"><span class="nav-number">2.5.</span> <span class="nav-text">Export to Excel</span></a></li></ol></li></ol></div>
             
 
           </div>
