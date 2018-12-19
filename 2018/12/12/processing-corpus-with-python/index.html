@@ -91,7 +91,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://haelchan.me/images/corpus/clickNew.jpg">
 <meta property="og:image" content="http://haelchan.me/images/corpus/lcmc.jpg">
-<meta property="og:updated_time" content="2018-12-18T15:43:37.000Z">
+<meta property="og:updated_time" content="2018-12-19T15:07:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Processing Corpus with Python">
 <meta name="twitter:description" content="Recently I’ve been doing a corpus-based research. There are several corpus tools available. Some are free, like AntConc, #LancsBox; and some are paid, like WordSmith and PowerGREP. The paid softwares">
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-18T23:43:37+08:00">
-                2018-12-18
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-19T23:07:50+08:00">
+                2018-12-19
               </time>
             
           </span>
@@ -432,10 +432,11 @@
 <p>The first line declares a variable called <em>filename</em>. The second line tells the system to open the file. Note that <code>encoding=&#39;utf-8&#39;</code> indicates the encoding of the file, and currently <em>utf-8</em> is the most frequently used encoding. If you don’t know the file’s encoding, take utf-8 by default. Later I’ll write how to dealing with other encodings. The third line just read the entire content and pass it to a variable <em>read_data</em>.  </p>
 <p>You can type <code>read_data</code> in a new cell and run the cell to see whether it’s successful.</p>
 <h3 id="Extract-Useful-Parts"><a href="#Extract-Useful-Parts" class="headerlink" title="Extract Useful Parts"></a>Extract Useful Parts</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">tag = re.findall(<span class="string">r'&lt;w POS="(\w&#123;0,4&#125;)"&gt;.&#123;0,7&#125;&lt;/w&gt;'</span>, read_data)</div><div class="line">token = re.findall(<span class="string">r'&lt;w POS="\w&#123;0,4&#125;"&gt;(.&#123;0,7&#125;)&lt;/w&gt;'</span>, read_data)</div></pre></td></tr></table></figure>
-<p>The most useful information is the tags and the tokens. With the above code we can extract these parts parallelly (in two seperate lists). Here I use the regular expression (re) and maybe it is a bit abstruce. Well, you just need to know what it does: recall the word form: <code>&lt;w POS=&quot;a&quot;&gt;大&lt;/w&gt;</code>, the second line extract the content between the quotes(<code>a</code>, which is a tag); the third line extract the content between the right angle bracket and the left angle bracket(<code>大</code>, which is a token).  </p>
+<p>The most useful information is the tags and the tokens. With the above code we can extract these parts parallelly (in two seperate lists). Here I use the regular expression (re) and maybe it is a bit abstruce. Well, currently you just need to know what it does: recall the word form: <code>&lt;w POS=&quot;a&quot;&gt;大&lt;/w&gt;</code>, the second line extract the content between the quotes(<code>a</code>, which is a tag); the third line extract the content between the right angle bracket and the left angle bracket(<code>大</code>, which is a token).  </p>
 <p>Note that with the above codes I just extract words, not including punctuations. If you need to treat punctuations as tokens, use the following code instead:  </p>
 <p><code>tag = re.findall(r&#39;&lt;[wc] POS=&quot;(\w{0,4})&quot;&gt;.{0,7}&lt;/[wc]&gt;&#39;, read_data)</code>,  </p>
-<p><code>token = re.findall(r&#39;&lt;[wc] POS=&quot;\w{0,4}&quot;&gt;(.{0,7})&lt;/[wc]&gt;&#39;, read_data)</code>.</p>
+<p><code>token = re.findall(r&#39;&lt;[wc] POS=&quot;\w{0,4}&quot;&gt;(.{0,7})&lt;/[wc]&gt;&#39;, read_data)</code>.  </p>
+<p>You can refer to my <a href="http://haelchan.me/2018/05/23/regular-expression/">post</a> for more information about regular expression.</p>
 <h3 id="Count-Frequency"><a href="#Count-Frequency" class="headerlink" title="Count Frequency"></a>Count Frequency</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line">counter = collections.Counter(token)</div><div class="line">counter.most_common()</div></pre></td></tr></table></figure>
 <p>Since we have extract the useful part, we can count the frequencies. The first line import a library <code>collections</code> for counting. The second line counts the token list and the third line outputs the frequency in reverse order. </p>
 <h3 id="Index-Target-Word"><a href="#Index-Target-Word" class="headerlink" title="Index Target Word"></a>Index Target Word</h3><p>Well, the freguency just gives us an overview. Then let’s focus on our target words. We need to know the word’s occurrence in the corpus. For example, the following line helps to find all indices of the word ‘是’.</p>
