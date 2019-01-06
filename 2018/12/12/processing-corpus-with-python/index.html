@@ -91,7 +91,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://haelchan.me/images/corpus/clickNew.jpg">
 <meta property="og:image" content="http://haelchan.me/images/corpus/lcmc.jpg">
-<meta property="og:updated_time" content="2019-01-05T14:31:11.000Z">
+<meta property="og:updated_time" content="2019-01-06T15:57:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Processing Corpus with Python">
 <meta name="twitter:description" content="Recently I’ve been doing a corpus-based research. There are several corpus tools available. Some are free, like AntConc, #LancsBox; and some are paid, like WordSmith and PowerGREP. The paid softwares">
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-05T22:31:11+08:00">
-                2019-01-05
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-06T23:57:59+08:00">
+                2019-01-06
               </time>
             
           </span>
@@ -403,7 +403,7 @@
       
 
       
-        <p>Recently I’ve been doing a corpus-based research. There are several corpus tools available. Some are free, like <a href="http://www.laurenceanthony.net/software/antconc/" target="_blank" rel="external">AntConc</a>, <a href="http://corpora.lancs.ac.uk/lancsbox/" target="_blank" rel="external">#LancsBox</a>; and some are paid, like <a href="https://www.lexically.net/wordsmith/" target="_blank" rel="external">WordSmith</a> and <a href="https://www.powergrep.com" target="_blank" rel="external">PowerGREP</a>. The paid softwares are too expensive, and the free softwares just provide some general functions and cannot meet my requirements. Therefore, I decided to implement the processing procedure using Python on my own. <a href="http://www.nltk.org" target="_blank" rel="external">NLTK</a> offers methods to load corpus, but it doens’t support tagged corpus. So … just start it from pure Python. In this post, I’d keep my experience with code. I’ll try to make it as detailed as possible so that some of my best friends majoring in linguistics can benefit from this post and maybe process corpus with Python at their will :D  (Or maybe you are frustrated with code. Don’t worry. Later I will upload some helper Python programs so that you can execute them directly, without dealing with code.)</p>
+        <p>Recently I’ve been doing a corpus-based research. There are several corpus tools available. Some are free, like <a href="http://www.laurenceanthony.net/software/antconc/" target="_blank" rel="external">AntConc</a>, <a href="http://corpora.lancs.ac.uk/lancsbox/" target="_blank" rel="external">#LancsBox</a>; and some are paid, like <a href="https://www.lexically.net/wordsmith/" target="_blank" rel="external">WordSmith</a> and <a href="https://www.powergrep.com" target="_blank" rel="external">PowerGREP</a>. The paid softwares are too expensive, and the free softwares just provide some general functions and cannot meet my requirements. Therefore, I decided to implement the processing procedure using Python on my own. <a href="http://www.nltk.org" target="_blank" rel="external">NLTK</a> offers methods to load corpus, but it doens’t support tagged corpus. So I just start it from pure Python. In this post, I’d keep my experience with code. I’ll try to make it as detailed as possible so that some of my best friends majoring in linguistics can benefit from this post and maybe process corpus with Python at their will :D  (Or perhaps you are a bit frustrated with code. Don’t worry. Later I will upload some helper Python programs so that you can execute them directly, without dealing with code.)</p>
 <h2 id="Before-Getting-Started"><a href="#Before-Getting-Started" class="headerlink" title="Before Getting Started"></a>Before Getting Started</h2><h3 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h3><h4 id="Download-Anaconda"><a href="#Download-Anaconda" class="headerlink" title="Download Anaconda"></a>Download Anaconda</h4><p>It is okay whether you have known Python before or not. As long as you have learned some programming language, e.g., Java or C,  that’s enough. Python is user-friendly and easy to use. You can refer to <a href="https://docs.python.org/3/tutorial/index.html" target="_blank" rel="external">Python’s official tutorial</a> any time for better understanding, or you can just leave it out and follow my post step by step. Anyway, I’d suggest that you download <a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>. It is straight-forward and helps to manage trouble-some settings. You can write code freely once you installed it. And I’d highly recommend writing in Jupyter Notebook, which is installed together with Anaconda.  </p>
 <h4 id="Launch-Jupyter-Notebook"><a href="#Launch-Jupyter-Notebook" class="headerlink" title="Launch Jupyter Notebook"></a>Launch Jupyter Notebook</h4><ul>
 <li><p>For Windows users, click Open Menu (or press <code>Windows key</code> on the keyboard) - Anaconda3 - Jupyter Notebook. </p>
