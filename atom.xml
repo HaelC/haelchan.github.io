@@ -118,9 +118,9 @@
       <category term="Natural Language Processing" scheme="http://haelchan.me/categories/Natural-Language-Processing/"/>
     
     
-      <category term="reading note" scheme="http://haelchan.me/tags/reading-note/"/>
-    
       <category term="Transformer" scheme="http://haelchan.me/tags/Transformer/"/>
+    
+      <category term="reading note" scheme="http://haelchan.me/tags/reading-note/"/>
     
       <category term="pre-training" scheme="http://haelchan.me/tags/pre-training/"/>
     
@@ -147,9 +147,9 @@
       <category term="Natural Language Processing" scheme="http://haelchan.me/categories/Natural-Language-Processing/"/>
     
     
-      <category term="NLTK" scheme="http://haelchan.me/tags/NLTK/"/>
-    
       <category term="Python" scheme="http://haelchan.me/tags/Python/"/>
+    
+      <category term="NLTK" scheme="http://haelchan.me/tags/NLTK/"/>
     
   </entry>
   
