@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from PyTorch official tut">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-28T14:57:55.000Z">
+<meta property="og:updated_time" content="2019-01-29T15:43:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Points on PyTorch">
 <meta name="twitter:description" content="Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from PyTorch official tut">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-28T22:57:55+08:00">
-                2019-01-28
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-29T23:43:28+08:00">
+                2019-01-29
               </time>
             
           </span>
@@ -429,7 +429,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</div><div class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Network</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        super().__init__()</div><div class="line">        self.hidden = nn.Linear(<span class="number">784</span>, <span class="number">256</span>)</div><div class="line">        self.output = nn.Linear(<span class="number">256</span>, <span class="number">10</span>)</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line">        x = F.sigmoid(self.hidden(x))</div><div class="line">        x = F.softmax(self.output(x), dim=<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> x</div></pre></td></tr></table></figure>
 <p>It is mandatory to inherit from <code>nn.Module</code> when creating a class for our network. The name of the class itself can be anything.  </p>
 <p>PyTorch networks created with <code>nn.Module</code> must have a <code>forward</code> method defined. It takes in a tensor <code>x</code> and passes it through the operations you defined in the <code>__init__</code> method. And the <code>backward</code> function (where gradients are computed) is automatically defined for you using <code>autograd</code>.  </p>
-<p>Another way is mentioned in the course: <code>nn.Sequential</code>. (See <a href="https://pytorch.org/docs/master/nn.html#torch.nn.Sequential" target="_blank" rel="external">Doc</a>)</p>
+<p>Another way is mentioned in the course: <code>nn.Sequential</code>. (See <a href="https://pytorch.org/docs/master/nn.html#torch.nn.Sequential" target="_blank" rel="external">Doc</a>)  </p>
+<p><strong>Loss</strong>  </p>
+<p>PyTorch provides losses such as the cross-entropy loss (<code>nn.CrossEntropyLoss</code>). You’ll usually see the loss assigned to <code>criterion</code>. This criterion combines <code>nn.LogSoftmax()</code> and <code>nn.NLLLoss()</code> in one single class.  </p>
+<p>The input is expected to contain scores for each class.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>loss = nn.CrossEntropyLoss()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>input = torch.randn(<span class="number">3</span>, <span class="number">5</span>, requires_grad=<span class="keyword">True</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>target = torch.empty(<span class="number">3</span>, dtype=torch.long).random_(<span class="number">5</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>output = loss(input, target)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>output.backward()</div></pre></td></tr></table></figure>
 
       
     </div>
