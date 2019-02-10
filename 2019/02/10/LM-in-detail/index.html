@@ -81,13 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hael&#39;s Blog">
-<meta property="og:url" content="http://haelchan.me/page/3/index.html">
+<meta name="description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="From statistical to neural - language modeling in detail">
+<meta property="og:url" content="http://haelchan.me/2019/02/10/LM-in-detail/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
+<meta property="og:description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-02-10T15:53:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hael&#39;s Blog">
+<meta name="twitter:title" content="From statistical to neural - language modeling in detail">
+<meta name="twitter:description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
 
 
 
@@ -117,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://haelchan.me/page/3/"/>
+  <link rel="canonical" href="http://haelchan.me/2019/02/10/LM-in-detail/"/>
 
 
 
 
 
-  <title>Hael's Blog</title>
+  <title>From statistical to neural - language modeling in detail | Hael's Blog</title>
   
 
 
@@ -142,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,9 +283,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -295,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2017/10/31/REM-reading-report/">
+    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2019/02/10/LM-in-detail/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hael Chan">
@@ -312,9 +315,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/31/REM-reading-report/" itemprop="url">REM Reading Report</a></h2>
+          <h2 class="post-title" itemprop="name headline">From statistical to neural - language modeling in detail</h2>
         
 
         <div class="post-meta">
@@ -326,8 +327,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T00:06:42+08:00">
-                2017-10-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-10T21:53:50+08:00">
+                2019-02-10
               </time>
             
 
@@ -342,8 +343,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T23:03:34+08:00">
-                2018-10-18
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-10T23:53:10+08:00">
+                2019-02-10
               </time>
             
           </span>
@@ -357,9 +358,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/31/REM-reading-report/#comments" itemprop="discussionUrl">
+                <a href="/2019/02/10/LM-in-detail/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/31/REM-reading-report/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/02/10/LM-in-detail/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,7 +368,7 @@
 
           
           
-             <span id="/2017/10/31/REM-reading-report/" class="leancloud_visitors" data-flag-title="REM Reading Report">
+             <span id="/2019/02/10/LM-in-detail/" class="leancloud_visitors" data-flag-title="From statistical to neural - language modeling in detail">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -398,18 +399,13 @@
       
 
       
-        
-          
-          REM Reading Report &amp; Future PlanOverviewREM &amp; PoUWREM(Resource-Efficient Mining) is a new blockchain mining framework that uses trusted hardware(Intel SGX) to achieve a fraction of the waste o
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/31/REM-reading-report/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in other NLP applications. For example:</p>
+<ul>
+<li>In machine translation, we convert from text in a source language to text in a target language.</li>
+<li>In summarization, we convert from audio signal to text.</li>
+<li>In dialogue systems, we convert from the user’s input (and perhaps an external knowledge base) into a text response.</li>
+</ul>
+<h2 id="Statistical-language-models"><a href="#Statistical-language-models" class="headerlink" title="Statistical language models"></a>Statistical language models</h2><h3 id="N-gram"><a href="#N-gram" class="headerlink" title="N-gram"></a>N-gram</h3><h2 id="Evaluating-language-modeling"><a href="#Evaluating-language-modeling" class="headerlink" title="Evaluating language modeling"></a>Evaluating language modeling</h2><h2 id="Neural-language-models"><a href="#Neural-language-models" class="headerlink" title="Neural language models"></a>Neural language models</h2><h2 id="Language-model-pretraining"><a href="#Language-model-pretraining" class="headerlink" title="Language model pretraining"></a>Language model pretraining</h2>
       
     </div>
     
@@ -421,177 +417,51 @@
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Hael Chan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://haelchan.me/2019/02/10/LM-in-detail/" title="From statistical to neural - language modeling in detail">http://haelchan.me/2019/02/10/LM-in-detail/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
 
     <footer class="post-footer">
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2017/10/23/21-year-birthday-reflection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hael Chan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hael's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/23/21-year-birthday-reflection/" itemprop="url">21岁 你好</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-23T00:13:18+08:00">
-                2017-10-23
-              </time>
+              <a href="/2018/12/12/processing-corpus-with-python/" rel="next" title="Processing Corpus with Python">
+                <i class="fa fa-chevron-left"></i> Processing Corpus with Python
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T22:15:14+08:00">
-                2018-10-18
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/23/21-year-birthday-reflection/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/23/21-year-birthday-reflection/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/23/21-year-birthday-reflection/" class="leancloud_visitors" data-flag-title="21岁 你好">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          霜降。又到了这个平凡而又特殊的日子，转眼已经21岁了呐。不会矫情地慨叹“要奔三”等话语，只是轻道一句，时光太匆匆。从紫金港到玉泉，从freshman到sophomore再到junior，从懵懂无知到懵懂依旧。只是像一只蜗牛罢，一步一步倔强地往上爬。这个学期算是加入了计院的系统安全与虚拟化的实验室，和同级的佼佼者、研究生、老师同处一室，感受到自己的渺小，不过也作出了自己的小小贡献，亦愈发迫切地渴望提
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/23/21-year-birthday-reflection/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -601,342 +471,29 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2017/10/21/linuxCommands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hael Chan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hael's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/21/linuxCommands/" itemprop="url">Linux系统下常用指令</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-21T16:53:19+08:00">
-                2017-10-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-05T22:54:12+08:00">
-                2019-01-05
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/21/linuxCommands/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/21/linuxCommands/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/21/linuxCommands/" class="leancloud_visitors" data-flag-title="Linux系统下常用指令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Foreword现整理一下Linux系统下常用的指令，如无特殊说明，这些指令也都可以在macOS系统上执行。所有指令均在Ubuntu 16.04.3 LTS版本下运行通过。参考Stanford大学的Chris Gregg在YouTube上的教程
-Linux文件系统简介Linux的文件系统可以用数据结构中的树表示。使用tree指令便可以以树状结构列出目录内容（不过macOS下不能直接使用tree指令
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/21/linuxCommands/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2017/10/20/macOS-shortcuts/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hael Chan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hael's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/20/macOS-shortcuts/" itemprop="url">macOS常用快捷键整理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-20T15:46:32+08:00">
-                2017-10-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T21:28:59+08:00">
-                2018-10-18
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/20/macOS-shortcuts/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/20/macOS-shortcuts/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/20/macOS-shortcuts/" class="leancloud_visitors" data-flag-title="macOS常用快捷键整理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Foreword一些功能及其对应的符号：⌘：command    其功能与Windows系统下的Ctrl类似，例如command+C对应Windows下的Ctrl+C等。⌥：option    一般情况下需与其他功能键配合使用；在输入文字时option+字母可以快捷输入各种符号。⌃：control    注意不要与Windows的Ctrl混淆。⇧：shift    通常配合command一起使用。
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/20/macOS-shortcuts/#more" rel="contents">
-              Read more &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
   
-  
-  
-  </article>
 
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
 
         </div>
         
@@ -957,8 +514,17 @@ Linux文件系统简介Linux的文件系统可以用数据结构中的树表示�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1104,6 +670,22 @@ Linux文件系统简介Linux的文件系统可以用数据结构中的树表示�
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Statistical-language-models"><span class="nav-number">1.</span> <span class="nav-text">Statistical language models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#N-gram"><span class="nav-number">1.1.</span> <span class="nav-text">N-gram</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-language-modeling"><span class="nav-number">2.</span> <span class="nav-text">Evaluating language modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-language-models"><span class="nav-number">3.</span> <span class="nav-text">Neural language models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-model-pretraining"><span class="nav-number">4.</span> <span class="nav-text">Language model pretraining</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -1235,6 +817,10 @@ Linux文件系统简介Linux的文件系统可以用数据结构中的树表示�
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -1252,6 +838,18 @@ Linux文件系统简介Linux的文件系统可以用数据结构中的树表示�
       <script id="dsq-count-scr" src="https://hael.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://haelchan.me/2019/02/10/LM-in-detail/';
+          this.page.identifier = '2019/02/10/LM-in-detail/';
+          this.page.title = 'From statistical to neural - language modeling in detail';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hael.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
