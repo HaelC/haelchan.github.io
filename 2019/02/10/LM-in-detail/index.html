@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-10T15:53:10.000Z">
+<meta property="og:updated_time" content="2019-02-11T15:33:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="From statistical to neural - language modeling in detail">
 <meta name="twitter:description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-10T23:53:10+08:00">
-                2019-02-10
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-11T23:33:52+08:00">
+                2019-02-11
               </time>
             
           </span>
@@ -405,7 +405,11 @@
 <li>In summarization, we convert from audio signal to text.</li>
 <li>In dialogue systems, we convert from the user’s input (and perhaps an external knowledge base) into a text response.</li>
 </ul>
-<h2 id="Statistical-language-models"><a href="#Statistical-language-models" class="headerlink" title="Statistical language models"></a>Statistical language models</h2><h3 id="N-gram"><a href="#N-gram" class="headerlink" title="N-gram"></a>N-gram</h3><h2 id="Evaluating-language-modeling"><a href="#Evaluating-language-modeling" class="headerlink" title="Evaluating language modeling"></a>Evaluating language modeling</h2><h2 id="Neural-language-models"><a href="#Neural-language-models" class="headerlink" title="Neural language models"></a>Neural language models</h2><h2 id="Language-model-pretraining"><a href="#Language-model-pretraining" class="headerlink" title="Language model pretraining"></a>Language model pretraining</h2>
+<h2 id="Statistical-language-models"><a href="#Statistical-language-models" class="headerlink" title="Statistical language models"></a>Statistical language models</h2><p>Formally, the task of language modeling is to assign a probability to any sequences of words <script type="math/tex">w_1^n</script>, i.e., to estimate <script type="math/tex">P(w_1^n)</script>. The expression <script type="math/tex">w_1^n</script> means the string <script type="math/tex">w_1,w_2,...,w_n</script>. For the joint probability of each word in a sequence having a particular value <script type="math/tex">P(X=w_1,Y=w_2,Z=w_3,...,W=w_n</script>, we’ll use <script type="math/tex">P(w_1,w_2,...w_n)</script>.<br>One way to estimate the probability is to count the number of the occurrences of the sequence in a large corpus. Define <code>c(w_1...w_n)</code> to be the number of times that the sequences <script type="math/tex">w_1...w_n</script> is seen in our training corpus, and <script type="math/tex">N</script> to be the total number of sentences in the training corpus. We could then define <script type="math/tex">P(w_1^n)=\frac{c(w_1...w_n)}{N}</script>.<br>While this method of estimating probabilities directly from counts works fine in many cases, it turns out that the corpus isn’t big enough to give us good estimates in most cases. This is because language is creative; new sentences are created all the time, and we won’t always be able to count entire sentences. Even simple extensions of the example sentence may have counts of zero in our corpus.</p>
+<h3 id="N-gram"><a href="#N-gram" class="headerlink" title="N-gram"></a>N-gram</h3><h2 id="Evaluating-language-modeling"><a href="#Evaluating-language-modeling" class="headerlink" title="Evaluating language modeling"></a>Evaluating language modeling</h2><h2 id="Neural-language-models"><a href="#Neural-language-models" class="headerlink" title="Neural language models"></a>Neural language models</h2><h2 id="Language-model-pretraining"><a href="#Language-model-pretraining" class="headerlink" title="Language model pretraining"></a>Language model pretraining</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Jacob Eisenstein. 2018. Natural Language Processing (draft of November 13, 2018). <a href="https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes" target="_blank" rel="external">https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes</a>, pages 125-143.</p>
+<p>Dan Jurafsky, James H. Martin. 2018. Speech and Language Processing (3rd ed. draft, Sep. 23, 2018). <a href="https://web.stanford.edu/%7Ejurafsky/slp3/" target="_blank" rel="external">https://web.stanford.edu/%7Ejurafsky/slp3/</a>, pages 37-62.</p>
+<p>Yoav Goldberg. 2017. Neural Network Methods for Natural Language Processing. Pages 105-113.</p>
+
       
     </div>
     
@@ -679,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Statistical-language-models"><span class="nav-number">1.</span> <span class="nav-text">Statistical language models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#N-gram"><span class="nav-number">1.1.</span> <span class="nav-text">N-gram</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-language-modeling"><span class="nav-number">2.</span> <span class="nav-text">Evaluating language modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-language-models"><span class="nav-number">3.</span> <span class="nav-text">Neural language models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-model-pretraining"><span class="nav-number">4.</span> <span class="nav-text">Language model pretraining</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Statistical-language-models"><span class="nav-number">1.</span> <span class="nav-text">Statistical language models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#N-gram"><span class="nav-number">1.1.</span> <span class="nav-text">N-gram</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-language-modeling"><span class="nav-number">2.</span> <span class="nav-text">Evaluating language modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-language-models"><span class="nav-number">3.</span> <span class="nav-text">Neural language models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-model-pretraining"><span class="nav-number">4.</span> <span class="nav-text">Language model pretraining</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
