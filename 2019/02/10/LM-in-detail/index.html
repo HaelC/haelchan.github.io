@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-12T15:39:44.000Z">
+<meta property="og:updated_time" content="2019-02-13T15:01:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="From statistical to neural - language modeling in detail">
 <meta name="twitter:description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-12T23:39:44+08:00">
-                2019-02-12
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-13T23:01:26+08:00">
+                2019-02-13
               </time>
             
           </span>
@@ -408,7 +408,7 @@
 </ul>
 <h2 id="Statistical-language-models"><a href="#Statistical-language-models" class="headerlink" title="Statistical language models"></a>Statistical language models</h2><p>Formally, the task of language modeling is to assign a probability to any sequences of words <script type="math/tex">w_1^n</script>, i.e., to estimate <script type="math/tex">P(w_1^n)</script>. The expression <script type="math/tex">w_1^n</script> means the string <script type="math/tex">w_1,w_2,...,w_n</script>. For the joint probability of each word in a sequence having a particular value <script type="math/tex">P(X=w_1,Y=w_2,Z=w_3,...,W=w_n</script>, we’ll use <script type="math/tex">P(w_1,w_2,...w_n)</script>.<br>One way to estimate the probability is to count the number of the occurrences of the sequence in a large corpus. Define <code>c(w_1...w_n)</code> to be the number of times that the sequences <script type="math/tex">w_1...w_n</script> is seen in our training corpus, and <script type="math/tex">N</script> to be the total number of sentences in the training corpus. We could then define <script type="math/tex">P(w_1^n)=\frac{c(w_1...w_n)}{N}</script>.<br>While this method of estimating probabilities directly from counts works fine in many cases, it turns out that the corpus isn’t big enough to give us good estimates in most cases. This is because language is creative; new sentences are created all the time, and we won’t always be able to count entire sentences. Even simple extensions of the example sentence may have counts of zero in our corpus.</p>
 <h3 id="N-gram"><a href="#N-gram" class="headerlink" title="N-gram"></a>N-gram</h3><p>By using the chain rule of probability, we get</p>
-<script type="math/tex; mode=display">P(w_1^n)=P(w_1)P(w_2|w_1)P(w_3|w_1^2)...P(w_n|w_1^{n-1})=\prod_{k=1}^nP(w_k|w_1^{k-1})</script><p>The chain rule converts the joint probability to the product of conditional probabilities. When calculating the conditional probabilities, we can use the <strong>n-gram model</strong>, which approximates the history by just the last few words.</p>
+<script type="math/tex; mode=display">P(w_1^n)=P(w_1)P(w_2|w_1)P(w_3|w_1^2)...P(w_n|w_1^{n-1})=\prod_{k=1}^nP(w_k|w_1^{k-1})</script><p>The chain rule converts the joint probability to the product of conditional probabilities. When calculating the conditional probabilities, we can use the <strong>n-gram model</strong>, which approximates the history by just the last few words.<br>The bigram approximates the probability of a word given all the previous words <script type="math/tex">P(w_n|w_1^{n-1}</script> by using only the conditional probability of the preceding word <script type="math/tex">P(w_n|w_{n-1})</script>.<br>The assumption that the probability of a word depends only on the previous word is called a Markov assumption. Markov models are the class of probabilistic models that assume we can predict the probability of some future unit without looking too far into the past.</p>
 <h2 id="Evaluating-language-modeling"><a href="#Evaluating-language-modeling" class="headerlink" title="Evaluating language modeling"></a>Evaluating language modeling</h2><h2 id="Neural-language-models"><a href="#Neural-language-models" class="headerlink" title="Neural language models"></a>Neural language models</h2><h2 id="Language-model-pretraining"><a href="#Language-model-pretraining" class="headerlink" title="Language model pretraining"></a>Language model pretraining</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Jacob Eisenstein. 2018. Natural Language Processing (draft of November 13, 2018). <a href="https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes" target="_blank" rel="external">https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes</a>, pages 125-143.</p>
 <p>Dan Jurafsky, James H. Martin. 2018. Speech and Language Processing (3rd ed. draft, Sep. 23, 2018). <a href="https://web.stanford.edu/%7Ejurafsky/slp3/" target="_blank" rel="external">https://web.stanford.edu/%7Ejurafsky/slp3/</a>, pages 37-62.</p>
 <p>Yoav Goldberg. 2017. Neural Network Methods for Natural Language Processing. Pages 105-113.</p>
