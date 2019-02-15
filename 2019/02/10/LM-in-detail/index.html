@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-14T15:21:48.000Z">
+<meta property="og:updated_time" content="2019-02-15T15:53:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="From statistical to neural - language modeling in detail">
 <meta name="twitter:description" content="Language modeling is the task of predicting the next word or character in a document. Language models were originally developed for the problem of speech recognition; they are also widely used in othe">
@@ -346,8 +346,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-14T23:21:48+08:00">
-                2019-02-14
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-15T23:53:57+08:00">
+                2019-02-15
               </time>
             
           </span>
@@ -413,7 +413,9 @@
 <script type="math/tex; mode=display">P(w_1^n)\approx\prod_{k=1}^n(w_k|w_{k-1})</script><p>To estimate the probability, an intuitive way is maximum likelihood estimation(MLE). </p>
 <script type="math/tex; mode=display">P(w_n|w_{n-1})=\frac{C(w_{n-1}w_n)}{C(w_{n-1})}</script><p>To compute the probability of an entire sentence, it is convenient to pad the beginning and end with special symbols. E.g., a special symbol <code>&lt;s&gt;</code> at the beginning of the sentence, and a special end-symbol <code>&lt;/s&gt;</code>.<br>For the general case of MLE n-gram parameter estimation:</p>
 <script type="math/tex; mode=display">P(w_n|w_{n-N+1}^{n-1})=\frac{C(w_{n-N+1}^{n-1}w_n)}{C(w_{n-N+1}^{n-1})}</script><p>The hyperpamater <em>n</em> controls the size of the context used in each conditional probability. The bias-variance tradeoff problem lies in <em>n</em>-gram language model. A small <em>n</em>-gram size may cause high bias, and a large <em>n</em>-gram size could lead to high variance. Since the language is full of long-range dependencies, it is impossible to capture those dependencies with small n. Language is creative and variant as well, so it is hard to set n too large. </p>
-<h2 id="Evaluating-language-modeling"><a href="#Evaluating-language-modeling" class="headerlink" title="Evaluating language modeling"></a>Evaluating language modeling</h2><h2 id="Neural-language-models"><a href="#Neural-language-models" class="headerlink" title="Neural language models"></a>Neural language models</h2><h2 id="Language-model-pretraining"><a href="#Language-model-pretraining" class="headerlink" title="Language model pretraining"></a>Language model pretraining</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Jacob Eisenstein. 2018. Natural Language Processing (draft of November 13, 2018). <a href="https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes" target="_blank" rel="external">https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes</a>, pages 125-143.</p>
+<h3 id="Smoothing"><a href="#Smoothing" class="headerlink" title="Smoothing"></a>Smoothing</h3><h2 id="Evaluating-language-modeling"><a href="#Evaluating-language-modeling" class="headerlink" title="Evaluating language modeling"></a>Evaluating language modeling</h2><p><strong>Extrinsic evaluation</strong>: the best way to evaluate the performance of a language model is to embed it in an application and measure how much the application, like machine translation, improves. However, such end-to-end evaluation is hard and often expensive.<br><strong>Intrinsic evaluation</strong>: intrinsic evaluation is task-neutral, which can be used to quickly evaluate potential improvements in a language model.<br>For intrinsic evaluation, we have to use held out data, which is not used during training.</p>
+<h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3><p>Perplexity is an information theoretic measurement of how well a probability model predicts a sample. The lower perplexity, the better.</p>
+<script type="math/tex; mode=display">\text{Perplex}(w)=2^{-\frac{1}{n}\sum_{i=1}^n\log_2\text{LM}(w_i|w_1^{i-1})}</script><h2 id="Neural-language-models"><a href="#Neural-language-models" class="headerlink" title="Neural language models"></a>Neural language models</h2><h2 id="Language-model-pretraining"><a href="#Language-model-pretraining" class="headerlink" title="Language model pretraining"></a>Language model pretraining</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Jacob Eisenstein. 2018. Natural Language Processing (draft of November 13, 2018). <a href="https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes" target="_blank" rel="external">https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes</a>, pages 125-143.</p>
 <p>Dan Jurafsky, James H. Martin. 2018. Speech and Language Processing (3rd ed. draft, Sep. 23, 2018). <a href="https://web.stanford.edu/%7Ejurafsky/slp3/" target="_blank" rel="external">https://web.stanford.edu/%7Ejurafsky/slp3/</a>, pages 37-62.</p>
 <p>Yoav Goldberg. 2017. Neural Network Methods for Natural Language Processing. Pages 105-113.</p>
 
@@ -696,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#N-gram"><span class="nav-number">1.</span> <span class="nav-text">N-gram</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-language-modeling"><span class="nav-number">2.</span> <span class="nav-text">Evaluating language modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-language-models"><span class="nav-number">3.</span> <span class="nav-text">Neural language models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-model-pretraining"><span class="nav-number">4.</span> <span class="nav-text">Language model pretraining</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#N-gram"><span class="nav-number">1.</span> <span class="nav-text">N-gram</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothing"><span class="nav-number">1.1.</span> <span class="nav-text">Smoothing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-language-modeling"><span class="nav-number">2.</span> <span class="nav-text">Evaluating language modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Perplexity"><span class="nav-number">2.1.</span> <span class="nav-text">Perplexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-language-models"><span class="nav-number">3.</span> <span class="nav-text">Neural language models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-model-pretraining"><span class="nav-number">4.</span> <span class="nav-text">Language model pretraining</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
