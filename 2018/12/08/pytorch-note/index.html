@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from PyTorch official tut">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-29T15:43:28.000Z">
+<meta property="og:updated_time" content="2019-02-27T14:56:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Points on PyTorch">
 <meta name="twitter:description" content="Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from PyTorch official tut">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-29T23:43:28+08:00">
-                2019-01-29
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-27T22:56:55+08:00">
+                2019-02-27
               </time>
             
           </span>
@@ -401,7 +401,9 @@
 
       
         <p>Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from <a href="https://pytorch.org/tutorials/index.html" target="_blank" rel="external">PyTorch official tutorial</a> and <a href="https://www.udacity.com/course/deep-learning-pytorch--ud188" target="_blank" rel="external">Intro to Deep Learning with PyTorch</a> on Udacity.  </p>
-<h3 id="Tensors"><a href="#Tensors" class="headerlink" title="Tensors"></a>Tensors</h3><p><strong>Resizing the tensor</strong>  </p>
+<h3 id="Tensors"><a href="#Tensors" class="headerlink" title="Tensors"></a>Tensors</h3><p>Simply put, <code>TENSORS</code> are a generalization of vectors and matrices. In PyTorch, they are a multi-dimensional matrix containing elements of a single data type.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># From the slide PyTorch under the hood</span></div><div class="line"><span class="comment"># by Christian S. Perone</span></div><div class="line"><span class="comment"># https://speakerdeck.com/perone/pytorch-under-the-hood?slide=12</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t = torch.tensor([[<span class="number">1.</span>, <span class="number">-1.</span>], [<span class="number">1.</span>, <span class="number">-1.</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t</div><div class="line">tensor([[ <span class="number">1.</span>, <span class="number">-1.</span>],</div><div class="line">        [ <span class="number">1.</span>, <span class="number">-1.</span>]])</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t.dtype <span class="comment"># They have a type</span></div><div class="line">torch.float32</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t.shape <span class="comment"># a shape</span></div><div class="line">torch.Size([<span class="number">2</span>, <span class="number">2</span>])</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t.device <span class="comment"># and live in some device</span></div><div class="line">device(type=<span class="string">'cpu'</span>)</div></pre></td></tr></table></figure>
+<p><strong>Resizing the tensor</strong>  </p>
 <p>There are a few options to use: <code>.reshape()</code>, <code>.resize()</code> and <code>.view()</code>.</p>
 <ul>
 <li><code>w.reshape(a, b)</code> will return a new tensor with the same data as <code>w</code> with size <code>(a, b)</code>sometimes, and sometimes a clone, as in it copies the data to another part of memory</li>
