@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from PyTorch official tut">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-12T14:54:29.000Z">
+<meta property="og:updated_time" content="2019-03-16T15:35:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Points on PyTorch">
 <meta name="twitter:description" content="Today, December 8th, 2018, PyTorch 1.0 stable has been released. It is a milestone and I’d like to keep notes on PyTorch as I learn and use PyTorch. The resource mainly comes from PyTorch official tut">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-12T22:54:29+08:00">
-                2019-03-12
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-16T23:35:29+08:00">
+                2019-03-16
               </time>
             
           </span>
@@ -444,6 +444,10 @@
 <p><strong>Autograd</strong>  </p>
 <p>The <code>autograd</code> package provides automatic differentiation for all operations on Tensors. If the attribute <code>requires_grad</code> of <code>torch.Tensor</code> is set as <code>True</code>, it starts to track all operations on it. When you finished your computation you can call <code>.backward()</code> and have all the gradients computed automatically. The gradient for this tensor will be accumulated into <code>.grad</code> attribute.  </p>
 <p>For more information, refer to <a href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html" target="_blank" rel="external">autograd tutorial</a> and <a href="https://pytorch.org/docs/stable/autograd.html" target="_blank" rel="external">autograd doc</a>.</p>
+<p><strong>Testing and Validating</strong></p>
+<p>Turning off gradient descent when tesing or validating can help accelerate the process. Generally we can do the testing in the following mode:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> torch.no_grad()</div><div class="line">    <span class="comment"># testing</span></div></pre></td></tr></table></figure>
+<p>During training we want to use dropout to prevent overfitting, but during inference we want to use the entire network. So, we need to turn off dropout during validation, testing, and whenever we’re using the network to make predictions. To do this, you use <code>model.eval()</code>. This sets the model to evaluation mode where the dropout probability is 0. You can turn dropout back on by setting the model to train mode with <code>model.train()</code>.</p>
 
       
     </div>
