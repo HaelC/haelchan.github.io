@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="tips,learning note,C++," />
+  <meta name="keywords" content="learning note,tips,C++," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="I got to know something about C++ when learning CS106X-Stanford and Object-Oriented Programming-Zhejiang University . However, I haven’t learned C++ specially. In this summer vacation, I will go throu">
-<meta name="keywords" content="tips,learning note,C++">
+<meta name="description" content="I got to know something about C++ when learning CS106X-Stanford and Object-Oriented Programming-Zhejiang University . However, I haven’t learned C++ specially. In this summer vacation, I will dig into">
+<meta name="keywords" content="learning note,tips,C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ Notes">
 <meta property="og:url" content="http://haelchan.me/2019/07/03/cpp-notes/index.html">
 <meta property="og:site_name" content="Hael&#39;s Blog">
-<meta property="og:description" content="I got to know something about C++ when learning CS106X-Stanford and Object-Oriented Programming-Zhejiang University . However, I haven’t learned C++ specially. In this summer vacation, I will go throu">
+<meta property="og:description" content="I got to know something about C++ when learning CS106X-Stanford and Object-Oriented Programming-Zhejiang University . However, I haven’t learned C++ specially. In this summer vacation, I will dig into">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-04T13:33:20.000Z">
+<meta property="og:updated_time" content="2019-07-07T08:44:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Notes">
-<meta name="twitter:description" content="I got to know something about C++ when learning CS106X-Stanford and Object-Oriented Programming-Zhejiang University . However, I haven’t learned C++ specially. In this summer vacation, I will go throu">
+<meta name="twitter:description" content="I got to know something about C++ when learning CS106X-Stanford and Object-Oriented Programming-Zhejiang University . However, I haven’t learned C++ specially. In this summer vacation, I will dig into">
 
 
 
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-07-04T21:33:20+08:00">
-                2019-07-04
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-07T16:44:37+08:00">
+                2019-07-07
               </time>
             
           </span>
@@ -400,7 +400,9 @@
       
 
       
-        <p>I got to know something about C++ when learning <a href="http://web.stanford.edu/class/archive/cs/cs106x/cs106x.1174/" target="_blank" rel="external">CS106X-Stanford</a> and <a href="https://haelchan.me/2018/03/14/oop-note/">Object-Oriented Programming-Zhejiang University </a>. However, I haven’t learned C++ specially. In this summer vacation, I will go through with C++ Primer and keep notes here.  </p>
+        <p>I got to know something about C++ when learning <a href="http://web.stanford.edu/class/archive/cs/cs106x/cs106x.1174/" target="_blank" rel="external">CS106X-Stanford</a> and <a href="https://haelchan.me/2018/03/14/oop-note/">Object-Oriented Programming-Zhejiang University </a>. However, I haven’t learned C++ specially. In this summer vacation, I will dig into C++ and keep notes here.  </p>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Built-in Array (fixed size) */</span></div><div class="line"></div><div class="line"><span class="comment">// **Initialization**</span></div><div class="line"><span class="comment">// the dimension of must be a constant expression, </span></div><div class="line"><span class="comment">// or be omitted when using list initialization</span></div><div class="line"><span class="keyword">int</span> a1[<span class="number">5</span>];										<span class="comment">// if defined in a function, it will have undefined values</span></div><div class="line"><span class="keyword">int</span> a2[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;					<span class="comment">// dimension is 3</span></div><div class="line"><span class="keyword">int</span> a3[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;				<span class="comment">// equivalent to a3[] = &#123;1, 2, 3, 0, 0&#125;</span></div><div class="line"></div><div class="line"><span class="comment">// **Size**</span></div><div class="line"><span class="keyword">int</span> size = <span class="keyword">sizeof</span>(a) / <span class="keyword">sizeof</span>(*a);</div><div class="line"></div><div class="line"><span class="comment">// **Iteration**</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;								<span class="comment">// using subscript</span></div><div class="line">    <span class="comment">// a[i] ... </span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> element : a) &#123;												<span class="comment">// traverse the entire array</span></div><div class="line">    <span class="comment">// element ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">												</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> *p = begin(a); p != end(a); ++p) &#123;		  <span class="comment">// using pointer</span></div><div class="line">    <span class="comment">// *p ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// **Sort**</span></div><div class="line">sort(a, a + size);</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* vector */</span></div><div class="line"></div><div class="line"><span class="comment">// **Initialization**</span></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v0;														<span class="comment">// empty vector</span></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1(<span class="number">5</span>, <span class="number">1</span>);											<span class="comment">// 5 elements with value 1</span></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2(<span class="number">5</span>);												<span class="comment">// 5 elements with default value 0</span></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v3&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;									<span class="comment">// equivalent = vector&lt;int&gt; v3 = &#123;1, 2, 3&#125;;</span></div><div class="line"></div><div class="line"><span class="comment">// **Copy**</span></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v4(v0);</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v5 = v4;</div><div class="line"></div><div class="line"><span class="comment">// **Size**</span></div><div class="line">v.size();</div><div class="line"></div><div class="line"><span class="comment">// **Iteration**</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); ++i) &#123;</div><div class="line">    <span class="comment">// v[i] ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> ele : v) &#123;</div><div class="line">    <span class="comment">// ele ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> it = v.begin(); it != v.end(); ++it) &#123;</div><div class="line">    <span class="comment">// *it ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// **Sort**</span></div><div class="line">sort(v.begin(), v.end());</div></pre></td></tr></table></figure>
 <h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p><strong>Ways to initialize a <code>string</code></strong></p>
 <p><code>string s1;        // Default initialization; s1 is the empty string.</code></p>
 <p><code>string s2(s1);        // s2 is a copy of s1.</code>      </p>
@@ -455,9 +457,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tips/" rel="tag"># tips</a>
-          
             <a href="/tags/learning-note/" rel="tag"># learning note</a>
+          
+            <a href="/tags/tips/" rel="tag"># tips</a>
           
             <a href="/tags/C/" rel="tag"># C++</a>
           
@@ -704,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">1.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generic-Programming"><span class="nav-number">2.</span> <span class="nav-text">Generic Programming</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays"><span class="nav-number">1.</span> <span class="nav-text">Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">2.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generic-Programming"><span class="nav-number">3.</span> <span class="nav-text">Generic Programming</span></a></li></ol></div>
             
 
           </div>
