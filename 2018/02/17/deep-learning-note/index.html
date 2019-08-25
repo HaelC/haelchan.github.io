@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="learning note," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
+<meta name="keywords" content="learning note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="deep-learning-note">
+<meta property="og:url" content="http://haelchan.me/2018/02/17/deep-learning-note/index.html">
+<meta property="og:site_name" content="Hael&#39;s Blog">
+<meta property="og:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://haelchan.me/images/DL/neuron.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/ReLU.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/NNexamples.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/structured.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/scaleDrive.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/sigmoidFunction.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/logisticDerivative.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/singleNeuron.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/neuralRepre.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/x1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/a1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/justification.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/act0.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/act1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/act2.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/act3.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/dropout.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/normalization.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/shuffle.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/partition.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/biasCorrect.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/momentum.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/oldWay.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/modernWay.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/example.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/bayes.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/split.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/dataMismatch.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/transferEg.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/multi-task.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/end-to-end.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/conv.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/filter.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/edges.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/cnnEg.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/pools.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/cnnEg1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/LeNet.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/AlexNet.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/VGG.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/resError.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/shortcut.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/inceptionModule.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/inceptionNetwork.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/slidingWindows.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/RNNcell.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/RNNforward.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/one2one.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/one2many.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/many2one.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/many2many.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/many2many1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/languageModel.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/rnnUnit.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/GRU.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/LSTM.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/LSTMpic.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/conditionalLanguageModel.jpg">
+<meta property="og:image" content="http://haelchan.me/images/DL/attentionModel.jpg">
+<meta property="og:updated_time" content="2018-10-18T15:07:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="deep-learning-note">
+<meta name="twitter:description" content="Neural Networks and Deep LearningWeek One(Neural network is also introduced in Machine Learning course, with my learning note). House price Prediction can be regarded as the simplest neural network:Th">
+<meta name="twitter:image" content="http://haelchan.me/images/DL/neuron.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haelchan.me/2018/02/17/deep-learning-note/"/>
+
+
+
+
+
+  <title>deep-learning-note | Hael's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hael's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2018/02/17/deep-learning-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hael Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hael's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">deep-learning-note</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-17T20:01:32-08:00">
+                2018-02-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T08:07:30-07:00">
+                2018-10-18
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/17/deep-learning-note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/17/deep-learning-note/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/17/deep-learning-note/" class="leancloud_visitors" data-flag-title="deep-learning-note">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Neural-Networks-and-Deep-Learning"><a href="#Neural-Networks-and-Deep-Learning" class="headerlink" title="Neural Networks and Deep Learning"></a>Neural Networks and Deep Learning</h2><h3 id="Week-One"><a href="#Week-One" class="headerlink" title="Week One"></a>Week One</h3><p>(Neural network is also introduced in Machine Learning course, with <a href="http://haelchan.me/2017/11/01/machine-learning-note/#Week-Four">my learning note</a>).</p>
+<p>House price Prediction can be regarded as the simplest neural network:<br><img src="/images/DL/neuron.jpg" alt=""><br>The function can be ReLU (REctified Linear Unit), which we’ll see a lot.<br><img src="/images/DL/ReLU.jpg" alt=""></p>
+<p>This is a single neuron. A larger neural network is then formed by taking many of the single neurons and stacking them together.</p>
+<p>Almost all the economic value created by neural networks has been through <strong>supervised learning</strong>.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Input(x)</th>
+<th>Output(y)</th>
+<th>Application</th>
+<th>Neural Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>House feature</td>
+<td>Price</td>
+<td>Real estate</td>
+<td>Standard NN</td>
+</tr>
+<tr>
+<td>Ad, user info</td>
+<td>Click on ad?(0/1)</td>
+<td>Online advertising</td>
+<td>Standard NN</td>
+</tr>
+<tr>
+<td>Photo</td>
+<td>Object(Index 1,…,1000)</td>
+<td>Photo tagging</td>
+<td>CNN</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>Text transcript</td>
+<td>Speech recognition</td>
+<td>RNN</td>
+</tr>
+<tr>
+<td>English</td>
+<td>Chinese</td>
+<td>Machine translation</td>
+<td>RNN</td>
+</tr>
+<tr>
+<td>Image, Radar info</td>
+<td>Position of other cars</td>
+<td>Autonomous driving</td>
+<td>Custom/Hybrid</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Neural Network examples</strong><br><img src="/images/DL/NNexamples.jpg" alt=""><br>CNN: often for image data<br>RNN: often for one-dimensional sequence data</p>
+<p><strong>Structured data and Unstructured data</strong><br><img src="/images/DL/structured.jpg" alt=""></p>
+<p><strong>Scale drives deep learning progress</strong><br><img src="/images/DL/scaleDrive.jpg" alt=""><br>Scale: both the size of the neural network and the scale of the data.</p>
+<ul>
+<li>Data</li>
+<li>Computation</li>
+<li>Algorithms</li>
+</ul>
+<p>Using ReLU instead of sigmoid function as activation function can improve efficiency.</p>
+<h3 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h3><p><strong>Notation</strong><br><em>(x,y)</em>: a single training example. <script type="math/tex">x\in\mathbb{R}^{n_x},y\in\{0,1\}</script><br><em>m</em> training examples: <script type="math/tex">\{(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),...,(x^{(m)},y^{(m)})\}</script></p>
+<script type="math/tex; mode=display">X=\begin{bmatrix}|&|&\ &|\\x^{(1)}&x^{(2)}&...&x^{(m)}\\|&|&\ &|\end{bmatrix}</script><script type="math/tex; mode=display">X\in\mathbb{R}^{n_x\times m}</script><p>Take training set inputs x1, x2 and so on and stacking them in columns. (This make the implementation much easier than X’s transpose)</p>
+<script type="math/tex; mode=display">Y=\begin{bmatrix}y^{(1)}&y^{(2)}&...&y^{(m)}\end{bmatrix}</script><script type="math/tex; mode=display">Y\in\mathbb{R}^{1\times m}</script><h4 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h4><p><strong>Differences with former course</strong><br>Notation is a bit different from what is introduced in Machine Learning(<a href="http://haelchan.me/2017/11/01/machine-learning-note/#Week-Four">note</a>).<br>Originally, we add <script type="math/tex">x_0=1</script> so that <script type="math/tex">x\in\mathbb{R}^{n_x+1}</script>.</p>
+<script type="math/tex; mode=display">\hat{y}=\sigma(\theta^Tx)</script><p>where <script type="math/tex">\theta=\begin{bmatrix}\theta_0\\\theta_1\\\theta_2\\...\\\theta_{n_x}\end{bmatrix}</script>.</p>
+<p>Here in Deep Learning course, we use <em>b</em> to represent <script type="math/tex">\theta_0</script>, and <em>w</em> to represent <script type="math/tex">\theta_1,...,\theta_{n_m}</script>. Just keep <em>b</em> and <em>w</em> as separate parameters.<br>Given <em>x</em>, want <script type="math/tex">\hat{y}=P(y=1|x)</script>. <script type="math/tex">x\in\mathbb{R}^{n_x},0\le\hat y\le1</script><br>Parameters: <script type="math/tex">w\in\mathbb{R}^{n_x},b\in\mathbb{R}</script><br>Output: <script type="math/tex">\hat{y}=\sigma(w^Tx+b)</script><br>σ() is sigmoid function: <script type="math/tex">\sigma(z)=\frac{1}{1+e^{-z}}</script><br><img src="/images/DL/sigmoidFunction.jpg" alt=""></p>
+<p><strong>Cost Function</strong></p>
+<script type="math/tex; mode=display">\mathscr{L}(\hat{y},y)=-(y\log\hat{y}+(1-y)\log(1-\hat{y}))</script><p>If <script type="math/tex">y=1:\mathscr{L}(\hat{y},y)=-\log\hat{y}</script><br>If <script type="math/tex">y=0:\mathscr{L}(\hat{y},y)=-\log(1-\hat{y})</script></p>
+<p>Cost function:</p>
+<script type="math/tex; mode=display">J(w,b)=\frac{1}{m}\sum_{i=1}^m\mathscr{L}(\hat{y}^{(i)},y^{(i)})=-\frac{1}{m}\sum_{i=1}^m(y^{(i)}\log\hat{y}^{(i)}+(1-y^{(i)})\log(1-\hat{y}^{(i)}))</script><p>Loss function is applied to just a single training example.<br>Cost function is the cost of your parameters, it is the average of the loss functions of the entire training set.</p>
+<p><strong>Gradient Descent</strong><br>Usually initialize the value to zero in logistic regression. Random initialization also works, but people don’t usually do that for logistic regression.</p>
+<p>Repeat {</p>
+<script type="math/tex; mode=display">w:=w-\alpha\frac{\partial J(w,b)}{\partial w}</script><script type="math/tex; mode=display">b:=b-\alpha\frac{\partial J(w,b)}{\partial b}</script><p>}</p>
+<p><img src="/images/DL/logisticDerivative.jpg" alt=""><br>From forward propagation, we calculate <em>z</em>, <em>a</em> and finally <script type="math/tex">\mathscr{L}(a,y)</script><br>From back propagation, we calculate the derivatives step by step:</p>
+<script type="math/tex; mode=display">da=\frac{d\mathscr{L}(a,y)}{da}=-\frac{y}{a}+\frac{1-y}{1-a}</script><script type="math/tex; mode=display">dz=\frac{d\mathscr{L}(a,y)}{dz}=\frac{d\mathscr{L}}{da}\cdot\frac{da}{dz}=(-\frac{y}{a}+\frac{1-y}{1-a})\cdot a(1-a)=a-y</script><script type="math/tex; mode=display">dw_1=\frac{d\mathscr{L}}{dw_1}=x_1\cdot dz</script><script type="math/tex; mode=display">dw_2=x_2\cdot dz</script><script type="math/tex; mode=display">db=dz</script><p><strong>Algorithm</strong><br>(Repeat)<br>J=0; dw1,dw2,…dwn=0; db=0<br>for i = 1 to m</p>
+<script type="math/tex; mode=display">z^{(i)}=w^Tx^{(i)}+b</script><script type="math/tex; mode=display">a^{(i)}=\sigma(z^{(i)})</script><script type="math/tex; mode=display">J+=-[y^{(i)}\log a^{(i)}+(1-y^{(i)})\log(1-a^{(i)})]</script><script type="math/tex; mode=display">dz^{(i)}=a^{(i)}-y^{(i)}</script><p>  for j = 1 to n: <script type="math/tex">dw_j+=x^{(i)}_jdz^{(i)}</script></p>
+<script type="math/tex; mode=display">db+=dz^{(i)}</script><p>J /= m;<br>dw1,dw2,…,dwn /= m;<br>db /= m</p>
+<p>w1:=w1-αdw1<br>w2:=w2-αdw2<br>b:=b-αdb</p>
+<p>In the for loop, there’s no superscript i for <em>dw</em> variable, because the value of <em>dw</em> in the code is cumulative. While <em>dz</em> is referring to one training example.</p>
+<p><strong>Vectorization</strong><br>Original <code>for</code> loop:<br>for i = 1 to m</p>
+<script type="math/tex; mode=display">z^{(i)}=w^Tx^{(i)}+b</script><script type="math/tex; mode=display">a^{(i)}=\sigma(z^{(i)})</script><p>Vectorized:</p>
+<script type="math/tex; mode=display">Z=\begin{bmatrix}z^{(1)}&z^{(2)}&...&z^{(m)}\end{bmatrix}=w^TX+\begin{bmatrix}b&b&...&b\end{bmatrix}=\begin{bmatrix}w^Tx^{(1)}+b&w^Tx^{(2)}+b&...&w^Tx^{(m)}+b\end{bmatrix}</script><script type="math/tex; mode=display">A=\begin{bmatrix}a^{(1)}&a^{(2)}&...&a^{(m)}\end{bmatrix}=\sigma(z)</script><script type="math/tex; mode=display">Y=\begin{bmatrix}y^{(1)}&...&y^{(m)}\end{bmatrix}</script><script type="math/tex; mode=display">dZ=\begin{bmatrix}dz^{(1)}&dz^{(2)}&...&dz^{(m)}\end{bmatrix}=A-Y</script><p>Code:<br><code>z = np.dot(w.T, X) + b</code><br><code>dz = A - Y</code><br><code>cost = -1 / m * np.sum(Y * np.log(A) + (1 - Y) * np.log(1 - A))</code><br><code>db = 1 / m * np.sum(dZ)</code><br><code>dw = 1 / m * X * dZ.T</code></p>
+<h4 id="About-Python"><a href="#About-Python" class="headerlink" title="About Python"></a>About Python</h4><p><code>A.sum(axis = 0)</code>: sum vertically<br><code>A.sum(axis = 1)</code>: sum horizontally</p>
+<p><strong>Broadcasting</strong><br>If an (m, n) matrix operates with (+-*/) a (1, n) row vector, just expand the vector vertically to (m, n) by copying m times.<br>If an (m, n) matrix operates with a (m, 1) column vector, just expand the vector horizontally to (m, n) by copying n times.<br>If an row/column vector operates with a real number, just expand the real number to the corresponding vector.<br><a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="external">documention</a></p>
+<p><strong>Rank 1 Array</strong><br><code>a = np.random.randn(5)</code> creates a <em>rank 1 array</em> whose shape is <code>(5,)</code>.<br>Try to avoid using rank 1 array. Use <code>a = a.reshape((5, 1))</code> or <code>a = np.random.randn(5, 1)</code>.</p>
+<p>Note that <code>np.dot()</code> performs a matrix-matrix or matrix-vector multiplication. This is different from <code>np.multiply()</code> and the <code>*</code> operator (which is equivalent to <code>.*</code> in MATLAB/Octave), which performs an element-wise multiplication.</p>
+<h3 id="Week-Three"><a href="#Week-Three" class="headerlink" title="Week Three"></a>Week Three</h3><h4 id="Neural-Network-Overview"><a href="#Neural-Network-Overview" class="headerlink" title="Neural Network Overview"></a>Neural Network Overview</h4><p>Superscript with square brackets denotes the layer, superscript with round brackets refers to i’th training example.</p>
+<p><img src="/images/DL/singleNeuron.jpg" alt=""><br>Logistic regression can be regarded as the simplest neural network. The neuron takes in the inputs and make two computations: <script type="math/tex">z=w^Tx+b$,a=\sigma(z)</script></p>
+<p><img src="/images/DL/neuralRepre.jpg" alt=""><br>Neural network functions similarly. (Note that this neural network has 2 layers. When counting layers, input layer is not included.)<br>Take the first node in the hidden layer as example:</p>
+<script type="math/tex; mode=display">z^{[1]}_1=w_1^{[1]T}x+b^{[1]}_1</script><script type="math/tex; mode=display">a^{[1]}_1=\sigma(z^{[1]}_1)</script><p>The superscript <script type="math/tex">[l]</script> denotes the layer, and subscript <code>i</code> represents the node in layer.<br>Similarly,</p>
+<script type="math/tex; mode=display">z^{[1]}_2=w_2^{[1]T}x+b^{[1]}_2</script><script type="math/tex; mode=display">a^{[1]}_2=\sigma(z^{[1]}_2)</script><script type="math/tex; mode=display">z^{[1]}_3=w_1^{[1]T}x+b^{[1]}_3</script><script type="math/tex; mode=display">a^{[1]}_3=\sigma(z^{[1]}_3)</script><script type="math/tex; mode=display">z^{[1]}_4=w_1^{[1]T}x+b^{[1]}_4</script><script type="math/tex; mode=display">a^{[1]}_4=\sigma(z^{[1]}_4)</script><p>Vectorization:</p>
+<script type="math/tex; mode=display">z^{[1]}=\begin{bmatrix}-&w_1^{[1]}&-\\-&w_2^{[1]}&-\\-&w_3^{[1]}&-\\-&w_4^{[1]}&-\end{bmatrix}\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}+\begin{bmatrix}b_1^{[1]}\\b_2^{[1]}\\b_3^{[1]}\\b_4^{[1]}\end{bmatrix}=\begin{bmatrix}w_1^{[1]T}x+b_1^{[1]}\\w_2^{[1]T}x+b_2^{[1]}\\w_3^{[1]T}x+b_3^{[1]}\\w_4^{[1]T}x+b_4^{[1]}\end{bmatrix}=\begin{bmatrix}z^{[1]}_1\\z^{[1]}_2\\z^{[1]}_3\\z^{[1]}_4\end{bmatrix}</script><script type="math/tex; mode=display">a^{[1]}=\begin{bmatrix}a_1^{[1]}\\a^{[1]}_2\\a^{[1]}_3\\a^{[1]}_4\end{bmatrix}=\sigma(z^{[1]})</script><p>Formula:</p>
+<script type="math/tex; mode=display">z^{[1]}=W^{[1]}a[0]+b^{[1]}</script><script type="math/tex; mode=display">a^{[1]}=\sigma(z^{[1]})</script><script type="math/tex; mode=display">z^{[2]}=W^{[2]}a^{[1]}+b^{[2]}</script><script type="math/tex; mode=display">a^{[2]}=\sigma(z^{[2]})</script><p>(dimensions: <script type="math/tex">z^{[1]}:(4,1),W^{[1]}:(4,3),a^{[0]}:(3,1),b^{[1]}:(4,1),a^{[1]}:(4,1);z^{[2]}:(1,1),W^{[2]}:(1,4),b^{[2]}:(1,1),a^{[2]}:(1,1)</script>)</p>
+<p>Vectorizing across multiple examples:</p>
+<script type="math/tex; mode=display">Z^{[1]}=W^{[1]}X+b^{[1]}</script><script type="math/tex; mode=display">A[1]=\sigma(Z^{[1]})</script><script type="math/tex; mode=display">Z^{[2]}=W^{[2]}A^{[1]}+b^{[2]}</script><script type="math/tex; mode=display">A^{[2]}=\sigma(Z^{[2]})</script><p>Explanation<br><img src="/images/DL/x1.jpg" alt=""><br><img src="/images/DL/a1.jpg" alt=""><br>Stack elements in column.<br>Each column represents a training example, each row represents a hidden unit.</p>
+<p><img src="/images/DL/justification.jpg" alt=""></p>
+<h4 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h4><p><strong>Sigmoid Function</strong></p>
+<script type="math/tex; mode=display">a=\frac{1}{1+e^{-z}}</script><p><img src="/images/DL/act0.jpg" alt=""><br>Only used in binary classification’s output layer(with output 0 or 1).<br>Not used in other occasion. <code>tanh</code> is a better choice.</p>
+<script type="math/tex; mode=display">g'(z)=\frac{d}{dz}g(z)=\frac{1}{1+e^{-z}}(1-\frac{1}{1+e^{-z}})=a(1-a)</script><p><strong>tanh Function</strong></p>
+<script type="math/tex; mode=display">a=\tanh(z)=\frac{e^z-e^{-z}}{e^z+e^{-z}}</script><p><img src="/images/DL/act1.jpg" alt=""><br>With a range of <script type="math/tex">(-1,1)</script>, it performs better than sigmoid function because the mean of its output is closer to zero.<br>Both sigmoid and tanh function have a disadvantage that when <em>z</em> is very large(<script type="math/tex">\to\infty</script>) or very small(<script type="math/tex">\to-\infty</script>), the derivative can be close to 0, so the gradient descent would be very slow.</p>
+<script type="math/tex; mode=display">g'(z)=\frac{d}{dz}g(z)=1-(tanh(z)^2)=1-a^2</script><p><strong>ReLU</strong></p>
+<script type="math/tex; mode=display">a=\max(0,z)</script><p><img src="/images/DL/act2.jpg" alt=""><br>Default choice of activation function.<br>With <script type="math/tex">g'(z)=1</script> when z is positive, it performs well in practice.<br>(Although the <code>g&#39;(z)=0</code> when z is positive, and technically the derivative when <script type="math/tex">z=0</script> is not well-defined)</p>
+<p><strong>Leaky ReLU</strong></p>
+<script type="math/tex; mode=display">a=\max(0.01z,z)</script><p><img src="/images/DL/act3.jpg" alt=""><br>Makes sure that derivatives not equal to 0 when z &lt; 0.</p>
+<p>Linear Activation Function</p>
+<script type="math/tex; mode=display">g(z)=z</script><p>Also called identity function.<br>Not used in neural network, because even many hidden layers still gets a linear result. Just used in machine learning when the output is a real number.</p>
+<h4 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a>Gradient descent</h4><p>Forward propagation:</p>
+<script type="math/tex; mode=display">Z^{[1]}=W^{[1]}X+b^{[1]}</script><script type="math/tex; mode=display">A^{[1]}=g^{[1]}(Z^{[1]})</script><script type="math/tex; mode=display">Z^{[2]}=W^{[2]}A^{[1]}+b^{[2]}</script><script type="math/tex; mode=display">A^{[2]}=g^{[2]}(Z^{[2]})</script><p>Backward propagation:</p>
+<script type="math/tex; mode=display">dZ^{[2]}=A^{[2]}-Y</script><script type="math/tex; mode=display">dW^{[2]}=\frac{1}{m}dZ^{[2]}A^{[1]T}</script><script type="math/tex; mode=display">db^{[2]}=\frac{1}{m}np.sum(dZ^{[2]},axis=1,keepdims=True)</script><script type="math/tex; mode=display">dZ^{[1]}=W^{[2]T}dZ^{[2]}*g^{[1]'}(Z^{[1]})</script><script type="math/tex; mode=display">dW^{[1]}=\frac{1}{m}dZ^{[1]}X^T</script><script type="math/tex; mode=display">db^{[1]}=\frac{1}{m}np.sum(dZ^{[1]},axis=1,keepdims=True)</script><p>note:<br><code>keepdims=True</code> makes sure that Python won’t produce <em>rank-1 array</em> with shape of <code>(n,)</code>.<br><code>*</code> is element-wise product. <script type="math/tex">dZ^{[1]}</script>:(n[1],m);<script type="math/tex">W^{[2]T}dZ^{[2]}</script>:(n[1],m);<script type="math/tex">g^{[1]'}(Z^{[1]})</script>:(n[1],m).</p>
+<h4 id="Random-Initialization"><a href="#Random-Initialization" class="headerlink" title="Random Initialization"></a>Random Initialization</h4><p>In logistic regression, it’s okay to initialize all parameters to zero. However, it’s not feasible in neural network.<br>Instead, initialize <em>w</em> with <strong>random small</strong> value to break symmetry.  It’s okay to initialize <em>b</em> to zeros. Symmetry is still broken so long as <script type="math/tex">W^{[l]}</script> is initialized randomly.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">W1 = np.random.randn((2, 2)) * 0.01</div><div class="line">b1 = np.zeros((2, 1))</div><div class="line">W2 = np.random.randn((1, 2)) * 0.01</div><div class="line">b2 = 0</div></pre></td></tr></table></figure>
+<p><strong>Random</strong><br>If the parameter <em>w</em> are all zeros, then the neurons in hidden layers are symmetric(“identical”). Even if after gradient descent, they keep the same. So use random initialization.</p>
+<p><strong>Small</strong><br>Both sigmoid and tanh function has greatest derivative at <code>z=0</code>. If <em>z</em> had large or small value, the derivative would be close to zero, and consequently gradient descent would be slow. Thus, it’s a good choice to make the value small.</p>
+<h3 id="Week-Four"><a href="#Week-Four" class="headerlink" title="Week Four"></a>Week Four</h3><p><strong>Deep neural network notation</strong><br>-<script type="math/tex">l</script>: number of layers<br>-<script type="math/tex">n^{[l]}</script>: number of units in layer <em>l</em><br>-<script type="math/tex">a^{[l]}</script>: activations in layer <em>l</em>. <script type="math/tex">a^{[l]}=g^{[l]}(z^{[l]})</script><br>(<script type="math/tex">a^{[0]}=x, a^{[l]}=\hat{y}</script>)<br>-<script type="math/tex">W^{[l]}</script>: weights for <script type="math/tex">z^{[l]}</script><br>-<script type="math/tex">b^{[l]}</script>: bias for <script type="math/tex">z^{[l]}</script></p>
+<p><strong>Forward Propagation</strong><br>for l = 1 to L:</p>
+<script type="math/tex; mode=display">Z^{[l]}=W^{[l]}A^{[l-1]}+b^{[l]}</script><script type="math/tex; mode=display">A^{[l]}=g^{[l]}(Z^{[l]})</script><p>Well, this <code>for</code> loop is inevitable.</p>
+<p><strong>Matrix Dimensions</strong><br>-<script type="math/tex">W^{[l]}=dW^{[l]}:(n^{[l]},n^{[l-1]})</script><br>-<script type="math/tex">b^{[l]}=db^{[l]}:(n^{[l]},m)</script>(here the dimension can be <script type="math/tex">(n^{[l]},1)</script> with Python’s broadcasting)<br>-<script type="math/tex">Z^{[l]}=A^{[l]}:(n^{[l]},m)</script><br>-<script type="math/tex">dZ^{[l]}=dA^{[l]}=Z^{[l]}=A^{[l]}</script></p>
+<p><strong>cache</strong><br><em>Cache</em> is used to pass variables computed during forward propagation to the corresponding backward propagation step. It contains useful values for backward propagation to compute derivatives.</p>
+<p>Why deep representations?<br>Informally: There are functions you can compute with a “small” L-layer deep neural network that shallower networks require exponentially more hidden units to compute.</p>
+<h4 id="Forward-and-Backward-Propagation"><a href="#Forward-and-Backward-Propagation" class="headerlink" title="Forward and Backward Propagation"></a>Forward and Backward Propagation</h4><p><strong>Forward propagation for layer l</strong><br>Input <script type="math/tex">a^{[l-1]}</script><br>Output <script type="math/tex">a^{[l]}</script>, cache <script type="math/tex">(z^{[l]})</script></p>
+<script type="math/tex; mode=display">Z^{[l]}=W^{[l]}A^{[l-1]}+b^{[l]}</script><script type="math/tex; mode=display">A^{[l]}=g^{[l]}(Z^{[l]})</script><p><strong>Backward propagation for layer l</strong><br>Input <script type="math/tex">da^{[l]}</script><br>Output <script type="math/tex">da^{[l-1]},dW^{[l]},db^{[l]}</script></p>
+<script type="math/tex; mode=display">dZ^{[l]}=dA^{[l]}*g^{[l]'}(Z^{[l]})</script><script type="math/tex; mode=display">dW^{[l]}=\frac{1}{m}dZ^{[l]}A^{[l-1]T}</script><script type="math/tex; mode=display">db^{[l]}=\frac{1}{m}np.sum(dZ^{[l]},axis=1,keepdims=True)</script><script type="math/tex; mode=display">dA^{[l-1]}=W^{[l]T}dZ^{[l]}</script><h4 id="Hyperparameters-and-Parameters"><a href="#Hyperparameters-and-Parameters" class="headerlink" title="Hyperparameters and Parameters"></a>Hyperparameters and Parameters</h4><p>Hyperparameters determine the final value parameters.</p>
+<p><strong>Parameters</strong><br>· <script type="math/tex">W^{[1]},b^{[1]},W^{[2]},b^{[2]},W^{[3]},b^{[3]}...</script></p>
+<p><strong>Hyperparameters</strong><br>· learning rate <script type="math/tex">\alpha</script><br>· number of iterations<br>· number of hidden layers <script type="math/tex">L</script><br>· number of hidden units <script type="math/tex">n^{[1]},n^{[2]},...</script><br>· choice of activation function<br>· momentum, minibatch size, regularizations, etc.</p>
+<h2 id="Improving-Deep-Neural-Networks-Hyperparameter-tuning-Regularization-and-Optimization"><a href="#Improving-Deep-Neural-Networks-Hyperparameter-tuning-Regularization-and-Optimization" class="headerlink" title="Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization"></a>Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization</h2><h3 id="Week-One-1"><a href="#Week-One-1" class="headerlink" title="Week One"></a>Week One</h3><h4 id="Setting-up-your-Machine-Learning-Application"><a href="#Setting-up-your-Machine-Learning-Application" class="headerlink" title="Setting up your Machine Learning Application"></a>Setting up your Machine Learning Application</h4><h5 id="Train-dev-test-sets"><a href="#Train-dev-test-sets" class="headerlink" title="Train/dev/test sets"></a>Train/dev/test sets</h5><p><strong>Training set</strong>:<br>Keep on training algorithms on the training sets.</p>
+<p><strong>Development set</strong><br>Also called <em>Hold-out cross validation set</em>, <em>Dev set</em> for short.<br>Use <em>dev set</em> to see which of many different models performs best on the <em>dev set</em>.</p>
+<p><strong>Test set</strong><br>To get an unbiased estimate of how well your algorithm is doing.</p>
+<p><strong>Proportion</strong><br>Previous era: the data amount is not too large, it’s common to take all the data and split it as 70%/30% or 60%/20%/20%.<br>Big data: there’re millions of examples, 10000 examples used in dev set and 10000 examples used in test set is enough. The proportion can be 98/1/1 or even 99.5/0.4/0.1</p>
+<p><strong>Notes</strong><br>Make sure dev set and test set come from same distribution.</p>
+<p>Not having a test set might be okay if it’s not necessary to get an unbiased estimate of performance. Though dev set is called ‘test set’ if there’s no real test set.</p>
+<h5 id="Bias-Variance"><a href="#Bias-Variance" class="headerlink" title="Bias/Variance"></a>Bias/Variance</h5><p><strong>Solutions</strong><br>High bias:<br>Bigger network<br>Train longer<br>(Neural network architecture search)</p>
+<p>High variance:<br>More data<br>Regularization<br>(Neural network architecture search)</p>
+<p><strong>Bias Variance trade-off</strong><br>Originally, reducing bias may increase variance, and vice versa. So it’s necessary to trade-off between bias and variance.<br>But in deep learning, there’re ways to reduce one without increasing another. So don’t worry about bias variance trade-off.</p>
+<h4 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h4><h5 id="L2-Regularization"><a href="#L2-Regularization" class="headerlink" title="L2 Regularization"></a>L2 Regularization</h5><p><strong>Logistic regression</strong></p>
+<script type="math/tex; mode=display">J(w,b)=\frac{1}{m}\sum_{i=1}^m\mathscr{L}(\hat{y},y^{(i)})+\frac{\lambda}{2m}||w||_2^2</script><p>L2-regularization relies on the assumption that a model with small weights is simpler than a model with large weights. Thus, by penalizing the square values of the weights in the cost function you drive all the weights to smaller values. It becomes too costly for the cost to have large weights! This leads to a smoother model in which the output changes more slowly as the input changes.<br>Weights end up smaller(“weight decay”): Weights are pushed to smaller values.<br><em>L2 regularization</em>: <script type="math/tex">||w||_2^2=\sum_{j=1}^{n_x}w_j^2=w^Tw</script><br>L1 regularization: <script type="math/tex">||w||_1=\sum_{j=1}^{n_x}|w_j|</script><br>(L1 regularization leads <script type="math/tex">w</script> to be sparse, but not very effictive)</p>
+<p><strong>Neural network</strong></p>
+<script type="math/tex; mode=display">J(w^{[1]},b^{[1]},...,w^{[L]},b^{[L]})=\frac{1}{m}\sum_{i=1}^m\mathscr{L}(\hat{y},y^{(i)})+\frac{\lambda}{2m}\sum_{l=1}^L||w^{[l]}||_F^2</script><p>-<script type="math/tex">||w^{[l]}||_F^2=\sum_{i=1}^{n^{[l]}}\sum_{j=1}^{n^{[l-1]}}(w_{ij}^{[l]})^2</script>, it’s called <em>Frobenius norm</em> which is different from Euclidean distance.</p>
+<p>Back propagation:</p>
+<script type="math/tex; mode=display">dW^{[l]}=(from\ backprop)+\frac{\lambda}{m}W^{[l]}</script><script type="math/tex; mode=display">W^{[l]}:=W^{[l]}-\alpha dW^{[l]}</script><h5 id="Dropout-regularization"><a href="#Dropout-regularization" class="headerlink" title="Dropout regularization"></a>Dropout regularization</h5><p>With dropout, what we’re going to do is go through each of the layers of the network and set some probability of eliminating a node in neural network.<br>For each training example, you would train it using one of these neural based networks.<br>The idea behind drop-out is that at each iteration, you train a different model that uses only a subset of your neurons. With dropout, your neurons thus become less sensitive to the activation of one other specific neuron, because that other neuron might be shut down at any time.<br><img src="/images/DL/dropout.jpg" alt=""><br>Usually used in Computer Vision.</p>
+<p><strong>Implementation with layer 3</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d3 = np.random.rand(a3.shape[<span class="number">0</span>], a3.shape[<span class="number">1</span>]) &lt; keep_prob <span class="comment"># boolean matrix with 0/1</span></div><div class="line">a3 = np.multiply(a3, d3)  <span class="comment"># a3 *= d3, element-wise multiply</span></div><div class="line">a3 /= keep_prob <span class="comment"># ensures that the expected value of a3 remains the same. Make test time easier because of less scaling problem</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Dropout is a regularization technique.</li>
+<li>You only use dropout during training. Don’t use dropout (randomly eliminate nodes) during test time.</li>
+<li>Apply dropout both during forward and backward propagation.</li>
+<li>During training time, divide each dropout layer by keep_prob to keep the same expected value for the activations. For example, if keep_prob is 0.5, then we will on average shut down half the nodes, so the output will be scaled by 0.5 since only the remaining half are contributing to the solution. Dividing by 0.5 is equivalent to multiplying by 2. Hence, the output now has the same expected value. You can check that this works even when keep_prob is other values than 0.5.</li>
+</ul>
+<h5 id="Other-regularization-methods"><a href="#Other-regularization-methods" class="headerlink" title="Other regularization methods"></a>Other regularization methods</h5><p><strong>Data augmentation</strong><br>Take image input for example. Flipping the image horizontally, rotating and sort of randomly zooming, distortion, etc.<br>Get more training set without paying much to reduce overfitting.</p>
+<p><strong>Early stopping</strong><br>Stop early so that <script type="math/tex">||w||_F^2</script> is relatively small.<br>Early stopping violates <em>Orthogonalization</em>, which suggests separate <strong>Optimize cost function J</strong> and <strong>Not overfit</strong>.</p>
+<h4 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h4><h5 id="Normalizing-inputs"><a href="#Normalizing-inputs" class="headerlink" title="Normalizing inputs"></a>Normalizing inputs</h5><p><strong>Subtract mean</strong></p>
+<script type="math/tex; mode=display">\mu=\frac{1}{m}\sum_{i=1}^mx^{(i)}</script><script type="math/tex; mode=display">x:=x-\mu</script><p><strong>Normalize variance</strong></p>
+<script type="math/tex; mode=display">\sigma^2=\frac{1}{m}\sum_{i=1}^mx^{(i)}**2</script><script type="math/tex; mode=display">x/=\sigma^2</script><p>Note: use same <script type="math/tex">\mu,\sigma^2</script> to normalize test set.</p>
+<p>Intuition:<br><img src="/images/DL/normalization.jpg" alt=""></p>
+<h5 id="Vanishing-Exploding-gradients"><a href="#Vanishing-Exploding-gradients" class="headerlink" title="Vanishing/Exploding gradients"></a>Vanishing/Exploding gradients</h5><p>Since the number of layers in deep learning may be quite large, the product of <em>L</em> layers may tend to <script type="math/tex">\infty</script> or <script type="math/tex">0</script>. (just think about <script type="math/tex">1.001^{1000}</script> and <script type="math/tex">0.999^{1000}</script>)</p>
+<p><strong>Weight initialization for deep networks</strong><br>Take a single neuron as example: <script type="math/tex">z=w_1x_1+w_2x_2+...+w_nx_n</script><br>If <script type="math/tex">n</script> is large, then <script type="math/tex">w_i</script> would be smaller. Our goal is to get <script type="math/tex">Var(w:)=\frac{1}{n}or\frac{2}{n}</script></p>
+<p>Random initialization for ReLU:(known as He initialization, named for the first author of He et al., 2015.)</p>
+<script type="math/tex; mode=display">W^{[l]}=np.random.randn(shape.)*np.sqrt(\frac{2}{n^{[l-1]}})</script><p>For tanh: use <script type="math/tex">\sqrt(\frac{1}{n^{[l-1]}})</script><br>Xavier initialization: <script type="math/tex">\sqrt(\frac{2}{n^{[l-1]}+n^{[l]}})</script></p>
+<h5 id="Gradient-checking"><a href="#Gradient-checking" class="headerlink" title="Gradient checking"></a>Gradient checking</h5><script type="math/tex; mode=display">g(\theta)=\frac{f(\theta+\epsilon)-f(\theta-\epsilon)}{2\epsilon}</script><p>Take <script type="math/tex">W^{[1]},b^{[1]},...,W^{[L]},b^{[L]}</script> and reshape into a big vector <script type="math/tex">\theta</script>: <script type="math/tex">J(W^{[1]},b^{[1]},...,W^{[L]},b^{[L]})=J(\theta)</script><br>Take <script type="math/tex">dW^{[1]},db^{[1]},...,dW^{[L]},db^{[L]}</script> and reshape into a big vector <script type="math/tex">d\theta</script></p>
+<p>for each i:<br>  -<script type="math/tex">d\theta_{approx}[i]=\frac{J(\theta_1,\theta_2,...,\theta_i+\epsilon,...)-J(\theta_1,\theta_2,...,\theta_i-\epsilon,...)}{2\epsilon}</script></p>
+<p>check if <script type="math/tex">d\theta_{approx}\approx d\theta</script>?<br>Calculate <script type="math/tex">\frac{||d\theta_{approx}-d\theta||_2}{||d\theta_{approx}||_2+||d\theta||}</script>. (<script type="math/tex">10^{-7}</script> is great)</p>
+<p><strong>Note</strong><br>Gradient checking verifies closeness between the gradients from backpropagation and the numerical approximation of the gradient (computed using forward propagation).<br>Gradient checking is slow, so we don’t run it in every iteration of training. You would usually run it only to make sure your code is correct, then turn it off and use backprop for the actual learning process.</p>
+<ul>
+<li>Don’t use in training - only to debug.</li>
+<li>If algorithm fails grad check, look at components to try to identify bug.</li>
+<li>Remember regularization.</li>
+<li>Doesn’t work with dropout.</li>
+<li>Run at random initialization; perhaps again after some training.</li>
+</ul>
+<h3 id="Week-Two-1"><a href="#Week-Two-1" class="headerlink" title="Week Two"></a>Week Two</h3><h4 id="Mini-batch-gradient-descent"><a href="#Mini-batch-gradient-descent" class="headerlink" title="Mini-batch gradient descent"></a>Mini-batch gradient descent</h4><p>Batch gradient descent (original gradient descent that we’ve known) calculates the entire training set, and just update the parameters <script type="math/tex">W,b</script> a little step. If the training set is pretty large, the training would be quite slow. And the idea of mini-batch gradient descent is use part of the training set, and update the parameters faster.<br>For example, if <script type="math/tex">X</script>‘s dimension is <script type="math/tex">(n_x,m)</script>, divide the training set into parts with dimension of <script type="math/tex">(n_x,1000)</script>, i.e. <script type="math/tex">X^{\{1\}}=[x^{(1)}\ x^{(2)}\ ...\ x^{(1000}],X^{\{2\}}=[x^{(1001)}\ x^{(1002)}\ ...\ x^{(2000)}],...</script><br>Similarly, <script type="math/tex">Y^{\{1\}}=[y^{(1)}\ y^{(2)}\ ...\ y^{(1000}],Y^{\{2\}}=[y^{(1001)}\ y^{(1002)}\ ...\ y^{(2000)}],...</script>.<br>One iteration of mini-batch gradient descent(computing on a single mini-batch) is faster than one iteration of batch gradient descent.</p>
+<p>Two steps of mini-batch gradient descent:<br><img src="/images/DL/shuffle.jpg" alt=""><br><img src="/images/DL/partition.jpg" alt=""></p>
+<p>repeat {<br>　for t = 1,…,5000 {<br>　　Forward prop on <script type="math/tex">X^{\{t\}}</script><br>　　　<script type="math/tex">Z^{[1]}=W^{[1]}X^{\{t\}}+b^{[1]}</script><br>　　　<script type="math/tex">A^{[1]}=g^{[1]}(Z^{[1]})</script><br>　　　…<br>　　　<script type="math/tex">A^{[L]}=g^{[L]}(Z^{[L]})</script><br>　　Compute cost <script type="math/tex">J^{\{t\}}=\frac{1}{1000}\sum_{i=1}^l\mathscr{L}(\hat{y}^{(i)},y^{(i)})+\frac{\lambda}{2*1000}\sum_l||W^{[l]}||_F^2)</script><br>　　Backprop to compute gradients cost <script type="math/tex">J^{\{t\}}</script> (using <script type="math/tex">(X^{\{t\}},Y^{\{t\}})</script>)<br>　　<script type="math/tex">W^{[l]}:=W^{[l]}-\alpha dW^{[l]},b^{[l]}:=b^{[l]}-\alpha db^{[l]}</script>　<br>　}    <em># this is called 1 epoch</em><br>}</p>
+<p><strong>Choosing mini-batch size</strong><br>Mini-batch size = m: Batch gradient descent. <script type="math/tex">(X^{\{1\}},Y^{\{1\}})=(X,Y)</script><br>It has to process the whole training set before making progress, which takes too long for per iteration.</p>
+<p>Mini-batch size = 1: Stochastic gradient descent. <script type="math/tex">(X^{\{1\}},Y^{\{1\}})=(X^{(1)},Y^{(1)})</script><br>It loses the benefits of vectorization across examples.</p>
+<p>Mini-batch size in between 1 and m.<br>Fastest learning: using vectorization and make process without processing entire training set.</p>
+<p>If training set is small(m≤2000): just use batch gradient descent.<br>Typical mini-batch sizes: 64, 128, 256, 512 (1024)</p>
+<h4 id="Exponentially-weighted-averages"><a href="#Exponentially-weighted-averages" class="headerlink" title="Exponentially weighted averages"></a>Exponentially weighted averages</h4><script type="math/tex; mode=display">v_t=\beta v_{t-1}+(1-\beta)\theta_t</script><p>E.g.<br>-<script type="math/tex">v_{100}=0.9v_{99}+0.1\theta_{100}</script><br>-<script type="math/tex">v_{99}=0.9v_{98}+0.1\theta_{99}</script><br>-<script type="math/tex">v_{98}=0.9v_{97}+0.1\theta_{98}</script><br>-<script type="math/tex">...</script><br>Replace <script type="math/tex">v_{99}</script> with the second equation, then replace <script type="math/tex">v_{98}</script> with the third equation, and so on. Finally we’d get <script type="math/tex">v_{100}=0.1\theta_{100}+0.1*0.9\theta_{99}+0.1*0.9^2\theta_{98}+...+0.1*0.9^{99}\theta_1</script><br>This is why it is called <em>exponentially weighted averages</em>. In practice, <script type="math/tex">0.9^{10}\approx0.35\approx\frac{1}{e}</script>, thus it show an average of 10 examples.</p>
+<p><strong>Bias correction</strong><br><img src="/images/DL/biasCorrect.jpg" alt=""><br>As is shown above, the purple line is exponentially weighted average without bias correction, it’s much lower than the exponentially weighted average with bias correction(green line) at the very beginning.<br>Since <script type="math/tex">v_0</script> is set to be zero(and assume <script type="math/tex">\beta=0.98</script>), the first calculation <script type="math/tex">v_1=0.98v_0+0.02\theta_1</script> has quite small result. The result is small until t gets larger(say <script type="math/tex">t=50</script> for <script type="math/tex">\beta=0.98</script>) To avoid such situation, bias correction introduces another step:</p>
+<script type="math/tex; mode=display">\frac{v_t}{1-\beta^t}</script><h4 id="Gradient-descent-with-momentum"><a href="#Gradient-descent-with-momentum" class="headerlink" title="Gradient descent with momentum"></a>Gradient descent with momentum</h4><p>Set <script type="math/tex">v_{dW}=0,v_{db}=0</script><br>On iteration t:<br>　Compute <em>dW,db</em> on the current mini-batch<br>　<script type="math/tex">v_{dW}=\beta v_{dW}+(1-\beta)dW</script><br>　<script type="math/tex">v_{db}=\beta v_{db}+(1-\beta)db</script><br>　<script type="math/tex">W=W-\alpha v_{dW},b=b-\alpha v_{db}</script><br>　<br><img src="/images/DL/momentum.jpg" alt=""><br>Momentum takes past gradients into account to smooth out the steps of gradient. Gradient descent with momentum has the same idea as exponentially weighted average(while some may not use <script type="math/tex">(1-\beta)</script> in momentum). Just as the example shown above, we want slow learning horizontally and faster learning vertically. The exponentially weighted average helps to eliminate the horizontal oscillation and makes gradient descent faster. Note there’s no need for gradient descent with momentum to do bias correction. After several iterations, the algorithm will be okay.</p>
+<h4 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h4><p>On iteration t:<br>　Compute <em>dW,db</em> on the current mini-batch<br>　<script type="math/tex">s_{dW}=\beta_2S_{dW}+(1-\beta)dW^2</script><br>　<script type="math/tex">s_{db}=\beta_2S_{db}+(1-\beta)db^2</script><br>　<script type="math/tex">W:=W-\alpha\frac{dW}{\sqrt{s_{dW}+\epsilon}},b:=b-\alpha\frac{db}{\sqrt{s_{db}+\epsilon}}</script></p>
+<p>RMS means Root Mean Square, it uses division to help to adjust gradient descent.</p>
+<h4 id="Adam-optimization-algorithm"><a href="#Adam-optimization-algorithm" class="headerlink" title="Adam optimization algorithm"></a>Adam optimization algorithm</h4><p>Combine momentum and RMSprop together:<br>1.It calculates an exponentially weighted average of past gradients, and stores it in variable <em>v</em> (before bias correction) and <em>v_corrected</em> (with bias correction).<br>2.It calculates an exponentially weighted average of the squares of the past gradients, and stores it in variable <em>s</em> (before bias correction) and <em>s_corrected</em> (with bias correction).<br>3.It updates parameters in a direction based on combining information from <em>1</em> and <em>2</em>.</p>
+<p>Set <script type="math/tex">v_{dW}=0,S_{dW}=0,v_{db}=0,S_{db}=0</script><br>On iteration t:<br>　Compute <em>dW,db</em> on the current mini-batch<br>　<script type="math/tex">v_{dW}=\beta_1v_{dW}+(1-\beta_1)dW,v_{db}=\beta_1V_{db}+(1-\beta_1)db</script><br>　<script type="math/tex">s_{dW}=\beta_2s_{dW}+(1-\beta_2)dW^2,s_{db}=\beta_2S_{db}+(1-\beta_2)db^2</script><br>　<script type="math/tex">v_{dW}^{corrected}=v_{dW}/(1-\beta^t_1),v_{db}^{corrected}=v_{db}/(1-\beta^t_1)</script><br>　<script type="math/tex">s_{dW}^{corrected}=s_{dW}/(1-\beta^t_2),s_{db}^{corrected}=s_{db}/(1-\beta_2^t)</script><br>　<script type="math/tex">W:=W-\alpha\frac{V_{dW}^{corrected}}{\sqrt{S_{dW}^{corrected}}+\epsilon},b:=b-\alpha\frac{V_{db}^{corrected}}{\sqrt{S_{db}^{corrected}}+\epsilon}</script></p>
+<p>Hyperparameters:<br>-<script type="math/tex">\alpha</script>: needs to be tune<br>-<script type="math/tex">\beta_1</script>: 0.9<br>-<script type="math/tex">\beta_2</script>: 0.999<br>-<script type="math/tex">\epsilon$:10^{-8}</script></p>
+<p>(<strong>Adam</strong> just means Adaption moment estimation)</p>
+<h4 id="Learning-rate-decay"><a href="#Learning-rate-decay" class="headerlink" title="Learning rate decay"></a>Learning rate decay</h4><p>Mini-batch gradient descent won’t converge, but step around at the optimal instead. To help converge, it’s advisable to decay learning rate with the number of iterations.<br>Some formula:<br>-<script type="math/tex">\alpha=\frac{1}{1+decay-rate*epoch-num}\alpha_0</script><br>-<script type="math/tex">\alpha=0.95^{epoch-num}\alpha_0</script><br>-<script type="math/tex">\alpha=\frac{k}{\sqrt{epoch-num}}\alpha_0</script><br>-discrete stair case (half α after some iterations)<br>-manual decay</p>
+<h3 id="Week-Three-1"><a href="#Week-Three-1" class="headerlink" title="Week Three"></a>Week Three</h3><h4 id="Hyperparameter-tuning"><a href="#Hyperparameter-tuning" class="headerlink" title="Hyperparameter tuning"></a>Hyperparameter tuning</h4><p>Hyperparameters: <script type="math/tex">\alpha,\beta,\beta_1,\beta_2,\epsilon</script>, number of layers, number of units, learning rate decay, mini-batch size, etc.<br>Priority: <script type="math/tex">\alpha>\beta,\#hidden\ units,mini-batch\ size>\#layers,learning\ rate\ decay</script></p>
+<p>Try to use random values of hyperparameters rather than grid.<br><em>Coarse to fine</em>: if finds some region with good result, try more in that region.</p>
+<p>Appropriate scale:<br>It’s okay to sample uniformly at random for some hyperparameters: number of layers, number of units.<br>While for some hyperparameters like <script type="math/tex">\alpha,\beta</script>, instead of sampling uniformly at random, sample randomly on logarithmic scale.</p>
+<p>Pandas &amp; Caviar<br>Panda: babysitting one model at a time<br>Caviar: training many models in parallel<br>Largely determined by the amount of computational power you can access.</p>
+<h4 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h4><p>Using the idea of normalizing input, make normalization in hidden layers.</p>
+<p>Given some intermediate value in neural network <script type="math/tex">z^{(1)},...,z^{(m)}</script>(specifically <script type="math/tex">z^{[l](i)}</script> in a single layer)<br>　<script type="math/tex">\mu=\frac{1}{m}\sum_iz^{(i)}</script><br>　<script type="math/tex">\sigma^2=\frac{1}{m}\sum_i(z^{(i)}-\mu)^2</script><br>　<script type="math/tex">z^{(i)}_{norm}=\frac{z^{(i)}-\mu}{\sqrt{\sigma^2+\epsilon}}</script><br>　<script type="math/tex">\tilde{z}^{(i)}=\gamma z_{norm}^{(i)}+\beta</script><br>Use <script type="math/tex">\tilde{z}^{[l](i)}</script> instead of <script type="math/tex">z^{[l](i)}</script></p>
+<p><strong>Batch Norm as regularization</strong><br>Each mini-batch is scaled by the mean/variance computed on just that mini-batch.<br>This adds some noise to the values <script type="math/tex">z^{[l]}</script> within that mini-batch. So similar to dropout, it adds some noise to each hidden layer’s activations.<br>This has a slight regularization effect.</p>
+<p>Batch Norm at test time: use exponentially weighted averages to compute average <script type="math/tex">\mu,\sigma^2</script> for test.</p>
+<h4 id="Multi-class-classification"><a href="#Multi-class-classification" class="headerlink" title="Multi-class classification"></a>Multi-class classification</h4><p><strong>Softmax</strong><br>The output layer is a vector with dimension <em>C</em> rather than a real number. <em>C</em> is the number of classes.<br>Activation function:</p>
+<script type="math/tex; mode=display">t=e^{(z^{[L]})}</script><script type="math/tex; mode=display">a^{[L]}=\frac{e^{z^{[L]}}}{\sum_{j=1}^Ct_j}</script><p><strong>Cost function</strong></p>
+<script type="math/tex; mode=display">\mathscr{L}(\hat{y},y)=-\sum_{j=1}^Cy_j\log\hat{y_j}</script><script type="math/tex; mode=display">J(W^{[1]},b^{[1]},...)=\frac{1}{m}\sum_{i=1}^m\mathscr{L}(\hat{y},y)</script><h4 id="Deep-Learning-frameworks"><a href="#Deep-Learning-frameworks" class="headerlink" title="Deep Learning frameworks"></a>Deep Learning frameworks</h4><ul>
+<li>Caffe/Caffe2</li>
+<li>CNTK</li>
+<li>DL4J</li>
+<li>Keras</li>
+<li>Lasagne</li>
+<li>mxnet</li>
+<li>PaddlePaddle</li>
+<li>TensorFlow</li>
+<li>Theano</li>
+<li>Torch</li>
+</ul>
+<p><strong>Choosing deep learning frameworks</strong><br>Easy of programming (development and deployment)<br>Running speed<br>Truly Open (open source with good governance)</p>
+<h5 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h5><p>Writing and running programs in TensorFlow has the following steps:</p>
+<ol>
+<li>Create Tensors(variables) that are not yet executed/evaluated.</li>
+<li>Write operations between those Tensors.</li>
+<li>Initialize your Tensors.</li>
+<li>Create a Session.</li>
+<li>Run the Session. This will run the operations you’d written above.</li>
+</ol>
+<p><code>tf.constant(...)</code>: to create a constant value<br><code>tf.placeholder(dtype = ..., shape = ..., name = ...)</code>: a placeholder is an object whose value you can specify only later</p>
+<p><code>tf.add(..., ...)</code>: to do an addition<br><code>tf.multiply(..., ...)</code>: to do a multiplication<br><code>tf.matmul(..., ...)</code>: to do a matrix multiplication</p>
+<p>2 typical ways to create and use sessions in TensorFlow:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sess = tf.Session()</div><div class="line"><span class="comment"># Run the variables initialization (if needed), run the operations</span></div><div class="line">result = sess.run(..., feed_dict = &#123;...&#125;)</div><div class="line">sess.close() <span class="comment"># Close the session</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    <span class="comment"># run the variables initialization (if needed), run the operations</span></div><div class="line">    result = sess.run(..., feed_dict = &#123;...&#125;)</div><div class="line">    <span class="comment"># This takes care of closing the session</span></div></pre></td></tr></table></figure>
+<h2 id="Structuring-Machine-Learning-Projects"><a href="#Structuring-Machine-Learning-Projects" class="headerlink" title="Structuring Machine Learning Projects"></a>Structuring Machine Learning Projects</h2><h3 id="Week-One-2"><a href="#Week-One-2" class="headerlink" title="Week One"></a>Week One</h3><h4 id="Orthogonalization"><a href="#Orthogonalization" class="headerlink" title="Orthogonalization"></a>Orthogonalization</h4><p>Orthogonalization or orthogonality is a system design property that assures that modifying an instruction or a component of an algorithm will not create or propagate side effects to other components of the system. It becomes easier to verify the algorithms independently from one another, and it reduces testing and development time.</p>
+<p>When a supervised learning system is designed, these are the 4 assumptions that need to be true and orthogonal.</p>
+<ol>
+<li>Fit training set well on cost function - bigger network, Adam, etc</li>
+<li>Fit dev set well on cost function - regularization, bigger training set, etc</li>
+<li>Fit test set well on cost function - bigger dev set</li>
+<li>Performs well in real world - change dev set or cost function</li>
+</ol>
+<h4 id="Single-number-evaluation-metric"><a href="#Single-number-evaluation-metric" class="headerlink" title="Single number evaluation metric"></a>Single number evaluation metric</h4><p><strong>Precision</strong></p>
+<script type="math/tex; mode=display">Precision(\%)=\frac{True\ positive}{Number\ of\ predicted\ positive}\times100=\frac{True\ positive}{True\ positive+False\ positive}\times100</script><p>Among all the prediction, estimate how much predictions are right.</p>
+<p><strong>Recall</strong></p>
+<script type="math/tex; mode=display">Recall(\%)=\frac{True\ positive}{Number\ of\ predicted\ actually\ positive}\times100=\frac{True\ positive}{True\ positive+False\ negative}\times100</script><p>Among all the positive examples, estimate how much positive examples are correctly predicted.</p>
+<p><strong>F1-Score</strong></p>
+<script type="math/tex; mode=display">F1\_Score=\frac{2}{\frac{1}{p}+\frac{1}{r}}</script><p>The problem with using precision/recall as the evaluation metric is that you are not sure which one is better since in this case, both of them have a good precision et recall. F1-score, a harmonic mean, combine both precision and recall.</p>
+<p><strong>Satisficing and optimizing metric</strong><br>There are different metrics to evaluate the performance of a classifier, they are called evaluation matrices. They can be categorized as satisficing and optimizing matrices. It is important to note that these evaluation matrices must be evaluated on a training set, a development set or on the test set.<br>The general rule is:</p>
+<script type="math/tex; mode=display">N_{metric}=\begin{cases}1&\text{Optimizing metric}\\N_{metric}-1 &\text{Satisficing metric}\end{cases}</script><p>For example:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Classifier</th>
+<th>Accuracy</th>
+<th>Running Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>90%</td>
+<td>80ms</td>
+</tr>
+<tr>
+<td>B</td>
+<td>92%</td>
+<td>95ms</td>
+</tr>
+<tr>
+<td>C</td>
+<td>95%</td>
+<td>1500ms</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example, there’re two evaluation metrics: accuracy and running time. Take accuracy as optimizing metric and the following(running time) as satisficing metric(s). The satisficing metric has to meet expectation set and improve the optimizing metric as much as possible.</p>
+<h4 id="Train-Dev-Test-Set"><a href="#Train-Dev-Test-Set" class="headerlink" title="Train/Dev/Test Set"></a>Train/Dev/Test Set</h4><p>It’s important to choose the development and test sets from the same distribution and it must be taken randomly from all the data.<br><strong>Guideline</strong>: Choose a dev set and test set to reflect data you expect to get in the future and consider important to do well on.</p>
+<p><strong>Size</strong><br>Old way of splitting data:<br>We had smaller data set, therefore, we had to use a greater percentage of data to develop and test ideas and models.<br><img src="/images/DL/oldWay.jpg" alt=""></p>
+<p>Modern era - Big data:<br>Now, because a larger amount of data is available, we don’t have to compromise and can use a greater portion to train the model.<br><img src="/images/DL/modernWay.jpg" alt=""></p>
+<p>Set your dev set to be big enough to detect differences in algorithms/models you’re trying out.<br>Set your test set to be big enough to give high confidence in the overall performance of your system.</p>
+<p><strong>When to change dev/test sets and metrics</strong><br><img src="/images/DL/example.jpg" alt=""></p>
+<p>Orthogonalization:<br>How to define a metric to evaluate classifiers.<br>Worry separately about how to do well on this metric.</p>
+<p>If doing well on your metric + dev/test set does not correspond to doing well on your application, change your metric and/or dev/test set.</p>
+<h4 id="Comparing-to-human-level-performance"><a href="#Comparing-to-human-level-performance" class="headerlink" title="Comparing to human-level performance"></a>Comparing to human-level performance</h4><p><img src="/images/DL/bayes.jpg" alt=""><br>The graph shows the performance of humans and machine learning over time.<br>Machine learning progresses slowly when it surpasses human-level performance. One of the reason is that human-level performance can be close to Bayes optimal error, especially for natural perception problem.<br><strong>Bayes optimal error</strong> is defined as the best possible error. In other words, it means that any functions mapping from x to y can’t surpass a certain level of accuracy(for different reasons, e.g. blurring images, audio with noise, etc).</p>
+<p>Humans are quite good at a lot of tasks. So long as machine learning is worse than humans, you can:</p>
+<ul>
+<li>Get labeled data from humans</li>
+<li>Gain insight from manual error analysis: Why did a person get this right?</li>
+<li>Better analysis of bias/variance</li>
+</ul>
+<p>Human-level error as a proxy for Bayes error(i.e. Human-level error ≈ Bayes error).<br>The difference between Human-level error and training error is also regarded as <strong>“Avoidable bias”</strong>.</p>
+<p>If the difference between human-level error and the training error is bigger than the difference between the training error and the development error. The focus should be on bias reduction technique.<br>· Train bigger model<br>· Train longer/better optimization algorithms(momentum, RMSprop, Adam)<br>· NN architecture/hyperparameters search(RNN,CNN)</p>
+<p>If the difference between training error and the development error is bigger than the difference between the human-level error and the training error. The focus should be on variance reduction technique<br>· More data<br>· Regularization(L2, dropout, data augmentation)<br>· NN architecture/hyperparameters search</p>
+<p>Problems where machine significantly surpasses human-level performance<br>Feature: Structured data, not natural perception, lots of data.<br>· Online advertising<br>· Product recommendations<br>· Logistics(predicting transit time)<br>· Loan approvals</p>
+<p>The two fundamental assumptions of supervised learning:<br>You can fit the training set pretty well.(avoidable bias ≈ 0)<br>The training set performance generalizes pretty well to the dev/test set.(variance ≈ 0) </p>
+<h3 id="Week-Two-2"><a href="#Week-Two-2" class="headerlink" title="Week Two"></a>Week Two</h3><h4 id="Error-Analysis"><a href="#Error-Analysis" class="headerlink" title="Error Analysis"></a>Error Analysis</h4><p>Spread sheet:<br>Before deciding how to improve the accuracy, set up a spread sheet find out what matters.<br>For example:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>Dog</th>
+<th>Great Cat</th>
+<th>Blurry</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td>small white dog</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>lion in rainy day</td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Percentage</td>
+<td>5%</td>
+<td>41%</td>
+<td>63%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Mislabeled examples</strong> refer to if your learning algorithm outputs the wrong value of Y.<br><strong>Incorrectly labeled examples</strong> refer to if in the data set you have in the training/dev/test set, the label for Y, whatever a human label assigned to this piece of data, is actually incorrect.</p>
+<p>Deep learning algorithms are quite robust to random errors in the training set, but less robust to systematic errors.</p>
+<p>Guideline: Build system quickly, then iterate.</p>
+<ol>
+<li>Set up development/test set and metrics</li>
+</ol>
+<ul>
+<li>Set up a target</li>
+</ul>
+<ol>
+<li>Build an initial system quickly</li>
+</ol>
+<ul>
+<li>Train training set quickly: Fit the parameters</li>
+<li>Development set: Tune the parameters</li>
+<li>Test set: Assess the performance</li>
+</ul>
+<ol>
+<li>Use bias/variance analysis &amp; Error analysis to prioritize next steps</li>
+</ol>
+<h4 id="Mismatched-training-and-dev-test-set"><a href="#Mismatched-training-and-dev-test-set" class="headerlink" title="Mismatched training and dev/test set"></a>Mismatched training and dev/test set</h4><p>The development set and test should come from the same distribution. However, the training set’s distribution might be a bit different. Take a mobile application of cat recognizer for example:<br>The images from webpages have high resolution and are professionally framed. However, the images from app’s users are relatively low and blurrier.<br>The problem is that you have a different distribution:<br>Small data set from pictures uploaded by users. (10000)This distribution is important for the mobile app.<br>Bigger data set from the web.(200000)</p>
+<p>Instead of mixing all the data and randomly shuffle the data set, just like below.<br><img src="/images/DL/split.jpg" alt=""><br>Take 5000 examples from users into training set, and halving the remaining into dev and test set.</p>
+<p>The advantage of this way of splitting up is that the target is well defined.<br>The disadvantage is that the training distribution is different from the dev and test set distributions. However, the way of splitting the data has a better performance in long term.</p>
+<p><strong>Training-Dev Set</strong><br>Since the distributions among the training and the dev set are different now, it’s hard to know whether the difference between training error and the training error is caused by variance or from different distributions.<br>Therefore, take a small fraction of the original training set, called training-dev set. Don’t use training-dev set for training, but to check variance.<br>The difference between the training-dev set and the dev set is called <strong>data mismatch</strong>.<br><img src="/images/DL/dataMismatch.jpg" alt=""></p>
+<p>Addressing data mismatch:</p>
+<ul>
+<li>Carry out manual error analysis to try to understand difference between training and dev/test sets.</li>
+<li>Make training data more similar; or collect more data similar to dev/test sets</li>
+</ul>
+<h4 id="Transfer-learning"><a href="#Transfer-learning" class="headerlink" title="Transfer learning"></a>Transfer learning</h4><p><img src="/images/DL/transferEg.jpg" alt=""></p>
+<p>When transfer learning makes sense:</p>
+<ul>
+<li>Task A and B have the same input x.</li>
+<li>You have a lot more data for Task A than Task B.</li>
+<li>Low level features from A could be helpful for learning B.</li>
+</ul>
+<p>Guideline:</p>
+<ul>
+<li>Delete last layer of neural network</li>
+<li>Delete weights feeding into the last output layer of the neural network</li>
+<li>Create a new set of randomly initialized weights for the last layers only</li>
+<li>New data set (x,y)</li>
+</ul>
+<p><strong>Multi-task learning</strong><br>Example: detect pedestrians, cars, road signs and traffic lights at the same time. The output is a 4-dimension vector.<br><img src="/images/DL/multi-task.jpg" alt=""><br>Note that the second sum(j = 1 to 4) only over value of j with 0/1 label (not ? mark).</p>
+<p>When multi-task learning makes sense</p>
+<ul>
+<li>Training on a set of tasks that could benefit from having shared lower-level features.</li>
+<li>Usually: Amount of data you have for each task is quite similar.</li>
+<li>Can train a big enough neural network to do well on all the tasks.</li>
+</ul>
+<h4 id="End-to-end-deep-learning"><a href="#End-to-end-deep-learning" class="headerlink" title="End-to-end deep learning"></a>End-to-end deep learning</h4><p>End-to-end deep learning is the simplification of a processing or learning systems into one neural network.<br><img src="/images/DL/end-to-end.jpg" alt=""></p>
+<p>End-to-end deep learning cannot be used for every problem since it needs a lot of labeled data. It is used mainly in audio transcripts, image captures, image synthesis, machine translation, steering in self-driving cars, etc.</p>
+<p><strong>Pros and cons of end-to-end deep learning</strong><br>Pros:<br>Let the data speak<br>Less hand-designing of components needed</p>
+<p>Cons:<br>May need large amount of data<br>Excludes potentially useful hand-designed components</p>
+<h2 id="Convolutional-Neural-Networks"><a href="#Convolutional-Neural-Networks" class="headerlink" title="Convolutional Neural Networks"></a>Convolutional Neural Networks</h2><h3 id="Week-One-3"><a href="#Week-One-3" class="headerlink" title="Week One"></a>Week One</h3><p><strong>Computer Vision Problems</strong></p>
+<ul>
+<li>Image Classification</li>
+<li>Object Detection</li>
+<li>Neural Style Transfer</li>
+</ul>
+<h4 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h4><p><img src="/images/DL/conv.jpg" alt=""></p>
+<p><code>*</code> is the operator for convolution.</p>
+<p><strong>Filter/Kernel</strong><br>The second operand is called <em>filter</em> in the course and often called <em>kernel</em> in the research paper.<br>There’re different types of filters:<br><img src="/images/DL/filter.jpg" alt=""><br>Filter usually has an size of odd number. <code>1*1, 3*3, 5*5...</code>(helps to highlight the centroid)</p>
+<p>Vertical edge detection examples<br><img src="/images/DL/edges.jpg" alt=""></p>
+<p><strong>Valid and Same Convolutions</strong><br>Suppose that the original image has a size of <em>n×n</em>, the filter has a size of <em>f×f</em>, then the result has a size of <em>(n-f+1)×(n-f+1)</em>. This is called <strong>Valid convolution</strong>.<br>The size will get smaller and smaller with the process of valid convolution.</p>
+<p>To avoid such a problem, we can use <em>paddings</em> to enlarge the original image before convolution so that output size is the same as the input size.<br>If the filter’s size is f×f, then the padding <script type="math/tex">p=\frac{f-1}{2}</script>.</p>
+<p>The main benefits of padding are the following:<br>· It allows  you to use a CONV layer without necessarily shrinking the height and width of the volumes. This is important for building deeper networks, since otherwise the height/width would shrink as you go to deeper layers. An important special case is the “same” convolution, in which the height/width is exactly preserved after one layer.<br>· It helps us keep more of the information at the border of an image. Without padding, very few values at the next layer would be affected by pixels as the edges of an image.</p>
+<p><strong>Stride</strong><br>The simplest stride is 1, which means that the filter moves 1 step at a time. However, the stride can be not 1. For example, moves 2 steps at a time instead. That’s called <strong>strided convolution</strong>.</p>
+<p>Given that:<br>Size of <script type="math/tex">n\times n</script> image, <script type="math/tex">f\times f</script> filter, padding <em>p</em>, stride <em>s</em>,<br>output size:</p>
+<script type="math/tex; mode=display">\lfloor{\frac{n+2p-f}{s}+1}\rfloor\times\lfloor{\frac{n+2p-f}{s}+1}\rfloor</script><p><strong>technical</strong><br>In mathematics and DSP, the convolution involves another “flip” step. However, this step is omitted in CNN. The “real” technical note should be “cross-correlation” rather than convolution.<br>In convention, just use Convolution in CNN. </p>
+<p><strong>Convolution over volumes</strong><br>The 1-channel filter cannot be applied to RGB images. But we can use filters with multiple <em>channels</em>(RGB images have 3 channels).</p>
+<p>The number of the filter’s channel should match that of the image’s channel.<br>E.g.<br>A <script type="math/tex">6\times6\times3</script> image conv with a <script type="math/tex">3\times3\times3</script> filter, the result has a size of <script type="math/tex">4\times4\times1</script>. Note that this is <strong>only</strong> 1 channel! (The number of the result’s channel corresponds to the number of the filters).</p>
+<script type="math/tex; mode=display">n\times n\times n_c\ *\ f\times f\times n_c\to(n-f+1)\times(n-f+1)\times n_c',n_c'=\#filters</script><h4 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h4><p><strong>notation</strong><br>If layer <em>l</em> is a convolution layer:</p>
+<ul>
+<li><script type="math/tex">f^{[l]}</script>= filter size</li>
+<li><script type="math/tex">p^{[l]}</script>= padding</li>
+<li><script type="math/tex">s^{[l]}</script>= stride</li>
+<li><script type="math/tex">n_c^{[l]}</script>= number of filters</li>
+</ul>
+<p>Each filter is: <script type="math/tex">f^{[l]}\times f^{[l]}\times n_c^{[l-1]}</script><br>Activations: <script type="math/tex">a^{[l]}\to n_H^{[l]}\times n_w^{[l]}\times n_c^{[l]}</script>, <script type="math/tex">A^{[l]}\to m\times n_H^{[l]}\times n_w^{[l]}\times n_c^{[l]}</script><br>Weights: <script type="math/tex">f^{[l]}\times f^{[l]}\times n_c^{[l-1]}\times n_c^{[l]}</script>,(<script type="math/tex">n_c^{[l]}</script>: #filters in layer l.)<br>bias: <script type="math/tex">n_c^{[l]}-(1,1,1,n_c^{[l]})</script></p>
+<ul>
+<li><script type="math/tex; mode=display">n_H^{[l]}=\lfloor{\frac{n_H^{[l-1]}+2p^{[l]}-f^{[l]}}{s^{[l]}}+1}\rfloor</script></li>
+</ul>
+<p>Input: <script type="math/tex">n_H^{[l-1]}\times n_w^{[l-1]}\times n_c^{[l-1]}</script><br>Output: <script type="math/tex">n_H^{[l]}\times n_w^{[l]}\times n_c^{[l]}</script></p>
+<p>E.g.<br><img src="/images/DL/cnnEg.jpg" alt=""></p>
+<p><strong>Types of layers in a convolutional network</strong></p>
+<ul>
+<li>Convolution (conv)</li>
+<li>Pooling (pool)</li>
+<li>Fully Connected (FC)</li>
+</ul>
+<p><strong>Pooling layers</strong></p>
+<ul>
+<li>Max pooling: slides an (f,f) window over the input and stores the max value of the window in the output.</li>
+<li>Average pooling: slides an (f,f) window over the input and stores the average value of the window in the output.</li>
+</ul>
+<p><img src="/images/DL/pools.jpg" alt=""></p>
+<p>Hyperparameters:<br>f: filter size<br>s: stride<br>Max or average pooling<br>Note no parameters to learn.</p>
+<p>Suppose that the input has a size of <script type="math/tex">n_H\times n_w\times n_c</script>, then after pooling, the output has a size of <script type="math/tex">\lfloor{\frac{n_H-f}{s}+1}\rfloor\times\lfloor{\frac{n_H-f}{s}+1}\rfloor\times n_c</script></p>
+<p>A more complicated cnn:<br><img src="/images/DL/cnnEg1.jpg" alt=""></p>
+<p>Backpropagation is discussed in programming assignment.</p>
+<p><strong>Why convolutions</strong></p>
+<ul>
+<li><strong>Parameter sharing</strong>: A feature detector(such as a vertical edge detector) that’s useful in one part of the image is probably useful in another part of the image.</li>
+<li><strong>Sparsity of connections</strong>: In each layer, each output value depends only on a small number of inputs.</li>
+</ul>
+<h3 id="Week-Two-3"><a href="#Week-Two-3" class="headerlink" title="Week Two"></a>Week Two</h3><h4 id="Classic-networks"><a href="#Classic-networks" class="headerlink" title="Classic networks"></a>Classic networks</h4><h5 id="LeNet-5"><a href="#LeNet-5" class="headerlink" title="LeNet - 5"></a>LeNet - 5</h5><p>Paper link: <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf" target="_blank" rel="external">Gradient-Based Learning Applied to Document Recognition</a>(IEEE has another version of this paper.)<br><img src="/images/DL/LeNet.jpg" alt=""></p>
+<p>Take the input, use a 5×5 filter with 1 stride, then use an average pooling with a 2×2 filter and s = 2. Again, use a 5×5 filter with 1 stride, then use an average pooling with a 2×2 filter and s = 2. After two fully connected layer, the output uses softmax to make classification.<br>conv → pool → conv → pool → fc → fc → output<br>With the decrease of nH and nW, the number of nC is increased.</p>
+<h5 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h5><p>Paper link: <a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="external">ImageNet Classification with Deep Convolutional Neural Networks</a><br><img src="/images/DL/AlexNet.jpg" alt=""></p>
+<p>Similar to LeNet, but much bigger. (60K -&gt; 60M)<br>It uses ReLU.</p>
+<h5 id="VGG-16"><a href="#VGG-16" class="headerlink" title="VGG-16"></a>VGG-16</h5><p>Paper link: <a href="https://arxiv.org/pdf/1409.1556.pdf" target="_blank" rel="external">Very Deep Convolutional Networks for Large-Scale Image Recognition</a><br><img src="/images/DL/VGG.jpg" alt=""><br>CONV = 3×3 filter, s = 1, same(using padding to make the size same)<br>MAX-POOL = 2×2, s = 2<br>Only use these 2 filters.</p>
+<h5 id="Residual-Networks"><a href="#Residual-Networks" class="headerlink" title="Residual Networks"></a>Residual Networks</h5><p>Paper link: <a href="https://arxiv.org/pdf/1512.03385.pdf" target="_blank" rel="external">Deep residual networks for image recognition</a></p>
+<p>In the plain network, the training error won’t keep decreasing, it may increase at some threshold. In Residual network, the training error will keep decreasing.<br>The skip-connection makes it easy for the network to learn an identity mapping between the input and the output within the ResNet block.<br><img src="/images/DL/resError.jpg" alt=""></p>
+<p>In ResNets, a “shortcut” or a “skip connection” allows the gradient to be directly backpropagated to earlier layers:<br><img src="/images/DL/shortcut.jpg" alt=""></p>
+<h5 id="1×1-convolution"><a href="#1×1-convolution" class="headerlink" title="1×1 convolution"></a>1×1 convolution</h5><p>Paper link: <a href="https://arxiv.org/pdf/1312.4400.pdf" target="_blank" rel="external">Network in network</a></p>
+<p>If the input has a volume of dimension <script type="math/tex">n_H\times n_W\times n_C</script>, then a single 1×1 convolutional filter has <script type="math/tex">1\times1\times n_C+1</script> parameters(including bias).<br>You can use a 1×1 convolutional layer to reduce <script type="math/tex">n_C</script> but not <script type="math/tex">n_H,n_W</script>.<br>You can use a pooling layer to reduce <script type="math/tex">n_H,n_W</script>, but not <script type="math/tex">n_C</script>. </p>
+<h5 id="Inception-network"><a href="#Inception-network" class="headerlink" title="Inception network"></a>Inception network</h5><p>Paper link: <a href="https://arxiv.org/pdf/1409.4842.pdf" target="_blank" rel="external">Going deeper with convolutions</a><br>Don’t bother worrying about what filters to use. Use all kinds of filters and stack them together.<br>Module:<br><img src="/images/DL/inceptionModule.jpg" alt=""><br><img src="/images/DL/inceptionNetwork.jpg" alt=""></p>
+<p>Typically, with deeper layers, <script type="math/tex">n_H</script> and <script type="math/tex">n_W</script> decrease, while <script type="math/tex">n_C</script> increases.</p>
+<h4 id="Practical-advices-for-using-ConvNets"><a href="#Practical-advices-for-using-ConvNets" class="headerlink" title="Practical advices for using ConvNets"></a>Practical advices for using ConvNets</h4><p>Using Open-Source Implementations: GitHub</p>
+<p>Reasons for using open-source implementations of ConvNet:<br>Parameters trained for one computer vision task are often useful as pretraining for other computer vision tasks.<br>It is a convenient way to get working an implementation of a complex ConvNet architecture.</p>
+<h3 id="Week-Three-2"><a href="#Week-Three-2" class="headerlink" title="Week Three"></a>Week Three</h3><h4 id="Classification-localization-and-detection"><a href="#Classification-localization-and-detection" class="headerlink" title="Classification, localization and detection"></a>Classification, localization and detection</h4><p>Image classification: Given a image, make predictions of what classification it is.<br>Classification localization: In addition, put a bounding box to figure out where the object is.<br>Detection: Multiple objects appear in the image, detect all of them.</p>
+<p>In classification localization, the output has some values <script type="math/tex">b_x, b_y</script> which show the position of the centroid of the object,(note that the upper left corner’s coordinates is (0,0) and the lower right corner’s is (1,1)) and <script type="math/tex">b_h, b_w</script> which show the height and width of the object.<br>If the output has 3 classes, then the format of the output looks like as follows:</p>
+<script type="math/tex; mode=display">y=\begin{bmatrix}p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\end{bmatrix}</script><p>For example, if the image contains a car, then the output is</p>
+<script type="math/tex; mode=display">y=\begin{bmatrix}1\\b_x\\b_y\\b_h\\b_w\\0\\1\\0\end{bmatrix}</script><p>and if the image doesn’t contain anything, the output is</p>
+<script type="math/tex; mode=display">y=\begin{bmatrix}0\\?\\?\\?\\?\\?\\?\\?\end{bmatrix}</script><p>The loss function is</p>
+<script type="math/tex; mode=display">\mathscr{L}(\hat y,y)=\begin{cases}(\hat y_1-y_1)^2+&(\hat y_2-y_2)^2+...+(\hat y_8-y_8)^2\text{if y = 1}\\(\hat y_1-y_1)^2 &\text{if y = 0}\end{cases}</script><p>Landmark detection<br>The output contains more information about the position of the landmarks <script type="math/tex">l_x,l_y</script>.</p>
+<p>Sliding windows detection<br>Use a small sliding window with small stride scanning the image, detect the objects. Then use a slightly bigger sliding window, and then bigger.<br>However, it has high computation cost.</p>
+<p>Turning FC layer into convolutional layers<br>Use a filter with the same size of the last layer, the number of filters is the same as the fully connected nodes.</p>
+<p><img src="/images/DL/slidingWindows.jpg" alt=""></p>
+<h4 id="YOLO"><a href="#YOLO" class="headerlink" title="YOLO"></a>YOLO</h4><p>Paper link: <a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="external">You Only Look Once: Unified, Real-Time Object Detection</a></p>
+<h5 id="Bounding-boxes"><a href="#Bounding-boxes" class="headerlink" title="Bounding boxes:"></a>Bounding boxes:</h5><p>Divide the object into several grid cells(in general grids with a size of 19×19 are common), and only detect once if the object’s midpoint is in that grid.<br>Each grid’s upper left corner has a coordinate of (0,0) and lower right corner’s (1,1). Therefore,  the value of <script type="math/tex">b_x,b_y</script> should be between (0,1). And <script type="math/tex">b_h,b_w</script> can be greater than 1.</p>
+<h5 id="IoU"><a href="#IoU" class="headerlink" title="IoU"></a>IoU</h5><p>Intersection over union</p>
+<script type="math/tex; mode=display">IoU=\frac{size\ of\ intersection}{size\ of\ union}</script><p>If IoU≥0.5 we can estimate that the result is right.<br>More generally, IoU is a measure of the overlap between two bounding boxes.</p>
+<h5 id="Non-max-suppression"><a href="#Non-max-suppression" class="headerlink" title="Non-max suppression"></a>Non-max suppression</h5><p>Algorithm:<br>Each output prediction is <script type="math/tex">\begin{bmatrix}p_c\\b_x\\b_y\\b_h\\b_w\end{bmatrix}</script> (just focus on one class at a time so there’s no <script type="math/tex">c_1,c_2</script>)<br>Discard all boxes with <script type="math/tex">p_c\le0.6</script><br>While there are any remaining boxes:<br>· Pick the box with the largest <script type="math/tex">p_c</script>. Output that as a prediction.<br>· Discard any remaining box with <script type="math/tex">IoU\ge0.5</script> with the box output in the previous step.</p>
+<h5 id="Anchor-boxes"><a href="#Anchor-boxes" class="headerlink" title="Anchor boxes"></a>Anchor boxes</h5><p>In an image, some objects may be overlapping. To predict multiple objects in one grid cell, use some anchor boxes.</p>
+<p>Previously:<br>Each object in training image is assigned to grid cell that contains that object’s midpoint.</p>
+<p>With two anchor boxes:<br>Each object in training image is assigned to grid cell that contains object’s midpoint and anchor box for the grid cell with highest IoU.</p>
+<p>The output vector has a size of <script type="math/tex">\#grid\times\#grid\times\#anchors\times(1+4+classes)</script><br>E.g.</p>
+<script type="math/tex; mode=display">y=\begin{bmatrix}p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\\p_c\\b_x\\b_y\\b_h\\b_w\\c_1\\c_2\\c_3\end{bmatrix}</script><p>(Manually choose the shape of anchor boxes.)</p>
+<h4 id="Region-proposals"><a href="#Region-proposals" class="headerlink" title="Region proposals"></a>Region proposals</h4><p>Paper link:<a href="https://arxiv.org/pdf/1311.2524" target="_blank" rel="external">Rich feature hierarchies for accurate object detection and semantic segmentation</a><br>Instead using sliding windows over and over again, use segmentation algorithm to predict which regions may contain objects.</p>
+<p>R-CNN: Propose regions. Classify proposed regions one at a time. Output label + bounding box.<br>Fast R-CNN: Propose regions. Use convolution implementation of sliding windows to classify all the proposed regions.<br>Faster R-CNN: Use convolutional network to propose regions.</p>
+<h3 id="Week-Four-1"><a href="#Week-Four-1" class="headerlink" title="Week Four"></a>Week Four</h3><h4 id="Face-Recognition"><a href="#Face-Recognition" class="headerlink" title="Face Recognition"></a>Face Recognition</h4><p>Face verification &amp; Face recognition<br>Verification:<br>· Input image, name/ID<br>· Output whether the input image is that of the claimed person.<br>This is a 1:1 matching problem.</p>
+<p>Recognition:<br>· Has a database of K persons<br>· Get an input image<br>· Output ID if the image is any of the K persons(or “not recognized”)<br>This is a 1:K matching problem.<br>(High demand for single accuracy.)</p>
+<p>Face verification requires comparing a new picture against one person’s face, whereas face recognition requires comparing a new picture against K person’s faces.</p>
+<h5 id="One-shot-learning"><a href="#One-shot-learning" class="headerlink" title="One-shot learning"></a>One-shot learning</h5><p>Learning from one example to recognize the person again. The idea is learning a “similarity” function. (A bit similar to recommendation system.)<br>d(img1, img2) = degree of difference between images.<br>If <script type="math/tex">d(img1,img2)\le\tau</script>, the output is same; else the output is different.</p>
+<h5 id="Siamese-network"><a href="#Siamese-network" class="headerlink" title="Siamese network"></a>Siamese network</h5><p>Parameters of NN define an encoding <script type="math/tex">f(x^{(i)})</script>. (Use a vector to represent the image x)<br>Goal: Learn parameters so that<br>if <script type="math/tex">x^{(i)},x^{(j)}</script> are the same person, <script type="math/tex">||f(x^{(i)})-f(x^{(j)})||^2</script> is small;<br>if <script type="math/tex">x^{(i)},x^{(j)}</script> are different person, <script type="math/tex">||f(x^{(i)})-f(x^{(j)})||^2</script> is large.</p>
+<h5 id="Triplet-loss"><a href="#Triplet-loss" class="headerlink" title="Triplet loss"></a>Triplet loss</h5><p>Pick an anchor image(denoted as “A”), a positive image(denoted as “P”) and a negative image(denoted as “N”).<br>We can calculate the differences between A and P, A and N.</p>
+<script type="math/tex; mode=display">d(A,P)=||f(A)-f(P)||^2,d(A,N)=||f(A)-f(N)||^2</script><p>We want that</p>
+<script type="math/tex; mode=display">d(A,P)=||f(A)-f(P)||^2+\alpha\le d(A,N)=||f(A)-f(N)||^2</script><p>where α is called margin.</p>
+<p>Loss function:</p>
+<script type="math/tex; mode=display">\mathscr{L}(A,P,N)=\max(||f(A)-f(P)||^2-||f(A)-f(N)||^2+\alpha,0)</script><script type="math/tex; mode=display">J=\sum_{i=1}^m\mathscr{L}(A^{(i)},P^{(i)},N^{(i)})</script><p>About choosing the triplets A,P,N<br>During training, if A,P,N are chosen randomly, <script type="math/tex">d(A,P)+\alpha\le d(A,N)</script> is easily satisfied. Therefore, the gradient descent wouldn’t make much progress.<br>Thus, choose triplets that are “hard” to train on. That is, pick A,P,N such that <script type="math/tex">d(A,P)\approx d(A,N)</script></p>
+<h4 id="Neural-Style-Transfer"><a href="#Neural-Style-Transfer" class="headerlink" title="Neural Style Transfer"></a>Neural Style Transfer</h4><h5 id="Neural-style-transfer-cost-function"><a href="#Neural-style-transfer-cost-function" class="headerlink" title="Neural style transfer cost function"></a>Neural style transfer cost function</h5><p>The input contains content image(denoted as C) and style image(denoted as S), and the output is the generated image(denoted as G).</p>
+<script type="math/tex; mode=display">J(G)=\alpha J_{content}(C,G)+\beta J_{style}(S,G)</script><p>To find the generated image G:<br>1.Initiate G randomly (e.g. init with white noise)<br>2.Use gradient descent to minimize J(G). <script type="math/tex">G:=G-\frac{\partial}{\partial G}J(G)</script></p>
+<p><strong>Content cost function</strong></p>
+<ul>
+<li>Say you use hidden layer <em>l</em> to compute content cost.</li>
+<li>Use pre-trained ConvNet. (E.g., VGG network)</li>
+<li>Let <script type="math/tex">a^{[l](C)}</script> and <script type="math/tex">a^{[l](G)}</script> be the activation of layer <em>l</em> on the images.</li>
+<li>If <script type="math/tex">a^{[l](C)}</script> and <script type="math/tex">a^{[l](G)}</script> are similar, both images have similar content.</li>
+</ul>
+<script type="math/tex; mode=display">J_{content}(C,G)=\frac{1}{2}||a^{[l](C)}-a^{[l](G)}||^2</script><p><strong>Style cost function</strong><br>Say you are using layer <em>l</em>‘s activation to measure style.<br>Define style as <em>correlation</em> between activations across channels.</p>
+<p>Let <script type="math/tex">a^{[l]}_{i,j,k}</script> = activation at (i,j,k). <script type="math/tex">G^{[l]}</script> is <script type="math/tex">n_C^{[l]}\times n_C^{[l]}</script></p>
+<script type="math/tex; mode=display">G^{[l](S)}_{kk'}=\sum_{i=1}^{n_H^{[l]}}\sum_{j=1}^{n_W^{[l]}}a_{i,j,k}^{[l](S)}a_{i,j,k'}^{[l](S)}</script><script type="math/tex; mode=display">G^{[l](G)}_{kk'}=\sum_{i=1}^{n_H^{[l]}}\sum_{j=1}^{n_W^{[l]}}a_{i,j,k}^{[l](G)}a_{i,j,k'}^{[l](G)}</script><p>The style matrix is also called a “Gram matrix”. In linear algebra, the Gram matrix G of a set of vectors(<script type="math/tex">v_1,...,v_n</script>) is the matrix of dot products, whose entries are <script type="math/tex">G_{ij}=v_i^Tv_j=np.dot(v_i,v_j)</script>. In other words, <script type="math/tex">G_{ij}</script> compares how similar <script type="math/tex">v_i</script> is similar to <script type="math/tex">v_j</script>: If they are highly similar, you would expect them to have a large dot product, and thus for <script type="math/tex">G_{ij}</script> to be large.</p>
+<script type="math/tex; mode=display">J^{[l]}_{style}(S,G)=\frac{1}{2n_H^{[l]}n_W^{[l]}n_C^{[l]}}||G^{[l](S)}-G^{[l](G)}||^2_F=\frac{1}{2n_H^{[l]}n_W^{[l]}n_C^{[l]}}\sum_k\sum_{k'}(G_{kk'}^{[l](S)}-G_{kk'}^{[l](G)})^2</script><script type="math/tex; mode=display">J_{style}(S,G)=\sum_{\lambda}\lambda^{[l]}J_{style}^{[l]}(S,G)</script><p>The style of an image can be represented using the Gram matrix of a hidden layer’s activations. However, we get even better results combining this representation  from multiple different layers. This is in contrast to the content representation, where usually using just a single hidden layer is sufficient.<br>Minimizing the style cost will cause the image G to follow the style of the image S.</p>
+<h2 id="Sequence-Model"><a href="#Sequence-Model" class="headerlink" title="Sequence Model"></a>Sequence Model</h2><h3 id="Week-One-4"><a href="#Week-One-4" class="headerlink" title="Week One"></a>Week One</h3><h4 id="Recurrent-Neural-Networks"><a href="#Recurrent-Neural-Networks" class="headerlink" title="Recurrent Neural Networks"></a>Recurrent Neural Networks</h4><p><strong>Notation</strong><br>-<script type="math/tex">x^{<t>}</script>: denotes an object at the t’th timestep.<br>-<script type="math/tex">y^{<t>}</script>: index into the output position<br>-t: implies that these are temporal sequences<br>-<script type="math/tex">T_x</script>: the length of the input sequence<br>-<script type="math/tex">T_y</script>: the length of the output sequence<br>-<script type="math/tex">T_x^{(i)}</script>: the length of the i’th training example<br>-<script type="math/tex">T_y^{(i)}</script>: the output length of the i’th training example<br>-<script type="math/tex">x^{(i)<t>}</script>: the input at the t’th timestep of example i<br>-<script type="math/tex">y^{(i)<t>}</script>: the output at the t’th timestep of example i</p>
+<p><strong>One-hot representation</strong><br>Using a large vector(a dictionary containing tens of thousands of words) to represent a word. Only one element is one(the corresponding position of the word in the dictionary) and the others are zero.</p>
+<p>Why not a standard network?<br>Problems:<br>Inputs, outputs can be different lengths in different examples. (Different sentences have different lengths.)<br>Doesn’t share features learned across different positions of text. (A word may appear many times in a sentence. Need to make repetitions.)</p>
+<p><strong>RNN cell</strong><br><img src="/images/DL/RNNcell.jpg" alt=""><br>Basic RNN cell. Takes as input <script type="math/tex">x^{<t>}</script>(current input) and <script type="math/tex">a^{<t-1>}</script>(previous hidden state containing information from the past), and outputs <script type="math/tex">a^{<t>}</script> which is given to the next RNN cell and also used to predict <script type="math/tex">y^{<t>}</script>.</p>
+<h4 id="Forward-Propagation"><a href="#Forward-Propagation" class="headerlink" title="Forward Propagation"></a>Forward Propagation</h4><p><img src="/images/DL/RNNforward.jpg" alt=""></p>
+<script type="math/tex; mode=display">a^{<0>}=\vec{0}</script><script type="math/tex; mode=display">a^{<1>}=g_1(W_{aa}a^{<0>}+W_{ax}x^{<1>}+b_a)</script><script type="math/tex; mode=display">\hat{y}^{<1>}=g_2(W_{ya}a^{<1>}+b_y)</script><script type="math/tex; mode=display">a^{<t>}=g(W_{aa}a^{<t-1>}+W_{ax}x^{<t>}+b_a)</script><script type="math/tex; mode=display">\hat{y}^{<t>}=g(W_{ya}a^{<t>}+b_y)</script><p>Here the weight W has two subscripts: the former corresponds to the result and the latter represents the operand that it multiply by. <script type="math/tex">a\leftarrow W_{ax}x</script></p>
+<p>The activation function <script type="math/tex">g_1()</script> usually uses tanh, sometimes ReLU.<br>The <script type="math/tex">g_2()</script> function uses sigmoid to make binary classification.</p>
+<p>The formulas can be simplified as follows:</p>
+<script type="math/tex; mode=display">a^{<t>}=g(W_a[a^{<t-1>},x^{<t>}]+b_a)</script><script type="math/tex; mode=display">\hat{y}^{<1>}=g_2(W_ya^{<1>}+b_y)</script><p>Here, <script type="math/tex">W_a=\begin{bmatrix}W_{aa}&|&W_{ax}\end{bmatrix}</script>, and <script type="math/tex">[a^{<t-1>},x^{<t>}]=\begin{bmatrix}a^{<t-1>}\\x^{<t>}\end{bmatrix}</script></p>
+<h4 id="Backward-Propagation"><a href="#Backward-Propagation" class="headerlink" title="Backward Propagation"></a>Backward Propagation</h4><script type="math/tex; mode=display">\mathscr{L}^{<t>}(\hat y ^{<t>},y^{<t>})=-y^{<t>}\log\hat y^{<t>}-(1-y^{<t>})\log(1-\hat y^{<t>})</script><script type="math/tex; mode=display">\mathscr{L}(\hat y,y)=\sum_{t=1}^{T_x}\mathscr{L}^{<t>}(\hat y^{<t>},y^{<t>})</script><h4 id="Different-types"><a href="#Different-types" class="headerlink" title="Different types"></a>Different types</h4><p><strong>One to one</strong><br><img src="/images/DL/one2one.jpg" alt=""><br>Usage: Simple neural network</p>
+<p><strong>One to many</strong><br><img src="/images/DL/one2many.jpg" alt=""><br>Usage: Music generation, sequence generation</p>
+<p><strong>Many to one</strong><br><img src="/images/DL/many2one.jpg" alt=""><br>Usage: Sentiment classification</p>
+<p><strong>Many to many (I)</strong><br><img src="/images/DL/many2many.jpg" alt=""><br>Usage: Name entity recognition</p>
+<p><strong>Many to many (II)</strong><br><img src="/images/DL/many2many1.jpg" alt=""><br>Usage: Machine translation</p>
+<h4 id="Language-model"><a href="#Language-model" class="headerlink" title="Language model"></a>Language model</h4><p><img src="/images/DL/languageModel.jpg" alt=""></p>
+<p><unk>: unknown words (words not shown in vocabulary)</unk></p>
+<p><eos>: end of sentence</eos></p>
+<p>Language model is used to calculate the probability using RNN. Each layer’s output is a probability given the previous activations.<br>E.g. given the sentence <em>Cats average 15 hours of sleep a day.</em>, <script type="math/tex">\hat y^{<1>}=P(cats)</script> (the probability of ‘cats’ appears in the beginning of the sentence); <script type="math/tex">\hat y^{<2>}=P(average|cat)</script> (conditional probability);…;<script type="math/tex">\hat y^{<9>}=P(<EOS>|...)</script></p>
+<p><strong>Character-level language model</strong><br>Instead of using words, character-level generates sequences of characters. It’s more computational.</p>
+<h4 id="Gated-Recurrent-Unit-GRU"><a href="#Gated-Recurrent-Unit-GRU" class="headerlink" title="Gated Recurrent Unit(GRU)"></a>Gated Recurrent Unit(GRU)</h4><p>The basic RNN unit:<br><img src="/images/DL/rnnUnit.jpg" alt=""></p>
+<script type="math/tex; mode=display">a^{<t>}=g(W_a[a^{<t-1>},x^{<t>}]+b_a)</script><p>g() is tanh function.</p>
+<p>GRU(simplified):<br><img src="/images/DL/GRU.jpg" alt=""><br>Instead of using <script type="math/tex">a^{<t>}</script>, use <script type="math/tex">c^{<t>}</script> instead(though in GRU <script type="math/tex">a^{<t>}=c^{<t>}</script>). Here <em>c</em> represents <em>memory cell</em>.</p>
+<script type="math/tex; mode=display">\tilde c^{<t>}=\tanh(W_c[c^{<t-1>},x^{<t>}]+b_c)</script><script type="math/tex; mode=display">\Gamma_u=\sigma(W_u[c^{<t-1>},x^{<t>}]+b_u)</script><script type="math/tex; mode=display">\Gamma_c=\sigma(W_c[c^{<t-1>},x^{<t>}]+b_c)</script><script type="math/tex; mode=display">c^{<t>}=\Gamma_u*\tilde c^{<t>}+(1-\Gamma_u)*c^{<t-1>}</script><p><em>u</em>: update. <em>r</em>: relevance.<br>Gate u is a vector of dimension equal to the number of hidden units in the LSTM.<br>Gate r tells you how relevant is c<t-1> to computing the next candidate for c<t>.</t></t-1></p>
+<h4 id="Long-Short-Term-Memory-LSTM-Unit"><a href="#Long-Short-Term-Memory-LSTM-Unit" class="headerlink" title="Long Short Term Memory(LSTM) Unit"></a>Long Short Term Memory(LSTM) Unit</h4><p>Difference between LSTM and GRU(LSTM comes earlier, and GRU can be regarded as a special case of LSTM).<br><img src="/images/DL/LSTM.jpg" alt=""></p>
+<p><img src="/images/DL/LSTMpic.jpg" alt=""></p>
+<p><strong>Forget Gate</strong><br>For the sake of this illustration, lets assume we are reading words in a piece of text, and want use an LSTM to keep track of grammatical structures, such as whether the subject is singular or plural. If the subject changes from a singular word to a plural word, we need to find a way to get rid of our previously stored memory value of the singular/plural state. In an LSTM, the forget gate lets us do this:</p>
+<script type="math/tex; mode=display">\Gamma_f^{\langle t \rangle} = \sigma(W_f[a^{\langle t-1 \rangle}, x^{\langle t \rangle}] + b_f)\tag{1}</script><p>Here, <script type="math/tex">W_f</script> are weights that govern the forget gate’s behavior. We concatenate  <script type="math/tex">[a^{⟨t−1⟩},x^{⟨t⟩}]</script> and multiply by <script type="math/tex">W_f</script>. The equation above results in a vector  <script type="math/tex">\Gamma_f^{\langle t \rangle}</script> with values between 0 and 1. This forget gate vector will be multiplied element-wise by the previous cell state  <script type="math/tex">c^{\langle t-1 \rangle}</script>. So if one of the values of <script type="math/tex">\Gamma_f^{\langle t \rangle}</script> is 0 (or close to 0) then it means that the LSTM should remove that piece of information (e.g. the singular subject) in the corresponding component of <script type="math/tex">c^{\langle t-1 \rangle}</script>. If one of the values is 1, then it will keep the information.</p>
+<p><strong>Update Gate</strong><br>Once we forget that the subject being discussed is singular, we need to find a way to update it to reflect that the new subject is now plural. Here is the formulate for the update gate:</p>
+<script type="math/tex; mode=display">\Gamma_u^{\langle t \rangle} = \sigma(W_u[a^{\langle t-1 \rangle}, x^{\{t\}}] + b_u)\tag{2}</script><p>Similar to the forget gate, here <script type="math/tex">\Gamma_u^{\langle t \rangle}</script> is again a vector of values between 0 and 1. This will be multiplied element-wise with <code>$\tilde{c}^{\langle t \rangle}
+$</code>, in order to compute <script type="math/tex">c^{\langle t \rangle}</script>.</p>
+<p><strong>Updating the cell</strong><br>To update the new subject we need to create a new vector of numbers that we can add to our previous cell state. The equation we use is:</p>
+<script type="math/tex; mode=display">\tilde{c}^{\langle t \rangle} = \tanh(W_c[a^{\langle t-1 \rangle}, x^{\langle t \rangle}] + b_c)\tag{3}</script><p>Finally, the new cell state is:</p>
+<script type="math/tex; mode=display">c^{\langle t \rangle} = \Gamma_f^{\langle t \rangle}* c^{\langle t-1 \rangle} + \Gamma_u^{\langle t \rangle} *\tilde{c}^{\langle t \rangle} \tag{4}</script><p><strong>Output gate</strong><br>To decide which outputs we will use, we will use the following two formulas:</p>
+<script type="math/tex; mode=display">\Gamma_o^{\langle t \rangle}=  \sigma(W_o[a^{\langle t-1 \rangle}, x^{\langle t \rangle}] + b_o)\tag{5}</script><script type="math/tex; mode=display">a^{\langle t \rangle} = \Gamma_o^{\langle t \rangle}* \tanh(c^{\langle t \rangle})\tag{6}</script><p>Where in equation 5 you decide what to output using a sigmoid function and in equation 6 you multiply that by the tanh of the previous state.</p>
+<h4 id="Bidirectional-RNN-BRNN"><a href="#Bidirectional-RNN-BRNN" class="headerlink" title="Bidirectional RNN(BRNN)"></a>Bidirectional RNN(BRNN)</h4><h3 id="Week-Two-Natural-Language-Processing-amp-Word-Embeddings"><a href="#Week-Two-Natural-Language-Processing-amp-Word-Embeddings" class="headerlink" title="Week Two - Natural Language Processing &amp; Word Embeddings"></a>Week Two - Natural Language Processing &amp; Word Embeddings</h3><p>Transfer learning and word embeddings<br>1.Learn word embeddings from large text corpus. (1-100B words)<br>(Or download pre-trained embedding online.)<br>2.Transfer embedding to new task with smaller training set. (say, 100k words)<br>3.Optional: Continue to finetune the word embeddings with new data.</p>
+<p>Computation of Similarities:<br>Cosine similarity: <script type="math/tex">sim(u,v)=\frac{u^Tv}{||u||_2||v||_2}</script><br>Euclidean distance: <script type="math/tex">||u-v||^2</script></p>
+<p>Embedding matrix<br>The embedding matrix is denoted as <em>E</em>.<br>The embedding for word  <em>j</em> can be calculated as <script type="math/tex">e_j=E\cdot o_j</script>.<br>Here, <em>e</em> means embedding and <em>o</em> means one-hot. And in practice, we just use specialized function to look up an embedding rather than use costly matrix multiplication. </p>
+<p>Context/target pairs<br>Context:<br>· Last 4 words<br>· 4 words on left &amp; right<br>· Last 1 word<br>· Nearby 1 word</p>
+<h4 id="Word2Vec"><a href="#Word2Vec" class="headerlink" title="Word2Vec"></a>Word2Vec</h4><p>Using skip-grams:</p>
+<script type="math/tex; mode=display">o_c\to E\to e_c\to o\to \hat{y}</script><script type="math/tex; mode=display">Softmax:p(t|c)=\frac{e^{\theta_tT_{e_c}}}{\sum_{j=1}^{10000}e^{\theta^T_je_c}}</script><script type="math/tex; mode=display">\mathscr{L}(\hat y,y)=-\sum_{i=1}^{10000}y_i\log\hat{y_i}</script><p>Here, <script type="math/tex">e_c=E\cdot o_c</script> and <script type="math/tex">\theta_t</script> is the parameter associated with output t.</p>
+<p>Problems:<br>The cost of computation <script type="math/tex">p(t|c)=\frac{e^{\theta_tT_{e_c}}}{\sum_{j=1}^{10000}e^{\theta^T_je_c}}</script> is too high.<br>Solution:<br>Using hierarchal softmax.</p>
+<h4 id="Negative-sampling"><a href="#Negative-sampling" class="headerlink" title="Negative sampling"></a>Negative sampling</h4><p>Randomly choose k+1 examples, where only 1 example is positive and the remaining k are negative. (The value of k is dependent on the size of data sets. If the dataset is big, k = 2-5; if the dataset is small, k = 5-20).<br>Instead of using softmax, compute k times binary classification to reduce the computation.</p>
+<h4 id="GloVe-word-vectors"><a href="#GloVe-word-vectors" class="headerlink" title="GloVe word vectors"></a>GloVe word vectors</h4><p>-<script type="math/tex">x_{ij}</script>: the number of times <em>i</em> appears in context of <em>j</em>. Thus, <script type="math/tex">x_{ij}=x_{ji}</script></p>
+<script type="math/tex; mode=display">minimize\sum_{i=1}^{10000}\sum_{j=1}^{10000}f(X_{ij})(\theta_i^Te_j+b_i-b_j'-\log{X_{ij}})^2</script><h4 id="Applications-using-Word-Embeddings"><a href="#Applications-using-Word-Embeddings" class="headerlink" title="Applications using Word Embeddings"></a>Applications using Word Embeddings</h4><p>Sentiment Classification and Debiasing.</p>
+<h3 id="Week-Three-3"><a href="#Week-Three-3" class="headerlink" title="Week Three"></a>Week Three</h3><p>Machine translation can be regarded as a conditional language model.<br><img src="/images/DL/conditionalLanguageModel.jpg" alt=""><br>The original language model compute the probability <script type="math/tex">P(y^{<1>},...,y^{<T_y>})</script>,while the machine translation computes the probability <script type="math/tex">P(y^{<1>},...,y^{<T_y>}|x^{<1>},...,x^{<T_x>})</script>. Therefore, it can be regarded as conditional language model.<br>The machine translation contains two parts: encoder and decoder.</p>
+<p>Just find the most likely translation.</p>
+<script type="math/tex; mode=display">\arg \max P(y^{<1>},...,y^{<T_y>}|x)</script><p>(not use greedy search)</p>
+<h4 id="Beam-Search"><a href="#Beam-Search" class="headerlink" title="Beam Search"></a>Beam Search</h4><p>Pick a hyperparameter <em>B</em>. In each layer of RNN, pick B most possible output.<br>Since the probability can be computed as:</p>
+<script type="math/tex; mode=display">P(y^{<1>},...,y^{<T_y>}|x)=P(y^{<1>}|x)\times P(y^{<2>}|x,y^{<1>})\times...\times P(y^{<T_y>}|x,y^{<1>},...,y^{<T_y-1>})</script><p>(Beam search with B=1 is greedy search.)</p>
+<p><strong>Length normalization</strong></p>
+<script type="math/tex; mode=display">\arg\max\prod_{t=1}^{T_y}P(y^{<t>}|x,y^{<1>},...,y^{<t-1>})</script><p>The range of possibilities is [0,1]. Therefore the original formula can be extremely small with many small values’ multiplication. To avoid such situations, use log in calculations:</p>
+<script type="math/tex; mode=display">\arg\max\sum_{t=1}^{T_y}\log P(y^{<t>}|x,y^{<1>},...,y^{<t-1>})</script><p>Machine tends to make short translation to maximize the result, while a too short translation is not satisfying. Therefore, add another hyperparameter to counteract such problem:</p>
+<script type="math/tex; mode=display">\frac{1}{T_y^\alpha}\sum_{t=1}^{T_y}\log P(y^{<t>}|x,y^{<1>},...,y^{<t-1>})</script><p>Unlike exact search algorithms like BFS or DFS, Beam Search runs faster but is not guaranteed to find exact maximum for arg max P(y|x).</p>
+<p><strong>Error analysis</strong><br>There’re two main models in machine translation: RNN part and Beam Search part. If the training error is high, we want to figure out which part is not functioning well.<br>Use <script type="math/tex">(y^*}</script> to represent human’s translation and <script type="math/tex">(\hat y)</script> as machine’s.</p>
+<p>Case 1: <script type="math/tex">P(y^*|x)>P(\hat y|x)</script><br>Beam search chose <script type="math/tex">\hat y</script>. But <script type="math/tex">y^*</script> attains higher P(y|x).<br>Conclusion: Beam search is at fault.</p>
+<p>Case 2: <script type="math/tex">P(y^*|x)\le P(\hat y|x)</script><br>In fact, <script type="math/tex">y^*</script> is a better translation than <script type="math/tex">\hat y</script>. But RNN predicted <script type="math/tex">P(y^*|x)\le P(\hat y|x)</script><br>Conclusion: RNN model is at fault.</p>
+<h4 id="Bleu-score"><a href="#Bleu-score" class="headerlink" title="Bleu score"></a>Bleu score</h4><script type="math/tex; mode=display">p_1=\frac{\sum_{unigram\in y}count_{clip}(unigram)}{\sum_{unigram\in\hat y}count(unigram)}</script><script type="math/tex; mode=display">p_n=\frac{\sum_{ngram\in y}count_{clip}(ngram)}{\sum_{ngram\in\hat y}count(ngram)}</script><p>Here, <script type="math/tex">p_n</script>= Bleu score on n-grams only.<br>Combined Bleu score:</p>
+<script type="math/tex; mode=display">BP\cdot \exp(\frac{1}{4}\sum_{n=1}^4p_n)</script><p>BP is brevity penalty with </p>
+<script type="math/tex; mode=display">BP=\begin{cases}1&\text{if MT_output_length>reference_output_length}\\\text{exp(1-MT_output_length/reference_output_length)} &\text{otherwise}\end{cases}</script><h4 id="Attention-model"><a href="#Attention-model" class="headerlink" title="Attention model"></a>Attention model</h4><p><img src="/images/DL/attentionModel.jpg" alt=""></p>
+<script type="math/tex; mode=display">a^{<t,t'>}=\frac{\exp(e^{<t,t'>})}{\sum_{t'=1}^{T_x}\exp(e^{<t,t'>})}</script><p>Here, <script type="math/tex">a^{<t,t'>}</script>= amount of attention <script type="math/tex">y^{<t>}</script> should pay to <script type="math/tex">a^{<t'>}</script></p>
+<script type="math/tex; mode=display">a^{<t'>}=(\overrightarrow a^{<t'>},\overleftarrow a^{<t'>})</script><script type="math/tex; mode=display">\sum_{t'}\alpha^{<1,t'>}=1</script><script type="math/tex; mode=display">c^{<1>}=\sum_{t'}\alpha^{<1,t'>}a^{<t'>}</script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Hael Chan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://haelchan.me/2018/02/17/deep-learning-note/" title="deep-learning-note">http://haelchan.me/2018/02/17/deep-learning-note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/07/python-learning/" rel="next" title="Python Learning">
+                <i class="fa fa-chevron-left"></i> Python Learning
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/14/oop-note/" rel="prev" title="面向对象程序设计课堂笔记">
+                面向对象程序设计课堂笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Hael Chan" />
+            
+              <p class="site-author-name" itemprop="name">Hael Chan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/haelchan" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:f.procumbens@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Procumbens" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="www.linkedin.com/in/haoliang-chen" target="_blank" title="LinkedIn">
+                    
+                      <i class="fa fa-fw fa-linkedin"></i>LinkedIn</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ruder.io" title="Sebastian Ruder" target="_blank">Sebastian Ruder</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://smerity.com" title="Semerity" target="_blank">Semerity</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://einstein.ai/research/blog" title="Salesforce Research" target="_blank">Salesforce Research</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.reddit.com/r/LanguageTechnology/" title="Reddit" target="_blank">Reddit</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://learnerwn.github.io" title="WN_Blog" target="_blank">WN_Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hey-yahei.cn" title="YaHei" target="_blank">YaHei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://godweiyang.com" title="WeiYang Blog" target="_blank">WeiYang Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.linzehui.me" title="Weekly Review" target="_blank">Weekly Review</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jalammar.github.io" title="Jay Alammar" target="_blank">Jay Alammar</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Networks-and-Deep-Learning"><span class="nav-number">1.</span> <span class="nav-text">Neural Networks and Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One"><span class="nav-number">1.1.</span> <span class="nav-text">Week One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two"><span class="nav-number">1.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.2.1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#About-Python"><span class="nav-number">1.2.2.</span> <span class="nav-text">About Python</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three"><span class="nav-number">1.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Network-Overview"><span class="nav-number">1.3.1.</span> <span class="nav-text">Neural Network Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activation-Function"><span class="nav-number">1.3.2.</span> <span class="nav-text">Activation Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">1.3.3.</span> <span class="nav-text">Gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Random-Initialization"><span class="nav-number">1.3.4.</span> <span class="nav-text">Random Initialization</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Four"><span class="nav-number">1.4.</span> <span class="nav-text">Week Four</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forward-and-Backward-Propagation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Forward and Backward Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameters-and-Parameters"><span class="nav-number">1.4.2.</span> <span class="nav-text">Hyperparameters and Parameters</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Improving-Deep-Neural-Networks-Hyperparameter-tuning-Regularization-and-Optimization"><span class="nav-number">2.</span> <span class="nav-text">Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One-1"><span class="nav-number">2.1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Setting-up-your-Machine-Learning-Application"><span class="nav-number">2.1.1.</span> <span class="nav-text">Setting up your Machine Learning Application</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Train-dev-test-sets"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Train/dev/test sets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Bias-Variance"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">Bias/Variance</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularization"><span class="nav-number">2.1.2.</span> <span class="nav-text">Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#L2-Regularization"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">L2 Regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dropout-regularization"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Dropout regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Other-regularization-methods"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">Other regularization methods</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optimization"><span class="nav-number">2.1.3.</span> <span class="nav-text">Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Normalizing-inputs"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">Normalizing inputs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vanishing-Exploding-gradients"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">Vanishing/Exploding gradients</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Gradient-checking"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">Gradient checking</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two-1"><span class="nav-number">2.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mini-batch-gradient-descent"><span class="nav-number">2.2.1.</span> <span class="nav-text">Mini-batch gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exponentially-weighted-averages"><span class="nav-number">2.2.2.</span> <span class="nav-text">Exponentially weighted averages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent-with-momentum"><span class="nav-number">2.2.3.</span> <span class="nav-text">Gradient descent with momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RMSprop"><span class="nav-number">2.2.4.</span> <span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adam-optimization-algorithm"><span class="nav-number">2.2.5.</span> <span class="nav-text">Adam optimization algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Learning-rate-decay"><span class="nav-number">2.2.6.</span> <span class="nav-text">Learning rate decay</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three-1"><span class="nav-number">2.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameter-tuning"><span class="nav-number">2.3.1.</span> <span class="nav-text">Hyperparameter tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Batch-Normalization"><span class="nav-number">2.3.2.</span> <span class="nav-text">Batch Normalization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-class-classification"><span class="nav-number">2.3.3.</span> <span class="nav-text">Multi-class classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-Learning-frameworks"><span class="nav-number">2.3.4.</span> <span class="nav-text">Deep Learning frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TensorFlow"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">TensorFlow</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structuring-Machine-Learning-Projects"><span class="nav-number">3.</span> <span class="nav-text">Structuring Machine Learning Projects</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One-2"><span class="nav-number">3.1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Orthogonalization"><span class="nav-number">3.1.1.</span> <span class="nav-text">Orthogonalization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Single-number-evaluation-metric"><span class="nav-number">3.1.2.</span> <span class="nav-text">Single number evaluation metric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Train-Dev-Test-Set"><span class="nav-number">3.1.3.</span> <span class="nav-text">Train/Dev/Test Set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Comparing-to-human-level-performance"><span class="nav-number">3.1.4.</span> <span class="nav-text">Comparing to human-level performance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two-2"><span class="nav-number">3.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Error-Analysis"><span class="nav-number">3.2.1.</span> <span class="nav-text">Error Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mismatched-training-and-dev-test-set"><span class="nav-number">3.2.2.</span> <span class="nav-text">Mismatched training and dev/test set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Transfer-learning"><span class="nav-number">3.2.3.</span> <span class="nav-text">Transfer learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#End-to-end-deep-learning"><span class="nav-number">3.2.4.</span> <span class="nav-text">End-to-end deep learning</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convolutional-Neural-Networks"><span class="nav-number">4.</span> <span class="nav-text">Convolutional Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One-3"><span class="nav-number">4.1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Convolution"><span class="nav-number">4.1.1.</span> <span class="nav-text">Convolution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNN"><span class="nav-number">4.1.2.</span> <span class="nav-text">CNN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two-3"><span class="nav-number">4.2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Classic-networks"><span class="nav-number">4.2.1.</span> <span class="nav-text">Classic networks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#LeNet-5"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">LeNet - 5</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AlexNet"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">AlexNet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#VGG-16"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">VGG-16</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Residual-Networks"><span class="nav-number">4.2.1.4.</span> <span class="nav-text">Residual Networks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1×1-convolution"><span class="nav-number">4.2.1.5.</span> <span class="nav-text">1×1 convolution</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Inception-network"><span class="nav-number">4.2.1.6.</span> <span class="nav-text">Inception network</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Practical-advices-for-using-ConvNets"><span class="nav-number">4.2.2.</span> <span class="nav-text">Practical advices for using ConvNets</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three-2"><span class="nav-number">4.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Classification-localization-and-detection"><span class="nav-number">4.3.1.</span> <span class="nav-text">Classification, localization and detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#YOLO"><span class="nav-number">4.3.2.</span> <span class="nav-text">YOLO</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bounding-boxes"><span class="nav-number">4.3.2.1.</span> <span class="nav-text">Bounding boxes:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IoU"><span class="nav-number">4.3.2.2.</span> <span class="nav-text">IoU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Non-max-suppression"><span class="nav-number">4.3.2.3.</span> <span class="nav-text">Non-max suppression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Anchor-boxes"><span class="nav-number">4.3.2.4.</span> <span class="nav-text">Anchor boxes</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Region-proposals"><span class="nav-number">4.3.3.</span> <span class="nav-text">Region proposals</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Four-1"><span class="nav-number">4.4.</span> <span class="nav-text">Week Four</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Face-Recognition"><span class="nav-number">4.4.1.</span> <span class="nav-text">Face Recognition</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#One-shot-learning"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">One-shot learning</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Siamese-network"><span class="nav-number">4.4.1.2.</span> <span class="nav-text">Siamese network</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Triplet-loss"><span class="nav-number">4.4.1.3.</span> <span class="nav-text">Triplet loss</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Style-Transfer"><span class="nav-number">4.4.2.</span> <span class="nav-text">Neural Style Transfer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Neural-style-transfer-cost-function"><span class="nav-number">4.4.2.1.</span> <span class="nav-text">Neural style transfer cost function</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sequence-Model"><span class="nav-number">5.</span> <span class="nav-text">Sequence Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-One-4"><span class="nav-number">5.1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Recurrent-Neural-Networks"><span class="nav-number">5.1.1.</span> <span class="nav-text">Recurrent Neural Networks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Forward-Propagation"><span class="nav-number">5.1.2.</span> <span class="nav-text">Forward Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Backward-Propagation"><span class="nav-number">5.1.3.</span> <span class="nav-text">Backward Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Different-types"><span class="nav-number">5.1.4.</span> <span class="nav-text">Different types</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Language-model"><span class="nav-number">5.1.5.</span> <span class="nav-text">Language model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gated-Recurrent-Unit-GRU"><span class="nav-number">5.1.6.</span> <span class="nav-text">Gated Recurrent Unit(GRU)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Long-Short-Term-Memory-LSTM-Unit"><span class="nav-number">5.1.7.</span> <span class="nav-text">Long Short Term Memory(LSTM) Unit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bidirectional-RNN-BRNN"><span class="nav-number">5.1.8.</span> <span class="nav-text">Bidirectional RNN(BRNN)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Two-Natural-Language-Processing-amp-Word-Embeddings"><span class="nav-number">5.2.</span> <span class="nav-text">Week Two - Natural Language Processing & Word Embeddings</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Word2Vec"><span class="nav-number">5.2.1.</span> <span class="nav-text">Word2Vec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Negative-sampling"><span class="nav-number">5.2.2.</span> <span class="nav-text">Negative sampling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GloVe-word-vectors"><span class="nav-number">5.2.3.</span> <span class="nav-text">GloVe word vectors</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Applications-using-Word-Embeddings"><span class="nav-number">5.2.4.</span> <span class="nav-text">Applications using Word Embeddings</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-Three-3"><span class="nav-number">5.3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Beam-Search"><span class="nav-number">5.3.1.</span> <span class="nav-text">Beam Search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bleu-score"><span class="nav-number">5.3.2.</span> <span class="nav-text">Bleu score</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attention-model"><span class="nav-number">5.3.3.</span> <span class="nav-text">Attention model</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hael Chan</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_uv">
+  Welcome~ Thanks for visiting my blog. You are the №.<span id="busuanzi_value_site_uv"></span> visitor.
+</span>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://hael.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://haelchan.me/2018/02/17/deep-learning-note/';
+          this.page.identifier = '2018/02/17/deep-learning-note/';
+          this.page.title = 'deep-learning-note';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hael.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'manual') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3HhWLTewaKTSPj5DC3qp5b2m-gzGzoHsz", "zjxN2hpHQEmyMaz0XBicI3bn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

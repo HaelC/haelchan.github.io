@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="reading note,linguistics," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="I got to know the book The Study of Language on social network(Qzone) and luckily borrowed it from my schoolmate. Before diving into the field of natural language processing, I’d like to get an roughl">
+<meta name="keywords" content="reading note,linguistics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Overview of Linguistics - Reading Notes of The Study of Language(Second edition)">
+<meta property="og:url" content="http://haelchan.me/2018/07/16/reading-note-of-the-study-of-language-2e/index.html">
+<meta property="og:site_name" content="Hael&#39;s Blog">
+<meta property="og:description" content="I got to know the book The Study of Language on social network(Qzone) and luckily borrowed it from my schoolmate. Before diving into the field of natural language processing, I’d like to get an roughl">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://haelchan.me/images/linguistic/outline.png">
+<meta property="og:image" content="http://haelchan.me/images/linguistic/brain.jpg">
+<meta property="og:updated_time" content="2018-10-18T15:08:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Overview of Linguistics - Reading Notes of The Study of Language(Second edition)">
+<meta name="twitter:description" content="I got to know the book The Study of Language on social network(Qzone) and luckily borrowed it from my schoolmate. Before diving into the field of natural language processing, I’d like to get an roughl">
+<meta name="twitter:image" content="http://haelchan.me/images/linguistic/outline.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haelchan.me/2018/07/16/reading-note-of-the-study-of-language-2e/"/>
+
+
+
+
+
+  <title>Overview of Linguistics - Reading Notes of The Study of Language(Second edition) | Hael's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hael's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2018/07/16/reading-note-of-the-study-of-language-2e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hael Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hael's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Overview of Linguistics - Reading Notes of The Study of Language(Second edition)</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-16T20:03:01-07:00">
+                2018-07-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T08:08:35-07:00">
+                2018-10-18
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/reading-note-of-the-study-of-language-2e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/16/reading-note-of-the-study-of-language-2e/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/reading-note-of-the-study-of-language-2e/" class="leancloud_visitors" data-flag-title="Overview of Linguistics - Reading Notes of The Study of Language(Second edition)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/linguistic/outline.png" alt=""><br>I got to know the book <em>The Study of Language</em> on social network(Qzone) and luckily borrowed it from my schoolmate. Before diving into the field of natural language processing, I’d like to get an roughly understanding of linguistics, and this book is a good choice. In this post I’ll take notes on the The Study of Language second edition(though it has sixth edition up to date).</p>
+<h2 id="The-origins-of-language"><a href="#The-origins-of-language" class="headerlink" title="The origins of language"></a>The origins of language</h2><h3 id="Speculations"><a href="#Speculations" class="headerlink" title="Speculations"></a>Speculations</h3><p>Well, we simply do not know how language originated. Some speculations about the origins of language: <strong>the divine source</strong>, <strong>the natural-sound source</strong> and <strong>the oral-gesture source</strong>.<br>In a different view, <strong>glossogenetics</strong> and <strong>physiological adapation</strong> shows that human teeth(upright), lips(intricate muscle interlacing), larynx(with pharynx) and brain(lateralized) provide possibilities of language.</p>
+<h3 id="Major-functions-of-language-use"><a href="#Major-functions-of-language-use" class="headerlink" title="Major functions of language use"></a>Major functions of language use</h3><p><strong>Interactional function</strong>: to do with how humans use language to interact with each other, socially or emotionally; how they indicate friendliness, co-operation or hostility, or annoyance, pain, or pleasure.<br><strong>Transactional function</strong>: use linguistic abilities to communicate knowledge, skills and information.</p>
+<h2 id="The-development-of-writing"><a href="#The-development-of-writing" class="headerlink" title="The development of writing"></a>The development of writing</h2><h3 id="Pictograms-and-ideograms"><a href="#Pictograms-and-ideograms" class="headerlink" title="Pictograms and ideograms"></a>Pictograms and ideograms</h3><p><strong>Pictogram</strong>: picture-writing<br><strong>Ideograms</strong>: idea-writing<br>The distinction between pictograms and ideograms is essentially a difference in the relationship between the symbol and the entity it represents. The more ‘picture-like’ forms are pictograms, the more abstract, derived forms are ideograms. A key property of both pictograms and ideograms is that they do not represent words or sounds in a particular language.</p>
+<h3 id="Logograms"><a href="#Logograms" class="headerlink" title="Logograms"></a>Logograms</h3><p>When symbols come to be used to represent words in a language, they are described as examples of word-writing, or <strong>logograms</strong>.<br><strong>Cuneiform</strong> writing: normally referred to when the expression “the earliest known writing system” is used.<br><strong>Characters</strong>(Chinese writing): the longest continuous history of use as a writing system.</p>
+<h3 id="Syllabic-writing-and-alphabetic-writing"><a href="#Syllabic-writing-and-alphabetic-writing" class="headerlink" title="Syllabic writing and alphabetic writing"></a>Syllabic writing and alphabetic writing</h3><p>To avoid substantial memory load, some principled method is required to go from symbols which represent words(i.e. a logographic system) to a set of symbols which represent sounds(i.e. a phonographic system).<br>When a writing system employs a set of symbols which represent the pronunciations of syllabic writing. (There are no purely syllabic writing systems in use today.)<br><strong>Alphabetic writing</strong>: the symbols can be used to represent single sound types in a language. An alphabet is essentially a set of written symbols which each represent a single type of sound.</p>
+<h2 id="The-properties-of-language"><a href="#The-properties-of-language" class="headerlink" title="The properties of language"></a>The properties of language</h2><h3 id="Communicative-versus-informative"><a href="#Communicative-versus-informative" class="headerlink" title="Communicative versus informative"></a>Communicative versus informative</h3><p><strong>Communicative</strong>: intentionally communicating something<br><strong>Informative</strong>: unintentionally sent signals</p>
+<h3 id="Unique-properties"><a href="#Unique-properties" class="headerlink" title="Unique properties"></a>Unique properties</h3><p><strong>Displacement</strong>: It allows the users of language to talk about things and events not present in the immediate environment. It enables us to talk about things and places whose existence we cannot even be sure of.<br><strong>Arbitrariness</strong>: A property of linguistic signs is their arbitrary relationship with the objects they are used to indicate. They do not, in any way, ‘fit’ the objects they denote.<br><strong>Productivity</strong>(creativity/open-endedness): The potential number of utterances in any human language is infinite.<br><strong>Culture transmission</strong>: Humans are not born with the ability to produce utterances in a specific language.<br><strong>Discreteness</strong>: Each sound in the language is treated as discrete.<br><strong>Duality</strong>: Language is organized at two levels or layers simultaneously. At one level, we have distinct sounds, and at another level, we have distinct meanings.</p>
+<h3 id="Other-properties"><a href="#Other-properties" class="headerlink" title="Other properties"></a>Other properties</h3><p>The use of the <strong>vocal-auditory channel</strong>: Human linguistic communication is typically generated via the vocal organs and perceived via the ears.<br><strong>Reciprocity</strong>: Any speaker/sender of a linguistic signal can also be a listener/receiver.<br><strong>Specialization</strong>: Linguistic signals do not normally serve any other type of purpose, such as breathing or feeding.<br><strong>Non-directionality</strong>: Linguistic signals can be picked up by anyone within hearing, even unseen.<br><strong>Rapid fade</strong>: Linguistic signals are produced and disappear quickly.<br>Most of these are properties of the spoken language, but not of the written language.</p>
+<h2 id="The-sounds-of-language"><a href="#The-sounds-of-language" class="headerlink" title="The sounds of language"></a>The sounds of language</h2><p><strong>Phonetics</strong>: the general study of the characteristics of speech sounds<br><strong>Articulatory phonetics</strong>: the study of how speech sounds are made, or ‘articulated’<br><strong>Acoustic phonetics</strong>: deals with the physical properties of speech as sound waves ‘in the air’<br><strong>Auditory(Perceptual) phonetics</strong>: deals with the perception, via the ear, of speech sounds<br><strong>Forensic phonetics</strong>: has applications in legal cases involving speaker identification and the analysis of recorded utterances</p>
+<h3 id="Voiced-and-voiceless"><a href="#Voiced-and-voiceless" class="headerlink" title="Voiced and voiceless"></a>Voiced and voiceless</h3><p>When the vocal cords are spread apart, the air from the lungs passes between them unimpeded. Sounds produced in this way are described as <strong>voiceless</strong>.<br>When the vocal cords are drawn together, the air from the lungs repeatedly pushes them apart as it passes through, creating a vibration effect. Sounds produced in this way are described as <strong>voiced</strong>.</p>
+<h3 id="Place-of-articulation"><a href="#Place-of-articulation" class="headerlink" title="Place of articulation"></a>Place of articulation</h3><p><strong>Bilabials</strong><br>These are sounds formed using both upper and lower lips.<br>Includes: <script type="math/tex">\text{[b] [p] [m] [w]}</script></p>
+<p><strong>Labiodentals</strong><br>These are sounds formed with the upper teeth and the lower lip.<br>Includes: <script type="math/tex">\text{[f] [v]}</script></p>
+<p><strong>Dentals</strong><br>These sounds are formed with the tongue tip behind the upper front teeth.<br>Includes: <script type="math/tex">[\theta] \text{[eth]}</script> (Sorry can’t type the phonetic symbol directly. The phonetic of <em>th</em> in <em>the,there,then</em>)</p>
+<p><strong>Alveolars</strong><br>These are sounds formed with the front part of the tongue on the alveolar ridge.<br>Includes: <script type="math/tex">\text{[t] [d] [s] [z] [n], [l] [r](at the beginning of words)}</script></p>
+<p><strong>Alveo-palatals</strong><br>These are sounds formed with the tongue at the very front of the palate, near the alveolar ridge.<br>Includes: <script type="math/tex">\text{[sWedge] [cWedge] [zWedge] [jWedge], [y](often described as a palatal)}</script></p>
+<p><strong>Velars</strong><br>These are sounds formed with the back of the tongue against the velum.<br>Includes: <script type="math/tex">\text{[k] [g] [ng]}</script></p>
+<p><strong>Glottals</strong><br>This sound is produced without the active use of the tongue and other parts of the mouth.<br>Includes: <script type="math/tex">\text{[h]}</script></p>
+<h3 id="Manner-of-articulation"><a href="#Manner-of-articulation" class="headerlink" title="Manner of articulation"></a>Manner of articulation</h3><p><strong>Stops</strong><br>Consonant sound resulting from a blocking or stopping effect on the airstream.<br>Includes: <script type="math/tex">\text{[p][b][t][d][k][g]}</script></p>
+<p><strong>Fricatives</strong><br>As the air is pushed through, a type of friction is produced.<br>Includes: <script type="math/tex">\text{[f] [v] [s] [z]}\ [\theta] \text{[eth] [sWedge] [zWedge]}</script></p>
+<p><strong>Affricates</strong><br>Combine a brief stopping of the airstream with an obstructed release which causes some friction.<br>Includes: <script type="math/tex">\text{[cWedge] [jWedge]}</script></p>
+<p><strong>Nasals</strong><br>The velum is lowered and the airstream is allowed to flow out through the nose.<br>Includes: <script type="math/tex">\text{[m] [n] [ng]}</script></p>
+<p><strong>Approximants</strong><br>The articulation of each is strongly influenced by the following vowel sound.<br>Includes: <script type="math/tex">\text{[w] [y] [l] [r] [h]}</script></p>
+<p><em>The contents of vowel and the sound patterns are omitted</em></p>
+<h2 id="Words-and-word-formation-process"><a href="#Words-and-word-formation-process" class="headerlink" title="Words and word-formation process"></a>Words and word-formation process</h2><p><strong>Coinage</strong><br>The invention of totally new terms(The most typical sources are invented trade names for one company’s product which become general terms for any version of that product).<br><em>aspirin, nylon, zipper</em> </p>
+<p><strong>Borrowing</strong><br>Take over of words from other languages.<br>A special type of borrowing is described as load-translation, or calque. In this process, there is a direct translation of the elements of a word into the borrowing language.<br><em>alcohol, boss, piano</em></p>
+<p><strong>Compounding</strong><br>There is a joining of two separate words to produce a single form.<br><em>bookcase, fingerprint, wallpaper</em></p>
+<p><strong>Blending</strong><br>Blending is typically accomplished by taking only the beginning of one word and joining it to the end of the other word.<br><em>smog(smoke+fog), bit(binary+digit), brunch(breakfast+lunch)</em></p>
+<p><strong>Clipping</strong><br>This occurs when a word of more than one syllable is reduced to a shorter form, often in casual speech.<br><em>fax(facsimile), gas(gasoline), ad(advertisement)</em></p>
+<p><strong>Backformation</strong><br>A word of one type(usually a noun) is reduced to form another word of a different type(usually a verb).<br><em>televise(television), donate(donation), opt(option)</em></p>
+<p><strong>Conversion</strong><br>A change in the function of a word.<br><em>paper(noun-&gt;verb), guess(verb-&gt;noun), empty(adjective-&gt;verb)</em></p>
+<p><strong>Acronyms</strong><br>New words formed from the initial letters of a set of other words.<br><em>CD(compact disk), radar(radio detecting and ranging), ATM(automatic tell machine)</em></p>
+<p><strong>Derivation</strong><br>Accomplished by means of a large number of affixes which are not usually given separate listings in dictionaries.<br><em>prefix</em>: added to the beginning of the word <em>un-</em><br><em>suffix</em>: added to the end of the word <em>-ish</em><br><em>infix</em>: incorporated inside another word <em>unfuckingbelievable</em></p>
+<h2 id="Morphology"><a href="#Morphology" class="headerlink" title="Morphology"></a>Morphology</h2><p><strong>Morphology</strong>, which literally means the ‘study of forms’, was originally used in biology, but, since the middle of the nineteenth century, has also been used to describe that type of investigation which analyzes all those <strong>morphemes</strong> which are used in a language.<br>The definition of a morpheme is “a minimal unit of meaning or grammatical function”.</p>
+<ul>
+<li>morphemes<ul>
+<li>free<ul>
+<li>lexical</li>
+<li>functional</li>
+</ul>
+</li>
+<li>bound<ul>
+<li>derivational</li>
+<li>inflectional</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Free-and-bound-morphemes"><a href="#Free-and-bound-morphemes" class="headerlink" title="Free and bound morphemes"></a>Free and bound morphemes</h3><h4 id="Free-morphemes"><a href="#Free-morphemes" class="headerlink" title="Free morphemes"></a>Free morphemes</h4><p>Morphemes which can stand by themselves as single words.</p>
+<p><strong>Lexical morphemes</strong>: a set of ordinary nouns, adjectives and verbs which we think of as the words which carry the ‘content’ of messages we convey.<br><em>boy, man, house, tiger, sad, long, yellow, sincere, open, look, follow, break</em><br>‘Open’ class of words(we can add new lexical morphemes to the language rather easily).</p>
+<p><strong>Functional morphemes</strong>: a set consists largely of the functional words in the language such as conjunctions, prepositions, articles and pronouns.<br><em>and, but, when, because, on, near, above, in, the, that, it</em><br>‘Closed’ class of words(we almost never add new functional morphemes to the language).</p>
+<h4 id="Bound-morphemes"><a href="#Bound-morphemes" class="headerlink" title="Bound morphemes"></a>Bound morphemes</h4><p>Morphemes which cannot normally stand alone, but are typically attached to another form.</p>
+<p><strong>Derivational morphemes</strong>: used to makek new words in the language and are often used to make words of a different grammatical category from the stem(when affixes are used with bound morphemes, the basic word-form involved is technically known as the stem).<br>(<em>-ness, -ful, -less, -ish, -ly, re-, pre-, ex-, dis-, co-, un-</em>)</p>
+<p><strong>Inflectional morphemes</strong>: to indicate aspects of the grammatical function of a word.<br>Noun+ <em>-‘s(possessive), -s(plural)</em><br>Verb+ <em>-s(3rd person present singular), -ing(present participle), -ed(past tense), -en(past participle)</em><br>Adjective+ <em>-est(superlative), -er(comparative)</em></p>
+<p>An inflectional morpheme never changes the grammatical category of a word. A derivational morpheme can change the grammatical category of a word.</p>
+<h2 id="Phrases-and-sentences-grammar"><a href="#Phrases-and-sentences-grammar" class="headerlink" title="Phrases and sentences: grammar"></a>Phrases and sentences: grammar</h2><p>We need a way of describing the structure of phrases and sentences which will account for all of the grammatical sequences and rule out all ungrammatical sequences. Providing such an account involves us in the study of <strong>grammar</strong>.</p>
+<p>The part of speech<br><strong>Nouns</strong> are words used to refer to people, objects, creatures, places, qualities, phenomena and abstract ideas as if they were all ‘things’.<br><strong>Adjectives</strong> are words used, typically with nouns, to provide more information about the ‘things’ referred to. <em>(happy, large, cute)</em><br><strong>Verbs</strong> are words used to refer to various kinds of actions<em>(run, jump)</em> and states<em>(be, seem)</em> involving the ‘things’ in events.<br><strong>Adverbs</strong> are words used to provide more information about the actions and events<em>(slowly, suddenly)</em>. Some adverb<em>(really, very)</em> are also used twith adjectives to modify the information about ‘things’.<br><strong>Prepositions</strong> are words<em>(at, in, on, near, with, without)</em> used with nouns in phrases providing information about time, place and other connections involving actions and things.<br><strong>Pronouns</strong> are words<em>(me, they, he, himself, this, it)</em> used in place of noun phrases, typically referring to things already known.<br><strong>Conjunctions</strong> are words<em>(and, but, although, if)</em> used to connect, and indicate relationships between events and things.</p>
+<h3 id="Traditional-grammar"><a href="#Traditional-grammar" class="headerlink" title="Traditional grammar"></a>Traditional grammar</h3><p>In addition to the terms used for the parts of speech, traditional grammatical analysis also gave us a number of other categories, including ‘number’, ‘person’, ‘tense’, ‘voice’ and ‘gender’.<br><strong>Number</strong> is whether the noun in singular or plural.<br><strong>Person</strong> covers the distinctions of first person(involving the speaker), second person(involving the hearer) and third person(involving any others).<br><strong>Tense</strong>: present tense, past tense, future tense.<br><strong>Voice</strong>: active voice, passive voice<br><strong>Gender</strong>: describe the relationship in terms of natural gender, mainly derived from a biological distinction between male and female. (Grammatical gender is common but may not be as appropriate in describing English)</p>
+<h3 id="The-prescriptive-approach"><a href="#The-prescriptive-approach" class="headerlink" title="The prescriptive approach"></a>The prescriptive approach</h3><p>The view of grammar as a set of rules for the ‘proper’ user of a language is still to be found today and may be best characterized as the prescriptive approach.<br>Some familar examples of prescriptive rules for English sentences:</p>
+<ol>
+<li>You must not split an infinitive.</li>
+<li>You must not end a sentence with a preposition.</li>
+</ol>
+<h3 id="The-descriptive-approach"><a href="#The-descriptive-approach" class="headerlink" title="The descriptive approach"></a>The descriptive approach</h3><p>Analysts collect samples of the language they are interested in and attempt to describe the regular structures of the language as it is used, not according to some view of how it should be used. This is called the descriptive approach and it is the basis of most modern attempts to characterize the structure of different languages.<br><strong>Structural analysis</strong><br>One type of descriptive approach is called structural analysis and its main concern is to investigate the distribution of forms(e.g., morphemes) in a language. The method employed involves the use of ‘test-frams’ which can be sentences with empty slots in them.<br><strong>Immediate constituent analysis</strong><br>An approach with the same descriptive aims is called immediate constituent analysis. The technique employed in this approach is designed to show how small constituents(or components) in sentences go together to form larger constituents.<br>The analysis of the constituent structure of the sentence can be represented in different types of diagrams. (Simple diagram, labeled and bracketed sentences, tree diagrams, discussed in the following chapter in detail)</p>
+<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>The word ‘syntax’ came originally from Greek and literally meant ‘a setting out together’ or ‘arrangement’. </p>
+<p><strong>Generative grammar</strong><br>There have been attempts to produce a particular type of grammar which would have a very explicit system of rules specifying what combinations of basic elements would result in well-formed sentences since the 1950s.<br>Given an algebraic expression <script type="math/tex">3x+2y</script>, the simple algebraic expression can generate an endless set of values, by following the simple rules of arithmetic. The endless set of such results is ‘generated’ by the operation of the explicitly formalized rules. If the sentences of a language can be seen as a comparable set, then there must be a set of explicit rules which yield those sentences. Such a set of explicit rules is a generative grammar.</p>
+<p><strong>Some properties of the grammar</strong></p>
+<ul>
+<li>The grammar will generate all the well-formed syntactic structures(e.g. sentences) of the language and fail to generate any ill-formed structures.</li>
+<li>The grammar will have a finite(i.e. limited) number of rules, but will be capable of generating an infinite number of well-formed structures.</li>
+<li>Property of recursion: the capacity to be applied more than once in generating a structure.</li>
+<li>The grammar will have to capture the fact that a sentence can have another sentence inside it, or a phrase can have another phrase of the same type inside it.</li>
+<li>The grammar should be capable of revealing how superficially didstinct sentences are closely related.</li>
+<li>The grammar should be capable of revealing how some superficially similar sentences are in fact distinct.</li>
+</ul>
+<h3 id="Symbols-and-abbreviations-in-syntactic-description"><a href="#Symbols-and-abbreviations-in-syntactic-description" class="headerlink" title="Symbols and abbreviations in syntactic description"></a>Symbols and abbreviations in syntactic description</h3><p>S       sentence<br>N       noun<br>Pro     pronoun<br>PN      proper noun<br>V       verb<br>Adj     adjective<br>Art     article<br>Adv     adverb<br>Prep    preposition<br>NP      noun phrase<br>VP      verb phrase<br>PP      prepositional phrase<br>*      ungrammatical sequence<br>-&gt;      consists of<br>()      optional constituent<br>{}      one and only one of these constituents must be selected</p>
+<p>(May be a bit different with the symbols used in the post <a href="http://haelchan.me/2018/03/31/NLP-note/">COMS W4705 Natural Language Processing Note</a>, but it doesn’t matter. And the tree diagram is introduced in that post as well).</p>
+<h2 id="Semantics"><a href="#Semantics" class="headerlink" title="Semantics"></a>Semantics</h2><p>Semantics is the study of the meaning of the words, phrases and sentences. Linguistic semantics deals with the conventional meaning conveyed by the use of words and sentences of a language.</p>
+<h3 id="Semantic-features"><a href="#Semantic-features" class="headerlink" title="Semantic features"></a>Semantic features</h3><p>Analyze meaning in terms of semantic features. Features such as +<em>animate</em>, -<em>animate</em>; +<em>human</em>, -<em>human</em>, for example, can be treated as the basic features involved in differentiaiting the meanings of each word in the language from every other word.<br>This approach gives us the ability to predict what nouns would make sentence semantically odd.<br>However, for many words in a language it may not be so easy to come up with neat components of meaning. Part of the problem seems to be that the approach involves a view of words in a language as some sort of ‘containers’, carrying meaning-components.</p>
+<h3 id="Semantic-roles"><a href="#Semantic-roles" class="headerlink" title="Semantic roles"></a>Semantic roles</h3><p>Instead of thinking of the words as ‘containers’ of meaning, we can look at the ‘roles’ they fulfill within the situation described by a sentence.</p>
+<p><strong>agent</strong>: the entity that performs the action<br><strong>theme</strong>: the entity that is involved in or affected by the action<br><strong>instrument</strong>: if an agent uses another entity in performing an action, that other entity fills the role of instrument<br><strong>experiencer</strong>: when a noun phrase designates an entity as the person who has a feeling, a perception or a state<br><strong>location</strong>: where an entity is<br><strong>source</strong>: where an entity moves from<br><strong>goal</strong>: where an entity moves to</p>
+<h3 id="Lexical-relations"><a href="#Lexical-relations" class="headerlink" title="Lexical relations"></a>Lexical relations</h3><p>Characterize the meaning of a word not in terms of its component features, but in terms of its relationship to other words. This procedure has also been used in the semantic description of languages and is treated as the analysis of lexical relations.</p>
+<p><strong>Synonymy</strong><br>Two or more forms with very closely related meanings, which are often, but not always, intersubstituatable in sentences.</p>
+<p><strong>Antonymy</strong><br>Two forms with opposite meanings<br><em>gradable antonyms</em> such as the pair big-small, can be used in comparative constructions like bigger than-smaller than. Also, the negative of one member of the gradable pair does not necessarily imply the other.<br><em>non-gradable antonyms</em> also called ‘complementatry pairs’, comparative constructions are not normally used, and the negative of one member does imply the other.</p>
+<p><strong>Hyponymy</strong><br>When the meaning of one form is included in the meaning of another, the relationship is described as hyponymy. (The meaning of <em>animal</em> is ‘included’ in the meaning of <em>dog</em>. Or, <em>dog</em> is a hyponym of <em>animal</em>.)<br>When we consider hyponymous relations, we are essentially looking at the meaning of words in some type of hierarchical relationship.<br>From the hierarchical diagram, we can say that two or more terms which share the same superordinate(higher-up) term are co-hyponymss.<br>The relation of hyponymy captures the idea of ‘is a kind of’.</p>
+<p><strong>Prototype</strong><br>The concept of a prototype helps explain the meaning of certain words not in terms of component features, but in terms of resemblance to the clearest exemplar. (For many American English speakers, the prototype of ‘bird’ is the robin.)</p>
+<p><strong>Homophony</strong><br>Two or more different (written) forms have the same pronunciation.(<em>bare-bear, meat-meet</em>)</p>
+<p><strong>Homonymy</strong><br>One form(written and spoken) has two or more unrelated meanings.(<em>bank: of a river; financial instituion, race: contest of speed; ethnic group</em>)</p>
+<p><strong>Polysemy</strong><br>One form(written or spoken) has multiple meanings which are all related by extension.(<em>head, foot</em>)</p>
+<p>(Some other lexical relations like <em>meronyms</em> and <em>holonyms</em> are introduced in this <a href="http://haelchan.me/2018/07/23/nlp-with-python-and-nltk/">post</a>)</p>
+<h3 id="Metonymy"><a href="#Metonymy" class="headerlink" title="Metonymy"></a>Metonymy</h3><p>Relationship between words based simply on a close connection in everyday experience. That close connection can be based on a container-contents relation(<em>bottle-coke; can-juice</em>), a whole-part relation(<em>car-wheel; hourse-roof</em>) or a representative-symbol relationship(<em>king-crown; the President-the White House</em>).<br>Many examples of metonymy are highly conventionalized and easy to interpret. However, many others depend on an ability to infer what the speaker has in mind.</p>
+<h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>One way we seem to organize our knowledge of words is simply in terms of collocation, or frequently occurring together.<br>(<em>butter-bread, needle-thread, salt-pepper</em>)</p>
+<h2 id="Pragmatics"><a href="#Pragmatics" class="headerlink" title="Pragmatics"></a>Pragmatics</h2><p>When we read or hear pieces of language, we normally try to understand not only what the words mean, but what the writer or speaker of those words intended to convey. The study of ‘intended speaker meaning’ is called pragmatics.</p>
+<h3 id="Contexts"><a href="#Contexts" class="headerlink" title="Contexts"></a>Contexts</h3><p><strong>Linguistic context</strong>(<strong>co-text</strong>)<br>The co-text of a word is the set of other words used in the same phrase or sentence. This surrounding co-text has a strong effect on what we think the word means.</p>
+<p><strong>Physical context</strong><br>Our understanding of much of what we read and hear is tied to the physical context, particularly the time and place, in which we encounter linguistic expressions.</p>
+<h3 id="Deixis"><a href="#Deixis" class="headerlink" title="Deixis"></a>Deixis</h3><p>There are some words in the language that cannot be interpreted at all unless the physical context, especially the physical context of the speaker, is known. Expressions, which depend for their interpretation on the immediate physical context in which they were uttered, are very obvious examples of bits of language which we can only understand in terms of speaker’s intended meaning. These are technically known as <strong>deictic expressions</strong>.<br><strong>Person deixis</strong>: used to point to a person(<em>me, you, him, them</em>)<br><strong>Place deixis</strong>: (<em>here, there, yonder</em>)<br><strong>Time deixis</strong>: (<em>now, then, tonight, last week</em>)</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>An act by which a speaker(or writer) uses language to enable a listener(or reader) to identify something.<br>We can use names associated with things to refer to people and names of people to refer to things. The key process here is called inference. An inference is any additional information used by the listener to connect what is said to whawt must be meant.</p>
+<h3 id="Anaphora"><a href="#Anaphora" class="headerlink" title="Anaphora"></a>Anaphora</h3><p>When we establish a referent and subsequently refer to the same object, we have a particular kind of referential relationship. The second referring expression is an example of anaphora and the first mention is called the antecedent.<br>Anaphora can be defined as subsequent reference to an already introduced entity. Mostly we use anaphora in texts to maintain reference.</p>
+<h3 id="Presupposition"><a href="#Presupposition" class="headerlink" title="Presupposition"></a>Presupposition</h3><p>What a speaker assumes is true or is known by the hearer can be described as a presupposition.<br><strong>Constancy under negation</strong>: although two sentences have opposite meanings, the underlying presupposition remains true in both.</p>
+<h3 id="Speech-acts"><a href="#Speech-acts" class="headerlink" title="Speech acts"></a>Speech acts</h3><p>In very general terms, we can usually recognize the type of ‘act’ performed by a speaker in uttering a sentence. The use of the term speech act covers ‘actions’ such as ‘requesting’, ‘commanding’, ‘questioning’ and ‘informing’.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Forms</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interrogative</td>
+<td>Question</td>
+</tr>
+<tr>
+<td>Imperative</td>
+<td>Command(request)</td>
+</tr>
+<tr>
+<td>Declarative</td>
+<td>Statement</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Direct speech act</strong>: the forms in the set above is used to perform the corresponding function<br><strong>Indirect speech act</strong>: whenever one of the forms in the set above is used to perform a function other than the one listed beside it</p>
+<h3 id="Politeness"><a href="#Politeness" class="headerlink" title="Politeness"></a>Politeness</h3><p>Politeness is showing awareness of another person’s face(<em>Face</em> is public self-image. This is the emotional and social sense of self that every person has and expects everyone else to recognize).</p>
+<p><strong>face-threatening act</strong>: say something that represents a threat to another person’s self-image (use a direct speech act to order someone to do something)<br><strong>face-saving act</strong>: say something that lessens the possible threat to another’s face (use an indirect speech act instead)</p>
+<p><strong>negative face</strong>: the need to be independent and to have freedom from imposition<br><strong>positive face</strong>: the need to be connected, to belong, to be a member of the group</p>
+<h2 id="Discourse-analysis"><a href="#Discourse-analysis" class="headerlink" title="Discourse analysis"></a>Discourse analysis</h2><p>When we ask how it is that we, as language users, make sense of what we read in texts, understand what speakers mean despite what they say, recognize connected as opposed to jumbled or incoherent discourse, and successfully take part in that complex activity called conversation, we are undertaking what is known as discourse analysis.</p>
+<h3 id="Cohesion"><a href="#Cohesion" class="headerlink" title="Cohesion"></a>Cohesion</h3><p>Texts must have a certain structure which depends on factors quite different from those required in the structure of a single sentence. Some of those factors are described in terms of cohesion, or the ties and connections which exist within texts.<br>Analysis of cohesive links within a text gives us some insight into how writers structure what they want to say, and may be crucial factors in our judgments on whether something is well-written or not.</p>
+<h3 id="Coherence"><a href="#Coherence" class="headerlink" title="Coherence"></a>Coherence</h3><p>There must be some factor which leads us to distinguish connected texts which make sense from those which do not. This factor is usually described as coherence.<br>The key to the concept of coherence is not something which exists in the language, but something which exists in people. It is people who ‘make sense’ of what they read and hear.</p>
+<h3 id="The-co-operative-principle"><a href="#The-co-operative-principle" class="headerlink" title="The co-operative principle"></a>The co-operative principle</h3><p>An underlying assumption in most conversational exchanges seems to be that the participants are co-operating with each other.</p>
+<p>Four maxim<br><strong>Quantity</strong>: Make your contribution as informative as is required, but not more, or less, than is required<br><strong>Quality</strong>: Do not say that which you believe to be false or for which you lack evidence<br><strong>Relation</strong>: Be relevant<br><strong>Manner</strong>: Be clear, brief and orderly</p>
+<h3 id="Background-knowledge"><a href="#Background-knowledge" class="headerlink" title="Background knowledge"></a>Background knowledge</h3><p>We actually create what the text is about, based on our expectations of what normally happens. In attempting to describe this phenomenon, many researchers use the concept of a ‘schema’.<br>A <strong>schema</strong> is a general term for a conventional knowledge structure which exists in memory. We have many schemata which are used in the interpretation of what we experience and what we hear or read about.<br>One particular kind of shcema is a ‘script’. A <strong>script</strong> is essentially a dynamic schema, in which a series of conventional actions takes place.</p>
+<h2 id="Neurolinguistics"><a href="#Neurolinguistics" class="headerlink" title="Neurolinguistics"></a>Neurolinguistics</h2><h3 id="Parts-of-the-brain"><a href="#Parts-of-the-brain" class="headerlink" title="Parts of the brain"></a>Parts of the brain</h3><p><img src="/images/linguistic/brain.jpg" alt=""></p>
+<p><strong>Broca’s area</strong><br>Paul Broca, a French surgeon, reported in the 1860s that damage to this specific part of the brain was related to extreme difficulty in producing speech. It was noted that damage to the corresponding area on the right hemisphere had no such effect. This finding was first used to argue that language ability must be located in the left hemisphere and since then has been taken as more specifically illustrating that Broca’s area is crucially involved in the production of speech.</p>
+<p><strong>Wernicke’s area</strong><br>Carl Wernicke was a German doctor who, in the 1870s, reported that damage to this part of the brain was found among patients who had speech comprehension difficulties. This finding confirmed the left-hemisphere location of language ability and led to the view that Wernicke’s area is part of the brain crucially involved in the understanding of speech.</p>
+<p><strong>The motor cortex</strong><br>The motor cortex generally controls movement of the muscles. Close to Broca’s area is the part of the motor cortex that controls the articulatory muscles of the face, jaw, tongue and larynx. Evidence that this area is involved in the actual physical articulation of speech comes from the work, reported in the 1950s, of two neurosurgeons, Penfield and Roberts.</p>
+<p><strong>The arcuate fasciculus</strong><br>The arcuate fasciculus is a bundle of nerve fibers. This was also one of Wernicke’s discoveries and forms a crucial connection between Wernicke’s area and Broca’s area.</p>
+<p>The word is heard and comprehended via Wernicke’s area. This signal is then transferred via the arcuate fasciculus to Broca’s area where preparations are made to produce it. A signal is then sent to the motor cortex to physically articulated the word.(A massively oversimplified version of what may actually take place.)</p>
+<h3 id="Tongue-tips-and-slips"><a href="#Tongue-tips-and-slips" class="headerlink" title="Tongue tips and slips"></a>Tongue tips and slips</h3><p><strong>Tip-of-the-tongue</strong><br>There is the tip-of-the-tongue phenomenon in which you feel that some word is just eluding you, that you know the word, but it just won’t come to the surface.<br><strong>Malapropisms</strong><br>The experience which occurs with uncommon terms or names suggests that our ‘word-storage’ may be partially organized on the basis of some phonological information and that some words in that ‘store’ are more easily retrieved than others. When we make mistakes in this retrieval process, there are often strong phonological similarities between the target word and the mistake. Mistakes of this type are sometimes referred to as Malapropisms.<br><strong>Slip-of-the-tongue</strong><br>A slip-of-the-tongue often results in tangled expressions or word reversals. This type of slip is also known as a <strong>Spoonerism</strong>.<br><strong>Tip-of-the-lung</strong><br>Tips-of-the-lung are often simply the result of a sound being carried over from one word to the next, or a sound used in one word in anticipation of its occurrence in the next word.<br><strong>Slip-of-the-ear</strong><br>Slips-of-the-ear can result in misinterpretaion when hearing. </p>
+<h3 id="Aphasia"><a href="#Aphasia" class="headerlink" title="Aphasia"></a>Aphasia</h3><p>Aphasia is defined as an impairment of language function due to localized cerebral damage which leads to difficulty in understanding and/or producing linguistic forms.<br><strong>Broca’s aphasia</strong><br>The type of serious language disorder known as Broca’s aphasia(also called ‘motor aphasia’) is characterized by a substantially reduced amount of speech, distorted articulation and slow, often effortful speech. What is said often consists almost entirely of lexical morphemes(e.g. nouns and verbs). The frequent omission of functional morphemes(e.g. articles, prepositions, inflections) has led to the characterization of this type of aphasia as agrammatic. The grammatical markers are missing.<br>In Broca’s aphasia, comprehension is typically much better than production.</p>
+<p><strong>Wernicke’s aphasia</strong><br>The type of language disorder which results in difficulties in auditory comprehension is sometimes called ‘sensory aphasia’, but is more commonly known as Wernicke’s aphasia. Someone suffering from this disorder can actually produce very fluent speech which is, however, often difficult to make sense of.<br>Difficulty in finding the correct words(sometimes referred to as anomia) is also very common and circumlocution may be used.</p>
+<p><strong>Conduction aphasia</strong><br>The type of aphasia is identified with damage to the arcuate fasciculus and is called conduction aphasia. Individuals suffering from this disorder typically do not have articulation problems. They are fluent, but may have disrupted rhythm because of pauses and hesitations. Comprehension of spoken words is normally good. However, the task of repeating a word phrase(spoken by someone else) will create major difficulty. What is heard and understood cannot be transferred to the speech production area.</p>
+<h3 id="Dichotic-listening"><a href="#Dichotic-listening" class="headerlink" title="Dichotic listening"></a>Dichotic listening</h3><p>An experimental technique which has demonstrated that, for the majority of subjects tested, the language functions must be located in the left hemisphere is called the dichotic listening test. This is a technique which uses the generally established fact that anything experienced on the right-hand side of the body is processed in the left hemisphere of the brain and anything on the left side is processed in the right hemisphere.<br>An experiment is possible in which a subject sits with a set of earphones on and is given two different sound signals simultaneously, one through each earphone. When asked to say what was heard, the subject more often correctly identifies the sound which came via the right ear. This has come to be known as the right ear advantage.</p>
+<p>The explanation of this process proposes that a language signal received through the left ear is first sent to the right hemisphere and then has to be sent over to the left hemisphere(language center) for processing. This nondirect route will take longer than a linguistic signal which is received through the right ear and goes directly to the left hemisphere. First signal to get processed wins.</p>
+<h2 id="Language-history-and-change"><a href="#Language-history-and-change" class="headerlink" title="Language history and change"></a>Language history and change</h2><h3 id="Philology"><a href="#Philology" class="headerlink" title="Philology"></a>Philology</h3><p>the historical study of languages<br><strong>Cognates</strong>: within groups of related languages, we often find close similarities in particular sets of terms. A cognate of a word in one language is a word in another language which has a similar form and is, or was, used with a similar meaning.<br><strong>Comparative reconstruction</strong>: the aim of this procedure is to reconstruct what must have been the original, or ‘proto’ form in the common ancestral language. It’s a bit like trying to work out what the greatgrandmother must have been like on the basis of common features possessed by the set of granddaughters.<br>The <strong>majority principle</strong>: if, in a cognate set, three forms begin with a [p] sound and one form begins with a [b] sound, then our best guess is that the majority have retained the original sound(i.e. [p]), and the minority has changed a little through time.<br>The <strong>most natural development principle</strong>: based on the fact that certain types of sound-change are very common, whereas others are extremely  unlikely.</p>
+<h3 id="Language-change"><a href="#Language-change" class="headerlink" title="Language change"></a>Language change</h3><p><strong>Sound changes</strong><br>metathesis: involves a reversal in position of two adjoining sounds<br>epenthesis: involves the addition of a sound to the middle of a word<br>prothesis: involves the addition of a sound to the beginning of a word</p>
+<p><strong>Lexical changes</strong><br>broadening<br>narrowing</p>
+<h2 id="Sociolinguistics"><a href="#Sociolinguistics" class="headerlink" title="Sociolinguistics"></a>Sociolinguistics</h2><p>In general terms, sociolinguistics deals with the inter-relationships between language and society. It has strong connections to anthropology, through the investigation of language and culture, and to sociology, through the crucial role that language plays in the organization of social groups and institutions. It is also tied to social psychology, particularly with regard to how attitudes and perceptions are expressed and how in-group and out-group behaviors are identified.</p>
+<h3 id="Social-dialects"><a href="#Social-dialects" class="headerlink" title="Social dialects"></a>Social dialects</h3><p>Varieties of language used by groups defined according to class, education, age, sex, and a number of other social parameters.<br>Factors include: social class and education; age and gender; ethnic background; idiolect; style, register and jargon, diglossia.</p>
+<h3 id="Language-and-culture"><a href="#Language-and-culture" class="headerlink" title="Language and culture"></a>Language and culture</h3><p><strong>Linguistic determinism</strong>: language determines thought<br><strong>The Sapir-Whorf hypothesis</strong>: we dissect nature along lines laid down by our native languages.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Hael Chan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://haelchan.me/2018/07/16/reading-note-of-the-study-of-language-2e/" title="Overview of Linguistics - Reading Notes of The Study of Language(Second edition)">http://haelchan.me/2018/07/16/reading-note-of-the-study-of-language-2e/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/reading-note/" rel="tag"># reading note</a>
+          
+            <a href="/tags/linguistics/" rel="tag"># linguistics</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/16/retrospect-prospect/" rel="next" title="Retrospect & Prospect">
+                <i class="fa fa-chevron-left"></i> Retrospect & Prospect
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/23/nlp-with-python-and-nltk/" rel="prev" title="Natural Language Processing with Python and NLTK">
+                Natural Language Processing with Python and NLTK <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Hael Chan" />
+            
+              <p class="site-author-name" itemprop="name">Hael Chan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/haelchan" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:f.procumbens@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Procumbens" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="www.linkedin.com/in/haoliang-chen" target="_blank" title="LinkedIn">
+                    
+                      <i class="fa fa-fw fa-linkedin"></i>LinkedIn</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ruder.io" title="Sebastian Ruder" target="_blank">Sebastian Ruder</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://smerity.com" title="Semerity" target="_blank">Semerity</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://einstein.ai/research/blog" title="Salesforce Research" target="_blank">Salesforce Research</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.reddit.com/r/LanguageTechnology/" title="Reddit" target="_blank">Reddit</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://learnerwn.github.io" title="WN_Blog" target="_blank">WN_Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hey-yahei.cn" title="YaHei" target="_blank">YaHei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://godweiyang.com" title="WeiYang Blog" target="_blank">WeiYang Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.linzehui.me" title="Weekly Review" target="_blank">Weekly Review</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jalammar.github.io" title="Jay Alammar" target="_blank">Jay Alammar</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-origins-of-language"><span class="nav-number">1.</span> <span class="nav-text">The origins of language</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Speculations"><span class="nav-number">1.1.</span> <span class="nav-text">Speculations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Major-functions-of-language-use"><span class="nav-number">1.2.</span> <span class="nav-text">Major functions of language use</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-development-of-writing"><span class="nav-number">2.</span> <span class="nav-text">The development of writing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pictograms-and-ideograms"><span class="nav-number">2.1.</span> <span class="nav-text">Pictograms and ideograms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logograms"><span class="nav-number">2.2.</span> <span class="nav-text">Logograms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Syllabic-writing-and-alphabetic-writing"><span class="nav-number">2.3.</span> <span class="nav-text">Syllabic writing and alphabetic writing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-properties-of-language"><span class="nav-number">3.</span> <span class="nav-text">The properties of language</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Communicative-versus-informative"><span class="nav-number">3.1.</span> <span class="nav-text">Communicative versus informative</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unique-properties"><span class="nav-number">3.2.</span> <span class="nav-text">Unique properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-properties"><span class="nav-number">3.3.</span> <span class="nav-text">Other properties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-sounds-of-language"><span class="nav-number">4.</span> <span class="nav-text">The sounds of language</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Voiced-and-voiceless"><span class="nav-number">4.1.</span> <span class="nav-text">Voiced and voiceless</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Place-of-articulation"><span class="nav-number">4.2.</span> <span class="nav-text">Place of articulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manner-of-articulation"><span class="nav-number">4.3.</span> <span class="nav-text">Manner of articulation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Words-and-word-formation-process"><span class="nav-number">5.</span> <span class="nav-text">Words and word-formation process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Morphology"><span class="nav-number">6.</span> <span class="nav-text">Morphology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Free-and-bound-morphemes"><span class="nav-number">6.1.</span> <span class="nav-text">Free and bound morphemes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Free-morphemes"><span class="nav-number">6.1.1.</span> <span class="nav-text">Free morphemes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bound-morphemes"><span class="nav-number">6.1.2.</span> <span class="nav-text">Bound morphemes</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Phrases-and-sentences-grammar"><span class="nav-number">7.</span> <span class="nav-text">Phrases and sentences: grammar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Traditional-grammar"><span class="nav-number">7.1.</span> <span class="nav-text">Traditional grammar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-prescriptive-approach"><span class="nav-number">7.2.</span> <span class="nav-text">The prescriptive approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-descriptive-approach"><span class="nav-number">7.3.</span> <span class="nav-text">The descriptive approach</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syntax"><span class="nav-number">8.</span> <span class="nav-text">Syntax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Symbols-and-abbreviations-in-syntactic-description"><span class="nav-number">8.1.</span> <span class="nav-text">Symbols and abbreviations in syntactic description</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semantics"><span class="nav-number">9.</span> <span class="nav-text">Semantics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Semantic-features"><span class="nav-number">9.1.</span> <span class="nav-text">Semantic features</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Semantic-roles"><span class="nav-number">9.2.</span> <span class="nav-text">Semantic roles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lexical-relations"><span class="nav-number">9.3.</span> <span class="nav-text">Lexical relations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metonymy"><span class="nav-number">9.4.</span> <span class="nav-text">Metonymy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collocation"><span class="nav-number">9.5.</span> <span class="nav-text">Collocation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pragmatics"><span class="nav-number">10.</span> <span class="nav-text">Pragmatics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Contexts"><span class="nav-number">10.1.</span> <span class="nav-text">Contexts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deixis"><span class="nav-number">10.2.</span> <span class="nav-text">Deixis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">10.3.</span> <span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Anaphora"><span class="nav-number">10.4.</span> <span class="nav-text">Anaphora</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Presupposition"><span class="nav-number">10.5.</span> <span class="nav-text">Presupposition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Speech-acts"><span class="nav-number">10.6.</span> <span class="nav-text">Speech acts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Politeness"><span class="nav-number">10.7.</span> <span class="nav-text">Politeness</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Discourse-analysis"><span class="nav-number">11.</span> <span class="nav-text">Discourse analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cohesion"><span class="nav-number">11.1.</span> <span class="nav-text">Cohesion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Coherence"><span class="nav-number">11.2.</span> <span class="nav-text">Coherence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-co-operative-principle"><span class="nav-number">11.3.</span> <span class="nav-text">The co-operative principle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Background-knowledge"><span class="nav-number">11.4.</span> <span class="nav-text">Background knowledge</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neurolinguistics"><span class="nav-number">12.</span> <span class="nav-text">Neurolinguistics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Parts-of-the-brain"><span class="nav-number">12.1.</span> <span class="nav-text">Parts of the brain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tongue-tips-and-slips"><span class="nav-number">12.2.</span> <span class="nav-text">Tongue tips and slips</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aphasia"><span class="nav-number">12.3.</span> <span class="nav-text">Aphasia</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dichotic-listening"><span class="nav-number">12.4.</span> <span class="nav-text">Dichotic listening</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-history-and-change"><span class="nav-number">13.</span> <span class="nav-text">Language history and change</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Philology"><span class="nav-number">13.1.</span> <span class="nav-text">Philology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-change"><span class="nav-number">13.2.</span> <span class="nav-text">Language change</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sociolinguistics"><span class="nav-number">14.</span> <span class="nav-text">Sociolinguistics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Social-dialects"><span class="nav-number">14.1.</span> <span class="nav-text">Social dialects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-and-culture"><span class="nav-number">14.2.</span> <span class="nav-text">Language and culture</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hael Chan</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_uv">
+  Welcome~ Thanks for visiting my blog. You are the №.<span id="busuanzi_value_site_uv"></span> visitor.
+</span>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://hael.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://haelchan.me/2018/07/16/reading-note-of-the-study-of-language-2e/';
+          this.page.identifier = '2018/07/16/reading-note-of-the-study-of-language-2e/';
+          this.page.title = 'Overview of Linguistics - Reading Notes of The Study of Language(Second edition)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hael.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'manual') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3HhWLTewaKTSPj5DC3qp5b2m-gzGzoHsz", "zjxN2hpHQEmyMaz0XBicI3bn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

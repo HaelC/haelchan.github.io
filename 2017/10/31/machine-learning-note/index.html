@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="learning note," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hael's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn from">
+<meta name="keywords" content="learning note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning Note">
+<meta property="og:url" content="http://haelchan.me/2017/10/31/machine-learning-note/index.html">
+<meta property="og:site_name" content="Hael&#39;s Blog">
+<meta property="og:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn from">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://haelchan.me/images/ML/figure1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/sigmoidFunction.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/linearOverfit.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/logisticOverfit.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/neuralEx.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/neural4layer.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/biasVariance.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/lambdaCurve.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/highBias.png">
+<meta property="og:image" content="http://haelchan.me/images/ML/highVariance.png">
+<meta property="og:image" content="http://haelchan.me/images/ML/y1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/y0.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/cost1.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/cost0.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/largeMargin.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/LMCintuition.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/landmarks.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/elbow.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/PCALR.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/posExm.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/negExm.jpg">
+<meta property="og:image" content="http://haelchan.me/images/ML/stoch.jpg">
+<meta property="og:updated_time" content="2018-10-18T15:06:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine Learning Note">
+<meta name="twitter:description" content="Week OneIntroductionWhat is machine learning?  Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel A computer program is said to learn from">
+<meta name="twitter:image" content="http://haelchan.me/images/ML/figure1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haelchan.me/2017/10/31/machine-learning-note/"/>
+
+
+
+
+
+  <title>Machine Learning Note | Hael's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hael's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haelchan.me/2017/10/31/machine-learning-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hael Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hael's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Machine Learning Note</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T09:34:11-07:00">
+                2017-11-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-18T08:06:52-07:00">
+                2018-10-18
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/31/machine-learning-note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/31/machine-learning-note/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/31/machine-learning-note/" class="leancloud_visitors" data-flag-title="Machine Learning Note">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Week-One"><a href="#Week-One" class="headerlink" title="Week One"></a>Week One</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>What is machine learning?</strong></p>
+<blockquote>
+<p>Field of study that gives computers the ability to learn without being explicitly programmed. — By Arthur Samuel</p>
+<p>A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T as measured by P improves with experience E. — By Tom Mitchell</p>
+</blockquote>
+<h4 id="Machine-learning-algorithms"><a href="#Machine-learning-algorithms" class="headerlink" title="Machine learning algorithms"></a>Machine learning algorithms</h4><p><strong>Supervised learning</strong></p>
+<ul>
+<li><p>Regression<br>try to map input variables to some continuous function. </p>
+</li>
+<li><p>Classification<br>predict results in a discrete output.</p>
+</li>
+</ul>
+<p><strong>Unsupervised learning</strong><br>approach problems with little or no idea what our results should look like</p>
+<p>Example:</p>
+<ul>
+<li>Clustering</li>
+<li>Non-clustering</li>
+</ul>
+<h3 id="Linear-Regression-with-One-Variable"><a href="#Linear-Regression-with-One-Variable" class="headerlink" title="Linear Regression with One Variable"></a>Linear Regression with One Variable</h3><p>Some notations:<br><strong>m</strong>: Number of training examples<br><strong>x</strong>: “input” variable / features<br><strong>y</strong>: “output” variable / “target” variable<br><strong><script type="math/tex">(x^{(i)},y^{(i)})</script></strong> : ith training example: Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. </p>
+<h4 id="Hypothesis-Function-and-Cost-Function"><a href="#Hypothesis-Function-and-Cost-Function" class="headerlink" title="Hypothesis Function and Cost Function"></a>Hypothesis Function and Cost Function</h4><p>A slightly more formal description of supervised learning problem is that given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis.</p>
+<p><img src="/images/ML/figure1.jpg" alt=""></p>
+<p>In this example of linear regression with one variable, the <strong>hypothesis function</strong> can be denoted as </p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>(maybe we Chinese students are more familiar with the form like h(x)=kx+b) Here <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> are just parameters. And our goal is to choose <script type="math/tex">\theta_0</script> and <script type="math/tex">\theta_1</script> so that <script type="math/tex">h_\theta(x)</script> is close to y for our training examples(x,y).<br>The <strong>cost function</strong> takes an average difference of all the results of the hypothesis with inputs from x’s and the actual output y’s.</p>
+<script type="math/tex; mode=display">J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^m(\hat{y}_i-y_i)^2=\frac{1}{2m}\sum_{i=1}^m(h_\theta(x_i)-y_i)^2</script><p>This function is otherwise called the “Squared error function”, or “Mean squared error”. The coefficient 1/2 is used for gradient descent so that the partial derivative result will be cleaner.</p>
+<h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><p>the Gradient descent algorithm:</p>
+<p>repeat until convergence {</p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)\ \ (simultaneously\ update\ \theta_0\ and\ \theta_1)</script><p>} </p>
+<p>The value of α should not be too small or too large.<br>If α is too small, gradient descent can be slow.<br>If α is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge.<br>In general, gradient descent can converge to a local minimum, even with the learning rate α fixed.</p>
+<p>After calculating partial derivation, we can get the algorithm as :</p>
+<p>repeat until convergence {</p>
+<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})</script><script type="math/tex; mode=display">\theta_1:=\theta_1-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})\cdot x^{(i)}</script><p>  <em>(update θ0 and θ1 simultaneously)</em><br>}</p>
+<h3 id="Linear-Algebra-Review"><a href="#Linear-Algebra-Review" class="headerlink" title="Linear Algebra Review"></a>Linear Algebra Review</h3><p><strong>Matrix:</strong> 2-dimensional array.<br><strong>Vector:</strong> An n×1 matrix</p>
+<p><em>Notation</em>:Generally the uppercase letters are used for matrix and the lowercase letters are used for vector.</p>
+<h4 id="Matrix-Manipulation"><a href="#Matrix-Manipulation" class="headerlink" title="Matrix Manipulation"></a>Matrix Manipulation</h4><p><strong>Addition</strong></p>
+<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d \end{bmatrix}+\begin{bmatrix} w&x\\y&z \end{bmatrix}=\begin{bmatrix} a+w&b+x\\c+y&d +z\end{bmatrix}\\</script><p><strong>Scalar multiplication</strong></p>
+<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d \end{bmatrix}\times x=\begin{bmatrix} a\times x&b\times x\\c\times x&d\times x \end{bmatrix}</script><p><strong>Matrix-vector multiplication</strong></p>
+<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d\\e&f \end{bmatrix}\times\begin{bmatrix} x\\y \end{bmatrix}=\begin{bmatrix}ax+by\\cx+dy\\ex+fy \end{bmatrix}</script><p>Let <em>A</em> be an m×n matrix, <em>x</em> be an n-dimensional vector, then the result <em>A×x</em> will be an m-dimensional vector.<br>To get yi, multiply A’s ith row with elements of vector x, and add them up.</p>
+<p><strong>Matrix-matrix multiplication</strong></p>
+<script type="math/tex; mode=display">\begin{bmatrix} a&b\\c&d\\e&f \end{bmatrix}\times\begin{bmatrix} w&x\\y&z \end{bmatrix}=\begin{bmatrix} aw+by&ax+bz\\cw+dy&cx+dz\\ew+fy&ex+dy \end{bmatrix}</script><p>Let <em>A</em> be an m×n matrix, <em>B</em> be an n×o matrix, then the result <em>A×B</em> will be an m×o matrix.<br>The ith column of the matrix C is obtained by multiplying A with the ith column of B.(for i=1,2,…,o). Then the calculation can be simplified to matrix-vector multiplication.</p>
+<h4 id="Matrix-multiplication-properties"><a href="#Matrix-multiplication-properties" class="headerlink" title="Matrix multiplication properties"></a>Matrix multiplication properties</h4><p><strong>Not commutative</strong><br>Let A and B be matrices. Then <em>in general</em>, A×B≠B×A.</p>
+<p><strong>Associative</strong><br>A×(B×C)=(A×B)×C</p>
+<h4 id="Special-matrix"><a href="#Special-matrix" class="headerlink" title="Special matrix"></a>Special matrix</h4><p><strong>Identity Matrix</strong><br>The identity matrix, which is denoted as <em>I</em>(sometimes with n×n subscript), simply has 1’s on the diagonal (upper left to lower right diagonal) and 0’s elsewhere. For example:</p>
+<script type="math/tex; mode=display">\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}</script><p>For any matrix A, A×I=I×A=A</p>
+<p><strong>Matrix Inverse</strong><br>If A is an m×m matrix, and if it has an inverse(not all matrix have an inverse), </p>
+<script type="math/tex; mode=display">A\times A^{-1}=A^{-1}\times A=I</script><p>Matrices that don’t have an inverse are <em>singular</em> or <em>degenerate</em>.</p>
+<p><strong>Matrix Transpose</strong><br>Let A be an m×n matrix, and let <script type="math/tex">B=A^T</script>. Then B is an n×m matrix, and</p>
+<script type="math/tex; mode=display">B_{ij}=A_{ji}</script><h2 id="Week-Two"><a href="#Week-Two" class="headerlink" title="Week Two"></a>Week Two</h2><h3 id="Multivariate-Linear-Regression"><a href="#Multivariate-Linear-Regression" class="headerlink" title="Multivariate Linear Regression"></a>Multivariate Linear Regression</h3><h4 id="from-one-variable-to-multiple-variables"><a href="#from-one-variable-to-multiple-variables" class="headerlink" title="from one variable to multiple variables"></a>from one variable to multiple variables</h4><p>In the first week’s course, we learned linear with one variable <em>x</em>, and the hypothesis could be <script type="math/tex">h_{\theta}(x)=\theta_0+\theta_1x</script>. As a matter of fact, there can be more than one variables. So here’re the new notations:<br><strong>m</strong>: the number of training examples<br><strong>n</strong>: the number of features</p>
+<p>-<script type="math/tex">x^{(i)}</script> : input (features) of ith training example<br>-<script type="math/tex">x_j^{(i)}</script> : value of feature j in ith training example</p>
+<p>The hypothesis should be transformed to:</p>
+<script type="math/tex; mode=display">h_{\theta}(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n=\sum_{i=0}^n\theta_nx_n</script><p>(for convenience of notation, we define x0=1).<br>Using the definition of matrix multiplication, our multivariable hypothesis function can be concisely represented as:</p>
+<script type="math/tex; mode=display">h_{\theta}(x)=\begin{bmatrix}\theta_0&\theta_1&...&\theta_n\end{bmatrix}\begin{bmatrix}x_0\\x_1\\...\\x_n\end{bmatrix}=\theta^Tx</script><p>We can see that linear regression with one variable is just the special case when n=1.</p>
+<p>Similarly, the new gradient descent algorithm would be represented as:<br>repeat until convergence{</p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)})x_j^{(i)}\ \ (simultaneously\ update\ \theta_j\ for\ j=0,...,n)</script><p>}</p>
+<h4 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h4><p>The idea is to make sure features are on a similar scale so that the gradient descent can be sped up.<br>Generally, get every feature into approximately a <script type="math/tex">-1<=x_i<=1</script> range. (the range is not limited to [-1,1])<br>Often used formula:</p>
+<script type="math/tex; mode=display">x_i:=\frac{x_i}{max-min}</script><h4 id="Mean-normalization"><a href="#Mean-normalization" class="headerlink" title="Mean normalization"></a>Mean normalization</h4><p>Replace <script type="math/tex">x_i</script> with <script type="math/tex">x_i-\mu_i</script> to make features have approximately zero mean.<br>Formula:</p>
+<script type="math/tex; mode=display">x_i:=\frac{x_i-\mu_i}{s_i}</script><p>where <script type="math/tex">\mu_i</script> is the average of all the values for feature(i) and si is the range of values(max - min) or the standard deviation.</p>
+<h4 id="Something-more-about-learning-rate"><a href="#Something-more-about-learning-rate" class="headerlink" title="Something more about learning rate"></a>Something more about learning rate</h4><p>The idea of learning rate is same as in the first week. And <strong>how to make sure gradient descent is working correctly(or say, debugging)</strong>?<br>Make a plot with number of iterations on the x-axis. Now plot the cost function, J(θ) over the number of iterations of gradient descent. If J(θ) ever increases, then you probably need to decrease α.</p>
+<p><strong>How to declare convergence</strong>?<br>If J(θ) decreased by less than <script type="math/tex">\epsilon(small\ value\ like 10^{-3})</script> in one iteration.</p>
+<h4 id="Polynomial-regression"><a href="#Polynomial-regression" class="headerlink" title="Polynomial regression"></a>Polynomial regression</h4><p>linear:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x</script><p>quadratic:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2</script><p>cubic:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+\theta_3x^3</script><p>square root:</p>
+<script type="math/tex; mode=display">h_\theta(x)=\theta_0+\theta_1x+\theta_2\sqrt{x}</script><p>One important thing to keep in mind is, if you choose your features this way then feature scaling becomes very important.</p>
+<h3 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h3><p>Gradient descent gives one way of minimizing J, and normal equation is another way. In the “Normal Equation” method, we will minimize J by explicitly taking its derivatives with respect to the θj ’s, and setting them to zero. This allows us to find the optimum theta without iteration.<br>Formula:</p>
+<script type="math/tex; mode=display">\theta=(X^TX)^{-1}X^Ty</script><p>Here, X is m×(n+1) matrix(remember that x0 = 1), y is m-dimensional vector, and θ is (n+1) dimensional vector.</p>
+<p>The advantage of normal equation:</p>
+<ul>
+<li>no need to choose α</li>
+<li>don’t need to iterate</li>
+</ul>
+<p>Comparison of gradient descent and normal equation </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Gradient Descent</th>
+<th>Normal Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>need to choose α</td>
+<td>no need to choose α</td>
+</tr>
+<tr>
+<td>need many iterations</td>
+<td>no need to iterate</td>
+</tr>
+<tr>
+<td>O(kn²)</td>
+<td>O(n³)(need to calculate inverse)</td>
+</tr>
+<tr>
+<td>works well when n is large</td>
+<td>slow if n is very large</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="normal-equation-noninvertibility"><a href="#normal-equation-noninvertibility" class="headerlink" title="normal equation noninvertibility"></a>normal equation noninvertibility</h4><p>Sometimes <script type="math/tex">X^TX</script> can be invertible, the common causes might be having:</p>
+<ul>
+<li>Redundant features(linear dependent)</li>
+<li>Too many features(e.g. m≤n)</li>
+</ul>
+<h3 id="Octave-MATLAB-Tutorial"><a href="#Octave-MATLAB-Tutorial" class="headerlink" title="Octave/MATLAB Tutorial"></a>Octave/MATLAB Tutorial</h3><p>Generally the commands are both used in MATLAB and Octave. (It is suggested that change Octave’s command prompt using <code>PS1(&#39;&gt;&gt; &#39;)</code>.)</p>
+<p><strong>Elementary math operations</strong><br>e.g., <code>1+2</code>, <code>3-4</code>, <code>5*6</code>, <code>7/8</code>, <code>2^6</code><br>//Note: if the result is floating point, the default digits after decimal point is different between Octave (6 digits) and MATLAB (4 digits).</p>
+<p><strong>Logical operations</strong><br>Equality.<br><code>1==2</code>, <code>1~=2  %~=: not equal</code></p>
+<p>AND, OR, XOR.<br><code>1 &amp;&amp; 0</code>, <code>1 || 0</code>, <code>xor(1,0)</code></p>
+<p>The result of logical operations is 0(false) or 1(true).</p>
+<p><strong>Variable</strong><br>Simple form.<br><code>a = 3</code>, <code>a = 3;</code><br>The semicolon suppresses the print output.<br>The assignment can be constants, strings, boolean expressions, etc.</p>
+<p>Display variable.<br><code>a</code>, <code>disp(a)</code>, <code>disp(sprintf(&#39;2 decimals: %0.2f&#39;, a)</code><br>Suppose a = 3, then the output of the command <code>a</code> is <code>a = 3</code>, of the command <code>disp(a)</code> is <code>3</code> and of the command <code>disp(sprintf(&#39;2 decimals: %0.2f&#39;, a)</code> is <code>2 decimals: 3.00</code>.</p>
+<p>Format.<br><code>sprintf</code> is a C-like syntax that defines the output format.<br><code>format long</code>, <code>format short</code> makes the all of the following commands output in long or short format.</p>
+<p><strong>Vectors and Matrices</strong><br>Matrix.<br><code>A = [1, 2; 3, 4; 5, 6]</code><br>We can memorize that the semicolon <code>;</code> means the next row of the matrix and the comma <code>,</code> (which can be replaced by space <code> </code>) means the next column.</p>
+<p>Vector.<br><code>v = [1 2 3]</code>, <code>v = [1; 2; 3]</code><br>The former creates a row vector (1×3 matrix), and the latter creates a column vector (3×1 matrix).</p>
+<p><strong>Some useful notation</strong><br><code>v = START(:INCREMENT):END</code><br>Create a row vector from START to END with each step incremented by INCREMENT. If <code>:INCREMENT</code> is omitted, the increment is 1.</p>
+<p><code>ones(ROW, COLUMN)</code>, <code>zeros(ROW, COLUMN)</code><br>Create a ROW×COLUMN matrix of all ones/zeros.</p>
+<p><code>rand(ROW, COLUMN)</code><br><code>rand</code> generates random numbers from the standard uniform distribution (0,1)<br><code>randn</code> generates random numbers from standard normal distribution.</p>
+<p><code>eye(ROW)</code><br>(Eye is maybe a pun on the word identity.) Create a ROW by ROW identity matrix.</p>
+<h2 id="Week-Three"><a href="#Week-Three" class="headerlink" title="Week Three"></a>Week Three</h2><h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><p><strong>Binary Classification</strong><br>The output y can take only two values, 0 and 1. Thus, y∈{0,1}, where the value 0 represents negative class and the value 1 represents positive class. It’s not advisable to use linear regression to represent the hypothesis. It’s logistic regression that has a range of (0,1).</p>
+<p><strong>Multiclass Classification:One-vs-all</strong><br>Train a logistic regression classifier <script type="math/tex">h_\theta^{(i)}(x)</script> for each class <em>i</em> to predict the probability that <em>y = i</em>.<br>On a new input <em>x</em>, to make a prediction, pick the class <em>i</em> that maximizes <script type="math/tex">h_\theta(x)</script>.</p>
+<h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}</script><p>The function is called <strong>sigmoid function</strong> or <strong>logistic function</strong>, and the function image is as shown below:</p>
+<p><img src="/images/ML/sigmoidFunction.jpg" alt=""></p>
+<p><strong>What is the interpretation of hypothesis output?</strong></p>
+<p>-<script type="math/tex">h_\theta(x)</script>  estimated probability that y = 1, given x, parameterized by θ. In mathematical formula it can be denoted as </p>
+<script type="math/tex; mode=display">h_\theta(x)=P(y=1|x;\theta)</script><p>Using probability theory knowledge, we can also know that</p>
+<script type="math/tex; mode=display">P(y=0|x;\theta)+P(y=1|x;\theta)=1</script><p><strong>Decision Boundary</strong><br>Suppose predict “y=1” if <script type="math/tex">h_\theta(x)>=0.5</script>, and predict “y=0” if <script type="math/tex">h_\theta(x)<0.5</script>.<br>That is equal to</p>
+<script type="math/tex; mode=display">\theta^TX\ge0\ \ =>\ \ y=1</script><script type="math/tex; mode=display">\theta^TX<0\ \ =>\ \ y=0</script><h4 id="Cost-function-and-Gradient-Descent"><a href="#Cost-function-and-Gradient-Descent" class="headerlink" title="Cost function and Gradient Descent"></a>Cost function and Gradient Descent</h4><p>Cost function in logistic regression is different from that in linear regression.</p>
+<script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)})</script><script type="math/tex; mode=display">Cost(h_\theta(x^{(i)},y^{(i)})=-y\cdot log(h_\theta(x))-(1-y)\cdot log(1-h_\theta(x))</script><p>that means:</p>
+<p>-<script type="math/tex">Cost(h_\theta(x^{(i)},y^{(i)})=-log(h_\theta(x))</script>    if y = 1;<br>-<script type="math/tex">Cost(h_\theta(x^{(i)},y^{(i)})=-log(1-h_\theta(x))</script>   if y = 0.</p>
+<p>Vectorized implementation of cost function:</p>
+<script type="math/tex; mode=display">h=g(X\theta)</script><script type="math/tex; mode=display">J(\theta)=\frac{1}{m}\cdot (-y^Tlog(h)-(1-y)^Tlog(1-h))</script><p><strong>Gradient Descent</strong>:</p>
+<p>repeat {</p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j-\frac{\alpha}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><p>}</p>
+<p>Vectorized implementation of gradient descent:</p>
+<script type="math/tex; mode=display">\theta:=\theta-\frac{\alpha}{m}X^T(g(X\theta)-y)</script><p><em>Advanced optimization</em><br>Except gradient descent, there’re <strong>Conjugate gradient</strong>, <strong>BFGS</strong> and <strong>L-BFGS</strong> optimization algorithms. They have advantages that 1.No need to manually pick α;2.Often faster than gradient descent. But they’re more complex than gradient descent.</p>
+<h3 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h3><h4 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h4><p>If we have too many features, the learn hypothesis may fit the training set very well, but fail to generalize to new examples. (Also known high variance)<br>There’s also another problem called <strong>Underfit</strong> problem, which has high bias.<br>Two examples:<br><img src="/images/ML/linearOverfit.jpg" alt=""></p>
+<p><img src="/images/ML/logisticOverfit.jpg" alt=""></p>
+<p><strong>How to address overfitting</strong></p>
+<ol>
+<li><p>Reduce number of features.<br>- Manually select which features to keep<br>- Model selection algorithm</p>
+</li>
+<li><p>Regularization.<br>- Keep all the features, but reduce magnitude/values of parameters <script type="math/tex">\theta_j</script></p>
+</li>
+</ol>
+<p><strong>Cost function:</strong></p>
+<script type="math/tex; mode=display">J(\theta)=\frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^n\theta_j^2]</script><p>The additional part is called regularization parameter. Note that λ should be set a proper value. If λ is set to an extremely large value, the algorithm may fail to eliminate overfitting or results in underfitting.</p>
+<h4 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h4><p><strong>Cost function</strong></p>
+<script type="math/tex; mode=display">J(\theta)=\frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^n\theta_j^2]</script><p><strong>Gradient Descent:</strong></p>
+<p>Repeat {</p>
+<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}</script><script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha[(\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)})+\frac{\lambda}{m}\theta_j]\ \ \ \ (j=1,2,3,...,n)</script><p>}</p>
+<p>The second line can also denoted as:</p>
+<script type="math/tex; mode=display">\theta_j:=\theta_j(1-\alpha\frac{\lambda}{m})-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><p>The coefficient <script type="math/tex">1-\alpha\frac{\lambda}{m}</script> will always be less than 1.</p>
+<p><strong>Normal Equation:</strong></p>
+<script type="math/tex; mode=display">\theta=(X^TX+\lambda\cdot L)^{-1}X^Ty</script><script type="math/tex; mode=display">L=\begin{bmatrix}0&\ &\ &\ &\ \\\ &1&\ &\ &\ \\\ &\ &1&\ &\ \\\ &\ &\ &...&\ \\\ &\ &\ &\ &1\end{bmatrix}</script><p>*If λ&gt;0, this normal equation makes it invertible.</p>
+<h4 id="Regularized-Logistic-Regression"><a href="#Regularized-Logistic-Regression" class="headerlink" title="Regularized Logistic Regression"></a>Regularized Logistic Regression</h4><p><strong>Gradient Descent:</strong><br>Repeat {</p>
+<script type="math/tex; mode=display">\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}</script><script type="math/tex; mode=display">\theta_j:=\theta_j-\alpha[(\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)})+\frac{\lambda}{m}\theta_j]\ \ \ \ (j=1,2,3,...,n)</script><p>}</p>
+<h2 id="Week-Four"><a href="#Week-Four" class="headerlink" title="Week Four"></a>Week Four</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><p>At a very simple level, neurons are basically computational units that take inputs (<strong>dendrites</strong>) as electrical inputs (called “spikes”) that are channeled to outputs (<strong>axons</strong>). In our model, our dendrites are like the input features x1⋯xn, and the output is the result of our hypothesis function. In this model our x0 input node is sometimes called the “bias unit.” It is always equal to 1. In neural networks, we use the same logistic function as in classification, <script type="math/tex">\frac{1}{1+e^{-\theta^TX}}</script>, yet we sometimes call it a sigmoid (logistic) activation function. In this situation, our “theta” parameters are sometimes called “weights”.<br>There’re several layers in the neural network. The first layer is called <strong>Input Layer</strong>, the last layer is called <strong>Output Layer</strong>, and the others is called <strong>Hidden Layer</strong>. </p>
+<p><strong>Notations:</strong><br>-<script type="math/tex">a_i^{(j)}</script> = “activation” of unit i in layer j<br>-<script type="math/tex">\Theta^{(j)}</script> = matrix of weights controlling function mapping from layer j to layer j+1</p>
+<p>In a simple example like this:<br><img src="/images/ML/neuralEx.jpg" alt=""></p>
+<p>we have some equations:</p>
+<script type="math/tex; mode=display">a_1^{(2)}=g(\Theta_{10}^{(1)}x_0+\Theta_{11}^{(1)}x_1+\Theta_{12}^{(1)}x_2+\Theta_{13}^{(1)}x_3)</script><script type="math/tex; mode=display">a_2^{(2)}=g(\Theta_{20}^{(1)}x_0+\Theta_{21}^{(1)}x_1+\Theta_{22}^{(1)}x_2+\Theta_{23}^{(1)}x_3)</script><script type="math/tex; mode=display">a_3^{(2)}=g(\Theta_{30}^{(1)}x_0+\Theta_{31}^{(1)}x_1+\Theta_{32}^{(1)}x_2+\Theta_{33}^{(1)}x_3)</script><script type="math/tex; mode=display">h_\Theta(x)=a_1^{(3)}=g(\Theta_{10}^{(2)}a_0^{(2)}+\Theta_{11}^{(2)}a_1^{(2)}+\Theta_{12}^{(2)}a_2^{(2)}+\Theta_{13}^{(3)}a_3^{(2)})</script><p>If network has <script type="math/tex">s_j</script> units in layer <em>j</em>, <script type="math/tex">s_{j+1}</script> units in layer <em>j+1</em>, then <script type="math/tex">\Theta^{(j)}</script> will be of dimension <script type="math/tex">s_{j+1}\times (s_j+1)</script>.</p>
+<p>Vectorized Implementation:<br>-<script type="math/tex">z^{(2)}=\Theta^{(1)}a^{(1)}</script>  (regard the input layer as <script type="math/tex">a^{(1)}</script>)</p>
+<script type="math/tex; mode=display">a^{(2)}=g(z^{(2)})</script><p>Add <script type="math/tex">a_0^{(2)}=1</script>    (add the bias unit)</p>
+<script type="math/tex; mode=display">z^{(3)}=\Theta^{(2)}a^{(2)}</script><script type="math/tex; mode=display">h_\Theta(x)=a^{(3)}=g(z^{(3)})</script><h2 id="Week-Five"><a href="#Week-Five" class="headerlink" title="Week Five"></a>Week Five</h2><h3 id="Neural-Networks-Learning"><a href="#Neural-Networks-Learning" class="headerlink" title="Neural Networks: Learning"></a>Neural Networks: Learning</h3><p>-L: total no. of layers in network<br>-<script type="math/tex">s_l</script>: no. of units(not counting bias unit) in layer l<br>-K: no. of units in the output layer(<script type="math/tex">s_l</script>)<br>(K=1:Binary classification, K≥3:Multi-class classification)</p>
+<h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><script type="math/tex; mode=display">h_{\Theta}(x)\in\mathbb{R}^K\ \ (h_{\Theta}(x))_i=i^{th}\ output</script><script type="math/tex; mode=display">J(\Theta)=-\frac{1}{m}[\sum_{i=1}^m\sum_{k=1}^Ky_k^{(i)}log(h_{\Theta}(x^{(i)}))_k+(1-y_k^{(i)})log(1-(h_{\Theta}(x^{(i)}))_k)]+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_l+1}(\Theta_{ji}^{(l)})^2</script><p>Compared with the cost function of logistic regression, we have added a few nested summations to account for our multiple output nodes. In the first part of the equation, before the square brackets, we have an additional nested summation that loops through the number of output nodes.(k = 1:K)<br>In the regularization part, after the square brackets, we must account for multiple theta matrices. The number of columns in our current theta matrix is equal to the number of nodes in our current layer (including the bias unit). The number of rows in our current theta matrix is equal to the number of nodes in the next layer (excluding the bias unit).</p>
+<h4 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h4><p>To minimize <script type="math/tex">J(\Theta)</script>, we need code to compute <script type="math/tex">J(\Theta)</script> and <script type="math/tex">\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)</script>. The formula of <script type="math/tex">J(\Theta)</script> is described above, and now let’s have a recall at forward propagation first.<br><img src="/images/ML/neural4layer.jpg" alt=""><br>In a 4-layer neural network, we have the following forward propagation:</p>
+<script type="math/tex; mode=display">a^{(1)}=x</script><script type="math/tex; mode=display">z^{(2)}=\Theta^{(1)}a^{(1)}</script><script type="math/tex; mode=display">a^{(2)}=g(z^{(2)})\ (add\ a_0^{(2)})</script><script type="math/tex; mode=display">z^{(3)}=\Theta^{(2)}a^{(2)}</script><script type="math/tex; mode=display">a^{(3)}=g(z^{(3)})\ (add\ a_0^{(3)})</script><script type="math/tex; mode=display">z^{(4)}=\Theta^{(3)}a^{(3)}</script><script type="math/tex; mode=display">a^{(4)}=h_{\Theta}(x)=g(z^{(4)})</script><p>Then what about backward propagation(Intuition: <script type="math/tex">\delta_j^{(l)}</script> = “error” of node j in layer l)?</p>
+<script type="math/tex; mode=display">\delta_j^{(4)}=a_j^{(4)}-y_j</script><script type="math/tex; mode=display">\delta_j^{(3)}=(\Theta^{(3)})^T\delta^{(4)}.*g'(z^{(3)})</script><p>（<script type="math/tex">g'(z^{(3)})=a^{(3)}.*(1-a^{(3)})</script>, it’s just the partial derivative)</p>
+<script type="math/tex; mode=display">\delta_j^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g'(z^{(2)})</script><p>-<script type="math/tex">delta_j^{(l)}</script>=”error” of cost for <script type="math/tex">a_j^{(l)}</script>.<br>Formally, <script type="math/tex">delta_j^{(l)}=\frac{\partial}{\partial z_j^{(l)}}cost(i)</script>.</p>
+<p><strong>Backpropagation algorithm:</strong><br>Training set<script type="math/tex">{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)})}</script><br>Set <script type="math/tex">\Delta_{ij}^{(l)}=0\ for\ all\ l,i,j</script>.(initializing accumulators)<br>For i = 1 to m<br>  Set <script type="math/tex">a^{(1)}=x^{(i)}</script><br>  Perform forward propagation to compute <script type="math/tex">a^{(l)}</script> for l=2,3,…,L<br>  Using <script type="math/tex">y^{(i)}</script>, compute <script type="math/tex">\delta^{(L)}=a^{(L)}-y^{(i)}</script><br>  Compute <script type="math/tex">\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}</script></p>
+<script type="math/tex; mode=display">\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)}+a_j^{(l)}\delta_i^{(l+1)}</script><p>-<script type="math/tex">D_{i,j}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}+\lambda\Theta_{ij}^{(l)}</script> if j≠0<br>-<script type="math/tex">D_{i,j}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}</script> if j=0</p>
+<p><strong>Unrolling parameters</strong><br>Idea: Unroll matrices into vectors. In order to use optimizing functions such as “fminunc()”, we will want to “unroll” all the elements and put them into one long vector.</p>
+<p>Learning Algorithm<br>Have initial parameters Theta1,Theta2,Theta3<br>Unroll to get <code>initialTheta</code> to pass to <code>fminunc(@costFunction, initialTheta, options)</code>.</p>
+<h4 id="Gradient-checking"><a href="#Gradient-checking" class="headerlink" title="Gradient checking"></a>Gradient checking</h4><p>Gradient checking will assure that our backpropagation works as intended. We can approximate the derivative of our cost function with:</p>
+<script type="math/tex; mode=display">\dfrac{\partial}{\partial\Theta}J(\Theta) \approx \dfrac{J(\Theta + \epsilon) - J(\Theta - \epsilon)}{2\epsilon}</script><p>With multiple theta matrices, we can approximate the derivative with respect to Θj as follows:</p>
+<script type="math/tex; mode=display">\dfrac{\partial}{\partial\Theta_j}J(\Theta) \approx \dfrac{J(\Theta_1, \dots, \Theta_j + \epsilon, \dots, \Theta_n) - J(\Theta_1, \dots, \Theta_j - \epsilon, \dots, \Theta_n)}{2\epsilon}</script><p>Implementation note:</p>
+<ul>
+<li>Implement backprop to compute DVec(unrolled D(1),D(2),D(3)).</li>
+<li>Implement numerical gradient check to compute <code>gradApprox</code>.</li>
+<li>Make sure they have similar values.</li>
+<li>Turn off gradient checking. Using backprop code for learning. (or the code will be very slow)</li>
+</ul>
+<p><strong>Random initialization</strong><br>For gradient descent and advanced optimization method, we need initial value for θ. However, it’s not advisable to set initial theta to all zeros. When we backpropagate, all nodes will update to the same value repeatedly. So instead of using <code>zeros</code>, use <code>rand</code> to initialize theta. </p>
+<h4 id="Training-a-neural-network"><a href="#Training-a-neural-network" class="headerlink" title="Training a neural network"></a>Training a neural network</h4><ol>
+<li>Randomly initialize weights</li>
+<li>Implement forward propagation to get <script type="math/tex">h_{\Theta}(x^{(i)})</script> for any <script type="math/tex">x^{(i)}</script></li>
+<li>Implement code to compute cost function <script type="math/tex">J(\Theta)</script></li>
+<li>Implement backprop to compute partial derivatives <script type="math/tex">\frac{\partial}{\partial\Theta_{jk}^{(l)}}J(\Theta)</script></li>
+<li>Use gradient checking to compare <script type="math/tex">\frac{\partial}{\partial\Theta_{jk}^{(l)}}J(\Theta)</script> computed using backpropagation vs. using numerical estimate of gradient of <script type="math/tex">J(\Theta)</script>.(Then disable gradient checking code.)</li>
+<li>Use gradient descent or advanced optimization method with backpropagation to try to minimize <script type="math/tex">J(\Theta)</script> as a function of parameter θ</li>
+</ol>
+<h2 id="Week-Six"><a href="#Week-Six" class="headerlink" title="Week Six"></a>Week Six</h2><h3 id="Advice-for-applying-machine-learning"><a href="#Advice-for-applying-machine-learning" class="headerlink" title="Advice for applying machine learning"></a>Advice for applying machine learning</h3><p>Divide the data set into three parts: <strong>training set</strong>, <strong>cross validation set</strong> and <strong>test set</strong>.(sometimes two parts, training set and test set)<br>Training error:</p>
+<script type="math/tex; mode=display">J_{train}(\theta)=\frac{1}{2m}\sum_{i=1}^m(h_{\Theta}(x^{(i)})-y^{(i)})^2</script><p>Cross Validation error:</p>
+<script type="math/tex; mode=display">J_{cv}(\theta)=\frac{1}{2m_{cv}}\sum_{i=1}^{m_{cv}}(h_{\Theta}(x_{cv}^{(i)})-y_{cv}^{(i)})^2</script><p>Test error:</p>
+<script type="math/tex; mode=display">J_{test}(\theta)=\frac{1}{2m_{test}}\sum_{i=1}^{m_{test}}(h_{\Theta}(x_{test}^{(i)})-y_{test}^{(i)})^2</script><p>Model Selection: eg. for d = 1:10, when trying to minimize <script type="math/tex">J(\theta)</script>, we get the object <script type="math/tex">\theta^{(d)}</script>. Then using the θ we get, we can estimate generalization error for test set.</p>
+<h4 id="bias-v-s-variance"><a href="#bias-v-s-variance" class="headerlink" title="bias v.s. variance"></a>bias v.s. variance</h4><p><strong>High bias</strong>: underfit<br><strong>High variance</strong>: overfit</p>
+<p><img src="/images/ML/biasVariance.jpg" alt=""></p>
+<p>Just as the figure shown above, with the increment of degree of polynomial d, the training error will be less and less. However, if the degree is too high, the cross validation error would be high again(overfitting).<br>Bias:<br>-<script type="math/tex">J_{train}(\theta)</script> will be high.<br>-<script type="math/tex">J_{cv}(\theta)\approx J_{train}(\theta)</script><br>Variance:<br>-<script type="math/tex">J_{train}(\theta)</script> will be low.<br>-<script type="math/tex">J_{cv}(\theta)>>J_{train}(\theta)</script></p>
+<h4 id="Regularization-and-bias-variance"><a href="#Regularization-and-bias-variance" class="headerlink" title="Regularization and bias/variance"></a>Regularization and bias/variance</h4><p>Now let’s take the parameter λ that we use in regularization into consideration.<br>If λ is too large, it may lead to high bias. If λ is too small, it may lead to high variance.(e.g. λ=0)<br><img src="/images/ML/lambdaCurve.jpg" alt=""></p>
+<h4 id="Learning-curves"><a href="#Learning-curves" class="headerlink" title="Learning curves"></a>Learning curves</h4><p><img src="/images/ML/highBias.png" alt=""><br><img src="/images/ML/highVariance.png" alt=""></p>
+<h4 id="Debugging-a-learning-algorithm"><a href="#Debugging-a-learning-algorithm" class="headerlink" title="Debugging a learning algorithm"></a>Debugging a learning algorithm</h4><p>Fixing high bias:</p>
+<ul>
+<li>Try getting additional features</li>
+<li>Try adding polynomial features</li>
+<li>Try decreasing λ</li>
+</ul>
+<p>Fixing high variance:</p>
+<ul>
+<li>Get more training examples</li>
+<li>Try smaller sets of features</li>
+<li>Try increasing λ</li>
+</ul>
+<h3 id="Machine-learning-system-design"><a href="#Machine-learning-system-design" class="headerlink" title="Machine learning system design"></a>Machine learning system design</h3><h4 id="Recommended-approach"><a href="#Recommended-approach" class="headerlink" title="Recommended approach"></a>Recommended approach</h4><ul>
+<li>Start with a simple algorithm that you can implement quickly. Implement it and test it on your cross-validation data.</li>
+<li>Plot learning curves to decide if more data, more features, etc. are likely to help.</li>
+<li>Error analysis: Manually examine the examples (in cross validation set) that your algorithm made errors on. See if you spot any systematic trend in what type of examples it is making errors on.</li>
+</ul>
+<h4 id="Precision-amp-Recall"><a href="#Precision-amp-Recall" class="headerlink" title="Precision &amp; Recall"></a>Precision &amp; Recall</h4><p>Take cancer prediction as example. Since the cancer incidence is quite low, the prediction can simply be <code>y=0</code>. The error rate is relatively low, however, it’s not a ‘prediction’ at all. Thus, we can’t judge predictions’ performance only using error rate. So the concept of precision and recall is introduced.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Actual Class 1</th>
+<th>Actual Class 0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicted Class 1</td>
+<td>True positive</td>
+<td>False positive</td>
+</tr>
+<tr>
+<td>Predicted Class 0</td>
+<td>False negative</td>
+<td>True negative</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>y=1</em> in presence of rare class that we want to detect. (In cancer prediction example, <code>isCancer</code> should be 1)</p>
+<p><strong>Precision</strong>: </p>
+<script type="math/tex; mode=display">Precision=\frac{True\ positive}{no.\ of\ predicted\ positive}=\frac{True\ positive}{True\ pos+False\ pos}</script><p>Calculated in row.</p>
+<p><strong>Recall</strong></p>
+<script type="math/tex; mode=display">Recall=\frac{True\ positive}{no.\ of\ actual\ positive}=\frac{True\ positive}{True\ pos+False\ neg}</script><p>Calculated in column.</p>
+<p>Suppose we want to predict <code>y=1</code>(cancer) only if very confident. Then turn threshold(originally 0.5) up to get high precision and lower recall.<br>Suppose we want to avoid missing too many cases of cancer(avoid false negatives). Then turn threshold down to get high recall and lower precision.</p>
+<p><strong>F1 Score(F score)</strong></p>
+<script type="math/tex; mode=display">F_1=2\frac{PR}{P+R}</script><h4 id="Large-data-rationale"><a href="#Large-data-rationale" class="headerlink" title="Large data rationale"></a>Large data rationale</h4><p>Use a learning algorithm with many parameters(e.g. logistic regression/linear regression with many features; neural network with many hidden units). - low bias</p>
+<p>Use a very large training set(unlikely to overfit). - low variance</p>
+<h2 id="Week-Seven"><a href="#Week-Seven" class="headerlink" title="Week Seven"></a>Week Seven</h2><h3 id="Support-Vector-Machine"><a href="#Support-Vector-Machine" class="headerlink" title="Support Vector Machine"></a>Support Vector Machine</h3><p>Alternative view of logistic regression<br>The cost of a specific example(x,y) is <script type="math/tex">-ylog\frac{1}{1+e^{-\theta^Tx}}-(1-y)log(1-\frac{1}{1+e^{-\theta^Tx}})</script><br>If <code>y=1</code>, then the right part of the function is ignored(since <code>1-y=0</code>), and what we get is:<br><img src="/images/ML/y1.jpg" alt=""></p>
+<p>Similarly, if <code>y=0</code>, then the left part of the function is ignored, and what we get is:<br><img src="/images/ML/y0.jpg" alt=""></p>
+<p>For support vector machine, we have <script type="math/tex">cost_1(z)</script> and <script type="math/tex">cost_0(z)</script> functions (the subscript corresponds to the value of y) that are similar to the original curves. The difference is that the curves are made up of straight lines.<br>Cost1:<br><img src="/images/ML/cost1.jpg" alt=""><br>Cost0:<br><img src="/images/ML/cost0.jpg" alt=""><br>And the cost function of SVM:</p>
+<script type="math/tex; mode=display">minC\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum_{j=1}^n\theta_j^2</script><p>Difference between SVM and logistic regression:<br>SVM ignores the term 1/m.<br>The form of logistic regression is A+λB, while that of SVM is CA+B.(if C=1/λ, then two these two optimization objectives should give you the same optimal value for theta)</p>
+<p><strong>Large Margin Classifier</strong><br>SVM wants a bit more than the original logistic regression.<br>If <script type="math/tex">y=1</script>, we want <script type="math/tex">\theta^Tx\ge1</script>(not just ≥0)<br>If <script type="math/tex">y=0</script>, we want <script type="math/tex">\theta^Tx\le-1</script>(not just ＜0)</p>
+<p>Consider the situation that <em>C</em> is very large, and optimization would try to set the left part of cost function to be zero. And this leads to the large margin classifier concept:<br><img src="/images/ML/largeMargin.jpg" alt=""><br>Compared with the magenta and green lines, the black line has some larger minimum distance from any of the training examples. This distance is called the margin of the SVM and this gives the SVM a certain robustness, because it tries to separate the data with as large a margin as possible.</p>
+<p><img src="/images/ML/LMCintuition.jpg" alt=""></p>
+<p>The mathematics behind large margin classification is the dot product of the vectors.</p>
+<h4 id="Kernels"><a href="#Kernels" class="headerlink" title="Kernels"></a>Kernels</h4><p>For SVM, there’s a different(better) choice of the features:<br>given x, compute new features depending on proximity to landmarks <script type="math/tex">l^{(1)},l^{(2)},l^{(3)}</script>.<br><img src="/images/ML/landmarks.jpg" alt=""><br>For example, </p>
+<script type="math/tex; mode=display">f1=similarity(x,l^{(1)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma ^2})</script><script type="math/tex; mode=display">f2=similarity(x,l^{(2)})=exp(-\frac{||x-l^{(2)}||^2}{2\sigma ^2})</script><script type="math/tex; mode=display">f3=similarity(x,l^{(3)})=exp(-\frac{||x-l^{(3)}||^2}{2\sigma ^2})</script><p>Here the similarity is called the <strong>kernel function</strong>, and the corresponding kernel function is <strong>Gaussian Kernel</strong> which uses <code>exp</code>.</p>
+<p>How to choose landmarks?<br>Landmarks is just the input examples.<br>Given <script type="math/tex">(x^{(1)},y^{(1)},(x^{(2)},y^{(2)}),...,(x^{(m)},y^{(m)}),</script>,<br>choose <script type="math/tex">l^{(1)}=x^{(1)},l^{(2)}=x^{(2)},...,l^{(m)}=x^{(m)}</script>.<br>And calculate features using kernals.<br>Hypothesis: Given x, compute features <script type="math/tex">f\in \mathbb{R}^{m+1}</script>, predict “y=1” if <script type="math/tex">\theta^Tf\ge 0</script>.<br>Training:</p>
+<script type="math/tex; mode=display">\min_\theta C\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)}+(1-y^{(i)})cost_0(\theta^Tf^{(i)})+\frac{1}{2}\sum_{j=1}^n\theta_j^2</script><p>Here n is equal to m.<br>And for some SVM, the computation of <script type="math/tex">\frac{1}{2}\sum_{j=1}^n\theta_j^2</script> is using <script type="math/tex">\theta^TM\theta</script> rather than <script type="math/tex">\theta^T\theta</script>.</p>
+<h4 id="SVM-parameters"><a href="#SVM-parameters" class="headerlink" title="SVM parameters"></a>SVM parameters</h4><p><strong>C</strong><br>Large C: Lower bias, higher variance.<br>Small C: Higher bias, lower variance.<br>(regard C as 1/λ).</p>
+<p><strong>σ²</strong><br>Large σ²: Features f vary more smoothly. Higher bias, lower variance.<br>Small σ²: Features f vary less smoothly. Lower bias, higher variance.</p>
+<h4 id="Using-an-SVM"><a href="#Using-an-SVM" class="headerlink" title="Using an SVM"></a>Using an SVM</h4><p>SVM package: liblinear, libsvm, etc.</p>
+<p>Choice of kernels:<br><strong>Linear kernel</strong>(No kernel)<br>Predict “y=1” if <script type="math/tex">\theta^Tx\ge 0</script></p>
+<p><strong>Gaussian kernel</strong></p>
+<script type="math/tex; mode=display">f_i=exp(-\frac{||x-l^{(i)}||^2}{2\sigma^2})</script><p>(Remember to perform feature scaling before using Gaussian kernel.)</p>
+<p><strong>Polynomial kernel</strong></p>
+<script type="math/tex; mode=display">(X^Tl+const)^{degree}</script><p><strong>More esoteric</strong><br>String kernel, chi-square kernel, histogram intersection kernel, …</p>
+<p><strong>Logistic regression or SVM?</strong><br>If n is large(relative to m): use logistic regression, or SVM without a kernel.<br>If n is small, m is intermediate: use SVM with Gaussian kernel.<br>If n is small, m is large: add more features, then use logistic regression, or SVM without a kernel</p>
+<p>Neural network is likely to work well for most of these settings, but may be slower to train.</p>
+<h2 id="Week-Eight"><a href="#Week-Eight" class="headerlink" title="Week Eight"></a>Week Eight</h2><h3 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h3><p>The difference between unsupervised learning and supervised learning:<br>The supervised learning problem is given a set of labels to fit a hypothesis to it. In contrast, in the unsupervised learning problem we’re given data that does not have any labels associated with it.</p>
+<h4 id="K-means-algorithm"><a href="#K-means-algorithm" class="headerlink" title="K-means algorithm"></a>K-means algorithm</h4><p>Random initialize K cluster centroids <script type="math/tex">\mu_1,\mu_2,...,\mu_K\in\mathbb{R}^n</script><br>Repeat {<br> for i=1 to m<br>  -<script type="math/tex">c^{(i)}</script>:=index(from 1 to K) of cluster centroid closest to <script type="math/tex">x^{(i)}</script><br> for k=1 to K<br>  -<script type="math/tex">\mu_k</script>:=average(mean) of points assigned to cluster k<br>}</p>
+<p>The first for loop is cluster assignment step, and the second for loop is moving centroid.</p>
+<p><strong>Optimization objective</strong><br>-<script type="math/tex">c^{(i)}</script>: index of cluster(1,2,…,K) to which example <script type="math/tex">x^{(i)}</script> is currently assigned<br>-<script type="math/tex">\mu_k</script>: cluster centroid <script type="math/tex">k(\mu_k\in\mathbb{R}^n)</script><br>-<script type="math/tex">\mu_{c^{(i)}}</script>: cluster centroid of cluster to which example <script type="math/tex">x^{(i)}</script> has been assigned</p>
+<script type="math/tex; mode=display">J(c^{(1)},...,c^{(m)},\mu_1,...,\mu_K)=\frac{1}{m}\sum_{i=1}^m||x^{(i)}-\mu_{c^{(i)}}||^2</script><p>Try to minimize <script type="math/tex">J(c^{(1)},...,c^{(m)},\mu_1,...,\mu_K</script> (also called distortion function).</p>
+<p><strong>Random initialization</strong><br>Randomly pick K training examples, and set those examples as cluster centroids.<br>For better performance, run multiple times(e.g, 100 times) and pick clustering that gave lowest cost J.</p>
+<p><strong>Choosing the number of clusters</strong><br>Manually.<br>Sometime it’s helpful to use elbow method, but it’s often not advisable:<br><img src="/images/ML/elbow.jpg" alt=""></p>
+<p>Sometimes, you’re running K-means to get clusters to use for some later/downstream purpose. Evaluate K-means based on a metric for how well it performs for that later purpose.</p>
+<h3 id="Dimensionality-Reduction"><a href="#Dimensionality-Reduction" class="headerlink" title="Dimensionality Reduction"></a>Dimensionality Reduction</h3><p>Motivation of dimensionality reduction:</p>
+<ul>
+<li><p>Data Compression</p>
+<p>-Reduce memory/disk needed to store data<br>-Speed up learning algorithm</p>
+</li>
+<li><p>Data Visualization</p>
+<p>-k=2 or k=3, so we can visualize the data and get an intuitive view</p>
+</li>
+</ul>
+<h4 id="Principal-Component-Analysis-PCA"><a href="#Principal-Component-Analysis-PCA" class="headerlink" title="Principal Component Analysis(PCA)"></a>Principal Component Analysis(PCA)</h4><p>Reduce from n-dimension to k-dimension: Find k vectors <script type="math/tex">u^{(1)},u^{(2)},...,u^{(k)}</script> onto which to project the data, so as to minimize the projection error.</p>
+<p><strong>Difference between PCA and linear regression</strong><br>PCA looks like linear regression(reduce from 2D to 1D), but they’re different.<br>Linear regression has the input x and corresponding label y. What linear regression does is trying to predict the output y. And the ‘error’ is computed vertically.<br>PCA is unsupervised learning and has no label y. What PCA does is reduce the dimension of features. And the ‘error’ is computed according to the vector difference.<br><img src="/images/ML/PCALR.jpg" alt=""></p>
+<p><strong>PCA Algorithm</strong><br>Before applying PCA algorithm, remember to make data preprocessing.<br>Given training set:<script type="math/tex">x^{(1)},x^{(2)},...,x^{(m)}</script>, using feature scaling/mean normalization to preprocess</p>
+<script type="math/tex; mode=display">\mu_j=\frac{1}{m}\sum_{i=1}^mx_j^{(i)}</script><p>then replace each <script type="math/tex">x_j^{(i)}</script> with <script type="math/tex">x_j-\mu_j</script>.<br>If different features on different scales (e.g., x1=size of house, x2=number of bedrooms), scale features to have comparable range of values.</p>
+<p>After mean normalization(ensure every feature has zero means) and optionally feature scaling:</p>
+<script type="math/tex; mode=display">\Sigma=\frac{1}{m}\sum_{i=1}^m(x^{(i)})(x^{(i)})^T</script><p><code>Sigma = (1 / m) * X&#39; * X</code><br><code>[U,S,V] = svd(Sigma);</code><br><code>Ureduce = U(:,1:k);</code><br><code>z = Ureduce&#39; * x;</code></p>
+<h4 id="Choosing-k"><a href="#Choosing-k" class="headerlink" title="Choosing k"></a>Choosing k</h4><p>Reconstruction from compressed representation:<br>From the formula <script type="math/tex">z=U_{reduce}^Tx</script>, we can get the reconstruction x using <script type="math/tex">x_{approx}=U_{reduce}z</script></p>
+<p>Average squared projection error:</p>
+<script type="math/tex; mode=display">\frac{1}{m}\sum_{i=1}^m||x^{(i)}-x_{approx}^{(i)}||^2</script><p>Total variation in the data:</p>
+<script type="math/tex; mode=display">\frac{1}{m}\sum_{i=1}^m||x^{(i)}||^2</script><p>Typically, choose k to be smallest value so that </p>
+<script type="math/tex; mode=display">\frac{\frac{1}{m}\sum_{i=1}^m||x^{(i)}-x_{approx}^{(i)}||^2}{\frac{1}{m}\sum_{i=1}^m||x^{(i)}||^2}\le0.01</script><p>Here 0.01 means that 99% of variance is retained.</p>
+<p>We don’t have to loop k from 1 to n to find the smallest value. The function <code>svd</code> has an output S which is useful. </p>
+<script type="math/tex; mode=display">S=\begin{bmatrix}S_{11}&\ &\ &\ &\ \\\ &S_{22}&\ &\ &\ \\\ &\ &S_{33}&\ &\ \\\ &\ &\ &...&\ \\\ &\ &\ &\ &S_{nn}\end{bmatrix}</script><p><code>[U,S,V] = svd(Sigma)</code><br>Just pick smallest value of k for which</p>
+<script type="math/tex; mode=display">\frac{\sum_{i=1}^kS_{ii}}{\sum_{i=1}^nS_{ii}}\ge0.99</script><h4 id="Advice"><a href="#Advice" class="headerlink" title="Advice"></a>Advice</h4><p>To speed up supervised learning, note to map <script type="math/tex">x^{(i)}\to z^{(i)}</script> should be defined by running PCA only on the training set.<br>It’s not good to address overfitting using PCA. Use regularization instead.<br>Before implementing PCA, first try running whatever you want to do with the original/raw data <script type="math/tex">x^{(i)}</script>. Only if that doesn’t do what you want, then implement PCA and consider using <script type="math/tex">z^{(i)}</script>.</p>
+<h2 id="Week-Nine"><a href="#Week-Nine" class="headerlink" title="Week Nine"></a>Week Nine</h2><h3 id="Anomaly-Detection"><a href="#Anomaly-Detection" class="headerlink" title="Anomaly Detection"></a>Anomaly Detection</h3><h4 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h4><p>1.Choose features <script type="math/tex">x_i</script> that you think might be indicative of anomalous examples.<br>2.Fit parameters <script type="math/tex">\mu_1,...,\mu_n,\sigma_1^2,...,\sigma_n^2</script></p>
+<script type="math/tex; mode=display">\mu_j=\frac{1}{m}\sum_{i=1}^mx_j^{(i)}</script><script type="math/tex; mode=display">\sigma_j^2=\frac{1}{m}\sum_{i=1}^m(x_j^{(i)}-\mu_j)^2</script><p>3.Given new example x, computer p(x):</p>
+<script type="math/tex; mode=display">p(x)=\prod_{j=1}^np(x_j;\mu_j,\sigma_j^2)=\prod_{j=1}^n\frac{1}{\sqrt{2\pi}\sigma_j}exp(-\frac{(x_j-\mu_j)^2}{2\sigma_j^2})</script><p>Check anomaly if <script type="math/tex">p(x)<\epsilon</script></p>
+<p><strong>Developing and evaluating</strong><br>Assume we have some labeled data, of anomalous and non-anomalous examples. (y=0 if normal, y=1 if anomalous).</p>
+<p>Suppose we have 10000 good (normal) engines(it’s okay that there’re some anomalous fixed in) and 20 flawed engines(anomalous).<br>Then divide the examples into Training set:6000 good engines; CV: 2000 good engines and 10 anomalous; Test: 2000 good engines and 10 anomalous.</p>
+<p>Possible evaluation metrics:<br>True positive, false positive, false negative, true negative.<br>Precision/Recall<br>F1-score.</p>
+<h4 id="Anomaly-detection-vs-supervised-learning"><a href="#Anomaly-detection-vs-supervised-learning" class="headerlink" title="Anomaly detection vs. supervised  learning"></a>Anomaly detection vs. supervised  learning</h4><p><strong>Comparison</strong><br>Anomaly detection:</p>
+<ul>
+<li>Very small number of positive examples(y=1). (0-20 is common)</li>
+<li>Large number of negative(y=0) examples.</li>
+<li>Many different “types” of anomalies. Hard for any algorithm to learn from positive examples what the anomalies look like; future anomalies may look nothing like any of the anomalous examples we’ve seen so far.</li>
+</ul>
+<p>Supervised learning:</p>
+<ul>
+<li>Large number of positive and negative examples.</li>
+<li>Enough positive examples for algorithm to get a sense of what positive examples are like, future positive examples likely to be similar to ones in training set.</li>
+</ul>
+<p><strong>Examples</strong><br>| Anomaly detection | Supervised learning |<br>| —- | —- |<br>| Fraud detection | Email spam classification |<br>| Manufacturing(e.g. aircraft engines) | Weather prediction |<br>| Monitoring machines in a data center | Cancer classification |<br>| … | … |</p>
+<h3 id="Normal-distribution"><a href="#Normal-distribution" class="headerlink" title="Normal distribution"></a>Normal distribution</h3><script type="math/tex; mode=display">p(x;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}</script><script type="math/tex; mode=display">\mu=\frac{1}{m}\sum_{i=1}^mx^{(i)},\sigma^2=\frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu)^2</script><p>It is denoted as <script type="math/tex">x~N(\mu,\sigma^2)</script></p>
+<p>Tips: if features are non-gaussian features, it’s advisable to transform the original features to log/polynomial/…</p>
+<h4 id="Multivariate-Gaussian-distribution"><a href="#Multivariate-Gaussian-distribution" class="headerlink" title="Multivariate Gaussian distribution"></a>Multivariate Gaussian distribution</h4><script type="math/tex; mode=display">p(x;\mu,\Sigma)=\frac{1}{(2\pi)^{n/2}|\Sigma|^{1/2}}exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))</script><script type="math/tex; mode=display">\mu=\frac{1}{m}\sum_{i=1}^mx^{(i)},\Sigma=\frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu)(x^{(i)}-\mu)^T</script><p>Original model: <script type="math/tex">p(x)=p(x_1;\mu_1,\sigma_1^2)\times p(x_2;\mu_2,\sigma_2^2)\times ... \times p(x_n;\mu_n,\sigma_n^2)</script> corresponds to multivariate Gaussian where <script type="math/tex">\Sigma=\begin{bmatrix}\sigma_1^2&\ &\ &\ &\ \\\ &\sigma_2^2&\ &\ &\ \\\ &\ &\sigma_3^2&\ &\ \\\ &\ &\ &...&\ \\\ &\ &\ &\ &\sigma_n^2\end{bmatrix}</script>.(which is axis aligned).</p>
+<p>The off diagonal means the correlations between axises. Here’re some examples.<br><img src="/images/ML/posExm.jpg" alt=""><br><img src="/images/ML/negExm.jpg" alt=""></p>
+<p><strong>Comparison</strong><br>Original model:<br>Manually create features to capture anomalies where x1, x2 take unusual combinations of values.<br>Computationally cheaper.<br>Ok even if m is small.</p>
+<p>Multivariate Gaussian:<br>Automatically captures correlations between features.<br>Computationally more expensive.<br>Must have m&gt;n or else ∑ is non-invertible.</p>
+<h3 id="Recommender-System"><a href="#Recommender-System" class="headerlink" title="Recommender System"></a>Recommender System</h3><p>Well, I’ve written an article about recommender system. (about <a href="http://haelchan.me/2017/11/03/Item-Based-CFRA-reading-report/">Item-based Collaborative Filtering</a>:D)</p>
+<p>Notation:<br>-<script type="math/tex">r(i,j)=1</script> if user j has rated movie i (0 otherwise)<br>-<script type="math/tex">y^{(i,j)}</script>= rating by user j on movie i (if defined)<br>-<script type="math/tex">\theta^{(j)}</script>= parameter vector for user j<br>-<script type="math/tex">x^{(i)}</script>= feature vector for movie i<br>-<script type="math/tex">(\theta^{(j)})^T(x^{(i)}</script>: for user j, movie i, predicted rating<br>-<script type="math/tex">m^{(j)}</script>= no. of movies rated by user j</p>
+<h4 id="Content-based"><a href="#Content-based" class="headerlink" title="Content-based"></a>Content-based</h4><p>To learn <script type="math/tex">\theta^{(j)}</script> (parameter for user j):</p>
+<script type="math/tex; mode=display">\min_{\theta^{(j)}}\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{k=1}^n(\theta_k^{(j)})^2</script><p>To learn <script type="math/tex">\theta^{(1)},\theta^{(2)},...,\theta^{(n_u)}</script>:</p>
+<script type="math/tex; mode=display">\min_{\theta^{(1)},...,\theta^{(n_u)}}\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n(\theta_k^{(j)})^2</script><p>Gradient descent update:</p>
+<script type="math/tex; mode=display">\theta_k^{(j)}:=\theta_k^{(j)}-\alpha\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}\ (for\ k=0)</script><script type="math/tex; mode=display">\theta_k^{(j)}:=\theta_k^{(j)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}+\lambda\theta_k^{(j)})\ (for\ k\ne0)</script><h4 id="Collaborative-filtering"><a href="#Collaborative-filtering" class="headerlink" title="Collaborative filtering"></a>Collaborative filtering</h4><p>Given <script type="math/tex">\theta^{(1)},...,\theta^{(n_u)}</script>, to learn <script type="math/tex">x^{(i)}</script>:</p>
+<script type="math/tex; mode=display">\min_{x^{(i)}}\frac{1}{2}\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{k=1}^n(x_k^{(i)})^2</script><p>Given <script type="math/tex">\theta^{(1)},...,\theta^{(n_u)}</script>, to learn <script type="math/tex">x^{(1)},...,x^{(n_m)}</script>:</p>
+<script type="math/tex; mode=display">\min_{x^{(1)},...,x^{(n_m)}}\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^n(x_k^{(i)})^2</script><p><strong>Collaborative filtering optimization objective</strong><br>Given <script type="math/tex">x^{(1)},...,x^{(n_m)}</script>, estimate <script type="math/tex">\theta^{(1)},\theta^{(2)},...,\theta^{(n_u)}</script>:</p>
+<script type="math/tex; mode=display">\min_{\theta^{(1)},...,\theta^{(n_u)}}\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n(\theta_k^{(j)})^2</script><p>Given <script type="math/tex">\theta^{(1)},...,\theta^{(n_u)}</script>, estimate <script type="math/tex">x^{(1)},...,x^{(n_m)}</script>:</p>
+<script type="math/tex; mode=display">\min_{x^{(1)},...,x^{(n_m)}}\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^n(x_k^{(i)})^2</script><p>Minimizing <script type="math/tex">x^{(1)},...,x^{(n_m)}</script> and <script type="math/tex">\theta^{(1)},...,\theta^{(n_u)}</script> simultaneously:</p>
+<script type="math/tex; mode=display">J(x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^n(x_k^{(i)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^n(\theta_k^{(j)})^2</script><p><strong>algorithm</strong><br>1.Initialize <script type="math/tex">x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)}</script> to small random values.<br>2.Minimize <script type="math/tex">J(x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})</script> using gradient descent(or an advanced optimization algorithm). E.g. for every <script type="math/tex">j=1,...,n_u,i=1,...,n_m</script>:</p>
+<script type="math/tex; mode=display">x_k^{(i)}:=x_k^{(i)}-\alpha(\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})\theta_k^{(j)}+\lambda x_k^{(i)})</script><script type="math/tex; mode=display">\theta_k^{(i)}:=\theta_k^{(i)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(j)}+\lambda \theta_k^{(i)})</script><p>3.For a user with parameters θ and a movie with (learned) features x, predict a star rating of <script type="math/tex">\theta^Tx</script>.</p>
+<h2 id="Week-Ten"><a href="#Week-Ten" class="headerlink" title="Week Ten"></a>Week Ten</h2><h3 id="Large-scale-machine-learning"><a href="#Large-scale-machine-learning" class="headerlink" title="Large scale machine learning"></a>Large scale machine learning</h3><h4 id="Stochastic-gradient-descent"><a href="#Stochastic-gradient-descent" class="headerlink" title="Stochastic gradient descent"></a>Stochastic gradient descent</h4><p>Algorithm:<br><img src="/images/ML/stoch.jpg" alt=""><br>(Learning rate α is typically held constant. We can slowly decrease α over time if we want θ to converge.<br><strong>Checking for convergence</strong><br>Every 1000 iterations(say), plot <script type="math/tex">cost(\theta,(x^{(i)},y^{(i)}))</script> averaged over the last 1000 examples processed by algorithm.</p>
+<p><strong>Batch Gradient Descent</strong>: use all <em>m</em> examples in each iteration<br><strong>Stochastic Gradient Descent</strong>: use <em>1</em> example in each iteration<br><strong>Mini-batch Gradient Descent</strong>: use <em>b</em> examples in each iteration</p>
+<h4 id="Map-Reduce"><a href="#Map-Reduce" class="headerlink" title="Map-Reduce"></a>Map-Reduce</h4><p>Divide the total computation into several parts. Let different computers/cores to calculate a part and then a central computer calculate the final results.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Hael Chan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://haelchan.me/2017/10/31/machine-learning-note/" title="Machine Learning Note">http://haelchan.me/2017/10/31/machine-learning-note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/learning-note/" rel="tag"># learning note</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/30/REM-reading-report/" rel="next" title="REM Reading Report">
+                <i class="fa fa-chevron-left"></i> REM Reading Report
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/03/Item-Based-CFRA-reading-report/" rel="prev" title="Item-Based Collaborative Filtering Recommendation Algorithms reading report">
+                Item-Based Collaborative Filtering Recommendation Algorithms reading report <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Hael Chan" />
+            
+              <p class="site-author-name" itemprop="name">Hael Chan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/haelchan" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:f.procumbens@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Procumbens" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="www.linkedin.com/in/haoliang-chen" target="_blank" title="LinkedIn">
+                    
+                      <i class="fa fa-fw fa-linkedin"></i>LinkedIn</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ruder.io" title="Sebastian Ruder" target="_blank">Sebastian Ruder</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://smerity.com" title="Semerity" target="_blank">Semerity</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://einstein.ai/research/blog" title="Salesforce Research" target="_blank">Salesforce Research</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.reddit.com/r/LanguageTechnology/" title="Reddit" target="_blank">Reddit</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://learnerwn.github.io" title="WN_Blog" target="_blank">WN_Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hey-yahei.cn" title="YaHei" target="_blank">YaHei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://godweiyang.com" title="WeiYang Blog" target="_blank">WeiYang Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.linzehui.me" title="Weekly Review" target="_blank">Weekly Review</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jalammar.github.io" title="Jay Alammar" target="_blank">Jay Alammar</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-One"><span class="nav-number">1.</span> <span class="nav-text">Week One</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Machine-learning-algorithms"><span class="nav-number">1.1.1.</span> <span class="nav-text">Machine learning algorithms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-with-One-Variable"><span class="nav-number">1.2.</span> <span class="nav-text">Linear Regression with One Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hypothesis-Function-and-Cost-Function"><span class="nav-number">1.2.1.</span> <span class="nav-text">Hypothesis Function and Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.2.2.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Algebra-Review"><span class="nav-number">1.3.</span> <span class="nav-text">Linear Algebra Review</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-Manipulation"><span class="nav-number">1.3.1.</span> <span class="nav-text">Matrix Manipulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-multiplication-properties"><span class="nav-number">1.3.2.</span> <span class="nav-text">Matrix multiplication properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Special-matrix"><span class="nav-number">1.3.3.</span> <span class="nav-text">Special matrix</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Two"><span class="nav-number">2.</span> <span class="nav-text">Week Two</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Multivariate-Linear-Regression"><span class="nav-number">2.1.</span> <span class="nav-text">Multivariate Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#from-one-variable-to-multiple-variables"><span class="nav-number">2.1.1.</span> <span class="nav-text">from one variable to multiple variables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feature-Scaling"><span class="nav-number">2.1.2.</span> <span class="nav-text">Feature Scaling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mean-normalization"><span class="nav-number">2.1.3.</span> <span class="nav-text">Mean normalization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Something-more-about-learning-rate"><span class="nav-number">2.1.4.</span> <span class="nav-text">Something more about learning rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Polynomial-regression"><span class="nav-number">2.1.5.</span> <span class="nav-text">Polynomial regression</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-equation"><span class="nav-number">2.2.</span> <span class="nav-text">Normal equation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal-equation-noninvertibility"><span class="nav-number">2.2.1.</span> <span class="nav-text">normal equation noninvertibility</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Octave-MATLAB-Tutorial"><span class="nav-number">2.3.</span> <span class="nav-text">Octave/MATLAB Tutorial</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Three"><span class="nav-number">3.</span> <span class="nav-text">Week Three</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">3.1.</span> <span class="nav-text">Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression-Model"><span class="nav-number">3.1.1.</span> <span class="nav-text">Logistic Regression Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cost-function-and-Gradient-Descent"><span class="nav-number">3.1.2.</span> <span class="nav-text">Cost function and Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regularization"><span class="nav-number">3.2.</span> <span class="nav-text">Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Overfitting"><span class="nav-number">3.2.1.</span> <span class="nav-text">Overfitting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularized-Linear-Regression"><span class="nav-number">3.2.2.</span> <span class="nav-text">Regularized Linear Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularized-Logistic-Regression"><span class="nav-number">3.2.3.</span> <span class="nav-text">Regularized Logistic Regression</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Four"><span class="nav-number">4.</span> <span class="nav-text">Week Four</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Networks"><span class="nav-number">4.1.</span> <span class="nav-text">Neural Networks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Five"><span class="nav-number">5.</span> <span class="nav-text">Week Five</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Networks-Learning"><span class="nav-number">5.1.</span> <span class="nav-text">Neural Networks: Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cost-Function"><span class="nav-number">5.1.1.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Backpropagation-Algorithm"><span class="nav-number">5.1.2.</span> <span class="nav-text">Backpropagation Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-checking"><span class="nav-number">5.1.3.</span> <span class="nav-text">Gradient checking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Training-a-neural-network"><span class="nav-number">5.1.4.</span> <span class="nav-text">Training a neural network</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Six"><span class="nav-number">6.</span> <span class="nav-text">Week Six</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Advice-for-applying-machine-learning"><span class="nav-number">6.1.</span> <span class="nav-text">Advice for applying machine learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bias-v-s-variance"><span class="nav-number">6.1.1.</span> <span class="nav-text">bias v.s. variance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularization-and-bias-variance"><span class="nav-number">6.1.2.</span> <span class="nav-text">Regularization and bias/variance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Learning-curves"><span class="nav-number">6.1.3.</span> <span class="nav-text">Learning curves</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Debugging-a-learning-algorithm"><span class="nav-number">6.1.4.</span> <span class="nav-text">Debugging a learning algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-learning-system-design"><span class="nav-number">6.2.</span> <span class="nav-text">Machine learning system design</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Recommended-approach"><span class="nav-number">6.2.1.</span> <span class="nav-text">Recommended approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Precision-amp-Recall"><span class="nav-number">6.2.2.</span> <span class="nav-text">Precision & Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Large-data-rationale"><span class="nav-number">6.2.3.</span> <span class="nav-text">Large data rationale</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Seven"><span class="nav-number">7.</span> <span class="nav-text">Week Seven</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-Vector-Machine"><span class="nav-number">7.1.</span> <span class="nav-text">Support Vector Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Kernels"><span class="nav-number">7.1.1.</span> <span class="nav-text">Kernels</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM-parameters"><span class="nav-number">7.1.2.</span> <span class="nav-text">SVM parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-an-SVM"><span class="nav-number">7.1.3.</span> <span class="nav-text">Using an SVM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Eight"><span class="nav-number">8.</span> <span class="nav-text">Week Eight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clustering"><span class="nav-number">8.1.</span> <span class="nav-text">Clustering</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means-algorithm"><span class="nav-number">8.1.1.</span> <span class="nav-text">K-means algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dimensionality-Reduction"><span class="nav-number">8.2.</span> <span class="nav-text">Dimensionality Reduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Principal-Component-Analysis-PCA"><span class="nav-number">8.2.1.</span> <span class="nav-text">Principal Component Analysis(PCA)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Choosing-k"><span class="nav-number">8.2.2.</span> <span class="nav-text">Choosing k</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Advice"><span class="nav-number">8.2.3.</span> <span class="nav-text">Advice</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Nine"><span class="nav-number">9.</span> <span class="nav-text">Week Nine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Anomaly-Detection"><span class="nav-number">9.1.</span> <span class="nav-text">Anomaly Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm"><span class="nav-number">9.1.1.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anomaly-detection-vs-supervised-learning"><span class="nav-number">9.1.2.</span> <span class="nav-text">Anomaly detection vs. supervised  learning</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-distribution"><span class="nav-number">9.2.</span> <span class="nav-text">Normal distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Multivariate-Gaussian-distribution"><span class="nav-number">9.2.1.</span> <span class="nav-text">Multivariate Gaussian distribution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recommender-System"><span class="nav-number">9.3.</span> <span class="nav-text">Recommender System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-based"><span class="nav-number">9.3.1.</span> <span class="nav-text">Content-based</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collaborative-filtering"><span class="nav-number">9.3.2.</span> <span class="nav-text">Collaborative filtering</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-Ten"><span class="nav-number">10.</span> <span class="nav-text">Week Ten</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Large-scale-machine-learning"><span class="nav-number">10.1.</span> <span class="nav-text">Large scale machine learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Stochastic-gradient-descent"><span class="nav-number">10.1.1.</span> <span class="nav-text">Stochastic gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">10.1.2.</span> <span class="nav-text">Map-Reduce</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hael Chan</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_uv">
+  Welcome~ Thanks for visiting my blog. You are the №.<span id="busuanzi_value_site_uv"></span> visitor.
+</span>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://hael.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://haelchan.me/2017/10/31/machine-learning-note/';
+          this.page.identifier = '2017/10/31/machine-learning-note/';
+          this.page.title = 'Machine Learning Note';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hael.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'manual') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3HhWLTewaKTSPj5DC3qp5b2m-gzGzoHsz", "zjxN2hpHQEmyMaz0XBicI3bn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
