@@ -14,9 +14,9 @@
     <url>%2F2019%2F07%2F03%2Fcpp-notes%2F</url>
     <content type="text"><![CDATA[I got to know something about C++ when learning CS106X-Stanford and Object-Oriented Programming-Zhejiang University . However, I haven’t studied C++ specially. In this summer vacation, I will dig into C++ and keep some notes here. The data structure part has been moved to the new post Data Structures and Algorithms Cheatsheet (C++). The remaining part of this post is mainly about language features. Adding Literals and strings For historical reasons, and for compatibility with C, string literals are not standard library strings. It is important to remember that these types differ when you use string literals and library strings. When we mix strings and string or character literals, at least one operand to each + operator must be of string type. Thus, it is illegal to add two string literals. (error: invalid operands to binary expression (&#39;const char *&#39; and &#39;const char *&#39;)) Generic ProgrammingUse != rather than &lt; in for loops. Use iterators rather than subscripts.]]></content>
       <tags>
+        <tag>C++</tag>
         <tag>tips</tag>
         <tag>learning note</tag>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -48,8 +48,8 @@
         <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>learning note</tag>
         <tag>PyTorch</tag>
+        <tag>learning note</tag>
       </tags>
   </entry>
   <entry>

@@ -57,11 +57,11 @@
     </summary>
     
     
+      <category term="C++" scheme="http://haelchan.me/tags/C/"/>
+    
       <category term="tips" scheme="http://haelchan.me/tags/tips/"/>
     
       <category term="learning note" scheme="http://haelchan.me/tags/learning-note/"/>
-    
-      <category term="C++" scheme="http://haelchan.me/tags/C/"/>
     
   </entry>
   
@@ -138,9 +138,9 @@
       <category term="Deep Learning" scheme="http://haelchan.me/categories/Deep-Learning/"/>
     
     
-      <category term="learning note" scheme="http://haelchan.me/tags/learning-note/"/>
-    
       <category term="PyTorch" scheme="http://haelchan.me/tags/PyTorch/"/>
+    
+      <category term="learning note" scheme="http://haelchan.me/tags/learning-note/"/>
     
   </entry>
   
