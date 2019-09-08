@@ -403,7 +403,7 @@
       
 
       
-        <p>This post is mainly the reading note of the tutorial <a href="https://arxiv.org/abs/1703.01619" target="_blank" rel="external">Neural Machine Translation and Sequence-to-sequence Models: A Tutorial</a> and the solutions to its questions(maybe code, if possible).  </p>
+        <p>This post is mainly the reading note of the tutorial <a href="https://arxiv.org/abs/1703.01619" target="_blank" rel="noopener">Neural Machine Translation and Sequence-to-sequence Models: A Tutorial</a> and the solutions to its questions(maybe code, if possible).  </p>
 <h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p><strong>Machine translation</strong> is the technology used to translate between human language.  </p>
 <p><strong>Source language</strong>: the language input to the machine translation system  </p>
 <p><strong>Target language</strong>: the output language  </p>
@@ -442,7 +442,7 @@
 </ul>
 <hr>
 <p>Further reading includes large-scale language modeling, language model adaptation, longer-distance language count-based models, syntex-based language models.   </p>
-<p><a href="http://www.cs.columbia.edu/~mcollins/lm-spring2013.pdf" target="_blank" rel="external">Course note</a> by Michael Collins from Columbia Univeristy is another good material.</p>
+<p><a href="http://www.cs.columbia.edu/~mcollins/lm-spring2013.pdf" target="_blank" rel="noopener">Course note</a> by Michael Collins from Columbia Univeristy is another good material.</p>
 <h2 id="Log-linear-Langauge-Models"><a href="#Log-linear-Langauge-Models" class="headerlink" title="Log-linear Langauge Models"></a>Log-linear Langauge Models</h2><h3 id="Model-Formulation"><a href="#Model-Formulation" class="headerlink" title="Model Formulation"></a>Model Formulation</h3><p>Log-linear language models revolve around the concept of <strong>features</strong>. We define a feature function $\phi(e_{t-n+1}^{t-1})$ that takes a context as input, and outputs a real-valued <strong>feature vector</strong> <script type="math/tex">\boldsymbol{x}\in\mathbb{R}^N</script> that describe the context using <em>N</em> different features.  </p>
 <p>Feature vector can be a <strong>one-hot vector</strong>. The function <script type="math/tex">\text{onehot}(i)</script> returns a vector where only the <script type="math/tex">i\text{th}</script> element is one and the rest are zero (assume the length of the vector is the appropriate length given the context).  </p>
 <p><strong>Calculating scores</strong>: We calculate a score vector <script type="math/tex">\boldsymbol{s}\in\mathbb{R}^{|V|}</script> that corresponds to the likelihood of each word: words with higher scores in the vector will also have higher probabilities. The model parameters <script type="math/tex">\theta</script> specifically come in two varieties: a <strong>bias vector</strong> <script type="math/tex">\boldsymbol{b}\in\mathbb{R}^{|V|}</script>, which tells us how likely each word in the vocabulary is overall, and a <strong>weight matrix</strong> <script type="math/tex">\mathit{W}=\mathbb{R}^{|V|\times N}</script>, which describes the relationship between feature values and scores. </p>
