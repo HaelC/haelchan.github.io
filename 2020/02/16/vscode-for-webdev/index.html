@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Hael&#39;s Blog">
 <meta property="og:description" content="Visual Studio Code (VS Code) is powerful and it helps to improve our productivity significantly. In this post I would like to share some efficient tips for web development. Built-in FeaturesShortcutsT">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-17T00:43:10.000Z">
+<meta property="og:updated_time" content="2020-02-18T03:41:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Visual Studio Code for Web Development">
 <meta name="twitter:description" content="Visual Studio Code (VS Code) is powerful and it helps to improve our productivity significantly. In this post I would like to share some efficient tips for web development. Built-in FeaturesShortcutsT">
@@ -326,7 +326,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-16T16:42:30+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-16T00:42:30-08:00">
                 2020-02-16
               </time>
             
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-17T08:43:10+08:00">
-                2020-02-17
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-17T19:41:03-08:00">
+                2020-02-18
               </time>
             
           </span>
@@ -400,7 +400,7 @@
         <p>Visual Studio Code (VS Code) is powerful and it helps to improve our productivity significantly. In this post I would like to share some efficient tips for web development.</p>
 <h2 id="Built-in-Features"><a href="#Built-in-Features" class="headerlink" title="Built-in Features"></a>Built-in Features</h2><h3 id="Shortcuts"><a href="#Shortcuts" class="headerlink" title="Shortcuts"></a>Shortcuts</h3><p>There are countless keyboard shortcuts in VS code. You can view them by pressing <code>⌘+K ⌘+R</code> (Keep command ⌘ pressed, then press K and R successively) on macOS, or <code>Ctrl+K Ctrl+R</code> on Windows. Here I will list the most useful shortcuts. I use symbols (<code>⌘</code> for command, <code>⇧</code> for shift, <code>⌥</code> for option and <code>⌃</code> for control) for macOS and <code>Ctrl, Shift, Alt</code> for Windows.</p>
 <h4 id="General"><a href="#General" class="headerlink" title="General"></a>General</h4><ul>
-<li><code>⇧ ⌘ P</code>/<code>Ctrl+Shift+P</code> <strong>Show All Commands</strong><br>  You can access all available commands based on your current context. If you forget some shortcuts, just use this command. You can also use <code>F1</code> to show all commands.</li>
+<li><code>⇧ ⌘ P</code>/<code>Ctrl+Shift+P</code> <strong>Show All Commands</strong><br>  We can access all available commands based on your current context. If we forget some shortcuts, just use this command. We can also use <code>F1</code> to show all commands.</li>
 <li><code>Ctrl+` </code> <strong>Toggle Integrated Terminal</strong><br>  This is a command that is the same on Windows and macOS. With the integrated terminal, we can use some commands like <code>npm install</code>, <code>npm start</code> easily.</li>
 </ul>
 <h4 id="Navigating-Files"><a href="#Navigating-Files" class="headerlink" title="Navigating Files"></a>Navigating Files</h4><ul>
@@ -420,11 +420,40 @@
 <h4 id="Classes-IDs-and-Attributes"><a href="#Classes-IDs-and-Attributes" class="headerlink" title="Classes, IDs and Attributes"></a>Classes, IDs and Attributes</h4><p>In CSS, we can target classes with selector <code>.</code> and ids with <code>#</code>, these rules also apply in Emmet. If we want to declare a <code>div</code> with class <code>row</code>, we can type <code>div.row</code> and it will generate <code>&lt;div class=&quot;row&quot;&gt;&lt;/div&gt;</code>. Similarly, <code>div#username</code> will produce <code>&lt;div id=&quot;username&quot;&gt;&lt;/div&gt;</code>.<br>We can chain the rules together. E.g., <code>div.col-12.col-md-8#address</code> generates <code>&lt;div class=&quot;col-12 col-md-8&quot; id=&quot;address&quot;&gt;&lt;/div&gt;</code>.<br>In fact, if the tag is <code>div</code>, we can ommit the tag name and directly type <code>.col-12.col-md-8#address</code>, and we will get the same result as above. This is called <em>implicit tags</em> in Emmet.<br><code>:</code> is used for state in CSS, and it is about HTML elements’ attributes in Emmet. Here are some examples:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">&lt;a href=&quot;&quot;&gt;&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">a:blank</span><br><span class="line">&lt;a href=&quot;http://&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">a:link</span><br><span class="line">&lt;a href=&quot;http://&quot;&gt;&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">input</span><br><span class="line">&lt;input type=&quot;text&quot;&gt;</span><br><span class="line"></span><br><span class="line">input:number</span><br><span class="line">&lt;input type=&quot;number&quot; name=&quot;&quot; id=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line">input:p</span><br><span class="line">&lt;input type=&quot;password&quot; name=&quot;&quot; id=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line">button</span><br><span class="line">&lt;button&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">button:s</span><br><span class="line">&lt;button type=&quot;submit&quot;&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure></p>
 <p>We can also deal with custom attributes with square bracket <code>[]</code>. The content in the square bracket is the attribute name and the corresponding value. For example, <code>p[title=&quot;Hello world&quot;]</code> will produce <code>&lt;p title=&quot;Hello world&quot;&gt;&lt;/p&gt;</code> The value can be omitted and it will generate an empty string. E.g., <code>td[rowspan=2 colspan=3 title]</code> will produce <code>&lt;td rowspan=&quot;2&quot; colspan=&quot;3&quot; title=&quot;&quot;&gt;&lt;/td&gt;</code>.</p>
 <h4 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h4><p>If we want to add some contents as well, we can use curly brace <code>{}</code>. E.g., <code>p{Hello}</code> would produce <code>&lt;p&gt;hello&lt;/p&gt;</code>.<br>Sometimes we want to add some texts to see how well the website looks like with text, but we don’t want to type so many non-sense words. We can use <code>lorem</code> to generate some dummy text for us. The default <code>lorem</code> will generate a 30-word dummy text, but you can specify how many words should be generated by adding numbers. E.g., <code>lorem100</code>.</p>
+<h4 id="Hierarchy"><a href="#Hierarchy" class="headerlink" title="Hierarchy"></a>Hierarchy</h4><p>We can deal with HTML’s hierarchical structures in Emmet as well. There are four operators and they are easy to understand and remember: <code>&gt;</code> represents <em>child</em>, <code>+</code> represents <em>sibling</em>, <code>^</code> represents <em>climb-up</em> and <code>()</code> represents grouping. Here are some examples:</p>
+<pre>
+<b>ul>li</b>
+<ul>
+  <li></li>
+</ul>
+
+<b>h1+p</b>
+<h1></h1>
+<p></p>
+
+<b>div>ul>li^p</b>
+<div>
+  <ul>
+    <li></li>
+  </ul>
+  <p></p>
+</div>
+
+<b>div>(h1+p)</b>
+<div>
+  <h1></h1>
+  <p></p>
+</div>
+</pre>
+
+<h4 id="Multiplication"><a href="#Multiplication" class="headerlink" title="Multiplication"></a>Multiplication</h4><p>With the multiplication sign <code>*</code>, we can create multiple elements immediately. For example, <code>(p&gt;lorem)*5</code> will generate 5 paragraphs, each paragraph with 30 dummy words. <code>ul&gt;li*3</code> will create an unordered list with 3 list items inside.<br>Sometimes, multiple elements would have relevant ids or contents. For instance, list items in an unordered list have ids from <code>item1</code> to <code>item5</code>. We can use the dollar sign <code>$</code> to achieve this. <code>ul&gt;li#item$*5</code> will produce 5 <code>&lt;li&gt;</code>s with id <code>item1</code> to <code>item5</code>.</p>
 <!-- To add:
 Multiple pointers
 Fold
 ESLint
-Prettier -->
+Prettier 
+Color pair
+ES7-->
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a href="https://code.visualstudio.com/docs/getstarted/keybindings" target="_blank" rel="noopener">Key Bindings for Visual Studio Code</a></li>
 <li><a href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks" target="_blank" rel="noopener">Visual Studio Code Tips and Tricks</a></li>
@@ -709,7 +738,7 @@ Prettier -->
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Built-in-Features"><span class="nav-number">1.</span> <span class="nav-text">Built-in Features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shortcuts"><span class="nav-number">1.1.</span> <span class="nav-text">Shortcuts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#General"><span class="nav-number">1.1.1.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Navigating-Files"><span class="nav-number">1.1.2.</span> <span class="nav-text">Navigating Files</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Coding"><span class="nav-number">1.1.3.</span> <span class="nav-text">Coding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Emmet"><span class="nav-number">1.2.</span> <span class="nav-text">Emmet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-Boilerplate"><span class="nav-number">1.2.1.</span> <span class="nav-text">HTML Boilerplate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-Tags"><span class="nav-number">1.2.2.</span> <span class="nav-text">HTML Tags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Classes-IDs-and-Attributes"><span class="nav-number">1.2.3.</span> <span class="nav-text">Classes, IDs and Attributes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Content"><span class="nav-number">1.2.4.</span> <span class="nav-text">Content</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Built-in-Features"><span class="nav-number">1.</span> <span class="nav-text">Built-in Features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shortcuts"><span class="nav-number">1.1.</span> <span class="nav-text">Shortcuts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#General"><span class="nav-number">1.1.1.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Navigating-Files"><span class="nav-number">1.1.2.</span> <span class="nav-text">Navigating Files</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Coding"><span class="nav-number">1.1.3.</span> <span class="nav-text">Coding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Emmet"><span class="nav-number">1.2.</span> <span class="nav-text">Emmet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-Boilerplate"><span class="nav-number">1.2.1.</span> <span class="nav-text">HTML Boilerplate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-Tags"><span class="nav-number">1.2.2.</span> <span class="nav-text">HTML Tags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Classes-IDs-and-Attributes"><span class="nav-number">1.2.3.</span> <span class="nav-text">Classes, IDs and Attributes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Content"><span class="nav-number">1.2.4.</span> <span class="nav-text">Content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hierarchy"><span class="nav-number">1.2.5.</span> <span class="nav-text">Hierarchy</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiplication"><span class="nav-number">0.0.1.</span> <span class="nav-text">Multiplication</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></div>
             
 
           </div>
